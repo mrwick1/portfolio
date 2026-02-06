@@ -1,0 +1,21 @@
+{
+  "name": "Arjun - Senior Frontend Engineer Portfolio",
+  "short_name": "Arjun",
+  "description": "Personal Portfolio Website",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFCF8",
+  "theme_color": "#FFFCF8",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+} 
