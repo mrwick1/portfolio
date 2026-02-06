@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://www.arjunp.pro">
 <meta property="og:title" content="Arjun - Senior Frontend Engineer Portfolio">
 <meta property="og:description" content="Arjun's portfolio showcasing expertise in modern frontend development with React.js, TypeScript, and more. View projects, experience, and skills of this Senior Frontend Engineer.">
-<meta property="og:image" content="https://www.arjunp.pro/assets/images/laptop.webp">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Arjun - Senior Frontend Engineer">
@@ -29,10 +29,9 @@
 <meta name="twitter:title" content="Arjun - Senior Frontend Engineer Portfolio">
 <meta name="twitter:description" content="Arjun's portfolio showcasing expertise in modern frontend development with React.js, TypeScript, and more.">
 <meta name="twitter:creator" content="@03arjunkr">
-<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/laptop.webp">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
 
 <!-- Favicon -->
-<link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json">
@@ -54,10 +53,9 @@
 }
 </script>
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts (self-hosted) -->
+<link rel="preload" href="./assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
   /* ════════════════════════════════════════════
      SWISS PRECISION — Design System
@@ -65,6 +63,24 @@
      Type scale: 11 / 13 / 16 / 20 / 25 / 32 / 40 / 51 / 64
      Grid: 12 columns, 24px gutter
      ════════════════════════════════════════════ */
+
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('./assets/fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: swap;
+    src: url('./assets/fonts/jetbrains-mono-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
 
   *, *::before, *::after {
     margin: 0;
@@ -215,6 +231,11 @@
 
   .section:last-of-type {
     border-bottom: none;
+  }
+
+  .section:not(.hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
   }
 
   .section-inner {
@@ -1084,7 +1105,7 @@
       </div>
 
       <div class="fade-in">
-        <a href="/assets/Arjun P - Senior Frontend Engineer.pdf" class="resume-btn" target="_blank" rel="noopener noreferrer">
+        <a href="/assets/arjun-p-senior-frontend-engineer.pdf" class="resume-btn" target="_blank" rel="noopener noreferrer">
           Download Resume <span class="resume-btn-arrow">&rarr;</span>
         </a>
       </div>
@@ -1095,7 +1116,7 @@
 
 <!-- Footer -->
 <footer class="footer">
-  <div class="footer-text">&copy; 2025 Arjun P. &mdash; All rights reserved.</div>
+  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun P. &mdash; All rights reserved.</div>
   <div class="footer-coords">Designed with Swiss Precision</div>
 </footer>
 
@@ -1195,6 +1216,13 @@
           setTheme(e.matches ? 'dark' : 'light');
         }
       });
+    }
+
+    /* ── Dynamic Footer Year ──────────────── */
+
+    var footerYear = document.getElementById('footerYear');
+    if (footerYear) {
+      footerYear.textContent = new Date().getFullYear();
     }
 
     /* ── Smooth Scroll for Nav Links ────────── */

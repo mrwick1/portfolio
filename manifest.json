@@ -4,18 +4,13 @@
   "description": "Personal Portfolio Website",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FFFCF8",
-  "theme_color": "#FFFCF8",
+  "background_color": "#FFFFFF",
+  "theme_color": "#111111",
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml"
-    },
-    {
-      "src": "/favicon.ico",
-      "sizes": "any",
-      "type": "image/x-icon"
     }
   ]
 } 
