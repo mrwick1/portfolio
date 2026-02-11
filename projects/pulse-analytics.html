@@ -15,7 +15,7 @@
   :root {
     --white: #FFFFFF; --black: #111111; --accent: #0055FF;
     --grey-100: #F5F5F5; --grey-200: #E8E8E8; --grey-300: #D0D0D0; --grey-400: #999999; --grey-500: #666666;
-    --bg: var(--white); --fg: var(--black); --fg-secondary: var(--grey-500); --fg-tertiary: var(--grey-400);
+    --bg: var(--white); --fg: var(--black); --fg-secondary: #595959; --fg-tertiary: #6E6E6E;
     --border: var(--grey-200); --border-faint: var(--grey-100); --grid-line: rgba(0,0,0,0.04); --surface: var(--grey-100);
     --font-body: 'Space Grotesk', sans-serif; --font-mono: 'JetBrains Mono', monospace;
     --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 40px; --sp-8: 48px;
@@ -23,7 +23,7 @@
     --grid-margin: 64px; --sidebar-width: 56px; --ease: linear; --duration: 0.3s;
   }
   [data-theme="dark"] {
-    --bg: #0A0A0A; --fg: #E8E8E8; --fg-secondary: #888888; --fg-tertiary: #555555;
+    --bg: #0A0A0A; --fg: #E8E8E8; --fg-secondary: #9A9A9A; --fg-tertiary: #808080;
     --border: #222222; --border-faint: #161616; --grid-line: rgba(255,255,255,0.03); --surface: #141414;
   }
   html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -131,7 +131,7 @@
       </div>
       <div class="case-buttons">
         <a href="https://github.com/mrwick1/pulse-analytics" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">GitHub &rarr;</a>
-        <a href="#" class="case-btn">Live Demo</a>
+        <a href="#" class="case-btn" aria-label="Live demo for Pulse Analytics">Live Demo</a>
       </div>
     </div>
   </section>
