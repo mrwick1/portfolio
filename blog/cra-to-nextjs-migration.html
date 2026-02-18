@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Migrated a Production App from CRA to Next.js | Arjun P.</title>
+<meta name="description" content="A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.">
+<meta name="keywords" content="CRA to Next.js migration, React, Next.js 14, performance optimization, SSR, frontend architecture">
+<meta name="author" content="Arjun P">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.arjunp.pro/blog/cra-to-nextjs-migration.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.arjunp.pro/blog/cra-to-nextjs-migration.html">
+<meta property="og:title" content="How I Migrated a Production App from CRA to Next.js">
+<meta property="og:description" content="A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta property="og:site_name" content="Arjun P">
+<meta property="article:author" content="Arjun P">
+<meta property="article:published_time" content="2026-02-19">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How I Migrated a Production App from CRA to Next.js">
+<meta name="twitter:description" content="A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14.">
+<meta name="twitter:creator" content="@03arjunkr">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How I Migrated a Production App from CRA to Next.js",
+  "description": "A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.",
+  "author": {
+    "@type": "Person",
+    "name": "Arjun P",
+    "url": "https://www.arjunp.pro"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Arjun P"
+  },
+  "datePublished": "2026-02-19",
+  "url": "https://www.arjunp.pro/blog/cra-to-nextjs-migration.html",
+  "mainEntityOfPage": "https://www.arjunp.pro/blog/cra-to-nextjs-migration.html"
+}
+</script>
+
+<link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --white: #FFFFFF; --black: #111111; --accent: #0055FF;
+    --grey-100: #F5F5F5; --grey-200: #E8E8E8; --grey-300: #D0D0D0; --grey-400: #999999; --grey-500: #666666;
+    --bg: var(--white); --fg: var(--black); --fg-secondary: #595959; --fg-tertiary: #6E6E6E;
+    --border: var(--grey-200); --border-faint: var(--grey-100); --grid-line: rgba(0,0,0,0.04); --surface: var(--grey-100);
+    --font-body: 'Space Grotesk', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 40px; --sp-8: 48px;
+    --sp-9: 64px; --sp-10: 80px; --sp-11: 96px; --sp-12: 120px;
+    --grid-margin: 64px; --sidebar-width: 56px; --ease: linear; --duration: 0.3s;
+  }
+  [data-theme="dark"] {
+    --bg: #0A0A0A; --fg: #E8E8E8; --fg-secondary: #9A9A9A; --fg-tertiary: #808080;
+    --border: #222222; --border-faint: #161616; --grid-line: rgba(255,255,255,0.03); --surface: #141414;
+  }
+  html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-body); font-weight: 400; line-height: 1.6; color: var(--fg); background-color: var(--bg); transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease); overflow-x: hidden; }
+  ::selection { background-color: var(--accent); color: var(--white); }
+  .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+  .grid-bg-inner { position: absolute; top: 0; left: var(--grid-margin); right: var(--grid-margin); height: 100%; display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+  .grid-bg-col { border-left: 1px solid var(--grid-line); border-right: 1px solid var(--grid-line); }
+  .grid-bg::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 200%; background-image: repeating-linear-gradient(0deg, transparent, transparent 79px, var(--grid-line) 79px, var(--grid-line) 80px); }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: var(--sp-5) var(--grid-margin); display: flex; align-items: center; justify-content: space-between; background-color: var(--bg); border-bottom: 1px solid var(--border); transition: background-color var(--duration) var(--ease); }
+  .nav-logo { font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: var(--sp-6); list-style: none; }
+  .nav-link { font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-secondary); text-decoration: none; position: relative; transition: color var(--duration) var(--ease), transform var(--duration) var(--ease); }
+  .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width var(--duration) var(--ease); }
+  .nav-link:hover { color: var(--fg); transform: translateY(-2px); }
+  .nav-link:hover::after { width: 100%; }
+  .theme-toggle { width: 32px; height: 32px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--fg); transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease); }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .page { position: relative; z-index: 1; min-height: 100vh; }
+
+  /* Case study layout reused for blog */
+  .case-hero { padding: calc(120px + 72px) var(--grid-margin) var(--sp-10); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); }
+  .case-hero-inner { max-width: 1200px; margin: 0 auto; }
+  .breadcrumb { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin-bottom: var(--sp-6); display: flex; align-items: center; gap: var(--sp-2); }
+  .breadcrumb a { color: var(--fg-secondary); text-decoration: none; transition: color var(--duration) var(--ease); }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb-sep { color: var(--fg-tertiary); }
+  .case-title { font-family: var(--font-body); font-size: clamp(36px, 5vw, 51px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--fg); margin-bottom: var(--sp-3); }
+  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; margin-bottom: var(--sp-7); }
+  .case-meta { display: flex; gap: var(--sp-8); padding: var(--sp-5) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: var(--sp-6); flex-wrap: wrap; }
+  .case-meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .case-meta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .case-meta-value { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
+  .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .case-section-inner { max-width: 1200px; margin: 0 auto; }
+  .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
+  .case-section-number { color: var(--accent); margin-right: var(--sp-3); font-family: var(--font-mono); font-weight: 500; }
+  .case-text { font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--fg-secondary); max-width: 800px; margin-bottom: var(--sp-5); }
+  .case-text:last-child { margin-bottom: 0; }
+
+  /* Blog-specific: content sub-headings */
+  .case-section-inner h2 { font-family: var(--font-body); font-size: 22px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-4); margin-top: var(--sp-7); line-height: 1.3; }
+  .case-section-inner h2:first-of-type { margin-top: 0; }
+  .case-section-inner h3 { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-3); margin-top: var(--sp-6); line-height: 1.4; }
+
+  /* Blog-specific: code blocks */
+  pre { background-color: var(--surface); border: 1px solid var(--border); padding: var(--sp-5); margin-bottom: var(--sp-5); overflow-x: auto; max-width: 800px; }
+  pre code { font-family: var(--font-mono); font-size: 13px; font-weight: 400; line-height: 1.7; color: var(--fg); background: none; padding: 0; border: none; }
+  code { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--accent); background-color: var(--surface); border: 1px solid var(--border); padding: 1px 6px; }
+
+  /* Blog-specific: blockquote */
+  blockquote { border-left: 3px solid var(--accent); padding-left: var(--sp-5); margin-bottom: var(--sp-5); max-width: 800px; }
+  blockquote p { font-family: var(--font-body); font-size: 16px; font-weight: 400; font-style: italic; line-height: 1.75; color: var(--fg-secondary); margin-bottom: 0; }
+
+  /* Blog-specific: lists inside content */
+  .case-section-inner ul { list-style: none; max-width: 800px; margin-bottom: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); }
+  .case-section-inner ul li { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); padding-left: var(--sp-5); position: relative; }
+  .case-section-inner ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background-color: var(--accent); }
+
+  /* Blog bottom nav */
+  .project-nav { display: flex; justify-content: center; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: center; }
+  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); align-items: center; }
+  .project-nav-link:hover { transform: translateY(-2px); }
+  .project-nav-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .project-nav-title { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); }
+
+  /* Metrics grid */
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); max-width: 800px; margin-bottom: var(--sp-6); }
+  .metric-card { padding: var(--sp-5); border: 1px solid var(--border-faint); text-align: center; }
+  .metric-value { font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: var(--accent); line-height: 1.2; margin-bottom: var(--sp-2); }
+  .metric-label { font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--fg-secondary); }
+
+  .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .footer-text, .footer-coords { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); }
+  .fade-in { opacity: 0; transition: opacity var(--duration) var(--ease); }
+  .fade-in.is-visible { opacity: 1; }
+
+  /* Tag row for blog meta */
+  .case-meta-tags { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+  .case-meta-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--fg-secondary); background-color: var(--surface); border: 1px solid var(--border); padding: 2px 8px; }
+
+  @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
+  @media (max-width: 768px) {
+    :root { --grid-margin: 24px; --sidebar-width: 0px; }
+    .case-hero, .case-section, .project-nav, .footer { padding-left: var(--grid-margin); }
+    .case-meta { flex-direction: column; gap: var(--sp-4); }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
+    .grid-bg-inner { left: var(--grid-margin); right: var(--grid-margin); grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .footer { flex-direction: column; gap: var(--sp-2); align-items: flex-start; }
+  }
+  @media (max-width: 540px) { .nav-links .nav-link-text { display: none; } }
+  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .metric-value { font-size: 24px; } }
+  @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
+
+<nav class="nav" role="navigation" aria-label="Primary navigation">
+  <a href="../index.html" class="nav-logo">Arjun P.</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
+    <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
+    <li><a href="../index.html#writing" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
+    <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
+    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
+  </ul>
+</nav>
+
+<main class="page">
+
+  <!-- Hero -->
+  <section class="case-hero">
+    <div class="case-hero-inner fade-in">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span>
+        <a href="../index.html#writing">Writing</a><span class="breadcrumb-sep">/</span>
+        <span>CRA to Next.js Migration</span>
+      </div>
+      <h1 class="case-title">How I Migrated a Production App from CRA to Next.js</h1>
+      <p class="case-subtitle">An incremental migration strategy that cut load times by 60% and pushed Lighthouse scores from 60 to 90+</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <span class="case-meta-label">Published</span>
+          <span class="case-meta-value">Feb 19, 2026</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Reading Time</span>
+          <span class="case-meta-value">10 min read</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Tags</span>
+          <div class="case-meta-tags">
+            <span class="case-meta-tag">Next.js</span>
+            <span class="case-meta-tag">React</span>
+            <span class="case-meta-tag">Performance</span>
+            <span class="case-meta-tag">Migration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 Overview -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
+      <p class="case-text fade-in">In late 2023, I led the migration of a production SaaS dashboard from Create React App (CRA) to Next.js 14 at Hubspire. The app served thousands of daily active users and had grown to over 200 components across 50+ routes. What started as a routine dependency upgrade turned into a full architectural rethink when we realized CRA was holding us back in ways that patches couldn't fix.</p>
+      <p class="case-text fade-in">This post covers why we migrated, the incremental strategy we used to avoid a risky rewrite, the technical challenges we hit along the way, and the measurable results we shipped. If you're maintaining a CRA app and wondering whether the migration is worth it, this is the breakdown I wish I'd had before we started.</p>
+    </div>
+  </section>
+
+  <!-- 02 The Problem -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>The Problem</div>
+      <p class="case-text fade-in">CRA served us well in the early days. It got the app off the ground fast, and the zero-config setup meant we could focus on features instead of tooling. But as the app scaled, three problems became impossible to ignore.</p>
+
+      <h2 class="fade-in">Bundle Size Had Gotten Out of Control</h2>
+      <p class="case-text fade-in">Our main bundle had ballooned to 2.4 MB gzipped. CRA's Webpack config doesn't ship with granular code splitting out of the box, and our attempts to bolt on <code>React.lazy</code> and <code>Suspense</code> only solved part of the problem. Every route still loaded a massive shared chunk because CRA's default chunking strategy wasn't designed for apps of this size. First Contentful Paint was sitting at 4.2 seconds on a median connection.</p>
+
+      <h2 class="fade-in">SEO Was Non-Existent</h2>
+      <p class="case-text fade-in">The dashboard itself didn't need SEO, but the marketing pages, docs, and public-facing reports that lived in the same app did. CRA renders everything client-side, which meant Google was indexing empty shells. We'd hacked around this with <code>react-helmet</code> and a prerendering service, but it was fragile and added operational overhead we didn't want to maintain.</p>
+
+      <h2 class="fade-in">Developer Experience Was Deteriorating</h2>
+      <p class="case-text fade-in">CRA's Webpack 4 config (later 5) meant cold starts took 45+ seconds, and HMR often required a full page reload to pick up changes. The lack of built-in API routes forced us to maintain a separate Express server for BFF endpoints. Every workaround added complexity, and onboarding new developers meant explaining a maze of custom scripts and patches layered on top of CRA's ejected config.</p>
+    </div>
+  </section>
+
+  <!-- 03 The Approach -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>The Approach</div>
+      <p class="case-text fade-in">A big-bang rewrite was off the table. The app was in active development with features shipping weekly, and we couldn't afford to freeze the codebase for months. Instead, we adopted an incremental migration strategy that let us ship Next.js pages alongside the existing CRA app.</p>
+
+      <h2 class="fade-in">Phase 1: Parallel Setup</h2>
+      <p class="case-text fade-in">We initialized a Next.js 14 project in a <code>/next</code> directory within the monorepo. Shared components, hooks, and utilities were extracted into a <code>/packages/shared</code> directory that both the CRA app and Next.js app could import from. This meant zero duplication from day one.</p>
+<pre><code>project/
+  packages/
+    shared/          # Components, hooks, utils
+      components/
+      hooks/
+      utils/
+  apps/
+    legacy-cra/      # Existing CRA app
+    next-app/        # New Next.js app
+  package.json       # Workspace root</code></pre>
+      <p class="case-text fade-in">We configured a reverse proxy (Nginx in staging, Cloudflare Workers in production) to route traffic between the two apps based on URL patterns. New pages went to Next.js; everything else stayed on CRA. Users never noticed the transition.</p>
+
+      <h2 class="fade-in">Phase 2: Route-by-Route Migration</h2>
+      <p class="case-text fade-in">We migrated routes in order of impact: public-facing pages first (marketing, docs, reports), then high-traffic dashboard pages, then everything else. For each route, the process was:</p>
+      <ul class="fade-in">
+        <li>Create the Next.js page using the App Router with appropriate data fetching (<code>generateStaticParams</code> for static content, server components for dynamic data)</li>
+        <li>Move the route's components from <code>legacy-cra/</code> to <code>packages/shared/</code> if they weren't already shared</li>
+        <li>Add the <code>"use client"</code> directive to components that needed browser APIs or React state</li>
+        <li>Update the proxy config to route the URL to Next.js</li>
+        <li>Verify in staging, then ship</li>
+      </ul>
+
+      <h2 class="fade-in">Phase 3: Data Fetching Overhaul</h2>
+      <p class="case-text fade-in">CRA had everything running through client-side <code>useEffect</code> + <code>fetch</code> calls, wrapped in React Query for caching. Moving to Next.js meant we could shift data fetching to the server where it belonged.</p>
+      <p class="case-text fade-in">For pages that needed fresh data on every request, we used server components that fetch directly in the component body. For pages with data that changes infrequently, we used static generation with on-demand revalidation via <code>revalidatePath</code>. The React Query layer was kept for client-side mutations and optimistic updates, but the initial page load no longer depended on it.</p>
+<pre><code>// Before: Client-side fetching in CRA
+function DashboardPage() {
+  const { data, isLoading } = useQuery({
+    queryKey: ['dashboard'],
+    queryFn: () => fetch('/api/dashboard').then(r => r.json())
+  });
+
+  if (isLoading) return &lt;Skeleton /&gt;;
+  return &lt;Dashboard data={data} /&gt;;
+}
+
+// After: Server component in Next.js
+async function DashboardPage() {
+  const data = await getDashboardData();
+  return &lt;Dashboard data={data} /&gt;;
+}</code></pre>
+
+      <h2 class="fade-in">Phase 4: Handling Client-Side Routing</h2>
+      <p class="case-text fade-in">The trickiest part was maintaining client-side navigation during the transition period. CRA used React Router v6, and Next.js uses its own file-based router. For cross-app navigation (clicking a link in a Next.js page that pointed to a route still on CRA), we fell back to full page navigations using standard <code>&lt;a&gt;</code> tags instead of Next.js <code>&lt;Link&gt;</code>. As more routes moved to Next.js, these cross-app jumps became less frequent until they disappeared entirely.</p>
+    </div>
+  </section>
+
+  <!-- 04 Results -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Results</div>
+      <p class="case-text fade-in">The migration completed over 10 weeks with zero downtime and no user-facing regressions. Here are the numbers that mattered:</p>
+
+      <div class="metrics-grid fade-in">
+        <div class="metric-card">
+          <div class="metric-value">60%</div>
+          <div class="metric-label">Faster page loads</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">70%</div>
+          <div class="metric-label">Smaller bundle size</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-value">90+</div>
+          <div class="metric-label">Lighthouse score</div>
+        </div>
+      </div>
+
+      <h2 class="fade-in">Performance Breakdown</h2>
+      <p class="case-text fade-in">First Contentful Paint dropped from 4.2s to 1.6s. The main bundle went from 2.4 MB to 720 KB gzipped, thanks to Next.js's automatic code splitting per route and tree shaking that actually works. Server-side rendering eliminated the blank-screen flash that users saw on every page load with CRA.</p>
+      <p class="case-text fade-in">Lighthouse performance scores went from a consistent 58-62 range to 90+ across all routes. The public-facing pages that needed SEO started appearing in Google search results within two weeks of migration, with proper meta tags, structured data, and server-rendered HTML that crawlers could actually parse.</p>
+
+      <h2 class="fade-in">Developer Experience</h2>
+      <p class="case-text fade-in">Cold start time dropped from 45+ seconds to under 3 seconds with Turbopack. HMR became instant and reliable. The API routes feature eliminated our separate Express BFF server, reducing the deployment surface from two services to one. New developers went from "productive in a week" to "productive on day one" because the Next.js conventions replaced our custom tooling maze.</p>
+    </div>
+  </section>
+
+  <!-- 05 Key Takeaways -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Key Takeaways</div>
+
+      <h2 class="fade-in">Incremental beats big-bang, every time</h2>
+      <p class="case-text fade-in">The proxy-based approach let us ship continuously throughout the migration. We never had a "migration branch" that drifted from main. Every migrated route was deployed to production independently, validated with real traffic, and rolled back once when we caught a data fetching edge case. A rewrite would have meant weeks of integration pain at the end.</p>
+
+      <h2 class="fade-in">Extract shared code first</h2>
+      <p class="case-text fade-in">Moving components and utilities into a shared package before starting the migration was the single highest-leverage decision. It meant each route migration was purely about data fetching and page-level concerns, not about porting component code. If your components are tightly coupled to CRA-specific patterns (like importing images via Webpack loaders), decouple those first.</p>
+
+      <h2 class="fade-in">Server components change how you think about data</h2>
+      <p class="case-text fade-in">The biggest mental shift wasn't the routing or the file structure. It was moving from "fetch data on the client, show a spinner" to "fetch data on the server, send HTML." This sounds simple, but it changes component boundaries, error handling patterns, and loading state design. We refactored our component library to have server and client variants of data-dependent components, which was unexpected work but paid off in both performance and code clarity.</p>
+
+      <h2 class="fade-in">Measure before, during, and after</h2>
+      <p class="case-text fade-in">We set up Real User Monitoring (RUM) with Web Vitals tracking before starting the migration. This gave us a concrete baseline and let us catch performance regressions on individual routes as they were migrated. Without this data, we'd have been guessing about impact. The numbers in this post come from production RUM data, not synthetic benchmarks.</p>
+
+      <blockquote class="fade-in">
+        <p>The best migration is the one your users never notice. Ship incrementally, measure everything, and let the data tell you when you're done.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Bottom nav -->
+  <div class="project-nav">
+    <div class="project-nav-inner">
+      <a href="../index.html#writing" class="project-nav-link">
+        <span class="project-nav-label">&larr; Back</span>
+        <span class="project-nav-title">All Writing</span>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun P. &mdash; All rights reserved.</div>
+  <div class="footer-coords">Designed with Swiss Precision</div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var fadeEls=document.querySelectorAll('.fade-in');
+  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}
+  var html=document.documentElement,toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
+  var sunPath='<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+  var moonPath='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+  function setTheme(t){html.setAttribute('data-theme',t);icon.innerHTML=t==='dark'?moonPath:sunPath;try{localStorage.setItem('swiss-theme',t);}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem('swiss-theme');}catch(e){}
+  if(saved){setTheme(saved);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){setTheme('dark');}
+  if(toggle){toggle.addEventListener('click',function(){setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');});}
+  var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
+})();
+</script>
+</body>
+</html>
