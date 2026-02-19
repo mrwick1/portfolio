@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Arjun P.</title>
+<meta name="robots" content="noindex">
+
+<!-- Favicon -->
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+<!-- Fonts (self-hosted) -->
+<link rel="preload" href="./assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="./assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('./assets/fonts/space-grotesk-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'JetBrains Mono';
+    font-style: normal;
+    font-weight: 400 500;
+    font-display: swap;
+    src: url('./assets/fonts/jetbrains-mono-latin.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --white: #FFFFFF;
+    --black: #111111;
+    --accent: #0055FF;
+    --grey-100: #F5F5F5;
+    --grey-200: #E8E8E8;
+    --grey-300: #D0D0D0;
+    --grey-400: #999999;
+    --grey-500: #666666;
+
+    --bg: var(--white);
+    --fg: var(--black);
+    --fg-secondary: #595959;
+    --fg-tertiary: #6E6E6E;
+    --border: var(--grey-200);
+    --border-faint: var(--grey-100);
+    --grid-line: rgba(0, 0, 0, 0.04);
+    --surface: var(--grey-100);
+
+    --font-body: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --sp-2: 8px;
+    --sp-4: 16px;
+    --sp-5: 24px;
+    --sp-6: 32px;
+
+    --grid-columns: 12;
+    --grid-gutter: 24px;
+    --grid-margin: 64px;
+
+    --ease: linear;
+    --duration: 0.3s;
+  }
+
+  [data-theme="dark"] {
+    --bg: #0A0A0A;
+    --fg: #E8E8E8;
+    --fg-secondary: #9A9A9A;
+    --fg-tertiary: #808080;
+    --border: #222222;
+    --border-faint: #161616;
+    --grid-line: rgba(255, 255, 255, 0.03);
+    --surface: #141414;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--fg);
+    background-color: var(--bg);
+    transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Grid Background ──────────────────────── */
+
+  .grid-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .grid-bg-inner {
+    position: absolute;
+    top: 0;
+    left: var(--grid-margin);
+    right: var(--grid-margin);
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gutter);
+  }
+
+  .grid-bg-col {
+    border-left: 1px solid var(--grid-line);
+    border-right: 1px solid var(--grid-line);
+  }
+
+  .grid-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 79px,
+      var(--grid-line) 79px,
+      var(--grid-line) 80px
+    );
+  }
+
+  /* ── Navigation ────────────────────────────── */
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: var(--sp-5) var(--grid-margin);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg);
+    border-bottom: 1px solid var(--border);
+    transition: background-color var(--duration) var(--ease);
+  }
+
+  .nav-logo {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg);
+    text-decoration: none;
+    transition: color var(--duration) var(--ease);
+  }
+
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease);
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ── Content ───────────────────────────────── */
+
+  .content {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-5) var(--grid-margin);
+  }
+
+  .content-inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-5);
+  }
+
+  .error-code {
+    font-family: var(--font-mono);
+    font-size: clamp(80px, 15vw, 160px);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+  }
+
+  .error-heading {
+    font-family: var(--font-body);
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 600;
+    color: var(--fg);
+    line-height: 1.2;
+  }
+
+  .error-text {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--fg-secondary);
+    max-width: 400px;
+  }
+
+  .home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background-color: var(--accent);
+    text-decoration: none;
+    padding: var(--sp-4) var(--sp-6);
+    border: none;
+    transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
+    margin-top: var(--sp-2);
+  }
+
+  .home-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+  }
+
+  .home-btn-arrow {
+    font-size: 15px;
+    transition: transform var(--duration) var(--ease);
+  }
+
+  .home-btn:hover .home-btn-arrow {
+    transform: translateX(2px);
+  }
+
+  /* ── Fade-in ───────────────────────────────── */
+
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.4s var(--ease);
+  }
+
+  .fade-in.is-visible {
+    opacity: 1;
+  }
+
+  .stagger > .fade-in:nth-child(1) { transition-delay: 0s; }
+  .stagger > .fade-in:nth-child(2) { transition-delay: 0.08s; }
+  .stagger > .fade-in:nth-child(3) { transition-delay: 0.16s; }
+  .stagger > .fade-in:nth-child(4) { transition-delay: 0.24s; }
+
+  /* ── Footer ────────────────────────────────── */
+
+  .footer {
+    position: relative;
+    z-index: 1;
+    padding: var(--sp-6) var(--grid-margin);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--fg-tertiary);
+  }
+
+  .footer-coords {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--fg-tertiary);
+  }
+
+  /* ── Selection ─────────────────────────────── */
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--white);
+  }
+
+  /* ── Scrollbar ─────────────────────────────── */
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
+
+  /* ── Responsive ────────────────────────────── */
+
+  @media (max-width: 768px) {
+    :root {
+      --grid-margin: 24px;
+    }
+
+    .nav {
+      padding: var(--sp-4) var(--grid-margin);
+    }
+
+    .grid-bg-inner {
+      left: var(--grid-margin);
+      right: var(--grid-margin);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .footer {
+      flex-direction: column;
+      gap: var(--sp-2);
+      align-items: flex-start;
+    }
+  }
+
+  @media (max-width: 480px) {
+    :root {
+      --grid-margin: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Grid Background -->
+<div class="grid-bg" aria-hidden="true">
+  <div class="grid-bg-inner">
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+    <div class="grid-bg-col"></div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="nav" role="navigation" aria-label="Primary navigation">
+  <a href="/" class="nav-logo">Arjun P.</a>
+  <button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle">
+    <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </button>
+</nav>
+
+<!-- Content -->
+<main class="content">
+  <div class="content-inner stagger">
+    <div class="fade-in error-code">404</div>
+    <h1 class="fade-in error-heading">Page not found</h1>
+    <p class="fade-in error-text">The page you're looking for doesn't exist or has been moved.</p>
+    <div class="fade-in">
+      <a href="/" class="home-btn">Back to Home <span class="home-btn-arrow">&rarr;</span></a>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun P. &mdash; All rights reserved.</div>
+  <div class="footer-coords">Designed with Swiss Precision</div>
+</footer>
+
+<script>
+  (function () {
+    'use strict';
+
+    /* ── Fade-in ───────────────────────────── */
+
+    var fadeEls = document.querySelectorAll('.fade-in');
+    fadeEls.forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+
+    /* ── Theme Toggle ───────────────────────── */
+
+    var html = document.documentElement;
+    var toggle = document.getElementById('themeToggle');
+    var icon = document.getElementById('themeIcon');
+
+    var sunPath = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+
+    var moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+
+    function setTheme(theme) {
+      html.setAttribute('data-theme', theme);
+      icon.innerHTML = theme === 'dark' ? moonPath : sunPath;
+      try {
+        localStorage.setItem('swiss-theme', theme);
+      } catch (e) { /* silent */ }
+    }
+
+    var saved = null;
+    try { saved = localStorage.getItem('swiss-theme'); } catch (e) { /* silent */ }
+
+    if (saved) {
+      setTheme(saved);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setTheme('dark');
+    }
+
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        var current = html.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
+
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        var saved2 = null;
+        try { saved2 = localStorage.getItem('swiss-theme'); } catch (er) { /* silent */ }
+        if (!saved2) {
+          setTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    }
+
+    /* ── Dynamic Footer Year ──────────────── */
+
+    var footerYear = document.getElementById('footerYear');
+    if (footerYear) {
+      footerYear.textContent = new Date().getFullYear();
+    }
+
+  })();
+</script>
+
+</body>
+</html>
