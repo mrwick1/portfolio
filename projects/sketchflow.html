@@ -61,8 +61,8 @@
   .case-btn--primary { background-color: var(--accent); border-color: var(--accent); color: var(--white); }
   .case-btn--primary:hover { opacity: 0.85; color: var(--white); }
   .case-screenshot { margin: 0 var(--grid-margin); margin-left: calc(var(--grid-margin) + var(--sidebar-width)); }
-  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 24px 24px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
-  .case-screenshot-inner::after { content: attr(data-label); font-family: var(--font-mono); font-size: 16px; font-weight: 500; letter-spacing: 0.1em; color: var(--fg-tertiary); text-transform: uppercase; }
+  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+  .case-screenshot-inner img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
   .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .case-section-inner { max-width: 1200px; margin: 0 auto; }
   .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
@@ -130,18 +130,18 @@
         <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Active</span></div>
       </div>
       <div class="case-buttons">
-        <a href="https://github.com/mrwick1/sketchflow" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">GitHub &rarr;</a>
-        <a href="#" class="case-btn" aria-label="Live demo for SketchFlow">Live Demo</a>
+        <a href="https://sketchflow.arjunp.pro/" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">Live Demo &rarr;</a>
+        <a href="https://github.com/mrwick1/sketchflow" target="_blank" rel="noopener noreferrer" class="case-btn">GitHub</a>
       </div>
     </div>
   </section>
-  <div class="case-screenshot"><div class="case-screenshot-inner fade-in" data-label="SketchFlow Preview"></div></div>
+  <div class="case-screenshot"><div class="case-screenshot-inner fade-in"><img src="../assets/images/projects/sketchflow.png" alt="SketchFlow application screenshot" loading="lazy"></div></div>
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
       <p class="case-text fade-in">SketchFlow is a browser-based drawing tool that combines the charm of hand-drawn illustrations with the precision of digital tools. Inspired by Excalidraw, the goal was to build a whiteboard experience that feels natural and organic rather than sterile and mechanical.</p>
       <p class="case-text fade-in">The application uses Rough.js to render shapes with a sketchy, hand-drawn quality, and perfect-freehand to capture pressure-sensitive strokes from pen and touch input. The result is a drawing tool where even simple rectangles and arrows look like they were drawn by hand on paper.</p>
-      <p class="case-text fade-in">Everything runs client-side in the browser using the Canvas API. There's no server component — drawings can be exported to PNG for sharing. The architecture is designed around an immutable element state, making undo/redo trivial to implement.</p>
+      <p class="case-text fade-in">Everything runs client-side in the browser using the Canvas API. There's no server component — drawings can be exported to PNG for sharing. The architecture is designed around a Zustand store with discriminated union types, making state management predictable and type-safe.</p>
     </div>
   </section>
   <section class="case-section">
@@ -161,7 +161,7 @@
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Technical Architecture</div>
       <p class="case-text fade-in">The rendering pipeline has two layers: a static canvas for committed elements and a dynamic canvas for the element currently being drawn. This dual-canvas approach means only the active stroke needs per-frame rendering, while the background canvas is only repainted when the element list changes.</p>
-      <p class="case-text fade-in">Element state is stored as an immutable array. Each user action produces a new array reference pushed onto a history stack. Undo pops the stack and restores the previous state; redo re-applies from a parallel redo stack. This pattern eliminates complex mutation tracking.</p>
+      <p class="case-text fade-in">Element state is managed through a Zustand store organized into slices, with elements stored in a Map keyed by ID for O(1) lookups. Each element uses a discriminated union type where the <code>tool</code> field determines which properties are available, making it impossible to access shape-specific data on a freehand element, or vice versa. Immer handles immutable updates inside the store, keeping mutation logic readable.</p>
       <p class="case-text fade-in">Pointer events are normalized across mouse, touch, and pen inputs using the Pointer Events API. For freehand strokes, raw pointer data is fed through perfect-freehand's algorithm, which outputs SVG path data rendered onto the canvas. Shape elements use Rough.js's generator to produce randomized path data that mimics hand drawing.</p>
     </div>
   </section>
@@ -169,19 +169,21 @@
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Tech Stack</div>
       <div class="tech-grid">
-        <div class="tech-item fade-in"><span class="tech-name">React</span><span class="tech-role">UI framework</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">TypeScript</span><span class="tech-role">Type safety</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Vite</span><span class="tech-role">Build tool</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">React 19</span><span class="tech-role">UI framework</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">TypeScript 5.7</span><span class="tech-role">Type safety</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Vite 6</span><span class="tech-role">Build tool</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Zustand</span><span class="tech-role">State management</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">immer</span><span class="tech-role">Immutable updates</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">CSS Modules</span><span class="tech-role">Scoped styling</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Rough.js</span><span class="tech-role">Hand-drawn rendering</span></div>
         <div class="tech-item fade-in"><span class="tech-name">perfect-freehand</span><span class="tech-role">Stroke smoothing</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Canvas API</span><span class="tech-role">2D rendering</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Pointer Events</span><span class="tech-role">Input handling</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">ESLint</span><span class="tech-role">Code quality</span></div>
       </div>
     </div>
   </section>
   <div class="project-nav"><div class="project-nav-inner">
-    <a href="hive-chat.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">HiveChat</span></a>
+    <a href="librynt.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">Librynt</span></a>
     <a href="pulse-analytics.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Pulse Analytics</span></a>
   </div></div>
 </main>

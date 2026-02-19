@@ -788,6 +788,17 @@
     overflow: hidden;
   }
 
+  .project-card--featured { grid-column: 1 / -1; }
+  .project-card--featured .project-preview { aspect-ratio: 21 / 9; }
+
+  .project-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    display: block;
+  }
+
   .project-preview::after {
     content: attr(data-label);
     font-family: var(--font-mono);
@@ -1239,72 +1250,40 @@
       <div class="section-heading fade-in"><span class="section-heading-number">02</span>Projects</div>
       <div class="projects-grid stagger">
 
-        <!-- Astra UI -->
-        <div class="project-card fade-in">
-          <div class="project-preview" data-label="Astra UI"></div>
+        <!-- Librynt (Featured) -->
+        <div class="project-card project-card--featured fade-in">
+          <div class="project-preview"><img src="./assets/images/projects/librynt.png" alt="Librynt — cloud-based library management platform" loading="lazy"></div>
           <div class="project-body">
             <div class="project-number">01</div>
-            <div class="project-title">Astra UI</div>
-            <div class="project-subtitle">React component library monorepo</div>
-            <p class="project-desc">A production-grade React component library built as a Turborepo monorepo. Ships accessible, theme-aware components with variant support via CVA, documented in Storybook and published as scoped npm packages.</p>
+            <div class="project-title">Librynt</div>
+            <div class="project-subtitle">Cloud-based library management platform</div>
+            <p class="project-desc">A multi-tenant library management platform that handles book catalogs, circulation tracking, automated fines, reports, and bulk import. Built with Go, React, and PostgreSQL, designed to work for any library, from school collections to public archives.</p>
             <ul class="project-features">
-              <li>Monorepo with Turborepo for parallel builds and caching</li>
-              <li>Class Variance Authority for type-safe component variants</li>
-              <li>Storybook documentation with interactive examples</li>
-              <li>Rollup bundling with tree-shaking and ESM/CJS output</li>
+              <li>Smart book catalog with full-text search and ISBN lookup</li>
+              <li>Circulation tracking with barcode scanning and overdue alerts</li>
+              <li>Automated fine calculation with configurable rules</li>
+              <li>Multi-tenant architecture with row-level security</li>
             </ul>
             <div class="project-tags">
+              <span class="project-tag">Go</span>
               <span class="project-tag">React</span>
               <span class="project-tag">TypeScript</span>
+              <span class="project-tag">PostgreSQL</span>
               <span class="project-tag">Tailwind</span>
-              <span class="project-tag">Turborepo</span>
-              <span class="project-tag">Rollup</span>
-              <span class="project-tag">Storybook</span>
-              <span class="project-tag">CVA</span>
+              <span class="project-tag">Astro</span>
             </div>
             <div class="project-links">
-              <a href="https://github.com/mrwick1/astra-ui" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub repository for Astra UI">GitHub</a>
-              <a href="#" class="project-link" aria-label="Demo for Astra UI">Demo</a>
-              <a href="./projects/astra-ui.html" class="project-link" aria-label="Case study for Astra UI">Case Study &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- HiveChat -->
-        <div class="project-card fade-in">
-          <div class="project-preview" data-label="HiveChat"></div>
-          <div class="project-body">
-            <div class="project-number">02</div>
-            <div class="project-title">HiveChat</div>
-            <div class="project-subtitle">Real-time chat application</div>
-            <p class="project-desc">A real-time messaging application with instant delivery, typing indicators, and online presence. Built on Firebase for authentication and Firestore for real-time data sync, with Zustand managing client state.</p>
-            <ul class="project-features">
-              <li>Real-time messaging with Firestore listeners</li>
-              <li>Firebase Auth with Google and email sign-in</li>
-              <li>Typing indicators and online presence tracking</li>
-              <li>Lightweight state management with Zustand</li>
-            </ul>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">TypeScript</span>
-              <span class="project-tag">Vite</span>
-              <span class="project-tag">Firebase</span>
-              <span class="project-tag">Zustand</span>
-              <span class="project-tag">Tailwind</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/mrwick1/hive-chat" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub repository for HiveChat">GitHub</a>
-              <a href="#" class="project-link" aria-label="Demo for HiveChat">Demo</a>
-              <a href="./projects/hive-chat.html" class="project-link" aria-label="Case study for HiveChat">Case Study &rarr;</a>
+              <a href="https://librynt.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Visit Librynt">Visit</a>
+              <a href="./projects/librynt.html" class="project-link" aria-label="Case study for Librynt">Case Study &rarr;</a>
             </div>
           </div>
         </div>
 
         <!-- SketchFlow -->
         <div class="project-card fade-in">
-          <div class="project-preview" data-label="SketchFlow"></div>
+          <div class="project-preview"><img src="./assets/images/projects/sketchflow.png" alt="SketchFlow — canvas drawing and whiteboard app" loading="lazy"></div>
           <div class="project-body">
-            <div class="project-number">03</div>
+            <div class="project-number">02</div>
             <div class="project-title">SketchFlow</div>
             <div class="project-subtitle">Canvas drawing &amp; whiteboard app</div>
             <p class="project-desc">A freeform drawing and whiteboard tool combining Rough.js hand-drawn aesthetics with perfect-freehand pressure-sensitive strokes. Supports shapes, freehand, eraser, undo/redo, and export to PNG.</p>
@@ -1318,13 +1297,13 @@
               <span class="project-tag">React</span>
               <span class="project-tag">TypeScript</span>
               <span class="project-tag">Vite</span>
+              <span class="project-tag">Zustand</span>
               <span class="project-tag">Rough.js</span>
-              <span class="project-tag">perfect-freehand</span>
-              <span class="project-tag">Canvas API</span>
+              <span class="project-tag">CSS Modules</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/mrwick1/sketchflow" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub repository for SketchFlow">GitHub</a>
-              <a href="#" class="project-link" aria-label="Demo for SketchFlow">Demo</a>
+              <a href="https://sketchflow.arjunp.pro/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Demo for SketchFlow">Demo</a>
               <a href="./projects/sketchflow.html" class="project-link" aria-label="Case study for SketchFlow">Case Study &rarr;</a>
             </div>
           </div>
@@ -1332,9 +1311,9 @@
 
         <!-- Pulse Analytics -->
         <div class="project-card fade-in">
-          <div class="project-preview" data-label="Pulse Analytics"></div>
+          <div class="project-preview"><img src="./assets/images/projects/pulse-analytics.png" alt="Pulse Analytics — multi-variant analytics dashboard" loading="lazy"></div>
           <div class="project-body">
-            <div class="project-number">04</div>
+            <div class="project-number">03</div>
             <div class="project-title">Pulse Analytics</div>
             <div class="project-subtitle">Multi-variant analytics dashboard</div>
             <p class="project-desc">An analytics dashboard built with Next.js and Mantine UI featuring interactive Recharts visualizations, NextAuth-powered authentication, and multiple dashboard layout variants for different data views.</p>
@@ -1354,7 +1333,7 @@
             </div>
             <div class="project-links">
               <a href="https://github.com/mrwick1/pulse-analytics" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub repository for Pulse Analytics">GitHub</a>
-              <a href="#" class="project-link" aria-label="Demo for Pulse Analytics">Demo</a>
+              <a href="https://pulse-analytics.arjunp.pro/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Demo for Pulse Analytics">Demo</a>
               <a href="./projects/pulse-analytics.html" class="project-link" aria-label="Case study for Pulse Analytics">Case Study &rarr;</a>
             </div>
           </div>

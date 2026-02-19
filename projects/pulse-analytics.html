@@ -61,8 +61,8 @@
   .case-btn--primary { background-color: var(--accent); border-color: var(--accent); color: var(--white); }
   .case-btn--primary:hover { opacity: 0.85; color: var(--white); }
   .case-screenshot { margin: 0 var(--grid-margin); margin-left: calc(var(--grid-margin) + var(--sidebar-width)); }
-  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 24px 24px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
-  .case-screenshot-inner::after { content: attr(data-label); font-family: var(--font-mono); font-size: 16px; font-weight: 500; letter-spacing: 0.1em; color: var(--fg-tertiary); text-transform: uppercase; }
+  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+  .case-screenshot-inner img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
   .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .case-section-inner { max-width: 1200px; margin: 0 auto; }
   .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
@@ -130,12 +130,12 @@
         <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Active</span></div>
       </div>
       <div class="case-buttons">
-        <a href="https://github.com/mrwick1/pulse-analytics" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">GitHub &rarr;</a>
-        <a href="#" class="case-btn" aria-label="Live demo for Pulse Analytics">Live Demo</a>
+        <a href="https://pulse-analytics.arjunp.pro/" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">Live Demo &rarr;</a>
+        <a href="https://github.com/mrwick1/pulse-analytics" target="_blank" rel="noopener noreferrer" class="case-btn">GitHub</a>
       </div>
     </div>
   </section>
-  <div class="case-screenshot"><div class="case-screenshot-inner fade-in" data-label="Pulse Analytics Preview"></div></div>
+  <div class="case-screenshot"><div class="case-screenshot-inner fade-in"><img src="../assets/images/projects/pulse-analytics.png" alt="Pulse Analytics application screenshot" loading="lazy"></div></div>
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
@@ -169,20 +169,20 @@
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Tech Stack</div>
       <div class="tech-grid">
-        <div class="tech-item fade-in"><span class="tech-name">Next.js</span><span class="tech-role">React framework</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">React</span><span class="tech-role">UI library</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Next.js 16</span><span class="tech-role">React framework</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">React 19</span><span class="tech-role">UI library</span></div>
         <div class="tech-item fade-in"><span class="tech-name">TypeScript</span><span class="tech-role">Type safety</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Mantine UI</span><span class="tech-role">Component library</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Mantine 7</span><span class="tech-role">Component library</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Recharts</span><span class="tech-role">Data visualization</span></div>
         <div class="tech-item fade-in"><span class="tech-name">NextAuth</span><span class="tech-role">Authentication</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Storybook 8</span><span class="tech-role">Component docs</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Prisma</span><span class="tech-role">Database ORM</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">ESLint</span><span class="tech-role">Code quality</span></div>
       </div>
     </div>
   </section>
   <div class="project-nav"><div class="project-nav-inner">
     <a href="sketchflow.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">SketchFlow</span></a>
-    <a href="astra-ui.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Astra UI</span></a>
+    <a href="librynt.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Librynt</span></a>
   </div></div>
 </main>
 <footer class="footer">

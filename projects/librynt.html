@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astra UI — Case Study | Arjun P.</title>
-<meta name="description" content="Case study: Astra UI — A production-grade React component library built as a Turborepo monorepo with Storybook, CVA, and Rollup.">
+<title>Librynt — Case Study | Arjun P.</title>
+<meta name="description" content="Case study: Librynt — A cloud-based library management platform built with Go, React, and PostgreSQL.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -61,8 +61,8 @@
   .case-btn--primary { background-color: var(--accent); border-color: var(--accent); color: var(--white); }
   .case-btn--primary:hover { opacity: 0.85; color: var(--white); }
   .case-screenshot { margin: 0 var(--grid-margin); margin-left: calc(var(--grid-margin) + var(--sidebar-width)); }
-  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 24px 24px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); }
-  .case-screenshot-inner::after { content: attr(data-label); font-family: var(--font-mono); font-size: 16px; font-weight: 500; letter-spacing: 0.1em; color: var(--fg-tertiary); text-transform: uppercase; }
+  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+  .case-screenshot-inner img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
   .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .case-section-inner { max-width: 1200px; margin: 0 auto; }
   .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
@@ -120,69 +120,78 @@
 <main class="page">
   <section class="case-hero">
     <div class="case-hero-inner fade-in">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="../index.html#projects">Projects</a><span class="breadcrumb-sep">/</span><span>Astra UI</span></div>
-      <h1 class="case-title">Astra UI</h1>
-      <p class="case-subtitle">A production-grade React component library built as a Turborepo monorepo</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="../index.html#projects">Projects</a><span class="breadcrumb-sep">/</span><span>Librynt</span></div>
+      <h1 class="case-title">Librynt</h1>
+      <p class="case-subtitle">A cloud-based library management platform for schools</p>
       <div class="case-meta">
-        <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Lead Developer</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">Component Library</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">React / TypeScript / Tailwind</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Active</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Creator &amp; Lead Developer</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">SaaS Product</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Go / React / PostgreSQL</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Early Access</span></div>
       </div>
       <div class="case-buttons">
-        <a href="https://github.com/mrwick1/astra-ui" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">GitHub &rarr;</a>
-        <a href="#" class="case-btn" aria-label="Live demo for Astra UI">Live Demo</a>
+        <a href="https://librynt.vercel.app/" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">Visit Site &rarr;</a>
       </div>
     </div>
   </section>
-  <div class="case-screenshot"><div class="case-screenshot-inner fade-in" data-label="Astra UI Preview"></div></div>
+  <div class="case-screenshot"><div class="case-screenshot-inner fade-in"><img src="../assets/images/projects/librynt.png" alt="Librynt application screenshot" loading="lazy"></div></div>
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
-      <p class="case-text fade-in">Astra UI was born from the frustration of rebuilding the same UI components across multiple projects. Rather than relying on generic third-party libraries that required heavy customization, I built a component library tailored to the patterns and design tokens I use most frequently.</p>
-      <p class="case-text fade-in">The library is structured as a Turborepo monorepo, allowing independent versioning and publishing of component packages. Each component is built with accessibility in mind, supports theme customization through CSS variables, and uses Class Variance Authority (CVA) for type-safe variant management.</p>
-      <p class="case-text fade-in">The goal was to create a library that feels native to any project it's dropped into — minimal footprint, zero runtime overhead for unused components, and first-class TypeScript support throughout.</p>
+      <p class="case-text fade-in">Librynt is a cloud-based library management platform designed to replace the manual registers, spreadsheets, and outdated desktop software that most small-to-medium libraries still rely on. Whether it's a school library with a few hundred books, a college collection spanning multiple departments, or a public library serving an entire community, Librynt provides a single system that handles catalogs, circulation, fines, and reporting.</p>
+      <p class="case-text fade-in">The platform is built as a multi-tenant SaaS product. Each library gets its own isolated workspace with its own data, users, and configuration, but all running on shared infrastructure. This keeps operational costs low while ensuring data isolation through PostgreSQL's row-level security.</p>
+      <p class="case-text fade-in">The decision to build the backend in Go was driven by the need for a fast, statically-typed server that could handle concurrent operations like barcode scans, search queries, and report generation without the overhead of a heavier runtime. The frontend is a React SPA that communicates with the Go API over REST, with TanStack Router handling client-side navigation and Zustand managing application state.</p>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">02</span>Key Features</div>
       <div class="features-grid">
-        <div class="feature-card fade-in"><div class="feature-card-title">Monorepo Architecture</div><div class="feature-card-desc">Turborepo orchestrates parallel builds, shared configs, and independent package versioning across the monorepo workspace.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Type-Safe Variants</div><div class="feature-card-desc">CVA provides compile-time variant validation, ensuring all component props are type-checked and autocomplete-friendly.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Storybook Documentation</div><div class="feature-card-desc">Every component ships with interactive Storybook stories covering all variants, states, and edge cases for easy discovery.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Optimized Bundling</div><div class="feature-card-desc">Rollup produces tree-shakeable ESM and CJS bundles, keeping consumer bundle sizes minimal with zero unused code.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Theme Support</div><div class="feature-card-desc">Components consume CSS custom properties for theming, making it trivial to swap color schemes or integrate with existing design systems.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Accessibility First</div><div class="feature-card-desc">ARIA attributes, keyboard navigation, and focus management are built into every component following WAI-ARIA patterns.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Smart Book Catalog</div><div class="feature-card-desc">Full-text search across titles, authors, and subjects. ISBN lookup for quick cataloging. CSV and MARC21 import for bulk additions with field mapping and validation.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Circulation Tracking</div><div class="feature-card-desc">Checkout, return, and renew flows with barcode scanning support. Configurable due dates, overdue alerts, and hold queues for popular titles.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Automated Fines</div><div class="feature-card-desc">Configurable fine rules per member category with grace periods. Automatic calculation on overdue returns, plus payment and waiver tracking for administrators.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Reports &amp; Analytics</div><div class="feature-card-desc">Dashboard with key stats at a glance. Circulation reports, popular books, most active readers, and overdue summaries with date-range filtering and export.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Multi-Tenant Architecture</div><div class="feature-card-desc">Row-level security in PostgreSQL ensures complete data isolation between libraries. Shared infrastructure keeps costs down while each tenant gets a private workspace.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Bulk Import</div><div class="feature-card-desc">CSV and MARC21 import with validation, field mapping, and duplicate detection. Supports migration from Koha and other library systems with minimal manual cleanup.</div></div>
       </div>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Technical Architecture</div>
-      <p class="case-text fade-in">The monorepo is organized into packages: a core component library, a shared configuration package for ESLint/TypeScript/Tailwind, and a Storybook documentation app. Turborepo handles task orchestration with remote caching for CI, reducing build times significantly on repeat runs.</p>
-      <p class="case-text fade-in">Each component follows a consistent internal structure: a main component file using forwardRef, a variants file defining CVA configurations, an index barrel export, and a Storybook story file. This pattern makes adding new components predictable and minimizes context-switching.</p>
-      <p class="case-text fade-in">Rollup is configured with a custom plugin pipeline that handles TypeScript compilation, Tailwind processing, and automatic external dependency detection. The output is dual ESM/CJS with corresponding type declarations, ensuring compatibility with any modern bundler.</p>
+      <p class="case-text fade-in">The Go backend follows a clean three-layer architecture: handlers parse HTTP requests and validate input, services contain business logic and orchestrate operations, and repositories handle database access. This separation makes the codebase testable at each layer and keeps business rules independent of transport concerns.</p>
+      <p class="case-text fade-in">PostgreSQL serves as the sole data store, leveraging row-level security (RLS) policies to enforce tenant isolation at the database level. Every table includes a tenant ID column, and RLS policies ensure queries can only access rows belonging to the authenticated tenant. Even if application code has a bug, the database won't leak data across tenants.</p>
+      <p class="case-text fade-in">Authentication uses JWT with token rotation. Users receive a short-lived access token and a longer-lived refresh token. Role-based access control supports four roles (super admin, library admin, librarian, and member), each with progressively narrower permissions enforced at both the API middleware and UI component levels.</p>
+      <p class="case-text fade-in">The React frontend uses TanStack Router for type-safe client routing and Zustand for lightweight client state management. Data fetching is handled through TanStack Query, providing automatic caching, background refetching, and optimistic updates for a responsive user experience.</p>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Tech Stack</div>
       <div class="tech-grid">
-        <div class="tech-item fade-in"><span class="tech-name">React</span><span class="tech-role">UI framework</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Go</span><span class="tech-role">Backend API</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Chi v5</span><span class="tech-role">HTTP router</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">PostgreSQL 16</span><span class="tech-role">Database with RLS</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">React 19</span><span class="tech-role">Frontend UI</span></div>
         <div class="tech-item fade-in"><span class="tech-name">TypeScript</span><span class="tech-role">Type safety</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Tailwind CSS</span><span class="tech-role">Utility styling</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Turborepo</span><span class="tech-role">Monorepo orchestration</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Rollup</span><span class="tech-role">Library bundling</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Storybook</span><span class="tech-role">Component documentation</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">CVA</span><span class="tech-role">Variant management</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">ESLint</span><span class="tech-role">Code quality</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">TanStack Router</span><span class="tech-role">Client routing</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Zustand</span><span class="tech-role">Client state</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Tailwind CSS</span><span class="tech-role">Styling</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Astro</span><span class="tech-role">Landing page</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Docker</span><span class="tech-role">Deployment</span></div>
       </div>
+    </div>
+  </section>
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Landing Page Design</div>
+      <p class="case-text fade-in">The Librynt landing page deliberately breaks from the sterile, template-driven aesthetic that dominates most SaaS marketing sites. Instead, it leans into a bookish, literary visual language: Libre Baskerville serif fonts, warm cream and tan tones, index card metaphors, and a hero section that evokes a book cover.</p>
+      <p class="case-text fade-in">This was a deliberate design decision. The target audience is librarians, educators, and readers, people who care about books and the culture around them. A cold, corporate landing page would feel disconnected from the product's purpose. The warm, literary aesthetic signals that this tool was built by someone who understands libraries, not just software.</p>
     </div>
   </section>
   <div class="project-nav"><div class="project-nav-inner">
     <a href="pulse-analytics.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">Pulse Analytics</span></a>
-    <a href="hive-chat.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">HiveChat</span></a>
+    <a href="sketchflow.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">SketchFlow</span></a>
   </div></div>
 </main>
 <footer class="footer">
