@@ -2,8 +2,9 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap and feed
 Sitemap: https://www.arjunp.pro/sitemap.xml
+Feed: https://www.arjunp.pro/feed.xml
 
 # Disallow admin and private areas
 Disallow: /admin/

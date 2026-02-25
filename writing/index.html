@@ -112,7 +112,12 @@
   .project-link:hover::after { width: 100%; }
 
   /* Writing type badge */
-  .writing-type { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); border: 1px solid var(--border); padding: 2px 8px; display: inline-block; }
+  .writing-type { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; display: inline-block; }
+  .writing-type[data-type="article"] { color: var(--accent); border: 1px solid var(--accent); }
+  .writing-type[data-type="opinion"] { color: #E05500; border: 1px solid #E05500; }
+  .writing-type[data-type="case-study"] { color: #00875A; border: 1px solid #00875A; }
+  [data-theme="dark"] .writing-type[data-type="opinion"] { color: #FF8A3D; border-color: #FF8A3D; }
+  [data-theme="dark"] .writing-type[data-type="case-study"] { color: #36B37E; border-color: #36B37E; }
 
   /* Footer */
   .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
@@ -175,7 +180,7 @@
         <!-- Article: CRA to Next.js -->
         <div class="project-card fade-in">
           <div class="project-body">
-            <span class="writing-type">Article</span>
+            <span class="writing-type" data-type="article">Article</span>
             <div class="project-number">01</div>
             <div class="project-title">How I Migrated a Production App from CRA to Next.js</div>
             <div class="project-subtitle">Feb 2026 &middot; 10 min read</div>
@@ -195,7 +200,7 @@
         <!-- Article: The Case Against SPAs -->
         <div class="project-card fade-in">
           <div class="project-body">
-            <span class="writing-type">Opinion</span>
+            <span class="writing-type" data-type="opinion">Opinion</span>
             <div class="project-number">02</div>
             <div class="project-title">The Case Against SPAs in 2026</div>
             <div class="project-subtitle">Feb 2026 &middot; 8 min read</div>
@@ -244,5 +249,6 @@
   var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
 })();
 </script>
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arjun - Writing</title>
+    <link>https://www.arjunp.pro/writing/</link>
+    <description>Technical articles, opinion pieces, and case studies by Arjun.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.arjunp.pro/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Case Against SPAs in 2026</title>
+      <link>https://www.arjunp.pro/writing/the-case-against-spas.html</link>
+      <description>I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction - and why most websites shouldn't be SPAs.</description>
+      <pubDate>Tue, 25 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/the-case-against-spas.html</guid>
+    </item>
+    <item>
+      <title>How I Migrated a Production App from CRA to Next.js</title>
+      <link>https://www.arjunp.pro/blog/cra-to-nextjs-migration.html</link>
+      <description>A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.</description>
+      <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/blog/cra-to-nextjs-migration.html</guid>
+    </item>
+  </channel>
+</rss>
