@@ -216,7 +216,7 @@
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The Setup</div>
       <p class="case-text fade-in">I write React for a living. I've shipped server components, debugged hydration mismatches at 2 AM, and spent more time inside <code>node_modules</code> than I'd like to admit. React pays my rent. I genuinely enjoy working with it.</p>
-      <p class="case-text fade-in">So when I sat down to build this portfolio &mdash; the thing you're reading right now &mdash; I did what felt natural. I opened a terminal and typed <code>&lt;!DOCTYPE html&gt;</code>.</p>
+      <p class="case-text fade-in">So when I sat down to build this portfolio - the thing you're reading right now - I did what felt natural. I opened a terminal and typed <code>&lt;!DOCTYPE html&gt;</code>.</p>
       <p class="case-text fade-in">No <code>create-next-app</code>. No <code>package.json</code>. The whole site is hand-written HTML and CSS, with maybe 40 lines of JavaScript for the theme toggle and some scroll animations. I edit a file, push to Vercel, and it's live. That's the entire pipeline.</p>
       <p class="case-text fade-in">People find this funny. A frontend engineer's portfolio with no frontend framework. But after years of building SPAs, I think the funnier thing is how rarely we ask whether we actually need one.</p>
     </div>
@@ -230,16 +230,16 @@
       <p class="case-text fade-in">Nobody decided this. It just happened. Bootcamps teach React. Tutorials start with <code>npx create-react-app</code>. Job postings list frameworks as requirements. So when someone needs to build anything for the web, they reach for what they know. And what they know is React.</p>
 
       <h2 class="fade-in">The cost nobody talks about</h2>
-      <p class="case-text fade-in">Every SPA has a startup cost. Before the browser can show a single pixel of your content, it needs to download your JavaScript, parse it, compile it, and run it. On a MacBook Pro with gigabit Wi-Fi, you don't notice. On a mid-range phone on spotty mobile data &mdash; which describes most of the world's internet users &mdash; it's seconds of staring at a blank screen. For text and images.</p>
+      <p class="case-text fade-in">Every SPA has a startup cost. Before the browser can show a single pixel of your content, it needs to download your JavaScript, parse it, compile it, and run it. On a MacBook Pro with gigabit Wi-Fi, you don't notice. On a mid-range phone on spotty mobile data - which describes most of the world's internet users - it's seconds of staring at a blank screen. For text and images.</p>
       <p class="case-text fade-in">HTML doesn't work that way. The browser renders it as it arrives. There's no parsing step, no compilation, no hydration. The content <em>is</em> the payload.</p>
 
       <h2 class="fade-in">The upgrade treadmill</h2>
-      <p class="case-text fade-in">Run <code>npx create-next-app</code> right now and you get 300+ MB of <code>node_modules</code> before writing a single line of your own code. That's fine &mdash; until six months later when half those packages have security advisories and the framework has a new major version with breaking changes you didn't ask for.</p>
+      <p class="case-text fade-in">Run <code>npx create-next-app</code> right now and you get 300+ MB of <code>node_modules</code> before writing a single line of your own code. That's fine - until six months later when half those packages have security advisories and the framework has a new major version with breaking changes you didn't ask for.</p>
       <p class="case-text fade-in">I've watched teams burn entire sprints on Next.js 13-to-14 upgrades that gave their users nothing. The framework quietly becomes a second product you maintain alongside the one you're actually building. My portfolio has zero dependencies. It'll render the same in a browser today as it will in 2031. HTML doesn't ship breaking changes.</p>
 
       <h2 class="fade-in">Problems you didn't have before</h2>
       <p class="case-text fade-in">SPAs create entire categories of problems that plain websites don't have. Client-side routing means managing browser history and the back button. State management means context, reducers, or a store. Code splitting means loading states for every route. SSR means hydration mismatches that only reproduce in production and make you question your career choices.</p>
-      <p class="case-text fade-in">I deal with all of this at work. It's worth it there. But when the thing you're building is a portfolio or a blog &mdash; content that doesn't change between requests &mdash; you've imported all that complexity to serve static text.</p>
+      <p class="case-text fade-in">I deal with all of this at work. It's worth it there. But when the thing you're building is a portfolio or a blog - content that doesn't change between requests - you've imported all that complexity to serve static text.</p>
     </div>
   </section>
 
@@ -247,7 +247,7 @@
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">03</span>This Site</div>
-      <p class="case-text fade-in">I'm not making an abstract argument. You're looking at the result. Right-click, view source &mdash; it's all there. No bundled output, no minified blob. Just HTML I wrote by hand.</p>
+      <p class="case-text fade-in">I'm not making an abstract argument. You're looking at the result. Right-click, view source - it's all there. No bundled output, no minified blob. Just HTML I wrote by hand.</p>
 
       <div class="metrics-grid fade-in">
         <div class="metric-card">
@@ -264,7 +264,7 @@
         </div>
       </div>
 
-      <p class="case-text fade-in">The browser starts painting the moment the HTML arrives. No spinner, no white flash, no layout shift while React hydrates. The CSS sits in a <code>&lt;style&gt;</code> tag in the head &mdash; one fewer network request. Fonts are self-hosted with <code>preload</code> hints. Off-screen sections use <code>content-visibility: auto</code> so the browser doesn't bother rendering what you can't see yet. The only JavaScript is a small IIFE at the bottom: theme toggle, fade-in animations, that's it.</p>
+      <p class="case-text fade-in">The browser starts painting the moment the HTML arrives. No spinner, no white flash, no layout shift while React hydrates. The CSS sits in a <code>&lt;style&gt;</code> tag in the head - one fewer network request. Fonts are self-hosted with <code>preload</code> hints. Off-screen sections use <code>content-visibility: auto</code> so the browser doesn't bother rendering what you can't see yet. The only JavaScript is a small IIFE at the bottom: theme toggle, fade-in animations, that's it.</p>
       <p class="case-text fade-in">These aren't exotic techniques. You'd use the same tricks in a Next.js app. The difference is I didn't need a build pipeline, plugin system, or configuration file to get them. I just wrote the CSS.</p>
       <p class="case-text fade-in">SEO works because there's nothing to work around. Every page is real HTML with real content in the source. Crawlers see what users see. No SSR layer pretending to be a static page.</p>
       <p class="case-text fade-in">And here's the deployment config. The whole thing:</p>
@@ -277,7 +277,7 @@
   }]
 }</code></pre>
       <p class="case-text fade-in">Empty build command. Output directory is the repo root. Vercel serves the files with a one-year cache on assets. No CI to fail, no build cache to invalidate, no production-only bugs from aggressive tree shaking. There's nothing to go wrong because there's nothing to build.</p>
-      <p class="case-text fade-in">The durability angle is one I didn't fully appreciate until recently. A React app I built in 2019 would need real work to run today &mdash; CRA is deprecated, React Router has gone through two major rewrites, half the deps would have advisories. An HTML file from 2019 renders identically in a 2026 browser. I've built on the only layer of the web stack that doesn't break.</p>
+      <p class="case-text fade-in">The durability angle is one I didn't fully appreciate until recently. A React app I built in 2019 would need real work to run today - CRA is deprecated, React Router has gone through two major rewrites, half the deps would have advisories. An HTML file from 2019 renders identically in a 2026 browser. I've built on the only layer of the web stack that doesn't break.</p>
     </div>
   </section>
 
@@ -287,7 +287,7 @@
       <div class="case-section-heading fade-in"><span class="case-section-number">04</span>What I Gave Up</div>
       <p class="case-text fade-in">The nav, footer, theme toggle script, and the entire CSS design system are copy-pasted across every HTML file. When I updated the footer links last week, I updated them in 10 files. There's no component, no partial, no include. Just find-and-replace and some discipline.</p>
       <p class="case-text fade-in">For 10 pages, this is fine. Annoying sometimes, but fine. For 50 pages it'd be painful. For 200, it'd be stupid. Scale matters when you pick your tools.</p>
-      <p class="case-text fade-in">There's also no contact form, no comments, no search. Nothing dynamic. Adding a new article means copying an HTML template and manually filling it in. No CMS, no markdown pipeline. If that sounds tedious &mdash; it is, a little. But it also means I understand every line of code on this site, which is more than I can say for most React projects I've worked on.</p>
+      <p class="case-text fade-in">There's also no contact form, no comments, no search. Nothing dynamic. Adding a new article means copying an HTML template and manually filling it in. No CMS, no markdown pipeline. If that sounds tedious - it is, a little. But it also means I understand every line of code on this site, which is more than I can say for most React projects I've worked on.</p>
     </div>
   </section>
 
@@ -295,7 +295,7 @@
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">05</span>When You Actually Need a Framework</div>
-      <p class="case-text fade-in">At work, I build a SaaS platform with real-time collaboration, complex form flows, drag-and-drop interfaces, and 200+ shared components across multiple teams. React is absolutely the right tool for that. The reactive rendering model, the component composition, the ecosystem &mdash; it earns its complexity every day.</p>
+      <p class="case-text fade-in">At work, I build a SaaS platform with real-time collaboration, complex form flows, drag-and-drop interfaces, and 200+ shared components across multiple teams. React is absolutely the right tool for that. The reactive rendering model, the component composition, the ecosystem - it earns its complexity every day.</p>
       <p class="case-text fade-in">If your app has state that changes frequently based on user interaction. If users expect instant navigation and optimistic updates. If twenty developers need to build consistent UIs from a shared component library. If your content comes from APIs and changes hourly. Those are real SPA problems with real SPA solutions.</p>
       <p class="case-text fade-in">The mistake isn't using React for a SaaS dashboard. It's using React for a portfolio. It's reaching for the same tool regardless of the problem because it's the tool you know.</p>
     </div>
@@ -306,8 +306,8 @@
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">06</span>One Question</div>
       <p class="case-text fade-in">Next time you start a project, before you <code>npm init</code>, ask yourself: does this thing have state?</p>
-      <p class="case-text fade-in">Not "might it have state eventually." Not "would it be nice to have smooth page transitions." Does the core experience require managing data that changes in response to user actions across multiple views? If you're building a dashboard or an editor or a chat app &mdash; yes, obviously. Use a framework. That's what they're for.</p>
-      <p class="case-text fade-in">If you're building a portfolio, a blog, a landing page, a docs site &mdash; you need HTML. Maybe some CSS. Maybe a little JavaScript. The browser already knows how to render these things fast. You don't need to ship 300 KB of runtime to help it.</p>
+      <p class="case-text fade-in">Not "might it have state eventually." Not "would it be nice to have smooth page transitions." Does the core experience require managing data that changes in response to user actions across multiple views? If you're building a dashboard or an editor or a chat app - yes, obviously. Use a framework. That's what they're for.</p>
+      <p class="case-text fade-in">If you're building a portfolio, a blog, a landing page, a docs site - you need HTML. Maybe some CSS. Maybe a little JavaScript. The browser already knows how to render these things fast. You don't need to ship 300 KB of runtime to help it.</p>
       <p class="case-text fade-in">We've gotten so deep into the framework era that choosing HTML feels like a statement. It shouldn't. It should just be the obvious choice for the 90% of websites that are, at their core, documents. We already have a technology for rendering documents on the web. We've had it since 1993. It still works.</p>
     </div>
   </section>
