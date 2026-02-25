@@ -16,10 +16,10 @@
     </item>
     <item>
       <title>How I Migrated a Production App from CRA to Next.js</title>
-      <link>https://www.arjunp.pro/blog/cra-to-nextjs-migration.html</link>
+      <link>https://www.arjunp.pro/writing/cra-to-nextjs-migration.html</link>
       <description>A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.</description>
       <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>https://www.arjunp.pro/blog/cra-to-nextjs-migration.html</guid>
+      <guid>https://www.arjunp.pro/writing/cra-to-nextjs-migration.html</guid>
     </item>
   </channel>
 </rss>
