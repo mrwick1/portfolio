@@ -1,6 +1,10 @@
 {
   "buildCommand": "",
   "outputDirectory": ".",
+  "redirects": [
+    { "source": "/writing/article-template.html", "destination": "/404.html", "statusCode": 404 },
+    { "source": "/writing/company-rework-template.html", "destination": "/404.html", "statusCode": 404 }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",

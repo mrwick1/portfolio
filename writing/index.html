@@ -3,9 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pulse Analytics — Case Study | Arjun.</title>
-<meta name="description" content="Case study: Pulse Analytics — A multi-variant analytics dashboard built with Next.js, Mantine UI, and Recharts.">
+<title>Writing | Arjun.</title>
+<meta name="description" content="Technical articles, migration guides, and performance case studies by Arjun. — Senior Frontend Engineer.">
+<meta name="keywords" content="Frontend Engineering, Technical Writing, Performance Optimization, Case Studies, React, Next.js">
+<meta name="author" content="Arjun">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.arjunp.pro/writing/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.arjunp.pro/writing/">
+<meta property="og:title" content="Writing | Arjun.">
+<meta property="og:description" content="Technical articles, migration guides, and performance case studies by Arjun. — Senior Frontend Engineer.">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta property="og:site_name" content="Arjun">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Writing | Arjun.">
+<meta name="twitter:description" content="Technical articles, migration guides, and performance case studies.">
+<meta name="twitter:creator" content="@03arjunkr">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Writing",
+  "description": "Technical articles, migration guides, and performance case studies by Arjun.",
+  "author": {
+    "@type": "Person",
+    "name": "Arjun",
+    "url": "https://www.arjunp.pro"
+  },
+  "url": "https://www.arjunp.pro/writing/"
+}
+</script>
+
 <link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -43,6 +77,8 @@
   .theme-toggle { width: 32px; height: 32px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--fg); transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease); }
   .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
   .page { position: relative; z-index: 1; min-height: 100vh; }
+
+  /* Hero */
   .case-hero { padding: calc(120px + 72px) var(--grid-margin) var(--sp-10); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); }
   .case-hero-inner { max-width: 1200px; margin: 0 auto; }
   .breadcrumb { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin-bottom: var(--sp-6); display: flex; align-items: center; gap: var(--sp-2); }
@@ -50,41 +86,35 @@
   .breadcrumb a:hover { color: var(--accent); }
   .breadcrumb-sep { color: var(--fg-tertiary); }
   .case-title { font-family: var(--font-body); font-size: clamp(36px, 5vw, 51px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--fg); margin-bottom: var(--sp-3); }
-  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; margin-bottom: var(--sp-7); }
-  .case-meta { display: flex; gap: var(--sp-8); padding: var(--sp-5) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: var(--sp-6); flex-wrap: wrap; }
-  .case-meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
-  .case-meta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
-  .case-meta-value { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
-  .case-buttons { display: flex; gap: var(--sp-4); margin-top: var(--sp-5); }
-  .case-btn { display: inline-flex; align-items: center; gap: var(--sp-2); font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; padding: var(--sp-3) var(--sp-5); border: 1px solid var(--border); color: var(--fg); transition: all var(--duration) var(--ease); }
-  .case-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
-  .case-btn--primary { background-color: var(--accent); border-color: var(--accent); color: var(--white); }
-  .case-btn--primary:hover { opacity: 0.85; color: var(--white); }
-  .case-screenshot { margin: 0 var(--grid-margin); margin-left: calc(var(--grid-margin) + var(--sidebar-width)); }
-  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); border: 1px solid var(--border); overflow: hidden; }
-  .case-screenshot-inner img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; }
+
+  /* Content section */
   .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .case-section-inner { max-width: 1200px; margin: 0 auto; }
   .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
   .case-section-number { color: var(--accent); margin-right: var(--sp-3); font-family: var(--font-mono); font-weight: 500; }
-  .case-text { font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--fg-secondary); max-width: 800px; margin-bottom: var(--sp-5); }
-  .case-text:last-child { margin-bottom: 0; }
-  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-5); }
-  .feature-card { padding: var(--sp-5); border: 1px solid var(--border-faint); transition: transform var(--duration) var(--ease); }
-  .feature-card:hover { transform: translateY(-2px); }
-  .feature-card-title { font-family: var(--font-body); font-size: 16px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-2); }
-  .feature-card-desc { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); }
-  .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0; }
-  .tech-item { display: flex; flex-direction: column; gap: var(--sp-1); padding: var(--sp-4) 0; border-bottom: 1px solid var(--border-faint); }
-  .tech-name { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
-  .tech-role { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); }
-  .project-nav { display: flex; justify-content: space-between; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
-  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; }
-  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); }
-  .project-nav-link:hover { transform: translateY(-2px); }
-  .project-nav-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
-  .project-nav-title { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); }
-  .project-nav-link--next { text-align: right; }
+
+  /* Project cards */
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
+  .project-card { border: 1px solid var(--border); transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease); }
+  .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 85, 255, 0.06); }
+  .project-body { padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-4); }
+  .project-number { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--accent); }
+  .project-title { font-family: var(--font-body); font-size: 20px; font-weight: 600; color: var(--fg); line-height: 1.3; }
+  .project-subtitle { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--fg-secondary); letter-spacing: 0.02em; }
+  .project-desc { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); }
+  .project-tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+  .project-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--fg-secondary); background-color: var(--surface); border: 1px solid var(--border); padding: 3px 8px; white-space: nowrap; }
+  .project-links { display: flex; gap: var(--sp-5); padding-top: var(--sp-3); border-top: 1px solid var(--border-faint); }
+  .project-link { font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.04em; color: var(--fg-secondary); text-decoration: none; position: relative; transition: color var(--duration) var(--ease); }
+  .project-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width var(--duration) var(--ease); }
+  .project-link:hover { color: var(--accent); }
+  .project-link:hover::after { width: 100%; }
+
+  /* Writing type badge */
+  .writing-type { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); border: 1px solid var(--border); padding: 2px 8px; display: inline-block; }
+
+  /* Footer */
   .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
   .footer-text { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); }
   .footer-social { display: flex; align-items: center; gap: var(--sp-4); }
@@ -92,102 +122,103 @@
   .footer-social-link:hover { color: var(--accent); transform: translateY(-2px); }
   .fade-in { opacity: 0; transition: opacity var(--duration) var(--ease); }
   .fade-in.is-visible { opacity: 1; }
+
   @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
   @media (max-width: 768px) {
     :root { --grid-margin: 24px; --sidebar-width: 0px; }
-    .case-hero, .case-section, .project-nav, .footer, .case-screenshot { padding-left: var(--grid-margin); margin-left: 0; }
-    .case-meta { flex-direction: column; gap: var(--sp-4); }
-    .features-grid { grid-template-columns: 1fr; }
+    .case-hero, .case-section, .footer { padding-left: var(--grid-margin); }
+    .projects-grid { grid-template-columns: 1fr; }
     .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
     .grid-bg-inner { left: var(--grid-margin); right: var(--grid-margin); grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .footer { flex-direction: column; gap: var(--sp-2); align-items: flex-start; }
   }
   @media (max-width: 540px) { .nav-links .nav-link-text { display: none; } }
-  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .case-buttons { flex-direction: column; } .project-nav-title { font-size: 16px; } }
+  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } }
   @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
   ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
 </style>
 </head>
 <body>
 <div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
+
 <nav class="nav" role="navigation" aria-label="Primary navigation">
   <a href="../index.html" class="nav-logo">Arjun.</a>
   <ul class="nav-links">
     <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
     <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
-    <li><a href="../index.html#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
+    <li><a href="../index.html#writing" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
     <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
     <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
   </ul>
 </nav>
+
 <main class="page">
+
+  <!-- Hero -->
   <section class="case-hero">
     <div class="case-hero-inner fade-in">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="../index.html#projects">Projects</a><span class="breadcrumb-sep">/</span><span>Pulse Analytics</span></div>
-      <h1 class="case-title">Pulse Analytics</h1>
-      <p class="case-subtitle">A multi-variant analytics dashboard with interactive data visualizations</p>
-      <div class="case-meta">
-        <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Full-Stack Developer</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">Analytics Dashboard</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Next.js / Mantine / Recharts</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Active</span></div>
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span>
+        <span>Writing</span>
       </div>
-      <div class="case-buttons">
-        <a href="https://pulse-analytics.arjunp.pro/" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">Live Demo &rarr;</a>
-        <a href="https://github.com/mrwick1/pulse-analytics" target="_blank" rel="noopener noreferrer" class="case-btn">GitHub</a>
-      </div>
+      <h1 class="case-title">Writing</h1>
+      <p class="case-subtitle">Technical articles, migration guides, and performance case studies</p>
     </div>
   </section>
-  <div class="case-screenshot"><div class="case-screenshot-inner fade-in"><img src="../assets/images/projects/pulse-analytics.png" alt="Pulse Analytics application screenshot" loading="lazy"></div></div>
+
+  <!-- All Writing -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
-      <p class="case-text fade-in">Pulse Analytics is a dashboard application designed to visualize complex datasets through multiple layout variants. The idea was to build a single platform that can present the same underlying data in fundamentally different ways — summary cards, detailed tables, interactive charts — letting users switch between views based on their current task.</p>
-      <p class="case-text fade-in">Next.js was chosen for its server-side rendering capabilities, ensuring fast initial page loads even with data-heavy views. Mantine UI provides the component foundation with a clean, professional aesthetic that suits data-dense interfaces without feeling cluttered.</p>
-      <p class="case-text fade-in">Recharts handles all data visualization — line charts, bar charts, area charts, and pie charts — with smooth animations and responsive sizing. NextAuth provides authentication with role-based access control, ensuring different users see different levels of data granularity.</p>
-    </div>
-  </section>
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>Key Features</div>
-      <div class="features-grid">
-        <div class="feature-card fade-in"><div class="feature-card-title">Interactive Charts</div><div class="feature-card-desc">Recharts-powered visualizations with tooltips, legends, zoom, and smooth transitions between data ranges and aggregation levels.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Dashboard Variants</div><div class="feature-card-desc">Multiple layout configurations — executive summary, detailed analytics, and comparison views — switchable via a layout selector.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Authentication</div><div class="feature-card-desc">NextAuth-powered sign-in with multiple providers and role-based access control for sensitive data views.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Server-Side Rendering</div><div class="feature-card-desc">Next.js SSR ensures fast initial loads with data pre-fetched on the server, avoiding loading spinners on first visit.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Responsive Data Tables</div><div class="feature-card-desc">Sortable, filterable data tables that adapt from full desktop grids to compact mobile card layouts.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Date Range Filtering</div><div class="feature-card-desc">Global date range picker that filters all dashboard widgets simultaneously with preset ranges and custom selection.</div></div>
+      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>All Writing</div>
+      <div class="projects-grid stagger">
+
+        <!-- Article: CRA to Next.js -->
+        <div class="project-card fade-in">
+          <div class="project-body">
+            <span class="writing-type">Article</span>
+            <div class="project-number">01</div>
+            <div class="project-title">How I Migrated a Production App from CRA to Next.js</div>
+            <div class="project-subtitle">Feb 2026 &middot; 10 min read</div>
+            <p class="project-desc">A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.</p>
+            <div class="project-tags">
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">React</span>
+              <span class="project-tag">Performance</span>
+              <span class="project-tag">Migration</span>
+            </div>
+            <div class="project-links">
+              <a href="../blog/cra-to-nextjs-migration.html" class="project-link" aria-label="Read article: How I Migrated a Production App from CRA to Next.js">Read Article &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article: The Case Against SPAs -->
+        <div class="project-card fade-in">
+          <div class="project-body">
+            <span class="writing-type">Opinion</span>
+            <div class="project-number">02</div>
+            <div class="project-title">The Case Against SPAs in 2026</div>
+            <div class="project-subtitle">Feb 2026 &middot; 8 min read</div>
+            <p class="project-desc">I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction — and why most websites shouldn't be SPAs.</p>
+            <div class="project-tags">
+              <span class="project-tag">Architecture</span>
+              <span class="project-tag">Performance</span>
+              <span class="project-tag">Opinion</span>
+            </div>
+            <div class="project-links">
+              <a href="the-case-against-spas.html" class="project-link" aria-label="Read article: The Case Against SPAs in 2026">Read Article &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add more articles and case studies here -->
+
       </div>
     </div>
   </section>
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Technical Architecture</div>
-      <p class="case-text fade-in">The application uses Next.js App Router with server components for data fetching and client components for interactive widgets. This hybrid approach means the page shell and initial data load happen server-side, while chart interactions and filter controls run entirely on the client.</p>
-      <p class="case-text fade-in">Dashboard layouts are implemented as composable grid configurations. Each variant defines a grid template and a set of widget slots. Widgets are self-contained React components that receive data through a shared context provider, making it possible to rearrange them without modifying the widgets themselves.</p>
-      <p class="case-text fade-in">NextAuth handles session management with JWT tokens. Role-based access is enforced both at the middleware level (protecting routes) and at the component level (conditionally rendering sensitive data). This dual-layer approach ensures security even if a component is accidentally exposed.</p>
-    </div>
-  </section>
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Tech Stack</div>
-      <div class="tech-grid">
-        <div class="tech-item fade-in"><span class="tech-name">Next.js 16</span><span class="tech-role">React framework</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">React 19</span><span class="tech-role">UI library</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">TypeScript</span><span class="tech-role">Type safety</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Mantine 7</span><span class="tech-role">Component library</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Recharts</span><span class="tech-role">Data visualization</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">NextAuth</span><span class="tech-role">Authentication</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Storybook 8</span><span class="tech-role">Component docs</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Prisma</span><span class="tech-role">Database ORM</span></div>
-      </div>
-    </div>
-  </section>
-  <div class="project-nav"><div class="project-nav-inner">
-    <a href="sketchflow.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">SketchFlow</span></a>
-    <a href="librynt.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Librynt</span></a>
-  </div></div>
+
 </main>
+
 <footer class="footer">
   <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. &mdash; All rights reserved.</div>
   <div class="footer-social">
@@ -197,6 +228,7 @@
     <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
   </div>
 </footer>
+
 <script>
 (function(){
   'use strict';
