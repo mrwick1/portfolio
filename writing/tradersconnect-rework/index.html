@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TradersConnect - Connect. Copy. Analyze. Smarter.</title>
+<meta name="description" content="One connected ecosystem for traders - from copying trades to analyzing portfolios. Simplify your trading world with automation, insights, and transparency.">
+<meta name="theme-color" content="#0A0A12">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0A0A12; --bg-raised: #12121C; --bg-card: #161625; --bg-card-hover: #1C1C2E;
+  --fg: #E8ECF4; --fg-dim: #9A9EB8; --fg-muted: #6B6F88;
+  --accent: #3B82F6; --accent-dim: rgba(59,130,246,0.12);
+  --green: #10B981; --green-dim: rgba(16,185,129,0.12);
+  --orange: #F59E0B; --orange-dim: rgba(245,158,11,0.12);
+  --border: #1E1E30; --border-faint: #16162A;
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', monospace;
+  --max-w: 1140px; --px: 24px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); color: var(--fg); background: var(--bg); line-height: 1.6; overflow-x: hidden; }
+::selection { background: var(--accent); color: #fff; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* Layout */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); }
+
+/* Nav */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,10,18,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--px); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-logo { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px; }
+.nav-logo svg { width: 28px; height: 28px; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-link { font-size: 14px; font-weight: 500; color: var(--fg-dim); transition: color 0.2s var(--ease); }
+.nav-link:hover { color: var(--fg); }
+.nav-cta { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: #fff; background: var(--accent); padding: 8px 20px; border-radius: 6px; transition: opacity 0.2s var(--ease), transform 0.2s var(--ease); }
+.nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* Hero */
+.hero { padding: 160px 0 100px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 800px; height: 600px; background: radial-gradient(ellipse, rgba(59,130,246,0.08) 0%, transparent 70%); pointer-events: none; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(59,130,246,0.2); padding: 6px 16px; border-radius: 100px; margin-bottom: 32px; }
+.hero-badge svg { width: 14px; height: 14px; }
+.hero h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 24px; }
+.hero h1 span { background: linear-gradient(135deg, var(--accent), #818CF8, var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--fg-dim); max-width: 640px; margin: 0 auto 48px; line-height: 1.6; font-weight: 400; }
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font); font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.2s var(--ease); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,0.25); }
+.btn-secondary { background: var(--bg-card); color: var(--fg); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--fg-muted); transform: translateY(-2px); }
+.btn svg { width: 16px; height: 16px; }
+
+/* Section */
+.section { padding: 100px 0; }
+.section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 16px; }
+.section-desc { font-size: 17px; color: var(--fg-dim); max-width: 560px; line-height: 1.65; }
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-header .section-desc { margin: 0 auto; }
+.section + .section { border-top: 1px solid var(--border); }
+
+/* Platforms */
+.platforms { padding: 64px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.platforms-label { text-align: center; font-size: 13px; font-weight: 500; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 32px; }
+.platforms-grid { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.platform-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--fg-dim); transition: color 0.2s var(--ease); }
+.platform-item:hover { color: var(--fg); }
+.platform-item svg { width: 24px; height: 24px; opacity: 0.7; }
+
+/* Feature cards */
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px; transition: transform 0.2s var(--ease), border-color 0.2s var(--ease); }
+.feature-card:hover { transform: translateY(-4px); border-color: var(--fg-muted); }
+.feature-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.feature-icon--blue { background: var(--accent-dim); color: var(--accent); }
+.feature-icon--green { background: var(--green-dim); color: var(--green); }
+.feature-icon--orange { background: var(--orange-dim); color: var(--orange); }
+.feature-icon svg { width: 22px; height: 22px; }
+.feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: var(--fg-dim); line-height: 1.65; }
+
+/* Product sections */
+.product { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.product-content { display: flex; flex-direction: column; gap: 24px; }
+.product-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; width: fit-content; }
+.product-tag--blue { color: var(--accent); background: var(--accent-dim); }
+.product-tag--green { color: var(--green); background: var(--green-dim); }
+.product-tag--orange { color: var(--orange); background: var(--orange-dim); }
+.product h2 { font-size: clamp(26px, 3.5vw, 36px); font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+.product p { font-size: 16px; color: var(--fg-dim); line-height: 1.7; }
+.product-features { display: flex; flex-direction: column; gap: 12px; list-style: none; }
+.product-features li { display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; color: var(--fg-dim); }
+.product-features li svg { width: 18px; height: 18px; color: var(--green); flex-shrink: 0; }
+.product-visual { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; gap: 20px; }
+
+/* Stats in product visual */
+.stat-row { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--border-faint); }
+.stat-row:last-child { border-bottom: none; }
+.stat-label { font-size: 14px; color: var(--fg-dim); }
+.stat-value { font-family: var(--mono); font-size: 20px; font-weight: 600; }
+.stat-value--accent { color: var(--accent); }
+.stat-value--green { color: var(--green); }
+.stat-value--orange { color: var(--orange); }
+.stat-change { font-size: 12px; margin-left: 8px; }
+.stat-change--up { color: var(--green); }
+.stat-change--down { color: #EF4444; }
+
+/* Comparison table */
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+.compare-table td { font-size: 14px; color: var(--fg-dim); padding: 14px 16px; border-bottom: 1px solid var(--border-faint); }
+.compare-table tr:hover td { background: var(--bg-raised); }
+.compare-highlight { color: var(--green); font-weight: 600; }
+
+/* Metrics bar */
+.metrics { padding: 80px 0; background: var(--bg-raised); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.metrics-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
+.metric-item { text-align: center; padding: 24px 16px; border-right: 1px solid var(--border); }
+.metric-item:last-child { border-right: none; }
+.metric-number { font-family: var(--mono); font-size: clamp(28px, 3vw, 40px); font-weight: 700; color: var(--accent); line-height: 1.2; margin-bottom: 6px; }
+.metric-text { font-size: 13px; font-weight: 500; color: var(--fg-dim); letter-spacing: 0.02em; }
+
+/* Pricing */
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.price-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 32px; position: relative; transition: transform 0.2s var(--ease), border-color 0.2s var(--ease); }
+.price-card:hover { transform: translateY(-4px); border-color: var(--fg-muted); }
+.price-card--popular { border-color: var(--accent); }
+.price-card--popular::before { content: 'Most Popular'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
+.price-name { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.price-desc { font-size: 13px; color: var(--fg-muted); margin-bottom: 20px; }
+.price-amount { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
+.price-dollar { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; }
+.price-period { font-size: 14px; color: var(--fg-muted); }
+.price-note { font-size: 12px; color: var(--fg-muted); margin-bottom: 24px; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.price-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--fg-dim); }
+.price-features li svg { width: 16px; height: 16px; color: var(--green); flex-shrink: 0; margin-top: 3px; }
+.price-btn { display: block; width: 100%; text-align: center; font-family: var(--font); font-size: 14px; font-weight: 600; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: transparent; color: var(--fg); cursor: pointer; transition: all 0.2s var(--ease); }
+.price-btn:hover { border-color: var(--accent); color: var(--accent); }
+.price-card--popular .price-btn { background: var(--accent); border-color: var(--accent); color: #fff; }
+.price-card--popular .price-btn:hover { opacity: 0.9; }
+
+/* CTA */
+.cta { text-align: center; padding: 100px 0; position: relative; }
+.cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(59,130,246,0.06) 0%, transparent 70%); pointer-events: none; }
+.cta h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; }
+.cta p { font-size: 17px; color: var(--fg-dim); max-width: 480px; margin: 0 auto 40px; }
+
+/* Footer */
+.footer { border-top: 1px solid var(--border); padding: 64px 0 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand p { font-size: 14px; color: var(--fg-muted); line-height: 1.65; margin-top: 16px; max-width: 300px; }
+.footer-heading { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg); margin-bottom: 16px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--fg-muted); transition: color 0.2s var(--ease); }
+.footer-links a:hover { color: var(--fg); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border); }
+.footer-copy { font-size: 13px; color: var(--fg-muted); }
+.footer-social { display: flex; gap: 16px; }
+.footer-social a { color: var(--fg-muted); transition: color 0.2s var(--ease); display: flex; }
+.footer-social a:hover { color: var(--fg); }
+.footer-social svg { width: 18px; height: 18px; }
+
+/* Disclaimer */
+.disclaimer { padding: 32px 0; border-top: 1px solid var(--border); }
+.disclaimer p { font-size: 11px; color: var(--fg-muted); line-height: 1.6; max-width: 900px; margin: 0 auto; text-align: center; }
+
+/* Demo banner */
+.demo-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--accent); padding: 10px var(--px); text-align: center; font-size: 13px; font-weight: 500; color: #fff; }
+.demo-banner a { color: #fff; text-decoration: underline; font-weight: 600; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+  .product { gap: 48px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+  .metric-item:nth-child(3) { border-right: none; }
+  .metric-item:nth-child(4), .metric-item:nth-child(5) { border-top: 1px solid var(--border); }
+}
+@media (max-width: 768px) {
+  :root { --px: 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 120px 0 64px; }
+  .section { padding: 64px 0; }
+  .features-grid { grid-template-columns: 1fr; }
+  .product { grid-template-columns: 1fr; gap: 32px; }
+  .product-visual { order: -1; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .platforms-grid { gap: 24px; }
+  .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+  .metric-item:nth-child(2), .metric-item:nth-child(4) { border-right: none; }
+  .metric-item:nth-child(2) ~ .metric-item { border-top: 1px solid var(--border); }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 12px; }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn { width: 100%; justify-content: center; }
+  .metrics-grid { grid-template-columns: 1fr; }
+  .metric-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .metric-item:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav" role="navigation" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="TradersConnect home">
+      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect width="28" height="28" rx="6" fill="#3B82F6"/><path d="M8 10h12M8 14h8M8 18h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      TradersConnect
+    </a>
+    <ul class="nav-links">
+      <li><a href="#copier" class="nav-link">Copier</a></li>
+      <li><a href="#analyzer" class="nav-link">Analyzer</a></li>
+      <li><a href="#compare" class="nav-link">Compare</a></li>
+      <li><a href="#pricing" class="nav-link">Pricing</a></li>
+      <li><a href="#" class="nav-link">Login</a></li>
+      <li><a href="#" class="nav-cta">Get Started</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Trading Platform
+      </div>
+      <h1>Connect. Copy.<br>Analyze. <span>Smarter.</span></h1>
+      <p class="hero-sub">Bringing every part of your trading journey into one intelligent platform. Connect your accounts, mirror proven strategies, and track performance - instantly.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">
+          Get Started Free
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#copier" class="btn btn-secondary">See How It Works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supported Platforms -->
+  <section class="platforms" aria-label="Supported trading platforms">
+    <div class="container">
+      <div class="platforms-label">Supports 7+ Trading Platforms</div>
+      <div class="platforms-grid">
+        <div class="platform-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill-opacity="0.15"/><path d="M7 12l3-5 4 8 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          MetaTrader 4
+        </div>
+        <div class="platform-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill-opacity="0.15"/><path d="M7 12l3-5 4 8 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          MetaTrader 5
+        </div>
+        <div class="platform-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="9" fill-opacity="0.15"/><path d="M8 12l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          cTrader
+        </div>
+        <div class="platform-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill-opacity="0.15"/><path d="M8 8h8v8H8z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          MatchTrader
+        </div>
+        <div class="platform-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16v16H4z" fill-opacity="0.15" rx="3"/><path d="M8 16V8l4 4 4-4v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          TradeLocker
+        </div>
+        <div class="platform-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill-opacity="0.15"/><path d="M7 17V7h3l4 10V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          DXTrade
+        </div>
+        <div class="platform-item">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" fill-opacity="0.15"/><path d="M8 16l3-10 3 6 2-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          NinjaTrader
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Features -->
+  <section class="section" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Why TradersConnect</div>
+        <h2 class="section-title" id="features-heading">Everything you need in one platform</h2>
+        <p class="section-desc">Smart automation, real-time analytics, and secure infrastructure - built for serious traders.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--blue">
+            <svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 1v20M1 11h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Multi-Account Access</h3>
+          <p>Connect all your trading accounts across platforms and manage them from a single dashboard.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--green">
+            <svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 16l5-5 4 4 7-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Performance Intelligence</h3>
+          <p>Get deep insights into your trading performance with ROI tracking, win rates, and drawdown analysis.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--orange">
+            <svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="4" stroke="currentColor" stroke-width="2"/><path d="M11 1v4M11 17v4M1 11h4M17 11h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Smart Automation</h3>
+          <p>Automate trade copying with flexible risk settings, equity protection, and custom trading hours.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--green">
+            <svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="3" y="3" width="16" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M8 11l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Secure Infrastructure</h3>
+          <p>100% read-only API access. Your funds stay in your broker account - we never have withdrawal access.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--blue">
+            <svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 3h6v6H3zM13 3h6v6h-6zM3 13h6v6H3zM13 13h6v6h-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Risk & Consistency</h3>
+          <p>24/7 monitoring of risk metrics with automated equity protection and real-time alert notifications.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon--orange">
+            <svg viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="2"/><path d="M11 7v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Real-Time Execution</h3>
+          <p>99.9% execution reliability with zero-delay alerts. Trades are copied and tracked the moment they happen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TC Copier -->
+  <section class="section" id="copier" aria-labelledby="copier-heading">
+    <div class="container">
+      <div class="product">
+        <div class="product-content">
+          <div class="product-tag product-tag--blue">TC Copier</div>
+          <h2 id="copier-heading">Copy strategies with precision and control</h2>
+          <p>Mirror trades from master to slave accounts with flexible risk settings. Choose your lot size, ratio, or equity allocation. Apply equity protection, custom trading hours, and symbol mapping - all in real time.</p>
+          <ul class="product-features">
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Flexible risk multiplier and lot sizing
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Built-in equity protection
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Custom trading hours and symbol mapping
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Cross-platform support (MT4, MT5, cTrader+)
+            </li>
+          </ul>
+        </div>
+        <div class="product-visual" aria-label="Copier configuration preview">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:4px;">Copier Settings</div>
+          <div class="stat-row">
+            <span class="stat-label">Risk Multiplier</span>
+            <span class="stat-value stat-value--accent">1.5x</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Mode</span>
+            <span class="stat-value" style="font-size:16px;">Equity Ratio</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Equity Protection</span>
+            <span class="stat-value stat-value--green" style="font-size:16px;">Enabled</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Max Drawdown</span>
+            <span class="stat-value stat-value--orange">8%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Trading Hours</span>
+            <span class="stat-value" style="font-size:16px;">08:00 - 22:00 UTC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TC Analyzer -->
+  <section class="section" id="analyzer" aria-labelledby="analyzer-heading">
+    <div class="container">
+      <div class="product" style="direction: rtl;">
+        <div class="product-content" style="direction: ltr;">
+          <div class="product-tag product-tag--green">TC Analyzer</div>
+          <h2 id="analyzer-heading">Understand your performance across every account</h2>
+          <p>Connect all your accounts and get a complete picture of your trading results. View ROI, win rate, and drawdown per account - or see your total portfolio performance at a glance.</p>
+          <ul class="product-features">
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Portfolio-wide ROI tracking
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Win rate and profit factor analysis
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Risk profiling and execution speed metrics
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Equity growth visualization
+            </li>
+          </ul>
+        </div>
+        <div class="product-visual" style="direction: ltr;" aria-label="Analyzer metrics preview">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:4px;">Portfolio Overview</div>
+          <div class="stat-row">
+            <span class="stat-label">ROI</span>
+            <span class="stat-value stat-value--green">+12.4%<span class="stat-change stat-change--up">+2.4%</span></span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Win Rate</span>
+            <span class="stat-value stat-value--accent">78%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Best Pair</span>
+            <span class="stat-value" style="font-size:16px;">XAUUSD</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Max Drawdown</span>
+            <span class="stat-value stat-value--orange">3.2%</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Profit Factor</span>
+            <span class="stat-value stat-value--green">2.14</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TC Compare -->
+  <section class="section" id="compare" aria-labelledby="compare-heading">
+    <div class="container">
+      <div class="product">
+        <div class="product-content">
+          <div class="product-tag product-tag--orange">TC Compare</div>
+          <h2 id="compare-heading">Compare brokers and prop firms side-by-side</h2>
+          <p>Find the right trading environment for your goals. Compare drawdown limits, refund policies, payouts, and rules - all in one interactive table. Less time researching, more time trading.</p>
+          <ul class="product-features">
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              50+ brokers and prop firms compared
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Profit split, funding rules, and scaling plans
+            </li>
+            <li>
+              <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 9l3.5 3.5L14 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Updated regularly with latest offers
+            </li>
+          </ul>
+        </div>
+        <div class="product-visual" aria-label="Comparison table preview">
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:12px;">Sample Comparison</div>
+          <table class="compare-table">
+            <thead>
+              <tr><th>Feature</th><th>Firm A</th><th>Firm B</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Profit Split</td><td class="compare-highlight">90%</td><td>80%</td></tr>
+              <tr><td>Max Drawdown</td><td>10%</td><td class="compare-highlight">12%</td></tr>
+              <tr><td>Scaling Plan</td><td class="compare-highlight">Yes</td><td>No</td></tr>
+              <tr><td>Payout Freq.</td><td>Bi-Weekly</td><td class="compare-highlight">Weekly</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics -->
+  <section class="metrics" aria-label="Platform statistics">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric-item">
+          <div class="metric-number">99.9%</div>
+          <div class="metric-text">Execution Reliability</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">50+</div>
+          <div class="metric-text">Brokers Compared</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">7</div>
+          <div class="metric-text">Platforms Supported</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">100%</div>
+          <div class="metric-text">Read-Only Security</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-number">24/7</div>
+          <div class="metric-text">Risk Monitoring</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title" id="pricing-heading">Simple, transparent pricing</h2>
+        <p class="section-desc">Pay per account. No hidden fees. Annual plans save up to 35%.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-name">Standard</div>
+          <div class="price-desc">Ideal for prop traders</div>
+          <div class="price-amount">
+            <span class="price-dollar">$10</span>
+            <span class="price-period">/account/mo</span>
+          </div>
+          <div class="price-note">Per connected account</div>
+          <ul class="price-features">
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              No limits - pay per account
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Equity protection
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Economic calendar
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Cross-platform support
+            </li>
+          </ul>
+          <button class="price-btn" type="button">Get Started</button>
+        </div>
+        <div class="price-card price-card--popular">
+          <div class="price-name">Premium</div>
+          <div class="price-desc">For serious traders</div>
+          <div class="price-amount">
+            <span class="price-dollar">$15</span>
+            <span class="price-period">/account/mo</span>
+          </div>
+          <div class="price-note">Everything in Standard, plus</div>
+          <ul class="price-features">
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Low-latency execution
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              HFT support
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Priority support
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Premium notifications
+            </li>
+          </ul>
+          <button class="price-btn" type="button">Get Started</button>
+        </div>
+        <div class="price-card">
+          <div class="price-name">Analyzer</div>
+          <div class="price-desc">Deep performance insights</div>
+          <div class="price-amount">
+            <span class="price-dollar">$29.99</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="price-note">Standalone analytics</div>
+          <ul class="price-features">
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Full trade analysis
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Portfolio ROI tracking
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Win rate and profit factor
+            </li>
+            <li>
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Equity growth charts
+            </li>
+          </ul>
+          <button class="price-btn" type="button">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to trade smarter?</h2>
+      <p>Join thousands of traders who connect, copy, and analyze with TradersConnect.</p>
+      <a href="#" class="btn btn-primary">
+        Get Started Free
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:18px;">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true"><rect width="28" height="28" rx="6" fill="#3B82F6"/><path d="M8 10h12M8 14h8M8 18h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+          TradersConnect
+        </div>
+        <p>One connected ecosystem for traders - from copying trades to analyzing portfolios. Simplify your trading world.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Platform</div>
+        <ul class="footer-links">
+          <li><a href="#copier">TC Copier</a></li>
+          <li><a href="#analyzer">TC Analyzer</a></li>
+          <li><a href="#compare">TC Compare</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Resources</div>
+        <ul class="footer-links">
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Integrations</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Status Page</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Cookies Policy</a></li>
+          <li><a href="#">Billing Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2022 - 2026 TradersConnect</div>
+      <div class="footer-social">
+        <a href="#" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Disclaimer -->
+<div class="disclaimer">
+  <div class="container">
+    <p>Futures and forex trading contains substantial risk and is not for every investor. An investor could potentially lose all or more than the initial investment. Risk capital is money that can be lost without jeopardising ones' financial security or life style. Only risk capital should be used for trading. Past performance is not necessarily indicative of future results.</p>
+  </div>
+</div>
+
+<!-- Demo banner -->
+<div class="demo-banner" role="status">
+  This is an unsolicited performance rework by <a href="https://www.arjunp.pro/writing/tradersconnect-rework.html">Arjun</a> - not affiliated with TradersConnect.
+</div>
+
+</body>
+</html>
