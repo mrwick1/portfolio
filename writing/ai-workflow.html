@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Use AI Without Writing Garbage Code | Arjun.</title>
+<meta name="description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
+<meta name="keywords" content="AI, workflow, engineering, Claude Code, code quality, developer tools, AI-assisted development">
+<meta name="author" content="Arjun">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://www.arjunp.pro/writing/ai-workflow.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.arjunp.pro/writing/ai-workflow.html">
+<meta property="og:title" content="How I Use AI Without Writing Garbage Code">
+<meta property="og:description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta property="og:site_name" content="Arjun">
+<meta property="article:author" content="Arjun">
+<meta property="article:published_time" content="2026-02-28">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How I Use AI Without Writing Garbage Code">
+<meta name="twitter:description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
+<meta name="twitter:creator" content="@03arjunkr">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How I Use AI Without Writing Garbage Code",
+  "description": "AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.",
+  "author": {
+    "@type": "Person",
+    "name": "Arjun",
+    "url": "https://www.arjunp.pro"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Arjun"
+  },
+  "datePublished": "2026-02-28",
+  "url": "https://www.arjunp.pro/writing/ai-workflow.html",
+  "mainEntityOfPage": "https://www.arjunp.pro/writing/ai-workflow.html"
+}
+</script>
+
+<link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --white: #FFFFFF; --black: #111111; --accent: #0055FF;
+    --grey-100: #F5F5F5; --grey-200: #E8E8E8; --grey-300: #D0D0D0; --grey-400: #999999; --grey-500: #666666;
+    --bg: var(--white); --fg: var(--black); --fg-secondary: #595959; --fg-tertiary: #6E6E6E;
+    --border: var(--grey-200); --border-faint: var(--grey-100); --grid-line: rgba(0,0,0,0.04); --surface: var(--grey-100);
+    --font-body: 'Space Grotesk', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 40px; --sp-8: 48px;
+    --sp-9: 64px; --sp-10: 80px; --sp-11: 96px; --sp-12: 120px;
+    --grid-margin: 64px; --sidebar-width: 56px; --ease: linear; --duration: 0.3s;
+  }
+  [data-theme="dark"] {
+    --bg: #0A0A0A; --fg: #E8E8E8; --fg-secondary: #9A9A9A; --fg-tertiary: #808080;
+    --border: #222222; --border-faint: #161616; --grid-line: rgba(255,255,255,0.03); --surface: #141414;
+  }
+  html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-body); font-weight: 400; line-height: 1.6; color: var(--fg); background-color: var(--bg); transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease); overflow-x: hidden; }
+  ::selection { background-color: var(--accent); color: var(--white); }
+  .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+  .grid-bg-inner { position: absolute; top: 0; left: var(--grid-margin); right: var(--grid-margin); height: 100%; display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+  .grid-bg-col { border-left: 1px solid var(--grid-line); border-right: 1px solid var(--grid-line); }
+  .grid-bg::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 200%; background-image: repeating-linear-gradient(0deg, transparent, transparent 79px, var(--grid-line) 79px, var(--grid-line) 80px); }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: var(--sp-5) var(--grid-margin); display: flex; align-items: center; justify-content: space-between; background-color: var(--bg); border-bottom: 1px solid var(--border); transition: background-color var(--duration) var(--ease); }
+  .nav-logo { font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: var(--sp-6); list-style: none; }
+  .nav-link { font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-secondary); text-decoration: none; position: relative; transition: color var(--duration) var(--ease), transform var(--duration) var(--ease); }
+  .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width var(--duration) var(--ease); }
+  .nav-link:hover { color: var(--fg); transform: translateY(-2px); }
+  .nav-link:hover::after { width: 100%; }
+  .theme-toggle { width: 32px; height: 32px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--fg); transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease); }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .page { position: relative; z-index: 1; min-height: 100vh; }
+
+  /* Hero */
+  .case-hero { padding: calc(120px + 72px) var(--grid-margin) var(--sp-10); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); }
+  .case-hero-inner { max-width: 1200px; margin: 0 auto; }
+  .breadcrumb { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin-bottom: var(--sp-6); display: flex; align-items: center; gap: var(--sp-2); }
+  .breadcrumb a { color: var(--fg-secondary); text-decoration: none; transition: color var(--duration) var(--ease); }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb-sep { color: var(--fg-tertiary); }
+  .case-title { font-family: var(--font-body); font-size: clamp(36px, 5vw, 51px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--fg); margin-bottom: var(--sp-3); }
+  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; margin-bottom: var(--sp-7); }
+  .case-meta { display: flex; gap: var(--sp-8); padding: var(--sp-5) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: var(--sp-6); flex-wrap: wrap; }
+  .case-meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .case-meta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .case-meta-value { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
+  .case-meta-tags { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+  .case-meta-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--fg-secondary); background-color: var(--surface); border: 1px solid var(--border); padding: 2px 8px; }
+
+  /* Content sections */
+  .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .case-section-inner { max-width: 1200px; margin: 0 auto; }
+  .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
+  .case-section-number { color: var(--accent); margin-right: var(--sp-3); font-family: var(--font-mono); font-weight: 500; }
+  .case-text { font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--fg-secondary); max-width: 800px; margin-bottom: var(--sp-5); }
+  .case-text:last-child { margin-bottom: 0; }
+  .case-section-inner h2 { font-family: var(--font-body); font-size: 22px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-4); margin-top: var(--sp-7); line-height: 1.3; }
+  .case-section-inner h2:first-of-type { margin-top: 0; }
+  .case-section-inner h3 { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-3); margin-top: var(--sp-6); line-height: 1.4; }
+  .case-section-inner ul { list-style: none; max-width: 800px; margin-bottom: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); }
+  .case-section-inner ul li { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); padding-left: var(--sp-5); position: relative; }
+  .case-section-inner ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background-color: var(--accent); }
+
+  /* Code blocks */
+  pre { background-color: var(--surface); border: 1px solid var(--border); padding: var(--sp-5); margin-bottom: var(--sp-5); overflow-x: auto; max-width: 800px; }
+  pre code { font-family: var(--font-mono); font-size: 13px; font-weight: 400; line-height: 1.7; color: var(--fg); background: none; padding: 0; border: none; }
+  code { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--accent); background-color: var(--surface); border: 1px solid var(--border); padding: 1px 6px; }
+
+  /* Blockquote */
+  blockquote { border-left: 3px solid var(--accent); padding-left: var(--sp-5); margin-bottom: var(--sp-5); max-width: 800px; }
+  blockquote p { font-family: var(--font-body); font-size: 16px; font-weight: 400; font-style: italic; line-height: 1.75; color: var(--fg-secondary); margin-bottom: 0; }
+
+  /* Metrics grid */
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); max-width: 800px; margin-bottom: var(--sp-6); }
+  .metric-card { padding: var(--sp-5); border: 1px solid var(--border-faint); text-align: center; }
+  .metric-value { font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: var(--accent); line-height: 1.2; margin-bottom: var(--sp-2); }
+  .metric-label { font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--fg-secondary); }
+
+  /* Bottom nav */
+  .project-nav { display: flex; justify-content: center; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: center; }
+  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); align-items: center; }
+  .project-nav-link:hover { transform: translateY(-2px); }
+  .project-nav-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .project-nav-title { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); }
+
+  /* Footer */
+  .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .footer-text { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); }
+  .footer-social { display: flex; align-items: center; gap: var(--sp-4); }
+  .footer-social-link { color: var(--fg-tertiary); transition: color var(--duration) var(--ease), transform var(--duration) var(--ease); display: flex; align-items: center; }
+  .footer-social-link:hover { color: var(--accent); transform: translateY(-2px); }
+  .fade-in { opacity: 0; transition: opacity var(--duration) var(--ease); }
+  .fade-in.is-visible { opacity: 1; }
+
+  @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
+  @media (max-width: 768px) {
+    :root { --grid-margin: 24px; --sidebar-width: 0px; }
+    .case-hero, .case-section, .project-nav, .footer { padding-left: var(--grid-margin); }
+    .case-meta { flex-direction: column; gap: var(--sp-4); }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
+    .grid-bg-inner { left: var(--grid-margin); right: var(--grid-margin); grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .footer { flex-direction: column; gap: var(--sp-2); align-items: flex-start; }
+  }
+  @media (max-width: 540px) { .nav-links .nav-link-text { display: none; } }
+  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .metric-value { font-size: 24px; } }
+  @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
+</style>
+</head>
+<body>
+<div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
+
+<nav class="nav" role="navigation" aria-label="Primary navigation">
+  <a href="../index.html" class="nav-logo">Arjun.</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
+    <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
+    <li><a href="../index.html#writing" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
+    <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
+    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
+  </ul>
+</nav>
+
+<main class="page">
+
+  <!-- Hero -->
+  <section class="case-hero">
+    <div class="case-hero-inner fade-in">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span>
+        <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
+        <span>AI Workflow</span>
+      </div>
+      <h1 class="case-title">How I Use AI Without Writing Garbage Code</h1>
+      <p class="case-subtitle">AI is a multiplier, not a replacement. It multiplies what you already know.</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <span class="case-meta-label">Published</span>
+          <span class="case-meta-value">Feb 28, 2026</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Reading Time</span>
+          <span class="case-meta-value">6 min read</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Tags</span>
+          <div class="case-meta-tags">
+            <span class="case-meta-tag">AI</span>
+            <span class="case-meta-tag">Workflow</span>
+            <span class="case-meta-tag">Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 The Problem -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The Problem</div>
+      <p class="case-text fade-in">You're reviewing a pull request. The code works &mdash; tests pass, feature does what it's supposed to. But something's off. Utility functions recreated from scratch when they already exist in the codebase. API calls bypassing the existing service layer. Patterns that don't match the rest of the project. It's not bad code. It's <em>disconnected</em> code. The code doesn't know about the codebase it lives in. That's the tell.</p>
+      <p class="case-text fade-in">There are two camps right now. Developers who paste AI output without reading it, shipping codebases that feel stitched together from a dozen different authors. And developers who refuse to use AI at all in 2026, which is just leaving speed on the table. Both camps are wrong.</p>
+      <p class="case-text fade-in">There's a middle ground. Use AI aggressively, but own every line. This is how I do it.</p>
+    </div>
+  </section>
+
+  <!-- 02 My Setup -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>My Setup</div>
+      <p class="case-text fade-in">The stack is deliberately simple:</p>
+      <ul class="fade-in">
+        <li><strong>Claude Code CLI</strong> &mdash; the main tool, does the heavy lifting. Lives in the terminal, has full context of the project.</li>
+        <li><strong>Neovim</strong> &mdash; for when I want direct control. Surgical edits, quick reads, navigating code at my own pace.</li>
+        <li><strong>Lazygit</strong> &mdash; git workflow. Every commit goes through me.</li>
+      </ul>
+      <p class="case-text fade-in">That's it. No 10-tool AI stack. No fancy IDE plugin chains. No prompt engineering templates saved in Notion. The tool matters less than how you use it. I've seen developers get better results from a basic setup with a clear workflow than from an over-engineered stack they don't actually understand.</p>
+    </div>
+  </section>
+
+  <!-- 03 The Workflow -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>The Workflow</div>
+      <p class="case-text fade-in">This is the core of it. Five steps, every time. It's not a rigid process &mdash; it's a rhythm that keeps AI output from drifting into disconnected code.</p>
+
+      <h2 class="fade-in">1. Explore</h2>
+      <p class="case-text fade-in">Before writing a single line, understand what exists. Use AI to explore the codebase &mdash; trace data flows, map dependencies, understand the service layer. Where do API calls live? What patterns does the project already use for form validation? What utilities exist? The goal is to build a mental model of the codebase so that anything you write fits into it, not next to it.</p>
+
+      <h2 class="fade-in">2. Plan together</h2>
+      <p class="case-text fade-in">Write the plan collaboratively. AI suggests architecture and patterns from its vast reference base &mdash; it's seen thousands of codebases, so it might catch tradeoffs you haven't considered. Maybe it suggests a state management approach you wouldn't have thought of, or flags that your planned file structure will cause circular dependencies. You evaluate, correct, rewrite. Architecture is collaborative, but you make the final call.</p>
+
+      <h2 class="fade-in">3. Verify the plan</h2>
+      <p class="case-text fade-in">Before any code gets written, confirm exactly which files get touched, created, or deleted. Walk through edge cases. What happens when the API returns an empty array? What if the user navigates away mid-submission? The plan should be so detailed that execution is mechanical. If you can't describe the implementation step by step, you're not done planning.</p>
+
+      <h2 class="fade-in">4. Execute</h2>
+      <p class="case-text fade-in">AI writes the code following the locked plan. At this point it's just a robot typing what you've already decided. The structure, the files, the patterns &mdash; all defined. AI fills in the implementation. This is where the speed comes from. Not from AI thinking for you, but from AI typing for you after you've already done the thinking.</p>
+
+      <h2 class="fade-in">5. Review and commit</h2>
+      <p class="case-text fade-in">You review every diff like it came from a teammate. AI never commits. You read it, you own it, you commit it through lazygit. If something looks off &mdash; a variable name that doesn't match the project's conventions, an import path that could be cleaner, a function that's doing too much &mdash; you fix it before it goes in. The commit is yours.</p>
+    </div>
+  </section>
+
+  <!-- 04 Real Example -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Real Example</div>
+      <p class="case-text fade-in">At work, I had to build a form. Not a simple contact form &mdash; a form with dozens of fields, deep conditional logic, and multiple levels of nested data. Editing flows on top of creation flows. Different validation rules depending on which combination of fields the user had filled. State management alone was a nightmare on paper.</p>
+
+      <h2 class="fade-in">The approach</h2>
+      <p class="case-text fade-in">I started by mapping out the entire form structure, every validation rule, and every error state in the plan. No code yet. Just a complete picture of what the form needed to do, what data it touched, and how the editing flow differed from creation.</p>
+      <p class="case-text fade-in">Then I followed test-driven development. Wrote the tests first &mdash; defining expected inputs and outputs for every scenario. What happens when a required nested field is missing? What happens when the user switches from creation to editing mode? The tests described the correct behavior before any implementation existed.</p>
+      <p class="case-text fade-in">AI generated the implementation following the locked plan. Tests caught bugs automatically. If AI's code didn't match expected output, it failed immediately &mdash; no guessing, no manual checking. The feedback loop was tight: AI writes code, tests verify it, fix what fails, move on.</p>
+      <p class="case-text fade-in">What would've taken weeks shipped to production in days. Not because AI wrote magical code, but because the plan was airtight and the tests caught every deviation. The TDD angle is key &mdash; tests are the safety net. You define correctness <em>before</em> AI writes anything.</p>
+    </div>
+  </section>
+
+  <!-- 05 When AI Falls Short -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>When AI Falls Short</div>
+      <p class="case-text fade-in">AI gets first shot at everything, including debugging. Most of the time, it does fine &mdash; trace the error, identify the cause, suggest a fix. But when it fails at debugging &mdash; and it does &mdash; that's where your skills and experience take over.</p>
+      <p class="case-text fade-in">AI guesses at bugs. It suggests fixes without understanding the root cause. It'll swap out a dependency, restructure a function, add a null check &mdash; anything to make the error go away. But you've traced enough bugs to know where to actually look. You know that the issue isn't the function throwing the error &mdash; it's the data three layers up that was shaped wrong. That intuition comes from experience, not from a language model.</p>
+      <p class="case-text fade-in">AI raises your floor. Your ceiling is still you.</p>
+    </div>
+  </section>
+
+  <!-- 06 The Line -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>The Line</div>
+      <p class="case-text fade-in">AI is a multiplier. It multiplies what you already know. If you don't understand architecture, AI writes you a bad one. If you don't write tests, AI ships you bugs. If you can't debug, you're stuck when AI guesses wrong. The tool amplifies the developer &mdash; it doesn't replace the skill.</p>
+      <p class="case-text fade-in">The developers who win aren't the ones using AI the most. They're the ones who were already good &mdash; and now they're fast too.</p>
+      <blockquote class="fade-in">
+        <p>"AI doesn't make you a better developer. It makes you a faster one. The gap between good and bad engineers didn't shrink &mdash; it just moves at a higher speed now."</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Bottom nav -->
+  <div class="project-nav">
+    <div class="project-nav-inner">
+      <a href="../writing/" class="project-nav-link">
+        <span class="project-nav-label">&larr; Back</span>
+        <span class="project-nav-title">All Writing</span>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. &mdash; All rights reserved.</div>
+  <div class="footer-social">
+    <a href="https://github.com/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+    <a href="https://linkedin.com/in/arjunp-software-engineer" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://twitter.com/03arjunkr" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var fadeEls=document.querySelectorAll('.fade-in');
+  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}
+  var html=document.documentElement,toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
+  var sunPath='<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+  var moonPath='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+  function setTheme(t){html.setAttribute('data-theme',t);icon.innerHTML=t==='dark'?moonPath:sunPath;try{localStorage.setItem('swiss-theme',t);}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem('swiss-theme');}catch(e){}
+  if(saved){setTheme(saved);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){setTheme('dark');}
+  if(toggle){toggle.addEventListener('click',function(){setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');});}
+  var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
+})();
+</script>
+</body>
+</html>
