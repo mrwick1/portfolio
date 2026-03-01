@@ -837,6 +837,13 @@
     color: var(--accent);
   }
 
+  .writing-type { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; display: inline-block; width: fit-content; }
+  .writing-type[data-type="article"] { color: var(--accent); border: 1px solid var(--accent); }
+  .writing-type[data-type="opinion"] { color: #E05500; border: 1px solid #E05500; }
+  .writing-type[data-type="case-study"] { color: #00875A; border: 1px solid #00875A; }
+  [data-theme="dark"] .writing-type[data-type="opinion"] { color: #FF8A3D; border-color: #FF8A3D; }
+  [data-theme="dark"] .writing-type[data-type="case-study"] { color: #36B37E; border-color: #36B37E; }
+
   .project-title {
     font-family: var(--font-body);
     font-size: 20px;
@@ -1403,6 +1410,7 @@
 
         <div class="project-card fade-in">
           <div class="project-body">
+            <span class="writing-type" data-type="article">Article</span>
             <div class="project-number">01</div>
             <div class="project-title">How I Migrated a Production App from CRA to Next.js</div>
             <div class="project-subtitle">Feb 2026 &middot; 10 min read</div>
@@ -1421,6 +1429,7 @@
 
         <div class="project-card fade-in">
           <div class="project-body">
+            <span class="writing-type" data-type="opinion">Opinion</span>
             <div class="project-number">02</div>
             <div class="project-title">The Case Against SPAs in 2026</div>
             <div class="project-subtitle">Feb 2026 &middot; 8 min read</div>
@@ -1438,6 +1447,7 @@
 
         <div class="project-card fade-in">
           <div class="project-body">
+            <span class="writing-type" data-type="case-study">Case Study</span>
             <div class="project-number">03</div>
             <div class="project-title">What Happens When You Drop the Framework</div>
             <div class="project-subtitle">Feb 2026 &middot; 7 min read</div>
@@ -1455,6 +1465,7 @@
 
         <div class="project-card fade-in">
           <div class="project-body">
+            <span class="writing-type" data-type="article">Article</span>
             <div class="project-number">04</div>
             <div class="project-title">How I Use AI Without Writing Garbage Code</div>
             <div class="project-subtitle">Feb 2026 &middot; 6 min read</div>
