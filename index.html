@@ -407,6 +407,17 @@
     max-width: 800px;
   }
 
+  .hero-bio-link {
+    color: var(--fg);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    transition: color 0.2s;
+  }
+
+  .hero-bio-link:hover {
+    color: var(--accent);
+  }
+
   .hero-meta {
     display: flex;
     gap: var(--sp-8);
@@ -1189,7 +1200,7 @@
         <h1 class="hero-name">Arjun<span>.</span></h1>
       </div>
       <div>
-        <p class="hero-bio">Frontend engineer who obsesses over performance and clean architecture. I've spent the last 4+ years building with React and TypeScript&thinsp;&mdash;&thinsp;leading migrations that cut page load times by 60%, trimming bundles by 70%, and turning slow pages into fast ones. Currently shaping the frontend at Qilin Labs.</p>
+        <p class="hero-bio">Frontend engineer who obsesses over performance and clean architecture. I've spent the last 4+ years building with React and TypeScript&thinsp;&mdash;&thinsp;leading the migration that lifted Qilin Labs' Lighthouse from 58 to 92, cut full page load from ~10s to ~3s, and trimmed the JS bundle from 2.4MB to 720KB. Sole frontend architect at Qilin and author of <a href="https://www.npmjs.com/package/@astra-ui-lib/core" target="_blank" rel="noopener noreferrer" class="hero-bio-link">@astra-ui-lib/core</a> on npm.</p>
       </div>
       <div class="fade-in">
         <div class="hero-meta">
@@ -1207,7 +1218,7 @@
           </div>
           <div class="hero-meta-item">
             <span class="hero-meta-label">Status</span>
-            <span class="hero-meta-value">Employed</span>
+            <span class="hero-meta-value">Open to roles</span>
           </div>
         </div>
       </div>
@@ -1224,20 +1235,20 @@
         <div class="exp-row fade-in">
           <div class="exp-number">01</div>
           <div class="exp-content">
-            <div class="exp-role">Senior Frontend Engineer</div>
-            <div class="exp-date">Feb 2025 &mdash; Present</div>
+            <div class="exp-role">Senior Frontend Engineer &middot; Sole Frontend Architect</div>
+            <div class="exp-date">Aug 2024 &mdash; Present</div>
             <div class="exp-company">Qilin Labs</div>
-            <div class="exp-desc">Leading frontend architecture and performance — cut bundle size by 60% and load times by 80%. Driving code quality through reviews, mentoring junior developers, and establishing frontend standards.</div>
+            <div class="exp-desc">Sole frontend architect on a Next.js education platform with 20K+ users. Led the CRA &rarr; Next.js 14 migration: Lighthouse 58 &rarr; 92, full page load ~10s &rarr; ~3s, JS bundle 2.4MB &rarr; 720KB (-70%). Migrated MUI to shadcn/ui across 30+ components; established code review and engineering standards.</div>
           </div>
         </div>
 
         <div class="exp-row fade-in">
           <div class="exp-number">02</div>
           <div class="exp-content">
-            <div class="exp-role">Software Engineer</div>
-            <div class="exp-date">Nov 2023 &mdash; Jan 2025</div>
+            <div class="exp-role">Software Engineer &middot; Frontend Lead</div>
+            <div class="exp-date">Mar 2023 &mdash; Sept 2024</div>
             <div class="exp-company">Hubspire Corp</div>
-            <div class="exp-desc">Led Next.js 14 migration cutting load times 60%, trimmed bundle 70% with code splitting, built real-time dashboards with WebSocket, maintained 90%+ test coverage.</div>
+            <div class="exp-desc">Refactored a 30k+ LOC legacy React codebase &mdash; cleanup, code splitting, tree shaking, CI optimization. Built React + TypeScript + GraphQL apps with Apollo cache normalization, real-time dashboards with WebSockets, and a reusable component system adopted across 3+ projects. Maintained 90%+ test coverage; mentored 3 junior engineers toward mid-level.</div>
           </div>
         </div>
 
@@ -1245,9 +1256,9 @@
           <div class="exp-number">03</div>
           <div class="exp-content">
             <div class="exp-role">React Developer</div>
-            <div class="exp-date">Jun 2022 &mdash; Nov 2023</div>
+            <div class="exp-date">Feb 2022 &mdash; Mar 2023</div>
             <div class="exp-company">Woxro</div>
-            <div class="exp-desc">Built 15+ responsive UIs, implemented Redux Toolkit state management, created reusable component library, integrated RESTful APIs.</div>
+            <div class="exp-desc">Architected React frontend for banking applications with real-time payment status and Razorpay integration. Designed a centralized form-validation and error-handling system used across production fintech and retail apps.</div>
           </div>
         </div>
 
@@ -1255,9 +1266,9 @@
           <div class="exp-number">04</div>
           <div class="exp-content">
             <div class="exp-role">Web Developer</div>
-            <div class="exp-date">Jan 2022 &mdash; Jun 2022</div>
+            <div class="exp-date">Jul 2021 &mdash; Feb 2022</div>
             <div class="exp-company">Limenzy</div>
-            <div class="exp-desc">Developed responsive web apps with React, implemented pixel-perfect designs, optimized Core Web Vitals.</div>
+            <div class="exp-desc">Delivered 10+ production-ready responsive interfaces from Figma/Adobe designs; optimized legacy WordPress sites for mobile and page-load performance.</div>
           </div>
         </div>
 
@@ -1272,11 +1283,39 @@
       <div class="section-heading fade-in"><span class="section-heading-number">02</span>Projects</div>
       <div class="projects-grid stagger">
 
-        <!-- Librynt (Featured) -->
+        <!-- Astra UI (Featured — strongest senior signal: published npm package) -->
         <div class="project-card project-card--featured fade-in">
-          <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/librynt-800w.webp 800w, ./assets/images/projects/librynt-1200w.webp 1200w, ./assets/images/projects/librynt.webp 1723w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/librynt.png" alt="Librynt — cloud-based library management platform" loading="lazy"></picture></div>
           <div class="project-body">
             <div class="project-number">01</div>
+            <div class="project-title">Astra UI</div>
+            <div class="project-subtitle">Published React component library on npm</div>
+            <p class="project-desc">A production-grade React component library with CVA-powered variants, polymorphic components, and accessibility-tested primitives. Automated semver and npm publish via Changesets + GitHub Actions. Tree-shakeable ESM/CJS output with jest-axe a11y tests.</p>
+            <ul class="project-features">
+              <li>CVA-powered variant system for type-safe component APIs</li>
+              <li>Polymorphic components with full TypeScript inference</li>
+              <li>jest-axe accessibility tests in CI</li>
+              <li>Automated versioning and npm publish via Changesets + GitHub Actions</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Tailwind</span>
+              <span class="project-tag">Turborepo</span>
+              <span class="project-tag">Rollup</span>
+              <span class="project-tag">Changesets</span>
+            </div>
+            <div class="project-links">
+              <a href="https://www.npmjs.com/package/@astra-ui-lib/core" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Astra UI on npm">npm</a>
+              <a href="https://github.com/mrwick1/astra-ui" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub repository for Astra UI">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Librynt -->
+        <div class="project-card fade-in">
+          <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/librynt-800w.webp 800w, ./assets/images/projects/librynt-1200w.webp 1200w, ./assets/images/projects/librynt.webp 1723w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/librynt.png" alt="Librynt — cloud-based library management platform" loading="lazy"></picture></div>
+          <div class="project-body">
+            <div class="project-number">02</div>
             <div class="project-title">Librynt</div>
             <div class="project-subtitle">Cloud-based library management platform</div>
             <p class="project-desc">A multi-tenant library management platform that handles book catalogs, circulation tracking, automated fines, reports, and bulk import. Built with Go, React, and PostgreSQL, designed to work for any library, from school collections to public archives.</p>
@@ -1305,7 +1344,7 @@
         <div class="project-card fade-in">
           <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/sketchflow-800w.webp 800w, ./assets/images/projects/sketchflow-1200w.webp 1200w, ./assets/images/projects/sketchflow.webp 2531w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/sketchflow.png" alt="SketchFlow — canvas drawing and whiteboard app" loading="lazy"></picture></div>
           <div class="project-body">
-            <div class="project-number">02</div>
+            <div class="project-number">03</div>
             <div class="project-title">SketchFlow</div>
             <div class="project-subtitle">Canvas drawing &amp; whiteboard app</div>
             <p class="project-desc">A freeform drawing and whiteboard tool combining Rough.js hand-drawn aesthetics with perfect-freehand pressure-sensitive strokes. Supports shapes, freehand, eraser, undo/redo, and export to PNG.</p>
@@ -1335,7 +1374,7 @@
         <div class="project-card fade-in">
           <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/pulse-analytics-800w.webp 800w, ./assets/images/projects/pulse-analytics-1200w.webp 1200w, ./assets/images/projects/pulse-analytics.webp 2526w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/pulse-analytics.png" alt="Pulse Analytics — multi-variant analytics dashboard" loading="lazy"></picture></div>
           <div class="project-body">
-            <div class="project-number">03</div>
+            <div class="project-number">04</div>
             <div class="project-title">Pulse Analytics</div>
             <div class="project-subtitle">Multi-variant analytics dashboard</div>
             <p class="project-desc">An analytics dashboard built with Next.js and Mantine UI featuring interactive Recharts visualizations, NextAuth-powered authentication, and multiple dashboard layout variants for different data views.</p>
@@ -1468,7 +1507,7 @@
             <span class="writing-type" data-type="article">Article</span>
             <div class="project-number">04</div>
             <div class="project-title">How I Use AI Without Writing Garbage Code</div>
-            <div class="project-subtitle">Feb 2026 &middot; 6 min read</div>
+            <div class="project-subtitle">Feb 2026 &middot; Updated May 2026 &middot; 7 min read</div>
             <p class="project-desc">AI is a multiplier, not a replacement. A practical workflow for getting speed from AI tools without sacrificing code quality.</p>
             <div class="project-tags">
               <span class="project-tag">AI</span>
@@ -1547,10 +1586,13 @@
 
     var skills = [
       'React', 'Next.js', 'TypeScript', 'Redux Toolkit',
-      'React Query', 'Tailwind CSS', 'MUI', 'Shadcn/ui',
-      'Node.js', 'Express', 'PostgreSQL', 'Jest',
+      'TanStack Query', 'Zustand', 'Tailwind CSS', 'shadcn/ui',
+      'MUI', 'Mantine', 'Node.js', 'Express',
+      'PostgreSQL', 'GraphQL', 'Vitest', 'Jest',
       'React Testing Library', 'Cypress', 'Git', 'Docker',
-      'Vite', 'Webpack'
+      'Vite', 'Webpack', 'Turborepo', 'Rollup',
+      'Changesets', 'GitHub Actions', 'Claude Code', 'Cursor',
+      'GitHub Copilot', 'Vercel AI SDK'
     ];
 
     var grid = document.getElementById('skillsGrid');
