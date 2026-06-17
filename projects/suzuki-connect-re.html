@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astra UI — Case Study | Arjun.</title>
-<meta name="description" content="Case study: Astra UI — A published React component library on npm with CVA-powered variants, polymorphic components, jest-axe accessibility tests, and automated semver/publish via Changesets and GitHub Actions.">
+<title>Suzuki Connect RE — Case Study | Arjun.</title>
+<meta name="description" content="Case study: reverse-engineering the Suzuki Connect Bluetooth (BLE) protocol on a Gixxer SF 150 motorcycle, then building REDLINE — a from-scratch Kotlin/Jetpack Compose Android app that drives Google Maps navigation to the bike's cluster, with live telemetry and ride analytics.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -80,6 +80,17 @@
   .tech-item { display: flex; flex-direction: column; gap: var(--sp-1); padding: var(--sp-4) 0; border-bottom: 1px solid var(--border-faint); }
   .tech-name { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
   .tech-role { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); }
+  /* App screenshot gallery */
+  .shots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--sp-5); max-width: 1000px; }
+  .shot { border: 1px solid var(--border); border-radius: 14px; overflow: hidden; background: #0A0A0A; transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease); }
+  .shot:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .shot img { width: 100%; display: block; }
+  .shot-cap { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-tertiary); padding: var(--sp-3) var(--sp-4); border-top: 1px solid var(--border); background: var(--bg); }
+  .shots-note { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin-top: var(--sp-5); max-width: 800px; }
+  .stat-row { display: flex; gap: var(--sp-8); flex-wrap: wrap; margin-bottom: var(--sp-7); }
+  .stat { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .stat-num { font-family: var(--font-body); font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--fg); line-height: 1; }
+  .stat-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
   .project-nav { display: flex; justify-content: space-between; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; }
   .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); }
@@ -130,114 +141,106 @@
 <main class="page">
   <section class="case-hero">
     <div class="case-hero-inner fade-in">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="../index.html#projects">Projects</a><span class="breadcrumb-sep">/</span><span>Astra UI</span></div>
-      <h1 class="case-title">Astra UI</h1>
-      <p class="case-subtitle">A published React component library — type-safe variants, polymorphic primitives, accessibility tested, automated CI/CD</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="../index.html#projects">Projects</a><span class="breadcrumb-sep">/</span><span>Suzuki Connect RE</span></div>
+      <h1 class="case-title">Suzuki Connect RE</h1>
+      <p class="case-subtitle">Reverse-engineering a motorcycle's Bluetooth cluster protocol — then building a from-scratch Android app to replace the stock one</p>
       <div class="case-meta">
-        <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Author / Maintainer</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">Open Source Library</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">React 18 / TypeScript / Tailwind</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Distribution</span><span class="case-meta-value">npm · @astra-ui-lib/core</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Solo — RE &amp; app author</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">Personal / educational</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Kotlin · Jetpack Compose · BLE</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">App</span><span class="case-meta-value">REDLINE · local-only</span></div>
       </div>
       <div class="case-buttons">
-        <a href="https://www.npmjs.com/package/@astra-ui-lib/core" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">View on npm &rarr;</a>
-        <a href="https://github.com/mrwick1/astra-ui" target="_blank" rel="noopener noreferrer" class="case-btn">GitHub</a>
+        <a href="https://github.com/mrwick1/suzuki-connect-re" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">View on GitHub &rarr;</a>
+        <a href="#app" class="case-btn">See the app</a>
       </div>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
-      <p class="case-text fade-in">Astra UI is a React component library I built to solve a specific problem: every team I've worked on rebuilds the same dozen primitives — buttons, inputs, dialogs, tooltips — but the variants always end up scattered across <code>className</code> chains, prop drilling, and inconsistent APIs. The library packages those primitives with a type-safe variant system, polymorphic component patterns, and accessibility tested in CI from day one.</p>
-      <p class="case-text fade-in">It ships as <code>@astra-ui-lib/core</code> on npm with tree-shakeable ESM and CJS outputs. The repo is a Turborepo monorepo with the core library, a documentation site, and downstream consumer fixtures sharing the same TypeScript config. Every PR runs unit tests, type checks, and jest-axe accessibility assertions before merge. Releases are fully automated through Changesets — open a PR with a changeset, merge it, and a GitHub Action publishes a new version with a generated changelog.</p>
-      <p class="case-text fade-in">The bigger goal: turn a familiar engineering pattern (component libraries) into a reusable artifact, and use it as a place to push on the parts of frontend that are usually left undone — accessibility, type safety, semver discipline.</p>
-    </div>
-  </section>
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>Key Features</div>
-      <div class="features-grid">
-        <div class="feature-card fade-in"><div class="feature-card-title">Type-safe Variants (CVA)</div><div class="feature-card-desc">Class Variance Authority drives variant APIs. Variants are declared once, types are inferred, and invalid combinations are caught at compile time — no string-template gymnastics.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Polymorphic Components</div><div class="feature-card-desc">Every primitive accepts an <code>as</code> prop with full TypeScript inference. Render a <code>Button</code> as an <code>&lt;a&gt;</code> and the link-only props become available; render it as a <code>&lt;button&gt;</code> and they don't.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Accessibility Tested in CI</div><div class="feature-card-desc">Every component has jest-axe assertions covering its rendered states. PRs that introduce a11y violations fail before review.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Tree-shakeable ESM + CJS</div><div class="feature-card-desc">Rollup bundles per-component entry points so consumers only ship the code they import. Both ESM and CJS outputs with proper <code>exports</code> map for modern and legacy bundlers.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Automated Semver via Changesets</div><div class="feature-card-desc">Contributors describe changes in changeset files. A GitHub Action collects them, computes the next version, generates a changelog, tags the release, and publishes to npm.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Tailwind-Native Theming</div><div class="feature-card-desc">Components consume Tailwind tokens through CSS variables, so consumers can theme the library by overriding tokens in their own Tailwind config — no separate theme provider.</div></div>
+      <p class="case-text fade-in">My 2023 Suzuki Gixxer SF 150 has a Bluetooth-enabled instrument cluster that pairs with Suzuki's stock app for turn-by-turn navigation — routed through Mappls maps, with a UX I didn't love and no way to extend. So I set out to understand the protocol completely, then build my own replacement: Google Maps navigation pushed to the cluster, live telemetry on the phone, and ride analytics the stock app never offered.</p>
+      <p class="case-text fade-in">There was no documentation. The bike speaks a proprietary binary protocol over a vendor BLE service, and the only reference was the stock app's compiled code. I worked it out the hard way — walking the GATT table on the live bike, decompiling the app with JADX, hooking it at runtime with Frida, and cross-referencing wire captures against the app's own logic until every message type was decoded.</p>
+      <p class="case-text fade-in">The result is two things: a fully documented protocol spec, and <code>REDLINE</code> — a Kotlin/Jetpack Compose Android app that drives the cluster end-to-end. It's a personal, educational reverse-engineering project; no proprietary Suzuki code is redistributed.</p>
+      <div class="stat-row fade-in" style="margin-top: var(--sp-8);">
+        <div class="stat"><span class="stat-num">7</span><span class="stat-label">BLE frame types decoded</span></div>
+        <div class="stat"><span class="stat-num">14k</span><span class="stat-label">LOC of Kotlin</span></div>
+        <div class="stat"><span class="stat-num">205</span><span class="stat-label">unit tests, green</span></div>
+        <div class="stat"><span class="stat-num">0</span><span class="stat-label">cloud · fully local</span></div>
       </div>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Variant API</div>
-      <p class="case-text fade-in">Variants are the most common pain point in component libraries. CVA lets you declare them as data instead of conditional class logic, and the types fall out of the declaration:</p>
-      <pre class="code-block fade-in">const buttonStyles = cva(
-  "inline-flex items-center justify-center font-medium",
-  {
-    variants: {
-      intent: {
-        primary: "bg-accent text-white",
-        secondary: "border border-fg/10 text-fg",
-        ghost: "hover:bg-fg/5 text-fg",
-      },
-      size: {
-        sm: "h-8 px-3 text-sm",
-        md: "h-10 px-4 text-base",
-        lg: "h-12 px-6 text-lg",
-      },
-    },
-    defaultVariants: { intent: "primary", size: "md" },
-  }
-);
-
-// Usage — fully typed, IntelliSense-friendly:
-&lt;Button intent="ghost" size="sm"&gt;Cancel&lt;/Button&gt;</pre>
-      <p class="case-text fade-in">The type of <code>intent</code> is the union of its keys, the type of <code>size</code> is the union of its keys, and a consumer who passes <code>intent="invalid"</code> gets a compile error — no runtime validation, no PropTypes, no string fall-through.</p>
+      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>Reverse-engineering the protocol</div>
+      <p class="case-text fade-in">A GATT walk on the live bike revealed a single vendor service exposing two characteristics: one to write phone&rarr;bike, one to receive bike&rarr;phone notifications. Every message on the wire is exactly 30 bytes with a consistent envelope — a <code>0xA5</code> header, an ASCII type byte, a body, a checksum, and a <code>0x7F</code> terminator.</p>
+      <pre class="code-block fade-in">  byte 0      : 0xA5            header
+  byte 1      : ASCII type      e.g. '1','3','6','7'
+  bytes 2..27 : body            time / distance / flags / telemetry
+  byte 28     : checksum        sum(payload[1:28]) mod 256
+  byte 29     : 0x7F            terminator</pre>
+      <p class="case-text fade-in">I confirmed the checksum algorithm directly from the decompiled source rather than guessing it from samples, then mapped each message type to its purpose: display refresh (time + distance + maneuver), phone and bike heartbeats, and an identity push. One non-obvious finding: the cluster is <em>response-driven</em> — it sends nothing until the phone writes first, so a passive listener captures zero notifications.</p>
+      <p class="case-text fade-in">The discipline that made this work was treating every claim as a hypothesis until the evidence settled it. Several early conclusions were wrong and got walked back in writing — a Wireshark dissector mislabelled the vendor characteristics as a standard digital-key spec, and I'd assumed the bike had an embedded SIM phoning home until physical inspection proved it had none. Each correction is logged with what was assumed, what was actually true, and the evidence that flipped it.</p>
+    </div>
+  </section>
+  <section class="case-section" id="app">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>REDLINE — the replacement app</div>
+      <p class="case-text fade-in">Once the protocol was understood, I built a full Android app around it. REDLINE encodes Google Maps navigation into the cluster's frame format, reads telemetry the bike emits, and layers on the ride tooling the stock app lacks — all on-device, with no account and no cloud.</p>
+      <div class="features-grid">
+        <div class="feature-card fade-in"><div class="feature-card-title">Google Maps &rarr; cluster nav</div><div class="feature-card-desc">Intercepts Maps turn-by-turn notifications, translates each maneuver into the bike's display-refresh frame, and writes it over BLE — replacing the stock Mappls-based navigation.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Live telemetry dashboard</div><div class="feature-card-desc">Speed, fuel/range, odometer, trip meters and fuel economy parsed from the bike's notify frames and rendered as a live dashboard on the phone.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Ride analytics &amp; trips</div><div class="feature-card-desc">Every ride is recorded with distance, duration, moving vs idle time, speed distribution, and fuel-economy trend, plus lifetime stats, streaks and records.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">GPX / CSV export</div><div class="feature-card-desc">Trips export to GPX and CSV, with a share-card and an AI-readable text report for any single ride.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Idle cluster display</div><div class="feature-card-desc">When navigation is idle, the app renders a clock and now-playing info to the cluster's text fields instead of leaving it blank.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Frame inspector</div><div class="feature-card-desc">A built-in inspector decodes live frames on-device — the same RE tooling that built the app, shipped inside it for ongoing protocol work.</div></div>
+      </div>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Polymorphic Components</div>
-      <p class="case-text fade-in">A common library bug: a <code>Button</code> renders as an <code>&lt;a&gt;</code> when you pass <code>href</code>, but TypeScript still thinks it's a button and offers <code>type</code> as a prop. The polymorphic pattern fixes this by making <code>as</code> a generic that drives the prop intersection:</p>
-      <pre class="code-block fade-in">&lt;Button as="a" href="/login"&gt;Sign in&lt;/Button&gt;
-// `href` is required and typed as string
-// `type` is NOT in autocomplete
-
-&lt;Button as="button" type="submit"&gt;Submit&lt;/Button&gt;
-// `type` is required and typed as button-type union
-// `href` is NOT in autocomplete</pre>
-      <p class="case-text fade-in">Each primitive uses the same <code>PolymorphicComponentProps</code> helper, so the API is consistent across the library and the type narrowing works the same way everywhere.</p>
+      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>The app in action</div>
+      <p class="case-text fade-in">A few screens from REDLINE running against the actual bike — built with Jetpack Compose, dark-first, with a visual identity inspired by the cluster itself.</p>
+      <div class="shots-grid">
+        <div class="shot fade-in"><picture><source type="image/webp" srcset="../assets/images/projects/suzuki-app-dashboard.webp"><img src="../assets/images/projects/suzuki-app-dashboard.png" alt="REDLINE live telemetry dashboard — speedometer, fuel/range, odometer, trip meters" loading="lazy"></picture><div class="shot-cap">Live telemetry dashboard</div></div>
+        <div class="shot fade-in"><picture><source type="image/webp" srcset="../assets/images/projects/suzuki-app-stats.webp"><img src="../assets/images/projects/suzuki-app-stats.png" alt="REDLINE lifetime stats — distance, streak, records, distance trend" loading="lazy"></picture><div class="shot-cap">Lifetime stats &amp; records</div></div>
+        <div class="shot fade-in"><picture><source type="image/webp" srcset="../assets/images/projects/suzuki-app-home.webp"><img src="../assets/images/projects/suzuki-app-home.png" alt="REDLINE home — today's distance, fuel, odometer, bike health, quick actions" loading="lazy"></picture><div class="shot-cap">Home overview</div></div>
+        <div class="shot fade-in"><picture><source type="image/webp" srcset="../assets/images/projects/suzuki-app-trip-detail.webp"><img src="../assets/images/projects/suzuki-app-trip-detail.png" alt="REDLINE ride detail — 354 km trip with distance, duration, speed, mileage and tags" loading="lazy"></picture><div class="shot-cap">Ride detail · 354 km trip</div></div>
+        <div class="shot fade-in"><picture><source type="image/webp" srcset="../assets/images/projects/suzuki-app-speed-graph.webp"><img src="../assets/images/projects/suzuki-app-speed-graph.png" alt="REDLINE ride speed graph and speed distribution histogram" loading="lazy"></picture><div class="shot-cap">Speed graph &amp; distribution</div></div>
+        <div class="shot fade-in"><picture><source type="image/webp" srcset="../assets/images/projects/suzuki-app-trips.webp"><img src="../assets/images/projects/suzuki-app-trips.png" alt="REDLINE trips list with per-ride sparklines, grouped by week" loading="lazy"></picture><div class="shot-cap">Trips list</div></div>
+      </div>
+      <p class="shots-note fade-in">All data shown is real, captured from my own bike. Identifiers have been kept out of the public repository.</p>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Build &amp; Release Pipeline</div>
-      <p class="case-text fade-in">The repo is a Turborepo monorepo. The <code>core</code> package is what ships to npm; the <code>docs</code> package is a separate Next.js site that imports the published library to pin documentation to a real released version. CI uses Turborepo's remote cache so unchanged packages skip work entirely on every PR.</p>
-      <p class="case-text fade-in">Releases are driven by Changesets. A contributor adds a markdown changeset describing what changed and at what semver level (patch / minor / major). A GitHub Action watches the main branch — when it sees pending changesets, it opens or updates a "Release PR" with the computed version bumps and changelog. Merging that PR runs another action that runs the Rollup build, publishes to npm with provenance, tags the release, and creates a GitHub Release with the generated notes.</p>
-      <p class="case-text fade-in">The end state: a contributor only writes a changeset, never touches version numbers or changelogs, and releases happen on their own.</p>
+      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Method &amp; tooling</div>
+      <p class="case-text fade-in">The RE side combined static and dynamic analysis. JADX decompiled the stock app (most class names were unobfuscated, which made the checksum and frame construction readable). Frida hooked the live app to watch BLE writes and the semantic events behind them. Android's HCI snoop log captured the raw bytes on the wire, and a small Python toolkit on the laptop (bleak for BLE, tshark for the captures) let me replay and forge frames against the bike to test each hypothesis.</p>
+      <p class="case-text fade-in">Everything is documented as it happened: a living protocol spec for the current best understanding, and a chronological discoveries log that keeps the wrong turns rather than silently overwriting them — so the reasoning is auditable, not just the conclusions.</p>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>Tech Stack</div>
+      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>Tech &amp; tools</div>
       <div class="tech-grid">
-        <div class="tech-item fade-in"><span class="tech-name">React 18</span><span class="tech-role">UI framework</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">TypeScript</span><span class="tech-role">Type safety</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Tailwind CSS</span><span class="tech-role">Styling tokens</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">CVA</span><span class="tech-role">Variant system</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Turborepo</span><span class="tech-role">Monorepo + caching</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Rollup</span><span class="tech-role">Library bundler</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Changesets</span><span class="tech-role">Versioning + changelog</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">GitHub Actions</span><span class="tech-role">CI / CD</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">jest-axe</span><span class="tech-role">a11y testing</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Vitest</span><span class="tech-role">Unit testing</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">npm</span><span class="tech-role">Distribution</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">tsup / Rollup</span><span class="tech-role">ESM + CJS output</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Kotlin</span><span class="tech-role">App language</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Jetpack Compose</span><span class="tech-role">UI</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Android BLE</span><span class="tech-role">GATT transport</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Room</span><span class="tech-role">Ride storage</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Coroutines / Flow</span><span class="tech-role">Async + streams</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">DataStore</span><span class="tech-role">Settings / profile</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">JADX</span><span class="tech-role">Static decompilation</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Frida</span><span class="tech-role">Runtime hooking</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Wireshark / tshark</span><span class="tech-role">Wire capture analysis</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Python · bleak</span><span class="tech-role">BLE replay / forging</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">HCI snoop log</span><span class="tech-role">Raw BLE capture</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">JUnit</span><span class="tech-role">205 unit tests</span></div>
       </div>
     </div>
   </section>
   <div class="project-nav"><div class="project-nav-inner">
     <a href="../index.html#projects" class="project-nav-link"><span class="project-nav-label">&larr; Back</span><span class="project-nav-title">All Projects</span></a>
-    <a href="librynt.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Librynt</span></a>
+    <a href="astra-ui.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Astra UI</span></a>
   </div></div>
 </main>
 <footer class="footer">
