@@ -239,7 +239,7 @@
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The Problem</div>
-      <p class="case-text fade-in">You're reviewing a pull request. The code works &mdash; tests pass, feature does what it's supposed to. But something's off. Utility functions recreated from scratch when they already exist in the codebase. API calls bypassing the existing service layer. Patterns that don't match the rest of the project. It's not bad code. It's <em>disconnected</em> code. The code doesn't know about the codebase it lives in. That's the tell.</p>
+      <p class="case-text fade-in">You're reviewing a pull request. The code works. Tests pass, feature does what it's supposed to. But something's off. Utility functions recreated from scratch when they already exist in the codebase. API calls bypassing the existing service layer. Patterns that don't match the rest of the project. It's not bad code. It's <em>disconnected</em> code. The code doesn't know about the codebase it lives in. That's the tell.</p>
       <p class="case-text fade-in">There are two camps right now. Developers who paste AI output without reading it, shipping codebases that feel stitched together from a dozen different authors. And developers who refuse to use AI at all in 2026, which is just leaving speed on the table. Both camps are wrong.</p>
       <p class="case-text fade-in">There's a middle ground. Use AI aggressively, but own every line. This is how I do it.</p>
     </div>
@@ -251,9 +251,9 @@
       <div class="case-section-heading fade-in"><span class="case-section-number">02</span>My Setup</div>
       <p class="case-text fade-in">The stack is deliberately simple:</p>
       <ul class="fade-in">
-        <li><strong>Claude Code CLI</strong> &mdash; the main tool, does the heavy lifting. Lives in the terminal, has full context of the project.</li>
-        <li><strong>Neovim</strong> &mdash; for when I want direct control. Surgical edits, quick reads, navigating code at my own pace.</li>
-        <li><strong>Lazygit</strong> &mdash; git workflow. Every commit goes through me.</li>
+        <li><strong>Claude Code CLI</strong>: the main tool, does the heavy lifting. Lives in the terminal, has full context of the project.</li>
+        <li><strong>Neovim</strong>: for when I want direct control. Surgical edits, quick reads, navigating code at my own pace.</li>
+        <li><strong>Lazygit</strong>: git workflow. Every commit goes through me.</li>
       </ul>
       <p class="case-text fade-in">That's it. No 10-tool AI stack. No fancy IDE plugin chains. No prompt engineering templates saved in Notion. The tool matters less than how you use it. I've seen developers get better results from a basic setup with a clear workflow than from an over-engineered stack they don't actually understand.</p>
     </div>
@@ -263,22 +263,22 @@
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">03</span>The Workflow</div>
-      <p class="case-text fade-in">This is the core of it. Five steps, every time. It's not a rigid process &mdash; it's a rhythm that keeps AI output from drifting into disconnected code.</p>
+      <p class="case-text fade-in">This is the core of it. Five steps, every time. It's not a rigid process. It's a rhythm that keeps AI output from drifting into disconnected code.</p>
 
       <h2 class="fade-in">1. Explore</h2>
-      <p class="case-text fade-in">Before writing a single line, understand what exists. Use AI to explore the codebase &mdash; trace data flows, map dependencies, understand the service layer. Where do API calls live? What patterns does the project already use for form validation? What utilities exist? The goal is to build a mental model of the codebase so that anything you write fits into it, not next to it.</p>
+      <p class="case-text fade-in">Before writing a single line, understand what exists. Use AI to explore the codebase: trace data flows, map dependencies, understand the service layer. Where do API calls live? What patterns does the project already use for form validation? What utilities exist? The goal is to build a mental model of the codebase so that anything you write fits into it, not next to it.</p>
 
       <h2 class="fade-in">2. Plan together</h2>
-      <p class="case-text fade-in">Write the plan collaboratively. AI suggests architecture and patterns from its vast reference base &mdash; it's seen thousands of codebases, so it might catch tradeoffs you haven't considered. Maybe it suggests a state management approach you wouldn't have thought of, or flags that your planned file structure will cause circular dependencies. You evaluate, correct, rewrite. Architecture is collaborative, but you make the final call.</p>
+      <p class="case-text fade-in">Write the plan collaboratively. AI suggests architecture and patterns from its vast reference base. It's seen thousands of codebases, so it might catch tradeoffs you haven't considered. Maybe it suggests a state management approach you wouldn't have thought of, or flags that your planned file structure will cause circular dependencies. You evaluate, correct, rewrite. Architecture is collaborative, but you make the final call.</p>
 
       <h2 class="fade-in">3. Verify the plan</h2>
       <p class="case-text fade-in">Before any code gets written, confirm exactly which files get touched, created, or deleted. Walk through edge cases. What happens when the API returns an empty array? What if the user navigates away mid-submission? The plan should be so detailed that execution is mechanical. If you can't describe the implementation step by step, you're not done planning.</p>
 
       <h2 class="fade-in">4. Execute</h2>
-      <p class="case-text fade-in">AI writes the code following the locked plan. At this point it's just a robot typing what you've already decided. The structure, the files, the patterns &mdash; all defined. AI fills in the implementation. This is where the speed comes from. Not from AI thinking for you, but from AI typing for you after you've already done the thinking.</p>
+      <p class="case-text fade-in">AI writes the code following the locked plan. At this point it's just a robot typing what you've already decided. The structure, the files, the patterns, all defined. AI fills in the implementation. This is where the speed comes from. Not from AI thinking for you, but from AI typing for you after you've already done the thinking.</p>
 
       <h2 class="fade-in">5. Review and commit</h2>
-      <p class="case-text fade-in">You review every diff like it came from a teammate. AI never commits. You read it, you own it, you commit it through lazygit. If something looks off &mdash; a variable name that doesn't match the project's conventions, an import path that could be cleaner, a function that's doing too much &mdash; you fix it before it goes in. The commit is yours.</p>
+      <p class="case-text fade-in">You review every diff like it came from a teammate. AI never commits. You read it, you own it, you commit it through lazygit. If something looks off (a variable name that doesn't match the project's conventions, an import path that could be cleaner, a function that's doing too much), you fix it before it goes in. The commit is yours.</p>
     </div>
   </section>
 
@@ -286,13 +286,13 @@
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Real Example</div>
-      <p class="case-text fade-in">At work, I had to build a form. Not a simple contact form &mdash; a form with dozens of fields, deep conditional logic, and multiple levels of nested data. Editing flows on top of creation flows. Different validation rules depending on which combination of fields the user had filled. State management alone was a nightmare on paper.</p>
+      <p class="case-text fade-in">At work, I had to build a form. Not a simple contact form. A form with dozens of fields, deep conditional logic, and multiple levels of nested data. Editing flows on top of creation flows. Different validation rules depending on which combination of fields the user had filled. State management alone was a nightmare on paper.</p>
 
       <h2 class="fade-in">The approach</h2>
       <p class="case-text fade-in">I started by mapping out the entire form structure, every validation rule, and every error state in the plan. No code yet. Just a complete picture of what the form needed to do, what data it touched, and how the editing flow differed from creation.</p>
-      <p class="case-text fade-in">Then I followed test-driven development. Wrote the tests first &mdash; defining expected inputs and outputs for every scenario. What happens when a required nested field is missing? What happens when the user switches from creation to editing mode? The tests described the correct behavior before any implementation existed.</p>
-      <p class="case-text fade-in">AI generated the implementation following the locked plan. Tests caught bugs automatically. If AI's code didn't match expected output, it failed immediately &mdash; no guessing, no manual checking. The feedback loop was tight: AI writes code, tests verify it, fix what fails, move on.</p>
-      <p class="case-text fade-in">What would've taken weeks shipped to production in days. Not because AI wrote magical code, but because the plan was airtight and the tests caught every deviation. The TDD angle is key &mdash; tests are the safety net. You define correctness <em>before</em> AI writes anything.</p>
+      <p class="case-text fade-in">Then I followed test-driven development. Wrote the tests first, defining expected inputs and outputs for every scenario. What happens when a required nested field is missing? What happens when the user switches from creation to editing mode? The tests described the correct behavior before any implementation existed.</p>
+      <p class="case-text fade-in">AI generated the implementation following the locked plan. Tests caught bugs automatically. If AI's code didn't match expected output, it failed immediately. No guessing, no manual checking. The feedback loop was tight: AI writes code, tests verify it, fix what fails, move on.</p>
+      <p class="case-text fade-in">What would've taken weeks shipped to production in days. Not because AI wrote magical code, but because the plan was airtight and the tests caught every deviation. The TDD angle is key: tests are the safety net. You define correctness <em>before</em> AI writes anything.</p>
     </div>
   </section>
 
@@ -300,8 +300,8 @@
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">05</span>When AI Falls Short</div>
-      <p class="case-text fade-in">AI gets first shot at everything, including debugging. Most of the time, it does fine &mdash; trace the error, identify the cause, suggest a fix. But when it fails at debugging &mdash; and it does &mdash; that's where your skills and experience take over.</p>
-      <p class="case-text fade-in">AI guesses at bugs. It suggests fixes without understanding the root cause. It'll swap out a dependency, restructure a function, add a null check &mdash; anything to make the error go away. But you've traced enough bugs to know where to actually look. You know that the issue isn't the function throwing the error &mdash; it's the data three layers up that was shaped wrong. That intuition comes from experience, not from a language model.</p>
+      <p class="case-text fade-in">AI gets first shot at everything, including debugging. Most of the time, it does fine: trace the error, identify the cause, suggest a fix. But when it fails at debugging, and it does, that's where your skills and experience take over.</p>
+      <p class="case-text fade-in">AI guesses at bugs. It suggests fixes without understanding the root cause. It'll swap out a dependency, restructure a function, add a null check, anything to make the error go away. But you've traced enough bugs to know where to actually look. You know that the issue isn't the function throwing the error. It's the data three layers up that was shaped wrong. That intuition comes from experience, not from a language model.</p>
       <p class="case-text fade-in">AI raises your floor. Your ceiling is still you.</p>
     </div>
   </section>
@@ -310,21 +310,21 @@
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">06</span>The Line</div>
-      <p class="case-text fade-in">AI is a multiplier. It multiplies what you already know. If you don't understand architecture, AI writes you a bad one. If you don't write tests, AI ships you bugs. If you can't debug, you're stuck when AI guesses wrong. The tool amplifies the developer &mdash; it doesn't replace the skill.</p>
-      <p class="case-text fade-in">The developers who win aren't the ones using AI the most. They're the ones who were already good &mdash; and now they're fast too.</p>
+      <p class="case-text fade-in">AI is a multiplier. It multiplies what you already know. If you don't understand architecture, AI writes you a bad one. If you don't write tests, AI ships you bugs. If you can't debug, you're stuck when AI guesses wrong. The tool amplifies the developer. It doesn't replace the skill.</p>
+      <p class="case-text fade-in">The developers who win aren't the ones using AI the most. They're the ones who were already good, and now they're fast too.</p>
       <blockquote class="fade-in">
-        <p>"AI doesn't make you a better developer. It makes you a faster one. The gap between good and bad engineers didn't shrink &mdash; it just moves at a higher speed now."</p>
+        <p>"AI doesn't make you a better developer. It makes you a faster one. The gap between good and bad engineers didn't shrink. It just moves at a higher speed now."</p>
       </blockquote>
     </div>
   </section>
 
-  <!-- 07 Update — May 2026 -->
+  <!-- 07 Update: May 2026 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">07</span>Update &mdash; May 2026</div>
+      <div class="case-section-heading fade-in"><span class="case-section-number">07</span>Update: May 2026</div>
       <p class="case-text fade-in">Two months in, a few things shifted. The setup got smaller, not bigger.</p>
       <ul class="fade-in">
-        <li><strong>Context discipline beats clever prompts.</strong> The prompts I refined in February matter less than I thought. What moved the needle was scoping each task to the smallest meaningful unit before opening a session &mdash; one file, one function, one test &mdash; instead of letting Claude roam the repo.</li>
+        <li><strong>Context discipline beats clever prompts.</strong> The prompts I refined in February matter less than I thought. What moved the needle was scoping each task to the smallest meaningful unit before opening a session (one file, one function, one test) instead of letting Claude roam the repo.</li>
         <li><strong>Small models for small tasks.</strong> I default to a fast model for renames, docstrings, and trivial refactors, and only escalate to a heavier model for architecture, debugging tricky bugs, or design conversations. Most of my day is the cheaper model now.</li>
         <li><strong>The codebase is the prompt.</strong> I started writing CLAUDE.md files inside projects with conventions, patterns, and what NOT to do. The model gets calibrated faster, and I spend less time correcting drift.</li>
       </ul>
@@ -345,7 +345,7 @@
 </main>
 
 <footer class="footer">
-  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. &mdash; All rights reserved.</div>
+  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. All rights reserved.</div>
   <div class="footer-social">
     <a href="https://github.com/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
     <a href="https://linkedin.com/in/arjunp-software-engineer" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
