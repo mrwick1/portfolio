@@ -3,40 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Writing | Arjun.</title>
-<meta name="description" content="Technical articles, migration guides, and performance case studies by Arjun. Senior Frontend Engineer.">
-<meta name="keywords" content="Frontend Engineering, Technical Writing, Performance Optimization, Case Studies, React, Next.js">
+<title>Stop trusting 'looks about right': verifying AI UI against Figma | Arjun.</title>
+<meta name="description" content="How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.">
+<meta name="keywords" content="Figma, AI agents, UI verification, pixel diff, design to code, Playwright, MCP, verify_node, figma-connect">
 <meta name="author" content="Arjun">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://www.arjunp.pro/writing/">
+<link rel="canonical" href="https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html">
 
 <!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.arjunp.pro/writing/">
-<meta property="og:title" content="Writing | Arjun.">
-<meta property="og:description" content="Technical articles, migration guides, and performance case studies by Arjun. Senior Frontend Engineer.">
-<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html">
+<meta property="og:title" content="Stop trusting 'looks about right': verifying AI UI against Figma">
+<meta property="og:description" content="How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og/figma-connect.webp">
 <meta property="og:site_name" content="Arjun">
+<meta property="article:author" content="Arjun">
+<meta property="article:published_time" content="2026-06-17">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Writing | Arjun.">
-<meta name="twitter:description" content="Technical articles, migration guides, and performance case studies.">
+<meta name="twitter:title" content="Stop trusting 'looks about right': verifying AI UI against Figma">
+<meta name="twitter:description" content="How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og/figma-connect.webp">
 <meta name="twitter:creator" content="@03arjunkr">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Writing",
-  "description": "Technical articles, migration guides, and performance case studies by Arjun.",
+  "@type": "Article",
+  "headline": "Stop trusting 'looks about right': verifying AI UI against Figma",
+  "description": "How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.",
   "author": {
     "@type": "Person",
-    "name": "Arjun",
-    "url": "https://www.arjunp.pro"
+    "name": "Arjun P",
+    "url": "https://www.arjunp.pro/"
   },
-  "url": "https://www.arjunp.pro/writing/"
+  "publisher": {
+    "@type": "Person",
+    "name": "Arjun"
+  },
+  "datePublished": "2026-06-17",
+  "url": "https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html",
+  "image": "https://www.arjunp.pro/assets/images/og/figma-connect.webp",
+  "mainEntityOfPage": "https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arjunp.pro/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://www.arjunp.pro/writing/" },
+    { "@type": "ListItem", "position": 3, "name": "Stop trusting 'looks about right': verifying AI UI against Figma", "item": "https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html" }
+  ]
 }
 </script>
 
@@ -86,38 +107,50 @@
   .breadcrumb a:hover { color: var(--accent); }
   .breadcrumb-sep { color: var(--fg-tertiary); }
   .case-title { font-family: var(--font-body); font-size: clamp(36px, 5vw, 51px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--fg); margin-bottom: var(--sp-3); }
-  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; }
+  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; margin-bottom: var(--sp-7); }
+  .case-meta { display: flex; gap: var(--sp-8); padding: var(--sp-5) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: var(--sp-6); flex-wrap: wrap; }
+  .case-meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .case-meta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .case-meta-value { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
+  .case-meta-tags { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+  .case-meta-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--fg-secondary); background-color: var(--surface); border: 1px solid var(--border); padding: 2px 8px; }
 
-  /* Content section */
+  /* Content sections */
   .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .case-section-inner { max-width: 1200px; margin: 0 auto; }
   .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
   .case-section-number { color: var(--accent); margin-right: var(--sp-3); font-family: var(--font-mono); font-weight: 500; }
+  .case-text { font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--fg-secondary); max-width: 800px; margin-bottom: var(--sp-5); }
+  .case-text:last-child { margin-bottom: 0; }
+  .case-section-inner h2 { font-family: var(--font-body); font-size: 22px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-4); margin-top: var(--sp-7); line-height: 1.3; }
+  .case-section-inner h2:first-of-type { margin-top: 0; }
+  .case-section-inner h3 { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-3); margin-top: var(--sp-6); line-height: 1.4; }
+  .case-section-inner ul { list-style: none; max-width: 800px; margin-bottom: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); }
+  .case-section-inner ul li { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); padding-left: var(--sp-5); position: relative; }
+  .case-section-inner ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background-color: var(--accent); }
 
-  /* Project cards */
-  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
-  .project-card { border: 1px solid var(--border); transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease); }
-  .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 85, 255, 0.06); }
-  .project-body { padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-4); }
-  .project-number { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--accent); }
-  .project-title { font-family: var(--font-body); font-size: 20px; font-weight: 600; color: var(--fg); line-height: 1.3; }
-  .project-subtitle { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--fg-secondary); letter-spacing: 0.02em; }
-  .project-desc { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); }
-  .project-tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
-  .project-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--fg-secondary); background-color: var(--surface); border: 1px solid var(--border); padding: 3px 8px; white-space: nowrap; }
-  .project-links { display: flex; gap: var(--sp-5); padding-top: var(--sp-3); border-top: 1px solid var(--border-faint); }
-  .project-link { font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.04em; color: var(--fg-secondary); text-decoration: none; position: relative; transition: color var(--duration) var(--ease); }
-  .project-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width var(--duration) var(--ease); }
-  .project-link:hover { color: var(--accent); }
-  .project-link:hover::after { width: 100%; }
+  /* Code blocks */
+  pre { background-color: var(--surface); border: 1px solid var(--border); padding: var(--sp-5); margin-bottom: var(--sp-5); overflow-x: auto; max-width: 800px; }
+  pre code { font-family: var(--font-mono); font-size: 13px; font-weight: 400; line-height: 1.7; color: var(--fg); background: none; padding: 0; border: none; }
+  code { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--accent); background-color: var(--surface); border: 1px solid var(--border); padding: 1px 6px; }
 
-  /* Writing type badge */
-  .writing-type { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; display: inline-block; width: fit-content; }
-  .writing-type[data-type="article"] { color: var(--accent); border: 1px solid var(--accent); }
-  .writing-type[data-type="opinion"] { color: #E05500; border: 1px solid #E05500; }
-  .writing-type[data-type="case-study"] { color: #00875A; border: 1px solid #00875A; }
-  [data-theme="dark"] .writing-type[data-type="opinion"] { color: #FF8A3D; border-color: #FF8A3D; }
-  [data-theme="dark"] .writing-type[data-type="case-study"] { color: #36B37E; border-color: #36B37E; }
+  /* Blockquote */
+  blockquote { border-left: 3px solid var(--accent); padding-left: var(--sp-5); margin-bottom: var(--sp-5); max-width: 800px; }
+  blockquote p { font-family: var(--font-body); font-size: 16px; font-weight: 400; font-style: italic; line-height: 1.75; color: var(--fg-secondary); margin-bottom: 0; }
+
+  /* Metrics grid */
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); max-width: 800px; margin-bottom: var(--sp-6); }
+  .metric-card { padding: var(--sp-5); border: 1px solid var(--border-faint); text-align: center; }
+  .metric-value { font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: var(--accent); line-height: 1.2; margin-bottom: var(--sp-2); }
+  .metric-label { font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--fg-secondary); }
+
+  /* Bottom nav */
+  .project-nav { display: flex; justify-content: center; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: center; }
+  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); align-items: center; }
+  .project-nav-link:hover { transform: translateY(-2px); }
+  .project-nav-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .project-nav-title { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); }
 
   /* Footer */
   .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
@@ -131,14 +164,15 @@
   @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
   @media (max-width: 768px) {
     :root { --grid-margin: 24px; --sidebar-width: 0px; }
-    .case-hero, .case-section, .footer { padding-left: var(--grid-margin); }
-    .projects-grid { grid-template-columns: 1fr; }
+    .case-hero, .case-section, .project-nav, .footer { padding-left: var(--grid-margin); }
+    .case-meta { flex-direction: column; gap: var(--sp-4); }
+    .metrics-grid { grid-template-columns: 1fr; }
     .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
     .grid-bg-inner { left: var(--grid-margin); right: var(--grid-margin); grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .footer { flex-direction: column; gap: var(--sp-2); align-items: flex-start; }
   }
   @media (max-width: 540px) { .nav-links .nav-link-text { display: none; } }
-  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } }
+  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .metric-value { font-size: 24px; } }
   @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
   ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
   /* ── Mobile hamburger nav ───────────────────── */
@@ -184,119 +218,104 @@
     <div class="case-hero-inner fade-in">
       <div class="breadcrumb">
         <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span>
-        <span>Writing</span>
+        <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
+        <span>Verifying AI UI Against Figma</span>
       </div>
-      <h1 class="case-title">Writing</h1>
-      <p class="case-subtitle">Technical articles, migration guides, and performance case studies</p>
+      <h1 class="case-title">Stop trusting &lsquo;looks about right&rsquo;: verifying AI UI against Figma</h1>
+      <p class="case-subtitle">How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <span class="case-meta-label">Published</span>
+          <span class="case-meta-value">June 17, 2026</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Reading Time</span>
+          <span class="case-meta-value">6 min read</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Tags</span>
+          <div class="case-meta-tags">
+            <span class="case-meta-tag">Figma</span>
+            <span class="case-meta-tag">AI Agents</span>
+            <span class="case-meta-tag">Tooling</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- All Writing -->
+  <!-- 01 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>All Writing</div>
-      <div class="projects-grid stagger">
-
-        <!-- Article: Verifying AI UI Against Figma -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">01</div>
-            <div class="project-title">Stop Trusting &lsquo;Looks About Right&rsquo;: Verifying AI UI Against Figma</div>
-            <div class="project-subtitle">Jun 2026 &middot; 6 min read</div>
-            <p class="project-desc">How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.</p>
-            <div class="project-tags">
-              <span class="project-tag">Figma</span>
-              <span class="project-tag">AI Agents</span>
-              <span class="project-tag">Tooling</span>
-              <span class="project-tag">MCP</span>
-            </div>
-            <div class="project-links">
-              <a href="verifying-ai-ui-against-figma.html" class="project-link" aria-label="Read article: Stop Trusting Looks About Right: Verifying AI UI Against Figma">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Article: CRA to Next.js -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">02</div>
-            <div class="project-title">How I Migrated a Production App from CRA to Next.js</div>
-            <div class="project-subtitle">Feb 2026 &middot; 10 min read</div>
-            <p class="project-desc">A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.</p>
-            <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">React</span>
-              <span class="project-tag">Performance</span>
-              <span class="project-tag">Migration</span>
-            </div>
-            <div class="project-links">
-              <a href="cra-to-nextjs-migration.html" class="project-link" aria-label="Read article: How I Migrated a Production App from CRA to Next.js">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Article: The Case Against SPAs -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="opinion">Opinion</span>
-            <div class="project-number">03</div>
-            <div class="project-title">The Case Against SPAs in 2026</div>
-            <div class="project-subtitle">Feb 2026 &middot; 8 min read</div>
-            <p class="project-desc">I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction, and why most websites shouldn't be SPAs.</p>
-            <div class="project-tags">
-              <span class="project-tag">Architecture</span>
-              <span class="project-tag">Performance</span>
-              <span class="project-tag">Opinion</span>
-            </div>
-            <div class="project-links">
-              <a href="the-case-against-spas.html" class="project-link" aria-label="Read article: The Case Against SPAs in 2026">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Case Study: TradersConnect Rework -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="case-study">Case Study</span>
-            <div class="project-number">04</div>
-            <div class="project-title">What Happens When You Drop the Framework</div>
-            <div class="project-subtitle">Feb 2026 &middot; 7 min read</div>
-            <p class="project-desc">Performance audit and frontend rework of TradersConnect's website: taking Lighthouse from 67 to 100, GTmetrix from C to A, and fully loaded time from 3.3s to 1.0s. Pure HTML/CSS, zero frameworks.</p>
-            <div class="project-tags">
-              <span class="project-tag">Performance</span>
-              <span class="project-tag">Core Web Vitals</span>
-              <span class="project-tag">Case Study</span>
-            </div>
-            <div class="project-links">
-              <a href="tradersconnect-rework.html" class="project-link" aria-label="Read case study: What Happens When You Drop the Framework">Read Case Study &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Article: AI Workflow -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">05</div>
-            <div class="project-title">How I Use AI Without Writing Garbage Code</div>
-            <div class="project-subtitle">Feb 2026 &middot; Updated May 2026 &middot; 7 min read</div>
-            <p class="project-desc">AI is a multiplier, not a replacement. A practical workflow for getting speed from AI tools without sacrificing code quality, from exploration to commit.</p>
-            <div class="project-tags">
-              <span class="project-tag">AI</span>
-              <span class="project-tag">Workflow</span>
-              <span class="project-tag">Engineering</span>
-            </div>
-            <div class="project-links">
-              <a href="ai-workflow.html" class="project-link" aria-label="Read article: How I Use AI Without Writing Garbage Code">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The 10% That Hides</div>
+      <p class="case-text fade-in">I do a lot of UI work, and like a lot of people lately I've been letting an AI agent take the first pass. Point it at a Figma file, let it write the components, come back to something that's 90% there. On a good day that's a huge time save.</p>
+      <p class="case-text fade-in">The problem is the other 10%, and where it hides.</p>
+      <p class="case-text fade-in">It's never an obvious break. It's the padding that's 12px instead of 16. A font weight that's 500 where the design says 600. A border radius that's a couple pixels off. A gradient that starts at the wrong stop. Each one tiny, but together they're the difference between "looks like the design" and "looks like someone who sort of saw the design once." And the only way I was catching any of it was opening the Figma frame and the browser side by side and squinting back and forth like it's a spot-the-difference puzzle.</p>
+      <p class="case-text fade-in">That got old fast. What bugged me most was that the agent had no idea it was wrong. It would read the design, write the code, and confidently tell me it matched. It couldn't check its own work. Every Figma tool I tried could feed it data about a node, but none of them could answer the actual question: does the thing you just built look like the thing the designer drew?</p>
+      <p class="case-text fade-in">So I stopped squinting and built the missing piece. It's a local tool called figma-connect, and the part I care about is one function: <code>verify_node</code>.</p>
     </div>
   </section>
+
+  <!-- 02 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>The Actual Idea</div>
+      <p class="case-text fade-in"><code>verify_node</code> takes the code the agent wrote, renders it in a real browser, and compares it pixel for pixel against the live Figma node. Pass or fail, with the diff image attached. That's it. The agent finally has a mirror.</p>
+      <p class="case-text fade-in">There's a read side too (it can pull geometry, auto-layout, fills, type, tokens, components, the usual), but honestly the read part is table stakes. Plenty of tools do that. The verify part is the bit I hadn't seen anywhere, and it's the bit that changed how the agent behaves.</p>
+      <p class="case-text fade-in">The whole thing runs on my laptop. Browser Figma works, so there's no desktop app, no cloud API, and no design files leaving my machine.</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>How the Check Actually Works</div>
+      <p class="case-text fade-in">Give it a node id and the candidate code. It mounts the code in headless Chromium with Playwright, exports the matching node from Figma, and diffs them. I run three different comparisons at once, because I tried each one alone first and each one lied to me in its own way.</p>
+      <p class="case-text fade-in">Raw pixel diffing catches the most: the 4px shift, the wrong radius, the moved gradient. But it's hysterical about a one-pixel global offset, screaming that everything's broken when the whole thing just nudged sideways. So I layered SSIM on top, which scores structural similarity and tracks closer to what a human would actually call "close." And then a text and accessibility pass with axe-core, because more than once I had a render that was pixel-perfect and had quietly dropped a label or lowercased a heading. Looking right and being right are not the same thing, and I learned that the annoying way.</p>
+      <p class="case-text fade-in">The output is a labeled EXPECTED / ACTUAL / DIFF image. I did that on purpose. A bare similarity score is something an agent will happily rationalize ("0.94, close enough!"). A picture of exactly what's wrong is not.</p>
+      <p class="case-text fade-in">The real win is that "looks about right" stopped being good enough. The agent now has a gate it has to pass before it can call something done.</p>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>The Stuff That Actually Ate My Week</div>
+      <p class="case-text fade-in">The render-and-diff idea took an afternoon. Making it trustworthy took way longer, because a verifier that fails for dumb reasons is worse than no verifier at all. The first time it cried wolf, I stopped trusting it, and that defeats the whole point.</p>
+      <p class="case-text fade-in">The first thing that got me was fonts. I kept getting failures on text that looked identical, and I burned an embarrassing amount of time before I realized I was screenshotting before the web fonts had loaded. The render was comparing a fallback font against the design's real font and flagging the difference. Gating the capture on <code>document.fonts.ready</code> killed that entire class of false failures.</p>
+      <p class="case-text fade-in">Then there was the wait strategy. I was waiting on networkidle before capturing, which is fine until you hit a page with a long-poll or a streaming connection, and then it just never idles. The verification would hang forever. I ripped out the blanket wait and replaced it with explicit readiness signals.</p>
+      <p class="case-text fade-in">The one I'm still not fully done with is fidelity versus budget. The summary of a node that I hand to the agent can't carry every property at full precision, or it blows the context window. So I had to make calls about what to keep exact and what to approximate, and then be honest about it. The digest now carries explicit flags for gradients, shadows, strokes, opacity, and masks, so the agent knows when a value is the real thing and when it's a best guess.</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Under the Hood, Briefly</div>
+      <p class="case-text fade-in">Small pnpm monorepo. A Figma plugin lives in the file (it's the only thing that can actually read the document). A local bridge daemon indexes the file into SQLite with full-text search, updates itself as the design changes, and exposes everything over MCP. A separate harness does the rendering and diffing. The agent talks to the daemon through a little stdio shim so the file stays indexed between sessions. Around 15k lines of TypeScript, 35 tools, all read-only except the verify step, bound to localhost only.</p>
+    </div>
+  </section>
+
+  <!-- 06 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>What It Still Can't Do</div>
+      <p class="case-text fade-in">Being honest about the edges, because I hate posts that pretend their thing is finished.</p>
+      <p class="case-text fade-in">The search is lexical, not semantic, so it matches words that literally appear in a layer's name or text. A vibes-based query won't find a generically named group. The digest is budgeted, hence the fidelity flags. And it only reads, it never writes back to Figma, on purpose.</p>
+      <p class="case-text fade-in">If you've ever watched an AI spit out UI that's subtly, confidently wrong and had no way to catch it except your own eyes, this was my attempt at giving it the feedback loop it was missing.</p>
+      <p class="case-text fade-in">Full writeup with screenshots and the architecture: <a href="https://www.arjunp.pro/projects/figma-connect.html">https://www.arjunp.pro/projects/figma-connect.html</a></p>
+    </div>
+  </section>
+
+  <!-- Bottom nav -->
+  <div class="project-nav">
+    <div class="project-nav-inner">
+      <a href="../writing/" class="project-nav-link">
+        <span class="project-nav-label">&larr; Back</span>
+        <span class="project-nav-title">All Writing</span>
+      </a>
+    </div>
+  </div>
 
 </main>
 
