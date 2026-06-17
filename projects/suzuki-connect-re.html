@@ -119,13 +119,31 @@
   @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .case-buttons { flex-direction: column; } .project-nav-title { font-size: 16px; } }
   @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
   ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
+  /* ── Mobile hamburger nav ───────────────────── */
+  .nav-burger { display: none; flex-direction: column; justify-content: center; gap: 4px; width: 36px; height: 32px; padding: 0 7px; border: 1px solid var(--border); background: transparent; cursor: pointer; transition: border-color var(--duration) var(--ease); }
+  .nav-burger span { display: block; width: 100%; height: 1.5px; background: var(--fg); transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease); }
+  .nav-burger:hover { border-color: var(--accent); }
+  .nav-burger.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-burger.is-open span:nth-child(2) { opacity: 0; }
+  .nav-burger.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+  @media (max-width: 768px) {
+    .nav-burger { display: flex; }
+    .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--bg); border-bottom: 1px solid var(--border); box-shadow: 0 16px 28px rgba(0,0,0,0.10); padding: var(--sp-2) var(--grid-margin) var(--sp-4); display: none; }
+    .nav-links.is-open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links .nav-link { display: block; padding: var(--sp-4) 0; font-size: 14px; border-bottom: 1px solid var(--border-faint); }
+    .nav-links .nav-link::after { display: none; }
+    .nav-links .nav-link-text { display: inline !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; clip: auto !important; overflow: visible !important; white-space: normal !important; border: 0 !important; }
+    .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
+  }
 </style>
 </head>
 <body>
 <div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
 <nav class="nav" role="navigation" aria-label="Primary navigation">
   <a href="../index.html" class="nav-logo">Arjun.</a>
-  <ul class="nav-links">
+  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
     <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
     <li><a href="../index.html#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
@@ -292,5 +310,15 @@
 })();
 </script>
 <script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+(function(){
+  var b=document.getElementById('navBurger'),n=document.getElementById('navLinks');
+  if(!b||!n)return;
+  function setOpen(o){n.classList.toggle('is-open',o);b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Open menu');}
+  b.addEventListener('click',function(){setOpen(!n.classList.contains('is-open'));});
+  n.addEventListener('click',function(e){if(e.target.closest('.nav-link, .nav-logo'))setOpen(false);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
+})();
+</script>
 </body>
 </html>
