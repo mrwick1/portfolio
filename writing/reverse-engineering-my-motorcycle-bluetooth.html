@@ -3,40 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Writing | Arjun.</title>
-<meta name="description" content="Technical articles, migration guides, and performance case studies by Arjun. Senior Frontend Engineer.">
-<meta name="keywords" content="Frontend Engineering, Technical Writing, Performance Optimization, Case Studies, React, Next.js">
+<title>I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard | Arjun.</title>
+<meta name="description" content="How I reverse-engineered my motorcycle's Bluetooth instrument-cluster protocol with a GATT walk, JADX, and Frida, then built REDLINE, an Android app for it.">
+<meta name="keywords" content="Reverse Engineering, Android, Bluetooth, BLE, GATT, JADX, Frida, Kotlin, Jetpack Compose, motorcycle, instrument cluster">
 <meta name="author" content="Arjun">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://www.arjunp.pro/writing/">
+<link rel="canonical" href="https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html">
 
 <!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.arjunp.pro/writing/">
-<meta property="og:title" content="Writing | Arjun.">
-<meta property="og:description" content="Technical articles, migration guides, and performance case studies by Arjun. Senior Frontend Engineer.">
-<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html">
+<meta property="og:title" content="I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard">
+<meta property="og:description" content="How I reverse-engineered my motorcycle's Bluetooth instrument-cluster protocol with a GATT walk, JADX, and Frida, then built REDLINE, an Android app for it.">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og/suzuki-connect-re.webp">
 <meta property="og:site_name" content="Arjun">
+<meta property="article:author" content="Arjun">
+<meta property="article:published_time" content="2026-06-18">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Writing | Arjun.">
-<meta name="twitter:description" content="Technical articles, migration guides, and performance case studies.">
+<meta name="twitter:title" content="I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard">
+<meta name="twitter:description" content="How I reverse-engineered my motorcycle's Bluetooth instrument-cluster protocol with a GATT walk, JADX, and Frida, then built REDLINE, an Android app for it.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og/suzuki-connect-re.webp">
 <meta name="twitter:creator" content="@03arjunkr">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Writing",
-  "description": "Technical articles, migration guides, and performance case studies by Arjun.",
+  "@type": "BlogPosting",
+  "headline": "I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard",
+  "description": "How I reverse-engineered my motorcycle's Bluetooth instrument-cluster protocol with a GATT walk, JADX, and Frida, then built REDLINE, an Android app for it.",
   "author": {
     "@type": "Person",
-    "name": "Arjun",
-    "url": "https://www.arjunp.pro"
+    "name": "Arjun P",
+    "url": "https://www.arjunp.pro/"
   },
-  "url": "https://www.arjunp.pro/writing/"
+  "publisher": {
+    "@type": "Person",
+    "name": "Arjun"
+  },
+  "datePublished": "2026-06-18",
+  "url": "https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html",
+  "image": "https://www.arjunp.pro/assets/images/og/suzuki-connect-re.webp",
+  "mainEntityOfPage": "https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arjunp.pro/" },
+    { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://www.arjunp.pro/writing/" },
+    { "@type": "ListItem", "position": 3, "name": "I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard", "item": "https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html" }
+  ]
 }
 </script>
 
@@ -86,38 +107,50 @@
   .breadcrumb a:hover { color: var(--accent); }
   .breadcrumb-sep { color: var(--fg-tertiary); }
   .case-title { font-family: var(--font-body); font-size: clamp(36px, 5vw, 51px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--fg); margin-bottom: var(--sp-3); }
-  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; }
+  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; margin-bottom: var(--sp-7); }
+  .case-meta { display: flex; gap: var(--sp-8); padding: var(--sp-5) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: var(--sp-6); flex-wrap: wrap; }
+  .case-meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .case-meta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .case-meta-value { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
+  .case-meta-tags { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+  .case-meta-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--fg-secondary); background-color: var(--surface); border: 1px solid var(--border); padding: 2px 8px; }
 
-  /* Content section */
+  /* Content sections */
   .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .case-section-inner { max-width: 1200px; margin: 0 auto; }
   .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
   .case-section-number { color: var(--accent); margin-right: var(--sp-3); font-family: var(--font-mono); font-weight: 500; }
+  .case-text { font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--fg-secondary); max-width: 800px; margin-bottom: var(--sp-5); }
+  .case-text:last-child { margin-bottom: 0; }
+  .case-section-inner h2 { font-family: var(--font-body); font-size: 22px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-4); margin-top: var(--sp-7); line-height: 1.3; }
+  .case-section-inner h2:first-of-type { margin-top: 0; }
+  .case-section-inner h3 { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-3); margin-top: var(--sp-6); line-height: 1.4; }
+  .case-section-inner ul { list-style: none; max-width: 800px; margin-bottom: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); }
+  .case-section-inner ul li { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); padding-left: var(--sp-5); position: relative; }
+  .case-section-inner ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background-color: var(--accent); }
 
-  /* Project cards */
-  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
-  .project-card { border: 1px solid var(--border); transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease); }
-  .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0, 85, 255, 0.06); }
-  .project-body { padding: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-4); }
-  .project-number { font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--accent); }
-  .project-title { font-family: var(--font-body); font-size: 20px; font-weight: 600; color: var(--fg); line-height: 1.3; }
-  .project-subtitle { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--fg-secondary); letter-spacing: 0.02em; }
-  .project-desc { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); }
-  .project-tags { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
-  .project-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--fg-secondary); background-color: var(--surface); border: 1px solid var(--border); padding: 3px 8px; white-space: nowrap; }
-  .project-links { display: flex; gap: var(--sp-5); padding-top: var(--sp-3); border-top: 1px solid var(--border-faint); }
-  .project-link { font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.04em; color: var(--fg-secondary); text-decoration: none; position: relative; transition: color var(--duration) var(--ease); }
-  .project-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width var(--duration) var(--ease); }
-  .project-link:hover { color: var(--accent); }
-  .project-link:hover::after { width: 100%; }
+  /* Code blocks */
+  pre { background-color: var(--surface); border: 1px solid var(--border); padding: var(--sp-5); margin-bottom: var(--sp-5); overflow-x: auto; max-width: 800px; }
+  pre code { font-family: var(--font-mono); font-size: 13px; font-weight: 400; line-height: 1.7; color: var(--fg); background: none; padding: 0; border: none; }
+  code { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--accent); background-color: var(--surface); border: 1px solid var(--border); padding: 1px 6px; }
 
-  /* Writing type badge */
-  .writing-type { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; display: inline-block; width: fit-content; }
-  .writing-type[data-type="article"] { color: var(--accent); border: 1px solid var(--accent); }
-  .writing-type[data-type="opinion"] { color: #E05500; border: 1px solid #E05500; }
-  .writing-type[data-type="case-study"] { color: #00875A; border: 1px solid #00875A; }
-  [data-theme="dark"] .writing-type[data-type="opinion"] { color: #FF8A3D; border-color: #FF8A3D; }
-  [data-theme="dark"] .writing-type[data-type="case-study"] { color: #36B37E; border-color: #36B37E; }
+  /* Blockquote */
+  blockquote { border-left: 3px solid var(--accent); padding-left: var(--sp-5); margin-bottom: var(--sp-5); max-width: 800px; }
+  blockquote p { font-family: var(--font-body); font-size: 16px; font-weight: 400; font-style: italic; line-height: 1.75; color: var(--fg-secondary); margin-bottom: 0; }
+
+  /* Metrics grid */
+  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); max-width: 800px; margin-bottom: var(--sp-6); }
+  .metric-card { padding: var(--sp-5); border: 1px solid var(--border-faint); text-align: center; }
+  .metric-value { font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: var(--accent); line-height: 1.2; margin-bottom: var(--sp-2); }
+  .metric-label { font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--fg-secondary); }
+
+  /* Bottom nav */
+  .project-nav { display: flex; justify-content: center; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: center; }
+  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); align-items: center; }
+  .project-nav-link:hover { transform: translateY(-2px); }
+  .project-nav-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .project-nav-title { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); }
 
   /* Footer */
   .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
@@ -131,14 +164,15 @@
   @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
   @media (max-width: 768px) {
     :root { --grid-margin: 24px; --sidebar-width: 0px; }
-    .case-hero, .case-section, .footer { padding-left: var(--grid-margin); }
-    .projects-grid { grid-template-columns: 1fr; }
+    .case-hero, .case-section, .project-nav, .footer { padding-left: var(--grid-margin); }
+    .case-meta { flex-direction: column; gap: var(--sp-4); }
+    .metrics-grid { grid-template-columns: 1fr; }
     .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
     .grid-bg-inner { left: var(--grid-margin); right: var(--grid-margin); grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .footer { flex-direction: column; gap: var(--sp-2); align-items: flex-start; }
   }
   @media (max-width: 540px) { .nav-links .nav-link-text { display: none; } }
-  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } }
+  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .metric-value { font-size: 24px; } }
   @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
   ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
   /* ── Mobile hamburger nav ───────────────────── */
@@ -184,138 +218,99 @@
     <div class="case-hero-inner fade-in">
       <div class="breadcrumb">
         <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span>
-        <span>Writing</span>
+        <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
+        <span>Reverse-Engineering My Motorcycle's Bluetooth</span>
       </div>
-      <h1 class="case-title">Writing</h1>
-      <p class="case-subtitle">Technical articles, migration guides, and performance case studies</p>
+      <h1 class="case-title">I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard</h1>
+      <p class="case-subtitle">How I reverse-engineered my motorcycle's Bluetooth instrument-cluster protocol with a GATT walk, JADX, and Frida, then built REDLINE, an Android app for it.</p>
+      <div class="case-meta">
+        <div class="case-meta-item">
+          <span class="case-meta-label">Published</span>
+          <span class="case-meta-value">June 18, 2026</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Reading Time</span>
+          <span class="case-meta-value">4 min read</span>
+        </div>
+        <div class="case-meta-item">
+          <span class="case-meta-label">Tags</span>
+          <div class="case-meta-tags">
+            <span class="case-meta-tag">Reverse Engineering</span>
+            <span class="case-meta-tag">Android</span>
+            <span class="case-meta-tag">Bluetooth</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- All Writing -->
+  <!-- Intro -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>All Writing</div>
-      <div class="projects-grid stagger">
-
-        <!-- Article: Reverse-Engineering My Motorcycle's Bluetooth -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">01</div>
-            <div class="project-title">I Reverse-Engineered My Motorcycle's Bluetooth Protocol to Put Google Maps on the Dashboard</div>
-            <div class="project-subtitle">Jun 2026 &middot; 4 min read</div>
-            <p class="project-desc">How I reverse-engineered my motorcycle's Bluetooth instrument-cluster protocol with a GATT walk, JADX, and Frida, then built REDLINE, an Android app for it.</p>
-            <div class="project-tags">
-              <span class="project-tag">Reverse Engineering</span>
-              <span class="project-tag">Android</span>
-              <span class="project-tag">Bluetooth</span>
-            </div>
-            <div class="project-links">
-              <a href="reverse-engineering-my-motorcycle-bluetooth.html" class="project-link" aria-label="Read article: I Reverse-Engineered My Motorcycle's Bluetooth Protocol to Put Google Maps on the Dashboard">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Article: Verifying AI UI Against Figma -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">02</div>
-            <div class="project-title">Stop Trusting &lsquo;Looks About Right&rsquo;: Verifying AI UI Against Figma</div>
-            <div class="project-subtitle">Jun 2026 &middot; 6 min read</div>
-            <p class="project-desc">How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.</p>
-            <div class="project-tags">
-              <span class="project-tag">Figma</span>
-              <span class="project-tag">AI Agents</span>
-              <span class="project-tag">Tooling</span>
-              <span class="project-tag">MCP</span>
-            </div>
-            <div class="project-links">
-              <a href="verifying-ai-ui-against-figma.html" class="project-link" aria-label="Read article: Stop Trusting Looks About Right: Verifying AI UI Against Figma">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Article: CRA to Next.js -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">03</div>
-            <div class="project-title">How I Migrated a Production App from CRA to Next.js</div>
-            <div class="project-subtitle">Feb 2026 &middot; 10 min read</div>
-            <p class="project-desc">A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.</p>
-            <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">React</span>
-              <span class="project-tag">Performance</span>
-              <span class="project-tag">Migration</span>
-            </div>
-            <div class="project-links">
-              <a href="cra-to-nextjs-migration.html" class="project-link" aria-label="Read article: How I Migrated a Production App from CRA to Next.js">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Article: The Case Against SPAs -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="opinion">Opinion</span>
-            <div class="project-number">04</div>
-            <div class="project-title">The Case Against SPAs in 2026</div>
-            <div class="project-subtitle">Feb 2026 &middot; 8 min read</div>
-            <p class="project-desc">I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction, and why most websites shouldn't be SPAs.</p>
-            <div class="project-tags">
-              <span class="project-tag">Architecture</span>
-              <span class="project-tag">Performance</span>
-              <span class="project-tag">Opinion</span>
-            </div>
-            <div class="project-links">
-              <a href="the-case-against-spas.html" class="project-link" aria-label="Read article: The Case Against SPAs in 2026">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Case Study: TradersConnect Rework -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="case-study">Case Study</span>
-            <div class="project-number">05</div>
-            <div class="project-title">What Happens When You Drop the Framework</div>
-            <div class="project-subtitle">Feb 2026 &middot; 7 min read</div>
-            <p class="project-desc">Performance audit and frontend rework of TradersConnect's website: taking Lighthouse from 67 to 100, GTmetrix from C to A, and fully loaded time from 3.3s to 1.0s. Pure HTML/CSS, zero frameworks.</p>
-            <div class="project-tags">
-              <span class="project-tag">Performance</span>
-              <span class="project-tag">Core Web Vitals</span>
-              <span class="project-tag">Case Study</span>
-            </div>
-            <div class="project-links">
-              <a href="tradersconnect-rework.html" class="project-link" aria-label="Read case study: What Happens When You Drop the Framework">Read Case Study &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Article: AI Workflow -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">06</div>
-            <div class="project-title">How I Use AI Without Writing Garbage Code</div>
-            <div class="project-subtitle">Feb 2026 &middot; Updated May 2026 &middot; 7 min read</div>
-            <p class="project-desc">AI is a multiplier, not a replacement. A practical workflow for getting speed from AI tools without sacrificing code quality, from exploration to commit.</p>
-            <div class="project-tags">
-              <span class="project-tag">AI</span>
-              <span class="project-tag">Workflow</span>
-              <span class="project-tag">Engineering</span>
-            </div>
-            <div class="project-links">
-              <a href="ai-workflow.html" class="project-link" aria-label="Read article: How I Use AI Without Writing Garbage Code">Read Article &rarr;</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <p class="case-text fade-in">My motorcycle has a Bluetooth instrument cluster. It pairs with the manufacturer's phone app and shows turn-by-turn navigation right on the dash, which sounds great until you actually use it. The nav is routed through a maps provider I don't love, the app is clunky, and there's no way to extend any of it.</p>
+      <p class="case-text fade-in">I kept thinking: it's just my bike talking to my phone over Bluetooth. How locked down can it really be? So one weekend I decided to find out, and a few weeks later I had Google Maps navigation running on the cluster through an app I wrote myself.</p>
+      <p class="case-text fade-in">Here's how that went.</p>
     </div>
   </section>
+
+  <!-- 01 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>There Are No Docs</div>
+      <p class="case-text fade-in">Of course there aren't. It's a proprietary protocol, and the only reference that exists is the manufacturer's own app, in compiled form. So step one was just watching.</p>
+      <p class="case-text fade-in">I started with a <code>GATT</code> walk on the live bike, which is the Bluetooth equivalent of knocking on every door to see what's there. The cluster exposes one vendor service with two characteristics: one the phone writes to, one the bike sends notifications back on. That's the entire conversation surface.</p>
+      <p class="case-text fade-in">Then I captured the actual bytes going across. Android can log every Bluetooth packet through its HCI snoop log, so I paired the phone with the bike, rode around, and pulled the capture. Now I had real traffic, and absolutely no idea what any of it meant.</p>
+    </div>
+  </section>
+
+  <!-- 02 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>Reading the App to Read the Protocol</div>
+      <p class="case-text fade-in">You can stare at hex forever and still guess wrong. The faster path was the app itself. I pulled the APK, ran it through <code>JADX</code> to decompile it, and got something close to readable source. Most of the class names weren't even obfuscated, which was a gift.</p>
+      <p class="case-text fade-in">From there it was cross-referencing: take a message I saw on the wire, find the code that builds it, and work out what each byte is. <code>Frida</code> helped a lot here. It lets you hook a running app and watch functions get called with their real arguments, so I could catch the exact moment the app turned "next turn is a left in 200m" into bytes and shipped them to the bike.</p>
+      <p class="case-text fade-in">Slowly the shape came out. Every message is exactly 30 bytes: a fixed header byte, an ASCII character for the message type, a body, a checksum, and a terminator. I confirmed the checksum the right way, by finding the function that computes it in the decompiled source, instead of reverse-guessing it from samples. The bike turned out to be response-driven too. It sends nothing until the phone writes to it first, which is why a passive listener captures total silence and had me convinced the thing was dead the first time I tried.</p>
+    </div>
+  </section>
+
+  <!-- 03 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Being Wrong, on the Record</div>
+      <p class="case-text fade-in">The part I'm actually proud of isn't the protocol. It's how often I was wrong along the way and caught it.</p>
+      <p class="case-text fade-in">Early on, a Bluetooth analyzer confidently labeled the bike's characteristics as a known digital-key security spec. I almost wrote that down as fact. It was just the tool pattern-matching on a UUID and guessing. The real thing was a plain vendor service with nothing fancy about it.</p>
+      <p class="case-text fade-in">I also assumed for a while that the bike had its own SIM and was quietly phoning telemetry home to the manufacturer's cloud, which shaped a whole chunk of my thinking about where data came from. Then I actually checked the hardware and the spec sheet. No SIM. The bike talks to nothing but the paired phone. That one assumption had been steering me wrong for days.</p>
+      <p class="case-text fade-in">So I started keeping a running log of every claim: what I assumed, what turned out to be true, and what evidence corrected it. Reverse engineering is mostly the discipline of not believing yourself too early.</p>
+    </div>
+  </section>
+
+  <!-- 04 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Then I Built the App</div>
+      <p class="case-text fade-in">Once the protocol was understood, the fun part. REDLINE is an Android app in Kotlin and Jetpack Compose. It intercepts Google Maps turn-by-turn notifications, encodes each maneuver into the cluster's frame format, and writes it over Bluetooth, so the dash shows Google's directions instead of the stock app's. On top of that it reads the telemetry the bike emits and turns it into a live dashboard, records every ride with stats and a speed graph, exports trips, and renders a clock to the cluster when nav is idle.</p>
+      <p class="case-text fade-in">It's about 14k lines, 205 tests, and runs entirely on the phone with no account and no cloud. The same frame inspector I used to reverse the protocol ships inside the app, because the work isn't really finished.</p>
+    </div>
+  </section>
+
+  <!-- 05 -->
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>What It Taught Me</div>
+      <p class="case-text fade-in">The protocol was never the hard part. The hard part was staying honest: treating the analyzer's label as a hypothesis, checking the hardware instead of trusting the spec in my head, writing down the wrong turns so I wouldn't repeat them. That habit has quietly made me better at regular software work too, where the bug is almost never where you first assume it is.</p>
+      <p class="case-text fade-in">If you want the full breakdown, the frame formats, the tooling, and the walked-back assumptions, it's all written up here: <a href="https://www.arjunp.pro/projects/suzuki-connect-re.html">https://www.arjunp.pro/projects/suzuki-connect-re.html</a></p>
+    </div>
+  </section>
+
+  <!-- Bottom nav -->
+  <div class="project-nav">
+    <div class="project-nav-inner">
+      <a href="../writing/" class="project-nav-link">
+        <span class="project-nav-label">&larr; Back</span>
+        <span class="project-nav-title">All Writing</span>
+      </a>
+    </div>
+  </div>
 
 </main>
 
