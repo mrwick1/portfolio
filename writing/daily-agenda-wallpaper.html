@@ -240,7 +240,7 @@
       <p class="case-text fade-in">The naive version is a text file dumped onto a solid background with an image tool. I've done that before and it always looks like a text file dumped onto a background. If it was going to live behind everything I do all day, I wanted it to actually look designed: typographic hierarchy, a real calendar, art. So I set a higher bar and worked backwards from it.</p>
       <figure class="case-figure fade-in">
         <img src="../assets/images/daily-agenda-wallpaper.webp" alt="The rendered daily-agenda wallpaper: a large date and day of week, a numbered task list, a rotating quote, three tinted art panels, and a full month calendar with today highlighted, all in an electric-blue poster layout.">
-        <figcaption>The generated poster: today's date, a numbered task list, a rotating quote, and a month calendar, regenerated at login and every 30 minutes.</figcaption>
+        <figcaption>The generated poster: today's date, a numbered task list, a rotating quote, and a month calendar, regenerated at login and every 10 minutes.</figcaption>
       </figure>
     </div>
   </section>
@@ -265,8 +265,8 @@
       <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Wiring It Into the Desktop</div>
       <p class="case-text fade-in">Rendering a PNG is half the job; the other half is getting it onto the screen and keeping it there. The wallpaper daemon happily sets any image on a given output. The catch: my existing cycler was already rotating wallpapers on <em>both</em> monitors, so it would cheerfully overwrite my freshly-rendered agenda within minutes.</p>
       <p class="case-text fade-in">The fix was to teach the cycler to skip one output, a <code>SKIP_MONITORS</code> setting for the laptop panel, so the agenda owns that screen while the external monitor keeps its rotation. Then a single line in the Hyprland config renders at login and refreshes on a timer:</p>
-<pre><code>exec-once = bash -c 'while :; do task-wallpaper; sleep 1800; done'</code></pre>
-      <p class="case-text fade-in">I deliberately did <em>not</em> reach for a systemd user timer here, even though it's the "correct" tool for periodic jobs. A timer wouldn't inherit the Wayland session environment my setup exposes, so it couldn't talk to the compositor. A plain loop inside the Hyprland session already has everything it needs. Every 30 minutes it re-reads the task file, re-rolls the art, and refreshes the quote, which also means edits to my task list show up on their own without me lifting a finger.</p>
+<pre><code>exec-once = bash -c 'while :; do task-wallpaper; sleep 600; done'</code></pre>
+      <p class="case-text fade-in">I deliberately did <em>not</em> reach for a systemd user timer here, even though it's the "correct" tool for periodic jobs. A timer wouldn't inherit the Wayland session environment my setup exposes, so it couldn't talk to the compositor. A plain loop inside the Hyprland session already has everything it needs. Every 10 minutes it re-reads the task file, re-rolls the art, and refreshes the quote, which also means edits to my task list show up on their own without me lifting a finger.</p>
     </div>
   </section>
 
