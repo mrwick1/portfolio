@@ -1383,11 +1383,90 @@
           </div>
         </div>
 
+        <!-- Voicebot (company project, generalized, proprietary) -->
+        <div class="project-card fade-in">
+          <div class="project-preview">
+            <svg viewBox="0 0 800 450" role="img" aria-label="Voicebot: abstract voice-pipeline waveform" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
+              <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">VOICE AGENT</text>
+              <line x1="48" y1="225" x2="752" y2="225" stroke="var(--border)" stroke-width="1"/>
+              <polyline fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="48,225 74,205 100,260 126,170 152,245 178,150 204,285 230,190 256,235 282,135 308,300 334,210 360,240 386,160 412,270 438,185 464,232 490,120 516,305 542,205 568,245 594,165 620,262 646,195 672,238 698,150 724,282 752,225"/>
+              <text x="48" y="400" font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="2" fill="var(--fg-tertiary)">SPEECH &#8594; STT &#8594; LLM &#8594; TTS &#8594; SPEECH</text>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div class="project-number">04</div>
+            <div class="project-title">Voicebot</div>
+            <div class="project-subtitle">Multi-tenant platform for AI-powered phone agents</div>
+            <p class="project-desc">A production voice-AI platform I built end-to-end as the sole engineer: operators configure AI phone agents that place and answer real calls over SIP, driven by a real-time STT&nbsp;&rarr;&nbsp;LLM&nbsp;&rarr;&nbsp;TTS pipeline with a RAG knowledge base and per-call transcripts, dispositions, and latency metrics. Company project: details generalized, no client data.</p>
+            <ul class="project-features">
+              <li>Real-time voice pipeline tuned for human turn-taking latency</li>
+              <li>Inbound &amp; outbound SIP calling per tenant</li>
+              <li>RAG knowledge base for grounded, tenant-specific answers</li>
+              <li>Post-call review: transcripts, dispositions, latency metrics</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">LiveKit</span>
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">Redis</span>
+            </div>
+            <div class="project-links">
+              <a href="./projects/voicebot.html" class="project-link" aria-label="Case study for Voicebot">Case Study &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- EdTech Assessment Platform (client project, generalized, proprietary) -->
+        <div class="project-card fade-in">
+          <div class="project-preview">
+            <svg viewBox="0 0 800 450" role="img" aria-label="EdTech platform: abstract scan-to-AI-score pipeline" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
+              <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">EDTECH PLATFORM</text>
+              <rect x="120" y="150" width="170" height="220" rx="8" fill="none" stroke="var(--accent)" stroke-width="3"/>
+              <line x1="150" y1="192" x2="260" y2="192" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+              <line x1="150" y1="222" x2="260" y2="222" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+              <line x1="150" y1="252" x2="240" y2="252" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+              <line x1="150" y1="282" x2="260" y2="282" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+              <line x1="150" y1="312" x2="215" y2="312" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
+              <line x1="320" y1="260" x2="430" y2="260" stroke="var(--accent)" stroke-width="3"/>
+              <polygon points="446,260 428,251 428,269" fill="var(--accent)"/>
+              <circle cx="580" cy="260" r="88" fill="none" stroke="var(--accent)" stroke-width="3"/>
+              <text x="580" y="252" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="700" fill="var(--fg)">AI</text>
+              <text x="580" y="292" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" letter-spacing="2" fill="var(--fg-tertiary)">EVALUATE</text>
+              <text x="48" y="415" font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="2" fill="var(--fg-tertiary)">SCAN &#8594; OCR &#8594; AI SCORE &#8594; REVIEW</text>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div class="project-number">05</div>
+            <div class="project-title">EdTech Assessment Platform</div>
+            <div class="project-subtitle">Web + mobile + AI-graded assessments for K-12 schools</div>
+            <p class="project-desc">A full-stack EdTech platform I led as lead engineer across three coordinated apps: a React admin/supervisor web app, an Expo + React Native mobile app with on-device answer-sheet scanning, and a FastAPI microservice that grades scanned answer sheets with Claude vision (OCR, scoring, async callback), all on a shared Supabase backend. Client project: details generalized, no client data.</p>
+            <ul class="project-features">
+              <li>Three apps (web, mobile, AI service) on one shared Supabase backend</li>
+              <li>On-device camera document scanning with OpenCV cropping</li>
+              <li>Async AI evaluation: Claude-vision OCR + scoring via callback</li>
+              <li>Human-in-the-loop supervisor review, score override, reports</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">Supabase</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">Claude</span>
+              <span class="project-tag">Expo</span>
+            </div>
+            <div class="project-links">
+              <a href="./projects/edtech-platform.html" class="project-link" aria-label="Case study for the EdTech Assessment Platform">Case Study &rarr;</a>
+            </div>
+          </div>
+        </div>
+
         <!-- Librynt -->
         <div class="project-card fade-in">
           <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/librynt-800w.webp 800w, ./assets/images/projects/librynt-1200w.webp 1200w, ./assets/images/projects/librynt.webp 1723w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/librynt.png" alt="Librynt: cloud-based library management platform" loading="lazy"></picture></div>
           <div class="project-body">
-            <div class="project-number">04</div>
+            <div class="project-number">06</div>
             <div class="project-title">Librynt</div>
             <div class="project-subtitle">Cloud-based library management platform</div>
             <p class="project-desc">A multi-tenant library management platform that handles book catalogs, circulation tracking, automated fines, reports, and bulk import. Built with Go, React, and PostgreSQL, designed to work for any library, from school collections to public archives.</p>
@@ -1416,7 +1495,7 @@
         <div class="project-card fade-in">
           <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/sketchflow-800w.webp 800w, ./assets/images/projects/sketchflow-1200w.webp 1200w, ./assets/images/projects/sketchflow.webp 2531w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/sketchflow.png" alt="SketchFlow: canvas drawing and whiteboard app" loading="lazy"></picture></div>
           <div class="project-body">
-            <div class="project-number">05</div>
+            <div class="project-number">07</div>
             <div class="project-title">SketchFlow</div>
             <div class="project-subtitle">Canvas drawing &amp; whiteboard app</div>
             <p class="project-desc">A freeform drawing and whiteboard tool combining Rough.js hand-drawn aesthetics with perfect-freehand pressure-sensitive strokes. Supports shapes, freehand, eraser, undo/redo, and export to PNG.</p>
@@ -1446,7 +1525,7 @@
         <div class="project-card fade-in">
           <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/pulse-analytics-800w.webp 800w, ./assets/images/projects/pulse-analytics-1200w.webp 1200w, ./assets/images/projects/pulse-analytics.webp 2526w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/pulse-analytics.png" alt="Pulse Analytics: multi-variant analytics dashboard" loading="lazy"></picture></div>
           <div class="project-body">
-            <div class="project-number">06</div>
+            <div class="project-number">08</div>
             <div class="project-title">Pulse Analytics</div>
             <div class="project-subtitle">Multi-variant analytics dashboard</div>
             <p class="project-desc">An analytics dashboard built with Next.js and Mantine UI featuring interactive Recharts visualizations, NextAuth-powered authentication, and multiple dashboard layout variants for different data views.</p>
@@ -1638,14 +1717,30 @@
     /* ── Skills Data ────────────────────────── */
 
     var skills = [
+      // Frontend
       'React', 'Next.js', 'TypeScript', 'Redux Toolkit',
       'TanStack Query', 'Zustand', 'Tailwind CSS', 'shadcn/ui',
-      'MUI', 'Mantine', 'Node.js', 'Express',
-      'PostgreSQL', 'GraphQL', 'WordPress', 'Drupal', 'Vitest', 'Jest',
-      'React Testing Library', 'Cypress', 'Git', 'Docker',
-      'Vite', 'Webpack', 'Turborepo', 'Rollup',
-      'Changesets', 'GitHub Actions', 'Claude Code', 'Cursor',
-      'GitHub Copilot', 'Vercel AI SDK'
+      'MUI', 'Mantine',
+      // Mobile
+      'React Native', 'Expo',
+      // Backend & languages
+      'Node.js', 'Express', 'Python', 'FastAPI', 'Go',
+      'PostgreSQL', 'Supabase', 'Redis', 'GraphQL',
+      // AI & voice
+      'LiveKit', 'RAG', 'Vector DB', 'MCP', 'Vercel AI SDK',
+      // Native mobile & reverse engineering
+      'Kotlin', 'Jetpack Compose', 'Android', 'BLE', 'Frida',
+      // Vision & media
+      'OpenCV',
+      // CMS
+      'WordPress', 'Drupal',
+      // Testing
+      'Vitest', 'Jest', 'React Testing Library', 'Cypress', 'Playwright',
+      // Tooling & build
+      'Git', 'Docker', 'SQLite', 'Vite', 'Webpack', 'Turborepo',
+      'Rollup', 'Changesets', 'GitHub Actions',
+      // AI dev tools
+      'Claude Code', 'Cursor', 'GitHub Copilot'
     ];
 
     var grid = document.getElementById('skillsGrid');
