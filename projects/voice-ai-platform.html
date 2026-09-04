@@ -188,7 +188,7 @@
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
       <p class="case-text fade-in">This is a multi-tenant platform for building and running AI-powered phone agents. Operators configure an agent once (its persona, script, knowledge, and behaviour), and the platform then places and answers real phone calls on its behalf, holding a natural spoken conversation with the person on the other end and recording everything for later review.</p>
       <p class="case-text fade-in">Under each call is a real-time voice pipeline: speech is transcribed to text, the text is handled by an LLM that reasons over the agent's configuration and knowledge base, and the reply is spoken back with a text-to-speech voice, all within the tight latency budget a human conversation demands. Both inbound and outbound calls run over SIP telephony, and every call is stored with its transcript, outcome, and latency metrics for post-call analysis.</p>
-      <p class="case-text fade-in">I built the whole system as the sole engineer: the API, the voice-agent worker, the retrieval layer, the admin dashboard, and the infrastructure that ties them together. That meant owning every decision from telephony and real-time media all the way up to the operator-facing UI.</p>
+      <p class="case-text fade-in">I built the whole system as the sole engineer over six months: the API, the voice-agent worker, the retrieval layer, the admin dashboard, and the infrastructure that ties them together. The system spans 1,782 tracked files and roughly 150,000 lines of Python. That meant owning every decision from telephony and real-time media all the way up to the operator-facing UI.</p>
     </div>
   </section>
   <section class="case-section">
@@ -201,6 +201,9 @@
         <div class="feature-card fade-in"><div class="feature-card-title">Knowledge Base (RAG)</div><div class="feature-card-desc">Documents are ingested, embedded, and retrieved at conversation time so agents answer from grounded, tenant-specific knowledge instead of guessing.</div></div>
         <div class="feature-card fade-in"><div class="feature-card-title">Post-Call Review</div><div class="feature-card-desc">Every call stores its full transcript, disposition, and per-stage latency metrics, giving operators a clear record to audit and improve agents.</div></div>
         <div class="feature-card fade-in"><div class="feature-card-title">Multi-Tenant Isolation</div><div class="feature-card-desc">Each client's agents, data, and knowledge live in their own isolated workspace on shared infrastructure, keeping tenants cleanly separated.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Conversation Flow Builder</div><div class="feature-card-desc">A visual conversation-flow builder (&ldquo;journeys&rdquo;) built on React Flow that lets operators map out conversational paths.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Test &amp; Evaluation Harness</div><div class="feature-card-desc">A dedicated evaluation and load-test harness for dry-run campaigns, automated conversation grading, and comparing STT accuracy.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Call Quality &amp; Barge-In</div><div class="feature-card-desc">Audio handling includes background-noise suppression and speech-overlap handling, so callers can interrupt the agent naturally.</div></div>
       </div>
     </div>
   </section>
@@ -208,9 +211,11 @@
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Technical Architecture</div>
       <p class="case-text fade-in">The platform is split into focused services rather than one monolith. A FastAPI core API owns the domain (tenants, agents, campaigns, calls, and auth) and is the single source of truth the dashboard talks to. A separate voice-agent worker, built on LiveKit's agents framework, is where each live call actually runs: it bridges the SIP audio, drives the STT &rarr; LLM &rarr; TTS loop, and streams speech in both directions.</p>
-      <p class="case-text fade-in">Knowledge lives behind its own retrieval service. Documents are chunked, embedded, and stored in a vector database, and the agent queries it mid-conversation to ground its answers. Keeping retrieval as a distinct service meant the ingestion side could evolve independently of the latency-sensitive call path.</p>
+      <p class="case-text fade-in">Knowledge lives behind its own retrieval service. Documents are chunked, embedded, and stored in a Qdrant vector database, and the agent queries it mid-conversation to ground its answers. Keeping retrieval as a distinct service meant the ingestion side could evolve independently of the latency-sensitive call path.</p>
       <p class="case-text fade-in">Background and cross-service work (ingestion jobs, campaign dialling, and other async tasks) runs through a Redis-backed task queue, so the real-time call path never blocks on slow work. PostgreSQL is the durable store for tenants, agents, and call records; the dashboard is a Next.js app for the internal operators.</p>
-      <p class="case-text fade-in">The recurring design tension across all of it was latency. A phone conversation is unforgiving: too much delay between someone finishing a sentence and the agent replying and it stops feeling human. Much of the engineering went into streaming each stage of the pipeline and measuring per-stage latency so regressions were visible instead of anecdotal.</p>
+      <p class="case-text fade-in">The operator experience is built into a Next.js dashboard (the console is 31 routes and 107 components) featuring a visual conversation-flow builder (&ldquo;journeys&rdquo;) powered by React Flow, letting operators map out complex call journeys. It also handles SIP trunk administration, inbound number routing, campaign management, call analytics charts built with Recharts, and full agent version history, so operators can safely roll back changes.</p>
+      <p class="case-text fade-in">A dedicated Python test harness sits alongside the core services to validate changes before they hit production, and the backend carries 2,585 tests. It runs automated load tests, SIP trunk ramp tests, dry-run campaigns that exercise routing without placing real calls, and an automated conversation evaluation and grading harness that compares speech-to-text accuracy.</p>
+      <p class="case-text fade-in">The recurring design tension across all of it was latency. A phone conversation is unforgiving: too much delay between someone finishing a sentence and the agent replying and it stops feeling human. Much of the engineering went into streaming each stage of the pipeline and measuring per-stage latency so regressions were visible instead of anecdotal. The pipeline is tuned to a 1.3s p50 round-trip. Discarded speech went from 4.37% to 0% through voice-activity-detection and endpointing tuning, and routing speech-to-text regionally cut 235ms to 118ms.</p>
     </div>
   </section>
   <section class="case-section">
@@ -221,10 +226,12 @@
         <div class="tech-item fade-in"><span class="tech-name">FastAPI</span><span class="tech-role">Core &amp; retrieval APIs</span></div>
         <div class="tech-item fade-in"><span class="tech-name">LiveKit Agents</span><span class="tech-role">Real-time voice worker</span></div>
         <div class="tech-item fade-in"><span class="tech-name">SIP</span><span class="tech-role">Inbound/outbound telephony</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Vector DB</span><span class="tech-role">RAG retrieval</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Redis + task queue</span><span class="tech-role">Async / background jobs</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Qdrant</span><span class="tech-role">Vector database</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">arq on Redis</span><span class="tech-role">Task queue</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Cartesia &amp; ElevenLabs</span><span class="tech-role">Text-to-speech</span></div>
         <div class="tech-item fade-in"><span class="tech-name">PostgreSQL</span><span class="tech-role">Durable data store</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Next.js + TypeScript</span><span class="tech-role">Operator dashboard</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">React Flow</span><span class="tech-role">Visual flow builder</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Docker</span><span class="tech-role">Infra &amp; deployment</span></div>
       </div>
     </div>
