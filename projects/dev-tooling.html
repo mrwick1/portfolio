@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Voice AI Platform: Case Study | Arjun.</title>
-<meta name="description" content="A multi-tenant platform for AI-powered phone agents: real-time STT to LLM to TTS voice pipeline over SIP, RAG knowledge base, and post-call analytics. Built solo with Python, FastAPI, LiveKit, and Next.js.">
-<link rel="canonical" href="https://www.arjunp.pro/projects/voice-ai-platform.html">
+<title>Developer Tooling: Case Study | Arjun.</title>
+<meta name="description" content="Internal tools built to remove friction from daily engineering work.">
+<link rel="canonical" href="https://www.arjunp.pro/projects/dev-tooling.html">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.arjunp.pro/projects/voice-ai-platform.html">
-<meta property="og:title" content="Voice AI Platform">
-<meta property="og:description" content="A multi-tenant platform for AI-powered phone agents: real-time STT to LLM to TTS voice pipeline over SIP, RAG knowledge base, and post-call analytics. Built solo.">
-<meta property="og:image" content="https://www.arjunp.pro/assets/images/og/voice-ai-platform.webp">
+<meta property="og:url" content="https://www.arjunp.pro/projects/dev-tooling.html">
+<meta property="og:title" content="Developer Tooling">
+<meta property="og:description" content="Internal tools built to remove friction from daily engineering work.">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Arjun P">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Voice AI Platform">
-<meta name="twitter:description" content="A multi-tenant platform for AI-powered phone agents: real-time voice pipeline over SIP, RAG knowledge base, and post-call analytics. Built solo.">
-<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og/voice-ai-platform.webp">
+<meta name="twitter:title" content="Developer Tooling">
+<meta name="twitter:description" content="Internal tools built to remove friction from daily engineering work.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.png">
 <meta name="twitter:creator" content="@03arjunkr">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -56,6 +56,9 @@
   .nav-link:hover::after { width: 100%; }
   .theme-toggle { width: 32px; height: 32px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--fg); transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease); }
   .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .theme-icon { display: none; }
+  [data-theme="light"] .theme-icon--sun { display: block; }
+  [data-theme="dark"] .theme-icon--moon { display: block; }
   .page { position: relative; z-index: 1; min-height: 100vh; }
   .case-hero { padding: calc(120px + 72px) var(--grid-margin) var(--sp-10); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); }
   .case-hero-inner { max-width: 1200px; margin: 0 auto; }
@@ -69,25 +72,43 @@
   .case-meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
   .case-meta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
   .case-meta-value { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
-  .case-note { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: var(--fg-tertiary); margin-top: var(--sp-5); max-width: 720px; padding: var(--sp-4); border: 1px dashed var(--border); }
-  .case-screenshot { margin: 0 var(--grid-margin); margin-left: calc(var(--grid-margin) + var(--sidebar-width)); }
-  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-  .case-screenshot-inner svg { width: 100%; height: 100%; display: block; }
+  .case-buttons { display: flex; gap: var(--sp-4); margin-top: var(--sp-5); }
+  .case-btn { display: inline-flex; align-items: center; gap: var(--sp-2); font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; padding: var(--sp-3) var(--sp-5); border: 1px solid var(--border); color: var(--fg); transition: all var(--duration) var(--ease); }
+  .case-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .case-btn--primary { background-color: var(--accent); border-color: var(--accent); color: var(--white); }
+  .case-btn--primary:hover { opacity: 0.85; color: var(--white); }
   .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .case-section-inner { max-width: 1200px; margin: 0 auto; }
   .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
   .case-section-number { color: var(--accent); margin-right: var(--sp-3); font-family: var(--font-mono); font-weight: 500; }
   .case-text { font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--fg-secondary); max-width: 800px; margin-bottom: var(--sp-5); }
   .case-text:last-child { margin-bottom: 0; }
+  .case-text strong { color: var(--fg); font-weight: 600; }
+  .case-text code { font-family: var(--font-mono); font-size: 14px; background-color: var(--surface); padding: 1px 5px; border-radius: 2px; color: var(--fg); }
   .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-5); }
   .feature-card { padding: var(--sp-5); border: 1px solid var(--border-faint); transition: transform var(--duration) var(--ease); }
   .feature-card:hover { transform: translateY(-2px); }
   .feature-card-title { font-family: var(--font-body); font-size: 16px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-2); }
   .feature-card-desc { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); }
+  .code-block { font-family: var(--font-mono); font-size: 13.5px; line-height: 1.7; background-color: var(--surface); border: 1px solid var(--border-faint); padding: var(--sp-5); margin-bottom: var(--sp-5); overflow-x: auto; max-width: 800px; color: var(--fg); white-space: pre; }
+  .code-cap { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin: calc(-1 * var(--sp-3)) 0 var(--sp-5); }
   .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0; }
   .tech-item { display: flex; flex-direction: column; gap: var(--sp-1); padding: var(--sp-4) 0; border-bottom: 1px solid var(--border-faint); }
   .tech-name { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
   .tech-role { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); }
+  .stat-row { display: flex; gap: var(--sp-8); flex-wrap: wrap; margin-bottom: var(--sp-7); }
+  .stat { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .stat-num { font-family: var(--font-body); font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--fg); line-height: 1; }
+  .stat-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+  /* Architecture flow diagram */
+  .arch { max-width: 820px; display: flex; flex-direction: column; gap: 0; margin-bottom: var(--sp-6); }
+  .arch-box { border: 1px solid var(--border); background: var(--surface); padding: var(--sp-4) var(--sp-5); }
+  .arch-box-title { font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--fg); }
+  .arch-box-sub { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin-top: 2px; }
+  .arch-arrow { display: flex; flex-direction: column; align-items: center; padding: var(--sp-2) 0; color: var(--fg-tertiary); }
+  .arch-arrow-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 2px; }
+  .arch-arrow svg { display: block; }
+  .arch-box--accent { border-left: 2px solid var(--accent); }
   .project-nav { display: flex; justify-content: space-between; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; }
   .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); }
@@ -105,7 +126,7 @@
   @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
   @media (max-width: 768px) {
     :root { --grid-margin: 24px; --sidebar-width: 0px; }
-    .case-hero, .case-section, .project-nav, .footer, .case-screenshot { padding-left: var(--grid-margin); margin-left: 0; }
+    .case-hero, .case-section, .project-nav, .footer { padding-left: var(--grid-margin); }
     .case-meta { flex-direction: column; gap: var(--sp-4); }
     .features-grid { grid-template-columns: 1fr; }
     .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
@@ -113,7 +134,7 @@
     .footer { flex-direction: column; gap: var(--sp-2); align-items: flex-start; }
   }
   @media (max-width: 540px) { .nav-links .nav-link-text { display: none; } }
-  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .project-nav-title { font-size: 16px; } }
+  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .case-buttons { flex-direction: column; } .project-nav-title { font-size: 16px; } }
   @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
   ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
   /* ── Mobile hamburger nav ───────────────────── */
@@ -139,8 +160,8 @@
 {"@type":"BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"name":"Home","item":"https://www.arjunp.pro/"},
 {"@type":"ListItem","position":2,"name":"Projects","item":"https://www.arjunp.pro/#projects"},
-{"@type":"ListItem","position":3,"name":"Voice AI Platform","item":"https://www.arjunp.pro/projects/voice-ai-platform.html"}]},
-{"@type":"CreativeWork","name":"Voice AI Platform","headline":"Voice AI Platform: Case Study","description":"A multi-tenant platform for AI-powered phone agents: real-time STT to LLM to TTS voice pipeline over SIP, RAG knowledge base, and post-call analytics. Built solo.","url":"https://www.arjunp.pro/projects/voice-ai-platform.html","author":{"@type":"Person","name":"Arjun P","url":"https://www.arjunp.pro/"}}
+{"@type":"ListItem","position":3,"name":"Developer Tooling","item":"https://www.arjunp.pro/projects/dev-tooling.html"}]},
+{"@type":"CreativeWork","name":"Developer Tooling","headline":"Developer Tooling: Case Study","description":"Internal tools built to remove friction from daily engineering work.","url":"https://www.arjunp.pro/projects/dev-tooling.html","image":"https://www.arjunp.pro/assets/images/og-image.png","author":{"@type":"Person","name":"Arjun P","url":"https://www.arjunp.pro/"}}
 ]}
 </script>
 </head>
@@ -156,95 +177,85 @@
     <li><a href="../index.html#education" class="nav-link"><span class="nav-link-text">Education</span></a></li>
     <li><a href="../index.html#writing" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
     <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
-    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
+    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle">
+      <svg class="theme-icon theme-icon--sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      <svg class="theme-icon theme-icon--moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button></li>
   </ul>
 </nav>
 <main class="page">
   <section class="case-hero">
     <div class="case-hero-inner fade-in">
-      <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="../index.html#projects">Projects</a><span class="breadcrumb-sep">/</span><span>Voice AI Platform</span></div>
-      <h1 class="case-title">Voice AI Platform</h1>
-      <p class="case-subtitle">A multi-tenant platform for AI-powered phone agents</p>
+      <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="../index.html#projects">Projects</a><span class="breadcrumb-sep">/</span><span>Developer Tooling</span></div>
+      <h1 class="case-title">Developer Tooling</h1>
+      <p class="case-subtitle">Internal tools built to remove friction from daily engineering work.</p>
       <div class="case-meta">
-        <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Sole Engineer</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">Voice AI Platform</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Python / LiveKit / Next.js</span></div>
-        <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Proprietary &middot; Internal</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Sole Author</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">Internal Developer Tooling</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Python / TypeScript / MCP</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Private &middot; In daily use</span></div>
       </div>
-      <p class="case-note">This is a company project. The write-up is intentionally generalized: no client names, transcripts, internal metrics, or source code are shown. What follows is my own account of the problem, the architecture, and the decisions I made as the sole engineer.</p>
+      
     </div>
   </section>
-  <div class="case-screenshot"><div class="case-screenshot-inner fade-in">
-    <svg viewBox="0 0 800 450" role="img" aria-label="Abstract voice-pipeline waveform: speech in, agent, speech out" xmlns="http://www.w3.org/2000/svg">
-      <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">VOICE AGENT</text>
-      <line x1="48" y1="225" x2="752" y2="225" stroke="var(--border)" stroke-width="1"/>
-      <polyline fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
-        points="48,225 74,205 100,260 126,170 152,245 178,150 204,285 230,190 256,235 282,135 308,300 334,210 360,240 386,160 412,270 438,185 464,232 490,120 516,305 542,205 568,245 594,165 620,262 646,195 672,238 698,150 724,282 752,225"/>
-      <text x="48" y="400" font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="2" fill="var(--fg-tertiary)">SPEECH &#8594; STT &#8594; LLM &#8594; TTS &#8594; SPEECH</text>
-    </svg>
-  </div></div>
+
+  
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
-      <p class="case-text fade-in">This is a multi-tenant platform for building and running AI-powered phone agents. Operators configure an agent once (its persona, script, knowledge, and behaviour), and the platform then places and answers real phone calls on its behalf, holding a natural spoken conversation with the person on the other end and recording everything for later review.</p>
-      <p class="case-text fade-in">Under each call is a real-time voice pipeline: speech is transcribed to text, the text is handled by an LLM that reasons over the agent's configuration and knowledge base, and the reply is spoken back with a text-to-speech voice, all within the tight latency budget a human conversation demands. Both inbound and outbound calls run over SIP telephony, and every call is stored with its transcript, outcome, and latency metrics for post-call analysis.</p>
-      <p class="case-text fade-in">I built the whole system as the sole engineer over six months: the API, the voice-agent worker, the retrieval layer, the admin dashboard, and the infrastructure that ties them together. The system spans 1,782 tracked files and roughly 150,000 lines of Python. That meant owning every decision from telephony and real-time media all the way up to the operator-facing UI.</p>
+      <p class="case-text fade-in">These are three tools I built for myself rather than for a user: a command-line suite for the daily admin of a working day, a self-hosted ticket tracker an AI agent can address directly, and a governor that paces spending across two AI coding budgets. None of them is a product. Each one exists because a chore repeated often enough to be worth deleting.</p>
+      <p class="case-text fade-in">The through-line is the order of operations. In every case the measurement came first and the automation second: the tool started by reporting a number I was guessing at &mdash; hours logged against target, tickets actually open, budget burned this window &mdash; and only once the number was visible did it become obvious what deserved automating. Instrument, then automate. Building it the other way round produces automation that optimises the wrong thing.</p>
+      <p class="case-text fade-in">All three are private, and all three are in daily use. That second fact is the only success measure I trust for a personal tool: not that it was built, but that I still run it months later without thinking about it.</p>
     </div>
   </section>
+
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">02</span>Key Features</div>
       <div class="features-grid">
-        <div class="feature-card fade-in"><div class="feature-card-title">Configurable Agents</div><div class="feature-card-desc">Operators define an agent's persona, conversation flow, and variables through the dashboard, with no code, and the platform runs it live on real calls.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Inbound &amp; Outbound Calling</div><div class="feature-card-desc">Handles both directions over SIP: answering incoming calls and dialling out for campaigns, with call routing to the right agent per tenant.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Real-Time Voice Pipeline</div><div class="feature-card-desc">A streaming STT &rarr; LLM &rarr; TTS loop tuned for low turn-taking latency, so the agent feels like a conversation rather than a form.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Knowledge Base (RAG)</div><div class="feature-card-desc">Documents are ingested, embedded, and retrieved at conversation time so agents answer from grounded, tenant-specific knowledge instead of guessing.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Post-Call Review</div><div class="feature-card-desc">Every call stores its full transcript, disposition, and per-stage latency metrics, giving operators a clear record to audit and improve agents.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Multi-Tenant Isolation</div><div class="feature-card-desc">Each client's agents, data, and knowledge live in their own isolated workspace on shared infrastructure, keeping tenants cleanly separated.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Conversation Flow Builder</div><div class="feature-card-desc">A visual conversation-flow builder (&ldquo;journeys&rdquo;) built on React Flow that lets operators map out conversational paths.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Test &amp; Evaluation Harness</div><div class="feature-card-desc">A dedicated evaluation and load-test harness for dry-run campaigns, automated conversation grading, and comparing STT accuracy.</div></div>
-        <div class="feature-card fade-in"><div class="feature-card-title">Call Quality &amp; Barge-In</div><div class="feature-card-desc">Audio handling includes background-noise suppression and speech-overlap handling, so callers can interrupt the agent naturally.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Tickets, Time and Attendance</div><div class="feature-card-desc">Six commands sit on the PATH and cover the administrative surface of a working day: tickets (create, list, update, comment), time logging (log hours, submit a timesheet), and attendance (clock in, clock out, status). Each is a thin, scriptable wrapper over an interface that otherwise costs a browser tab and several clicks.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">One Daily Snapshot</div><div class="feature-card-desc">A single command answers the four questions worth asking each morning at once: am I clocked in, how do my logged hours compare to target, which tickets are open against me, and what is due today. It replaced the habit of checking four separate systems and mis-remembering one of them.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Deliberately Conservative Scheduling</div><div class="feature-card-desc">The attendance scheduler is opt-in and refuses more often than it acts. It punches only on real working days, skips week-offs, public holidays and booked leave, and declines any punch outside its configured window. An automation that touches an attendance record has to fail closed, so its default answer is no.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Drivable by an Agent</div><div class="feature-card-desc">The suite ships a bundled agent skill, so an AI coding agent runs the same commands through the same interface I do, with no second code path to keep in step. It also self-updates, which is what keeps the version on each machine from quietly diverging.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Tickets over MCP</div><div class="feature-card-desc">A self-hosted instance of an open-source project and issue tracker, paired with a Model Context Protocol server written in TypeScript. An agent reads and writes tickets by number, so planning work and doing it happen in the same place instead of across a browser and an editor.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Budget Pacing Governor</div><div class="feature-card-desc">It watches two AI coding budgets at once: a metered paid one and a free one whose capacity is destroyed at reset rather than banked. It publishes a policy state and a separate appetite signal, ranks the available engines by remaining headroom, and routes bulk work onto free capacity, keeping the metered budget for judgment.</div></div>
       </div>
     </div>
   </section>
+
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Technical Architecture</div>
-      <p class="case-text fade-in">The platform is split into focused services rather than one monolith. A FastAPI core API owns the domain (tenants, agents, campaigns, calls, and auth) and is the single source of truth the dashboard talks to. A separate voice-agent worker, built on LiveKit's agents framework, is where each live call actually runs: it bridges the SIP audio, drives the STT &rarr; LLM &rarr; TTS loop, and streams speech in both directions.</p>
-      <p class="case-text fade-in">Knowledge lives behind its own retrieval service. Documents are chunked, embedded, and stored in a Qdrant vector database, and the agent queries it mid-conversation to ground its answers. Keeping retrieval as a distinct service meant the ingestion side could evolve independently of the latency-sensitive call path.</p>
-      <p class="case-text fade-in">Background and cross-service work (ingestion jobs, campaign dialling, and other async tasks) runs through a Redis-backed task queue, so the real-time call path never blocks on slow work. PostgreSQL is the durable store for tenants, agents, and call records; the dashboard is a Next.js app for the internal operators.</p>
-      <p class="case-text fade-in">The operator experience is built into a Next.js dashboard (the console is 31 routes and 107 components) featuring a visual conversation-flow builder (&ldquo;journeys&rdquo;) powered by React Flow, letting operators map out complex call journeys. It also handles SIP trunk administration, inbound number routing, campaign management, call analytics charts built with Recharts, and full agent version history, so operators can safely roll back changes.</p>
-      <p class="case-text fade-in">A dedicated Python test harness sits alongside the core services to validate changes before they hit production, and the backend carries 2,585 tests. It runs automated load tests, SIP trunk ramp tests, dry-run campaigns that exercise routing without placing real calls, and an automated conversation evaluation and grading harness that compares speech-to-text accuracy.</p>
-      <p class="case-text fade-in">The recurring design tension across all of it was latency. A phone conversation is unforgiving: too much delay between someone finishing a sentence and the agent replying and it stops feeling human. Much of the engineering went into streaming each stage of the pipeline and measuring per-stage latency so regressions were visible instead of anecdotal. The pipeline is tuned to a 1.3s p50 round-trip. Discarded speech went from 4.37% to 0% through voice-activity-detection and endpointing tuning, and routing speech-to-text regionally cut 235ms to 118ms.</p>
+      <p class="case-text fade-in">The command-line suite is Python, spread across a dozen modules behind six entry points that are symlinked onto the PATH. Each command owns one system and shares nothing but a config file, so a change to attendance cannot break time logging. The snapshot command is the only one that reads across all of them, and it degrades to a partial report rather than failing when one upstream is unreachable.</p>
+      <p class="case-text fade-in">The tracker side is two pieces. The tracker itself runs as a <code>systemd</code> service on the same machine that does the work, so there is no network hop and no hosted account to expire. In front of it sits a Model Context Protocol server in TypeScript, with schema validation on every tool it exposes, which is what lets an agent address a ticket by number and get a typed answer instead of scraping a page.</p>
+      <p class="case-text fade-in">The pacing governor is Bash on purpose: it has to run from a shell hook on every prompt, so process startup cost is the binding constraint and a runtime would have been the wrong trade. It is built as separate quota probes per provider, a scoring script that turns those readings into one policy decision, actuators that act on it, a work queue drained whenever an engine goes idle, and per-job telemetry. Its model choices are pinned from measured comparisons rather than reputation, and the measurements are kept in the repository next to the pins so a stale pin is visible.</p>
+      <p class="case-text fade-in">All three repositories are private, so there is nothing to link here. That is a deliberate consequence of what they are: they hold configuration and workflow details for real work, and none of that belongs in public. What is shown above is the architecture, not the source.</p>
     </div>
   </section>
+
   <section class="case-section">
     <div class="case-section-inner">
       <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Tech Stack</div>
       <div class="tech-grid">
-        <div class="tech-item fade-in"><span class="tech-name">Python 3.12</span><span class="tech-role">Backend services</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">FastAPI</span><span class="tech-role">Core &amp; retrieval APIs</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">LiveKit Agents</span><span class="tech-role">Real-time voice worker</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">SIP</span><span class="tech-role">Inbound/outbound telephony</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Qdrant</span><span class="tech-role">Vector database</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">arq on Redis</span><span class="tech-role">Task queue</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Cartesia &amp; ElevenLabs</span><span class="tech-role">Text-to-speech</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">PostgreSQL</span><span class="tech-role">Durable data store</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Next.js + TypeScript</span><span class="tech-role">Operator dashboard</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">React Flow</span><span class="tech-role">Visual flow builder</span></div>
-        <div class="tech-item fade-in"><span class="tech-name">Docker</span><span class="tech-role">Infra &amp; deployment</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Python</span><span class="tech-role">Command-line suite</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">TypeScript</span><span class="tech-role">MCP Server</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Model Context Protocol</span><span class="tech-role">Agent interface</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Bash</span><span class="tech-role">Pacing governor &amp; quota probes</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">systemd</span><span class="tech-role">Self-hosted tracker service</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Zod</span><span class="tech-role">MCP schema validation</span></div>
       </div>
     </div>
   </section>
+
   <div class="project-nav"><div class="project-nav-inner">
-    <a href="dev-tooling.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">Developer Tooling</span></a>
-    <a href="librynt.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Librynt</span></a>
+    <a href="figma-connect.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">figma-connect</span></a>
+    <a href="voice-ai-platform.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Voice AI Platform</span></a>
   </div></div>
 </main>
 <footer class="footer">
   <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. All rights reserved.</div>
   <div class="footer-social">
-    <a href="https://github.com/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
+    <a href="https://git.arjunp.pro/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
     <a href="https://linkedin.com/in/arjunp-software-engineer" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
     <a href="https://twitter.com/03arjunkr" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
@@ -253,16 +264,40 @@
 <script>
 (function(){
   'use strict';
-  var fadeEls=document.querySelectorAll('.fade-in');
-  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}
-  var html=document.documentElement,toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
-  var sunPath='<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-  var moonPath='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-  function setTheme(t){html.setAttribute('data-theme',t);icon.innerHTML=t==='dark'?moonPath:sunPath;try{localStorage.setItem('swiss-theme',t);}catch(e){}}
-  var saved=null;try{saved=localStorage.getItem('swiss-theme');}catch(e){}
-  if(saved){setTheme(saved);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){setTheme('dark');}
-  if(toggle){toggle.addEventListener('click',function(){setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');});}
-  var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
+  var fadeEls = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    fadeEls.forEach(function (el) { observer.observe(el); });
+  } else {
+    fadeEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+  var html = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+  function setTheme(t) {
+    html.setAttribute('data-theme', t);
+    try { localStorage.setItem('swiss-theme', t); } catch (e) { /* silent */ }
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('swiss-theme'); } catch (e) { /* silent */ }
+  if (saved) {
+    setTheme(saved);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme('dark');
+  }
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  }
+  var fy = document.getElementById('footerYear');
+  if (fy) { fy.textContent = String(new Date().getFullYear()); }
 })();
 </script>
 <script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

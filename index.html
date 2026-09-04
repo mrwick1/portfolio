@@ -1386,6 +1386,37 @@
         <!-- Voice AI Platform (company project, generalized, proprietary) -->
         <div class="project-card fade-in">
           <div class="project-preview">
+            <svg viewBox="0 0 800 450" role="img" aria-label="Developer Tooling" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
+              <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">DEV TOOLING</text>
+              <line x1="48" y1="225" x2="752" y2="225" stroke="var(--border)" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div class="project-number">04</div>
+            <div class="project-title">Developer Tooling</div>
+            <div class="project-subtitle">Internal tools for tickets, time, attendance and AI budget</div>
+            <p class="project-desc">Three private tools I built for my own daily work: a Python command-line suite covering tickets, timesheets and attendance behind one daily snapshot; a self-hosted ticket tracker fronted by a TypeScript MCP server, so an AI agent reads and writes tickets by number; and a governor that paces spending across two AI coding budgets, routing bulk work onto free capacity. Each one started as a measurement before it became an automation.</p>
+            <ul class="project-features">
+              <li>Six commands on the PATH for tickets, timesheets and attendance</li>
+              <li>One snapshot: clocked in, hours vs target, open tickets, what is due</li>
+              <li>MCP server so an agent addresses tickets by number, not a browser</li>
+              <li>Budget governor that ranks engines by headroom and routes bulk work</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">MCP</span>
+              <span class="project-tag">Bash</span>
+              <span class="project-tag">Automation</span>
+            </div>
+            <div class="project-links">
+              <a href="./projects/dev-tooling.html" class="project-link" aria-label="Case study for Developer Tooling">Case Study &rarr;</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card fade-in">
+          <div class="project-preview">
             <svg viewBox="0 0 800 450" role="img" aria-label="Voice AI Platform: abstract voice-pipeline waveform" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
               <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">VOICE AGENT</text>
               <line x1="48" y1="225" x2="752" y2="225" stroke="var(--border)" stroke-width="1"/>
@@ -1394,7 +1425,7 @@
             </svg>
           </div>
           <div class="project-body">
-            <div class="project-number">04</div>
+            <div class="project-number">05</div>
             <div class="project-title">Voice AI Platform</div>
             <div class="project-subtitle">Multi-tenant platform for AI-powered phone agents</div>
             <p class="project-desc">A production voice-AI platform I built end-to-end as the sole engineer: operators configure AI phone agents that place and answer real calls over SIP, driven by a real-time STT&nbsp;&rarr;&nbsp;LLM&nbsp;&rarr;&nbsp;TTS pipeline with a RAG knowledge base and per-call transcripts, dispositions, and latency metrics. Company project: details generalized, no client data.</p>
@@ -1438,7 +1469,7 @@
             </svg>
           </div>
           <div class="project-body">
-            <div class="project-number">05</div>
+            <div class="project-number">06</div>
             <div class="project-title">EdTech Assessment Platform</div>
             <div class="project-subtitle">Web + mobile + AI-graded assessments for K-12 schools</div>
             <p class="project-desc">A full-stack EdTech platform I led as lead engineer across three coordinated apps: a React admin/supervisor web app, an Expo + React Native mobile app with on-device answer-sheet scanning, and a FastAPI microservice that grades scanned answer sheets with Claude vision (OCR, scoring, async callback), all on a shared Supabase backend. Client project: details generalized, no client data.</p>
@@ -1466,7 +1497,7 @@
         <div class="project-card fade-in">
           <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/librynt-800w.webp 800w, ./assets/images/projects/librynt-1200w.webp 1200w, ./assets/images/projects/librynt.webp 1723w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/librynt.png" alt="Librynt: cloud-based library management platform" loading="lazy"></picture></div>
           <div class="project-body">
-            <div class="project-number">06</div>
+            <div class="project-number">07</div>
             <div class="project-title">Librynt</div>
             <div class="project-subtitle">Cloud-based library management platform</div>
             <p class="project-desc">A multi-tenant library management platform that handles book catalogs, circulation tracking, automated fines, reports, and bulk import. Built with Go, React, and PostgreSQL, designed to work for any library, from school collections to public archives.</p>
@@ -1495,7 +1526,7 @@
         <div class="project-card fade-in">
           <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/sketchflow-800w.webp 800w, ./assets/images/projects/sketchflow-1200w.webp 1200w, ./assets/images/projects/sketchflow.webp 2531w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/sketchflow.png" alt="SketchFlow: canvas drawing and whiteboard app" loading="lazy"></picture></div>
           <div class="project-body">
-            <div class="project-number">07</div>
+            <div class="project-number">08</div>
             <div class="project-title">SketchFlow</div>
             <div class="project-subtitle">Canvas drawing &amp; whiteboard app</div>
             <p class="project-desc">A freeform drawing and whiteboard tool combining Rough.js hand-drawn aesthetics with perfect-freehand pressure-sensitive strokes. Supports shapes, freehand, eraser, undo/redo, and export to PNG.</p>
@@ -1525,7 +1556,7 @@
         <div class="project-card fade-in">
           <div class="project-preview"><picture><source type="image/webp" srcset="./assets/images/projects/pulse-analytics-800w.webp 800w, ./assets/images/projects/pulse-analytics-1200w.webp 1200w, ./assets/images/projects/pulse-analytics.webp 2526w" sizes="(max-width: 768px) 100vw, 50vw"><img src="./assets/images/projects/pulse-analytics.png" alt="Pulse Analytics: multi-variant analytics dashboard" loading="lazy"></picture></div>
           <div class="project-body">
-            <div class="project-number">08</div>
+            <div class="project-number">09</div>
             <div class="project-title">Pulse Analytics</div>
             <div class="project-subtitle">Multi-variant analytics dashboard</div>
             <p class="project-desc">An analytics dashboard built with Next.js and Mantine UI featuring interactive Recharts visualizations, NextAuth-powered authentication, and multiple dashboard layout variants for different data views.</p>
