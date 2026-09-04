@@ -5,7 +5,8 @@
     { "source": "/writing/tradersconnect-rework/", "destination": "/demos/tradersconnect/", "statusCode": 301 },
     { "source": "/writing/tradersconnect-rework", "destination": "/demos/tradersconnect/", "statusCode": 301 },
     { "source": "/writing/article-template.html", "destination": "/404.html", "statusCode": 404 },
-    { "source": "/writing/company-rework-template.html", "destination": "/404.html", "statusCode": 404 }
+    { "source": "/writing/company-rework-template.html", "destination": "/404.html", "statusCode": 404 },
+    { "source": "/assets/arjun-p-senior-frontend-engineer.pdf", "destination": "/assets/arjun-p-resume.pdf", "statusCode": 301 }
   ],
   "headers": [
     {
