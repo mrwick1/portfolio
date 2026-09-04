@@ -5,7 +5,7 @@ from html.parser import HTMLParser
 import urllib.parse
 
 def check():
-    base_dir = "/home/mrwick/coding/personal/projects/portfolio-p8"
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     os.chdir(base_dir)
 
     assert not os.path.exists("writing/tradersconnect-rework"), "Old directory still exists"
