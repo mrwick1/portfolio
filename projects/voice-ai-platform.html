@@ -171,7 +171,7 @@
         <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Python / LiveKit / Next.js</span></div>
         <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Proprietary &middot; Internal</span></div>
       </div>
-      <p class="case-note">This is a company project. The write-up is intentionally generalized: no client names, transcripts, internal metrics, or source code are shown. What follows is my own account of the problem, the architecture, and the decisions I made as the sole engineer.</p>
+      <p class="case-note">This is a company project. The write-up is intentionally generalized: no client names, call transcripts, or source code appear here. The performance figures below are my own measurements from the work. What follows is my own account of the problem, the architecture, and the decisions I made as the sole engineer.</p>
     </div>
   </section>
   <div class="case-screenshot"><div class="case-screenshot-inner fade-in">
@@ -188,7 +188,7 @@
       <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
       <p class="case-text fade-in">This is a multi-tenant platform for building and running AI-powered phone agents. Operators configure an agent once (its persona, script, knowledge, and behaviour), and the platform then places and answers real phone calls on its behalf, holding a natural spoken conversation with the person on the other end and recording everything for later review.</p>
       <p class="case-text fade-in">Under each call is a real-time voice pipeline: speech is transcribed to text, the text is handled by an LLM that reasons over the agent's configuration and knowledge base, and the reply is spoken back with a text-to-speech voice, all within the tight latency budget a human conversation demands. Both inbound and outbound calls run over SIP telephony, and every call is stored with its transcript, outcome, and latency metrics for post-call analysis.</p>
-      <p class="case-text fade-in">I built the whole system as the sole engineer over six months: the API, the voice-agent worker, the retrieval layer, the admin dashboard, and the infrastructure that ties them together. The system spans 1,782 tracked files and roughly 150,000 lines of Python. That meant owning every decision from telephony and real-time media all the way up to the operator-facing UI.</p>
+      <p class="case-text fade-in">I built the whole system as the sole engineer over six months: the API, the voice-agent worker, the retrieval layer, the admin dashboard, and the infrastructure that ties them together. That meant owning every decision from telephony and real-time media all the way up to the operator-facing UI.</p>
     </div>
   </section>
   <section class="case-section">
@@ -237,7 +237,6 @@
     </div>
   </section>
   <div class="project-nav"><div class="project-nav-inner">
-    <a href="dev-tooling.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">Developer Tooling</span></a>
     <a href="edtech-platform.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">EdTech Assessment Platform</span></a>
   </div></div>
 </main>
