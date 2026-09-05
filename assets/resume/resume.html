@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Arjun P — Senior Frontend Engineer</title>
+<title>Arjun P — Product Engineer</title>
 <meta name="robots" content="noindex">
 <style>
   /* ATS-friendly + Swiss-Precision visual identity
@@ -329,7 +329,7 @@
 
   <header class="header">
     <h1 class="name">Arjun P<span class="accent">.</span></h1>
-    <p class="title">Senior Frontend Engineer · React/Next.js/TypeScript, real-time voice AI, developer tools · Author of @astra-ui-lib/core</p>
+    <p class="title">Product Engineer · Ships end to end across web, mobile, backend and AI · Author of @astra-ui-lib/core</p>
     <p class="contact">
       <a href="mailto:03arjunkr@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>03arjunkr@gmail.com</a>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Calicut, India</span>
@@ -342,7 +342,7 @@
 
   <section class="section">
     <h2 class="section-title">Summary</h2>
-    <p class="summary">Senior Frontend Engineer with <em>5 years</em> building React/TypeScript products at scale. At <em>Qilin Labs</em> I own frontend for a 20K-user education platform and built the multi-tenant <em>AI voice-agent platform</em> our clients run telecalling on. Author of <em>@astra-ui-lib/core</em>, a published React component library with automated CI/CD.</p>
+    <p class="summary">Product engineer, <em>5 years</em> building web and mobile products, the last two largely as the only engineer on the problem. At <em>Qilin Labs</em> I built a multi-tenant <em>AI voice-agent platform</em> end to end: Python/FastAPI services, a LiveKit SIP voice worker, and the Next.js operator console. Before that I led the CRA → Next.js 14 migration of a <em>20K-user</em> education platform. I take work from the requirement rather than the ticket, and I have shipped web, Android and backend systems to production. Author of <em>@astra-ui-lib/core</em>, published on npm.</p>
   </section>
 
   <section class="section">
@@ -355,11 +355,11 @@
       </div>
       <div class="entry-company">Qilin Labs · Remote</div>
       <ul class="entry-list">
+        <li>Sole engineer on a multi-tenant <strong>AI voice-agent platform</strong> — LiveKit SIP telephony, streaming STT → LLM → TTS, and a Next.js 14 ops console (<strong>31 routes, 107 components</strong>) for call monitoring, agent config, and quality evals.</li>
+        <li>Tuned that pipeline to <strong>1.3s p50</strong> round-trip and eliminated audio dropouts (<strong>4.37% → 0%</strong> discarded speech) via VAD/endpointing tuning and regional STT routing (235 → 118ms); <strong>2,585 backend tests</strong>.</li>
         <li>Own frontend architecture and delivery for a Next.js education platform with <strong>20K+ registered users (4K MAU, 1K+ DAU)</strong>.</li>
         <li>Led the CRA → Next.js 14 (SSR/SSG) migration: <strong>Lighthouse 58 → 92</strong>, page load <strong>~10s → ~3s</strong>, JS bundle <strong>2.4MB → 720KB</strong> (-70%) via code splitting, tree shaking, and hover-prefetched navigation.</li>
         <li>Migrated UI system from MUI to shadcn/ui across <strong>30+ components</strong>; unblocked design-token theming and dark mode.</li>
-        <li>Built and own a multi-tenant <strong>AI voice-agent platform</strong> — LiveKit SIP telephony, streaming STT → LLM → TTS, and a Next.js 14 ops console (<strong>31 routes, 107 components</strong>) for call monitoring, agent config, and quality evals.</li>
-        <li>Tuned that pipeline to <strong>1.3s p50</strong> round-trip and eliminated audio dropouts (<strong>4.37% → 0%</strong> discarded speech) via VAD/endpointing tuning and regional STT routing (235 → 118ms); <strong>2,585 backend tests</strong>.</li>
       </ul>
     </div>
 
@@ -404,6 +404,11 @@
     <h2 class="section-title">Selected Projects</h2>
 
     <div class="project">
+      <div class="project-name">EdTech assessment platform <span class="project-tagline">— client project</span></div>
+      <p class="project-desc">React, React Native (Expo), FastAPI, Supabase, Claude vision · Lead engineer across <strong>three coordinated apps</strong> on one shared backend: a React admin and supervisor web app, an Expo mobile app with on-device answer-sheet scanning, and a FastAPI microservice that OCRs and grades scanned sheets via async callback, with human-in-the-loop review and score override.</p>
+    </div>
+
+    <div class="project">
       <div class="project-name"><a href="https://www.arjunp.pro/projects/astra-ui.html">Astra UI ↗</a> <span class="project-tagline">— Published React component library · <a href="https://www.npmjs.com/package/@astra-ui-lib/core">npm ↗</a></span></div>
       <p class="project-desc">React 18, TypeScript, Tailwind, Turborepo, Rollup, Changesets · CVA-powered variants, polymorphic components, jest-axe a11y tests, automated semver and npm publish via GitHub Actions.</p>
     </div>
@@ -431,11 +436,11 @@
 
   <section class="section">
     <h2 class="section-title">Skills</h2>
+    <p class="skills-line"><strong>Backend, Data &amp; Platforms:</strong> Node.js, Python, FastAPI, PostgreSQL, Redis, GraphQL (Apollo), Sanity, WordPress, Drupal, Shopify (Liquid, OS 2.0), Go, Supabase, Prisma, Socket.IO, Salesforce (Apex, LWC)</p>
     <p class="skills-line"><strong>Frontend &amp; UI:</strong> React, Next.js, TypeScript, Redux Toolkit, TanStack Query, Zustand, Tailwind CSS, shadcn/ui, MUI, Astro, Mapbox</p>
     <p class="skills-line"><strong>Mobile &amp; Native:</strong> React Native, Expo, Kotlin, Jetpack Compose</p>
-    <p class="skills-line"><strong>Backend, Data &amp; Platforms:</strong> Node.js, Python, FastAPI, PostgreSQL, Redis, GraphQL (Apollo), Sanity, WordPress, Drupal, Shopify (Liquid, OS 2.0), Go, Supabase, Prisma, Socket.IO, Salesforce (Apex, LWC)</p>
-    <p class="skills-line"><strong>Testing &amp; Tooling:</strong> Vitest, Jest, React Testing Library, Cypress, Git, Docker, Vite, Turborepo, Rollup, GitHub Actions, Changesets, Playwright</p>
     <p class="skills-line"><strong>AI &amp; Voice:</strong> LiveKit (SIP/WebRTC), Deepgram, Silero VAD, Qdrant (RAG), Vercel AI SDK, Claude Code, Cursor, MCP</p>
+    <p class="skills-line"><strong>Testing &amp; Tooling:</strong> Vitest, Jest, React Testing Library, Cypress, Git, Docker, Vite, Turborepo, Rollup, GitHub Actions, Changesets, Playwright</p>
   </section>
 
 </div>
