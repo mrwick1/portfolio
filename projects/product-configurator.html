@@ -3,51 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How I Use AI Without Writing Garbage Code | Arjun.</title>
-<meta name="description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
-<meta name="keywords" content="AI, workflow, engineering, Claude Code, code quality, developer tools, AI-assisted development">
-<meta name="author" content="Arjun">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="canonical" href="https://www.arjunp.pro/writing/ai-workflow.html">
-
-<!-- Open Graph -->
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://www.arjunp.pro/writing/ai-workflow.html">
-<meta property="og:title" content="How I Use AI Without Writing Garbage Code">
-<meta property="og:description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
+<title>AI Product Configurator: Case Study | Arjun.</title>
+<meta name="description" content="A guided product configurator with an AI assistant and a hand-built drag-physics stage, shipped as one bundle mounted inside a client&rsquo;s live Shopify OS 2.0 theme. React, TypeScript, Vite, Zustand.">
+<link rel="canonical" href="https://www.arjunp.pro/projects/product-configurator.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.arjunp.pro/projects/product-configurator.html">
+<meta property="og:title" content="AI Product Configurator">
+<meta property="og:description" content="A guided product configurator with an AI assistant and a hand-built drag-physics stage, shipped as one bundle mounted inside a client&rsquo;s live Shopify OS 2.0 theme. React, TypeScript, Vite, Zustand.">
 <meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
-<meta property="og:site_name" content="Arjun">
-<meta property="article:author" content="Arjun">
-<meta property="article:published_time" content="2026-02-28">
-
-<!-- Twitter -->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Arjun P">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How I Use AI Without Writing Garbage Code">
-<meta name="twitter:description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
+<meta name="twitter:title" content="AI Product Configurator">
+<meta name="twitter:description" content="A guided product configurator with an AI assistant and a hand-built drag-physics stage, shipped as one bundle mounted inside a client&rsquo;s live Shopify OS 2.0 theme. React, TypeScript, Vite, Zustand.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
 <meta name="twitter:creator" content="@03arjunkr">
-
-<!-- Structured Data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "How I Use AI Without Writing Garbage Code",
-  "description": "AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.",
-  "author": {
-    "@type": "Person",
-    "name": "Arjun",
-    "url": "https://www.arjunp.pro"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Arjun"
-  },
-  "datePublished": "2026-02-28",
-  "url": "https://www.arjunp.pro/writing/ai-workflow.html",
-  "mainEntityOfPage": "https://www.arjunp.pro/writing/ai-workflow.html"
-}
-</script>
-
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -85,8 +57,6 @@
   .theme-toggle { width: 32px; height: 32px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--fg); transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease); }
   .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
   .page { position: relative; z-index: 1; min-height: 100vh; }
-
-  /* Hero */
   .case-hero { padding: calc(120px + 72px) var(--grid-margin) var(--sp-10); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); }
   .case-hero-inner { max-width: 1200px; margin: 0 auto; }
   .breadcrumb { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin-bottom: var(--sp-6); display: flex; align-items: center; gap: var(--sp-2); }
@@ -99,47 +69,32 @@
   .case-meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
   .case-meta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
   .case-meta-value { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
-  .case-meta-tags { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
-  .case-meta-tag { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--fg-secondary); background-color: var(--surface); border: 1px solid var(--border); padding: 2px 8px; }
-
-  /* Content sections */
+  .case-note { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; color: var(--fg-tertiary); margin-top: var(--sp-5); max-width: 720px; padding: var(--sp-4); border: 1px dashed var(--border); }
+  .case-screenshot { margin: 0 var(--grid-margin); margin-left: calc(var(--grid-margin) + var(--sidebar-width)); }
+  .case-screenshot-inner { max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9; background-color: var(--surface); border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .case-screenshot-inner svg { width: 100%; height: 100%; display: block; }
   .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
   .case-section-inner { max-width: 1200px; margin: 0 auto; }
   .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
   .case-section-number { color: var(--accent); margin-right: var(--sp-3); font-family: var(--font-mono); font-weight: 500; }
   .case-text { font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--fg-secondary); max-width: 800px; margin-bottom: var(--sp-5); }
   .case-text:last-child { margin-bottom: 0; }
-  .case-section-inner h2 { font-family: var(--font-body); font-size: 22px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-4); margin-top: var(--sp-7); line-height: 1.3; }
-  .case-section-inner h2:first-of-type { margin-top: 0; }
-  .case-section-inner h3 { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-3); margin-top: var(--sp-6); line-height: 1.4; }
-  .case-section-inner ul { list-style: none; max-width: 800px; margin-bottom: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); }
-  .case-section-inner ul li { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); padding-left: var(--sp-5); position: relative; }
-  .case-section-inner ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background-color: var(--accent); }
-
-  /* Code blocks */
-  pre { background-color: var(--surface); border: 1px solid var(--border); padding: var(--sp-5); margin-bottom: var(--sp-5); overflow-x: auto; max-width: 800px; }
-  pre code { font-family: var(--font-mono); font-size: 13px; font-weight: 400; line-height: 1.7; color: var(--fg); background: none; padding: 0; border: none; }
-  code { font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--accent); background-color: var(--surface); border: 1px solid var(--border); padding: 1px 6px; }
-
-  /* Blockquote */
-  blockquote { border-left: 3px solid var(--accent); padding-left: var(--sp-5); margin-bottom: var(--sp-5); max-width: 800px; }
-  blockquote p { font-family: var(--font-body); font-size: 16px; font-weight: 400; font-style: italic; line-height: 1.75; color: var(--fg-secondary); margin-bottom: 0; }
-
-  /* Metrics grid */
-  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); max-width: 800px; margin-bottom: var(--sp-6); }
-  .metric-card { padding: var(--sp-5); border: 1px solid var(--border-faint); text-align: center; }
-  .metric-value { font-family: var(--font-mono); font-size: 32px; font-weight: 500; color: var(--accent); line-height: 1.2; margin-bottom: var(--sp-2); }
-  .metric-label { font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--fg-secondary); }
-
-  /* Bottom nav */
-  .project-nav { display: flex; justify-content: center; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
-  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: center; }
-  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); align-items: center; }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-5); }
+  .feature-card { padding: var(--sp-5); border: 1px solid var(--border-faint); transition: transform var(--duration) var(--ease); }
+  .feature-card:hover { transform: translateY(-2px); }
+  .feature-card-title { font-family: var(--font-body); font-size: 16px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-2); }
+  .feature-card-desc { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); }
+  .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0; }
+  .tech-item { display: flex; flex-direction: column; gap: var(--sp-1); padding: var(--sp-4) 0; border-bottom: 1px solid var(--border-faint); }
+  .tech-name { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
+  .tech-role { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); }
+  .project-nav { display: flex; justify-content: space-between; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; }
+  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); }
   .project-nav-link:hover { transform: translateY(-2px); }
   .project-nav-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
   .project-nav-title { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); }
-
-  /* Footer */
+  .project-nav-link--next { text-align: right; }
   .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
   .footer-text { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); }
   .footer-social { display: flex; align-items: center; gap: var(--sp-4); }
@@ -147,19 +102,18 @@
   .footer-social-link:hover { color: var(--accent); transform: translateY(-2px); }
   .fade-in { opacity: 0; transition: opacity var(--duration) var(--ease); }
   .fade-in.is-visible { opacity: 1; }
-
   @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
   @media (max-width: 768px) {
     :root { --grid-margin: 24px; --sidebar-width: 0px; }
-    .case-hero, .case-section, .project-nav, .footer { padding-left: var(--grid-margin); }
+    .case-hero, .case-section, .project-nav, .footer, .case-screenshot { padding-left: var(--grid-margin); margin-left: 0; }
     .case-meta { flex-direction: column; gap: var(--sp-4); }
-    .metrics-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
     .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
     .grid-bg-inner { left: var(--grid-margin); right: var(--grid-margin); grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .footer { flex-direction: column; gap: var(--sp-2); align-items: flex-start; }
   }
   @media (max-width: 540px) { .nav-links .nav-link-text { display: none; } }
-  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .metric-value { font-size: 24px; } }
+  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .project-nav-title { font-size: 16px; } }
   @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
   ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
   /* ── Mobile hamburger nav ───────────────────── */
@@ -180,10 +134,18 @@
     .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
   }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Home","item":"https://www.arjunp.pro/"},
+{"@type":"ListItem","position":2,"name":"Projects","item":"https://www.arjunp.pro/#projects"},
+{"@type":"ListItem","position":3,"name":"AI Product Configurator","item":"https://www.arjunp.pro/projects/product-configurator.html"}]},
+{"@type":"CreativeWork","name":"AI Product Configurator","headline":"AI Product Configurator: Case Study","description":"A guided product configurator with an AI assistant and a hand-built drag-physics stage, shipped as one bundle mounted inside a client&rsquo;s live Shopify OS 2.0 theme. React, TypeScript, Vite, Zustand.","url":"https://www.arjunp.pro/projects/product-configurator.html","image":"https://www.arjunp.pro/assets/images/og-image.webp","author":{"@type":"Person","name":"Arjun P","url":"https://www.arjunp.pro/"}}
+]}
+</script>
 </head>
 <body>
 <div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
-
 <nav class="nav" role="navigation" aria-label="Primary navigation">
   <a href="../index.html" class="nav-logo">Arjun.</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
@@ -194,158 +156,104 @@
     <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
     <li><a href="../index.html#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
     <li><a href="../index.html#education" class="nav-link"><span class="nav-link-text">Education</span></a></li>
-    <li><a href="./" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
+    <li><a href="../index.html#writing" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
     <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
     <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
   </ul>
 </nav>
-
 <main class="page">
-
-  <!-- Hero -->
   <section class="case-hero">
     <div class="case-hero-inner fade-in">
-      <div class="breadcrumb">
-        <a href="../index.html">Home</a><span class="breadcrumb-sep">/</span>
-        <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
-        <span>AI Workflow</span>
-      </div>
-      <h1 class="case-title">How I Use AI Without Writing Garbage Code</h1>
-      <p class="case-subtitle">AI is a multiplier, not a replacement. It multiplies what you already know.</p>
+      <a href="../index.html#projects" class="case-back">&larr; Back to projects</a>
+      <h1 class="case-title">AI Product Configurator</h1>
+      <p class="case-subtitle">A guided configurator running inside a store somebody else already operates</p>
       <div class="case-meta">
-        <div class="case-meta-item">
-          <span class="case-meta-label">Published</span>
-          <span class="case-meta-value">Feb 28, 2026</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Last Updated</span>
-          <span class="case-meta-value">May 4, 2026</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Reading Time</span>
-          <span class="case-meta-value">7 min read</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Tags</span>
-          <div class="case-meta-tags">
-            <span class="case-meta-tag">AI</span>
-            <span class="case-meta-tag">Workflow</span>
-            <span class="case-meta-tag">Engineering</span>
-          </div>
-        </div>
+        <div class="case-meta-item"><span class="case-meta-label">Scope</span><span class="case-meta-value">Configurator front end &amp; theme integration</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">E-commerce</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">React / TypeScript / Vite / Zustand</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value">Proprietary &middot; Client Project</span></div>
+      </div>
+      <p class="case-note">This is a client project. The write-up is intentionally generalized: no client, brand, or product names, no data, and no source code are shown. What follows is my own account of the constraints, the architecture, and the decisions I made.</p>
+    </div>
+  </section>
+  <div class="case-screenshot"><div class="case-screenshot-inner fade-in">
+    <svg viewBox="0 0 800 450" role="img" aria-label="A configurator bundle mounted inside an existing storefront theme, feeding the store cart" xmlns="http://www.w3.org/2000/svg">
+      <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">PRODUCT CONFIGURATOR</text>
+      <rect x="80" y="120" width="640" height="250" rx="8" fill="none" stroke="var(--fg-tertiary)" stroke-width="2" stroke-dasharray="7 7" opacity="0.55"/>
+      <text x="96" y="146" font-family="'JetBrains Mono', monospace" font-size="12" letter-spacing="2" fill="var(--fg-tertiary)">EXISTING THEME</text>
+      <rect x="300" y="170" width="200" height="160" rx="6" fill="none" stroke="var(--accent)" stroke-width="3"/>
+      <text x="400" y="240" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="20" font-weight="700" fill="var(--fg)">ONE BUNDLE</text>
+      <text x="400" y="266" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="12" letter-spacing="2" fill="var(--fg-tertiary)">MOUNTED</text>
+      <circle cx="180" cy="250" r="34" fill="none" stroke="var(--fg-tertiary)" stroke-width="2" opacity="0.6"/>
+      <circle cx="620" cy="250" r="34" fill="none" stroke="var(--fg-tertiary)" stroke-width="2" opacity="0.6"/>
+      <line x1="216" y1="250" x2="296" y2="250" stroke="var(--accent)" stroke-width="3"/>
+      <line x1="504" y1="250" x2="584" y2="250" stroke="var(--accent)" stroke-width="3"/>
+      <polygon points="296,250 278,241 278,259" fill="var(--accent)"/>
+      <polygon points="600,250 582,241 582,259" fill="var(--accent)"/>
+      <text x="48" y="415" font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="2" fill="var(--fg-tertiary)">INTAKE &#8594; AI CHAT &#8594; CONFIGURE &#8594; STORE CART</text>
+    </svg>
+  </div></div>
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Overview</div>
+      <p class="case-text fade-in">This is a guided configurator for a made-to-order product assembled from interchangeable components. A shopper answers a short intake, talks to an AI assistant that suggests components, arranges them on a live stage, then adds the finished configuration to the store cart as real line items.</p>
+      <p class="case-text fade-in">It is not a new site. It ships as one JavaScript bundle and one stylesheet, dropped into a Shopify OS&nbsp;2.0 theme the client already runs and mounted by a Liquid section. The store keeps working exactly as it did before, and the merchandising team can place an entry point on any page without a developer.</p>
+      <p class="case-text fade-in">I built the configurator front end and its integration into the theme: the intake wizard, the AI chat surface, the interactive stage and its drag physics, the cart handoff, and the style isolation that stops the two codebases from fighting each other.</p>
+    </div>
+  </section>
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>Working Inside a Live Store</div>
+      <p class="case-text fade-in">A live store is somebody else&rsquo;s production environment. It has its own CSS, its own JavaScript, its own release process, and revenue running through it. Every decision in this section exists because of that.</p>
+      <p class="case-text fade-in">The build emits a single self-executing bundle and a single stylesheet directly into the theme&rsquo;s asset directory, with the output directory never emptied, so a build cannot delete an asset it does not own. The bundle targets a recent JavaScript baseline rather than a down-levelled one: the older target emitted helper code that collided with a global the theme&rsquo;s existing jQuery already owned.</p>
+      <p class="case-text fade-in">Style isolation is specificity, not encapsulation. Every utility class compiles under the mount element&rsquo;s ID selector, which outranks the theme&rsquo;s own stylesheet. There is no shadow DOM, so the configurator still inherits the store&rsquo;s fonts and colour and reads as part of the shop, while nothing it defines escapes into the rest of the page.</p>
+      <p class="case-text fade-in">The theme hands over data instead of the bundle re-fetching it. A Liquid section renders a JSON block carrying shop, customer, cart and route information, and the bundle reads that on mount. Entry points work by delegated listener on a data attribute, so any button in the theme opens the configurator without a code change on my side.</p>
+    </div>
+  </section>
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Key Features</div>
+      <div class="features-grid">
+        <div class="feature-card fade-in"><div class="feature-card-title">Intake Before AI</div><div class="feature-card-desc">A short start screen captures the mode and a few questions &mdash; who it is for, the occasion, the material, the theme. The assistant opens with that context instead of a blank prompt.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">AI Assistant</div><div class="feature-card-desc">Messages go to a backend endpoint through the platform&rsquo;s app proxy and come back with a reply, product suggestions, and suggested follow-ups. The model call stays server-side, so no API key ships in the bundle.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Live Configuration Stage</div><div class="feature-card-desc">Components render on a rotatable stage. Drag to spin it, drag components between slots, tap a personalisable component to add an engraving.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Hand-Written Drag Physics</div><div class="feature-card-desc">Spin carries momentum after release and decays under friction until it comes to rest. Motion is disabled outright when the visitor prefers reduced motion.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Cart Handoff</div><div class="feature-card-desc">A finished configuration becomes real cart line items through the store&rsquo;s own cart API, with hidden properties recording session and position, and readable properties for name, engraving, gift wrap and notes.</div></div>
+        <div class="feature-card fade-in"><div class="feature-card-title">Merchant-Configurable Section</div><div class="feature-card-desc">The Liquid section exposes its initial view, hero image and trust badges to the theme editor, so the client changes them without touching code.</div></div>
       </div>
     </div>
   </section>
-
-  <!-- 01 The Problem -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The Problem</div>
-      <p class="case-text fade-in">You're reviewing a pull request. The code works. Tests pass, feature does what it's supposed to. But something's off. Utility functions recreated from scratch when they already exist in the codebase. API calls bypassing the existing service layer. Patterns that don't match the rest of the project. It's not bad code. It's <em>disconnected</em> code. The code doesn't know about the codebase it lives in. That's the tell.</p>
-      <p class="case-text fade-in">There are two camps right now. Developers who paste AI output without reading it, shipping codebases that feel stitched together from a dozen different authors. And developers who refuse to use AI at all in 2026, which is just leaving speed on the table. Both camps are wrong.</p>
-      <p class="case-text fade-in">There's a middle ground. Use AI aggressively, but own every line. This is how I do it.</p>
+      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Technical Architecture</div>
+      <p class="case-text fade-in">React and TypeScript, built by Vite in library mode to one self-executing bundle. One entry point, one stylesheet, no code splitting: a theme serves each asset by name from its own pipeline, and extra chunks would need loader plumbing the theme does not have.</p>
+      <p class="case-text fade-in">A single state store holds the whole session &mdash; current view and entry point, wizard step and completed steps, intake answers, the configuration itself, chat history and session id, per-action loading flags, and a transient toast. Keeping it in one place means the chat, the stage and the review step all read the same configuration object instead of syncing copies of it.</p>
+      <p class="case-text fade-in">Server state runs through a query client with a five-minute stale window and a single retry. Product and cart reads use the store&rsquo;s own AJAX endpoints; AI calls go to the backend through the app proxy, which keeps them same-origin. Nothing calls the storefront API directly, so no storefront token is exposed in the bundle.</p>
+      <p class="case-text fade-in">The stage is hand-written rather than a drag library. Pointer events feed an angle delta for the spin, a velocity that decays each frame, and a nearest-slot search with a fixed drop radius for reordering. Components pack without gaps, so a drop on empty space appends to the end of the chain. A generic drag library gives you list reordering; this needed reordering around a curve inside a rotating frame of reference.</p>
+      <p class="case-text fade-in">Locally the bundle runs against a mock server standing in for the proxy, so the front end can be developed and demonstrated without the store or the AI backend in the loop.</p>
     </div>
   </section>
-
-  <!-- 02 My Setup -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>My Setup</div>
-      <p class="case-text fade-in">The stack is deliberately simple:</p>
-      <ul class="fade-in">
-        <li><strong>Claude Code CLI</strong>: the main tool, does the heavy lifting. Lives in the terminal, has full context of the project.</li>
-        <li><strong>Neovim</strong>: for when I want direct control. Surgical edits, quick reads, navigating code at my own pace.</li>
-        <li><strong>Lazygit</strong>: git workflow. Every commit goes through me.</li>
-      </ul>
-      <p class="case-text fade-in">That's it. No 10-tool AI stack. No fancy IDE plugin chains. No prompt engineering templates saved in Notion. The tool matters less than how you use it. I've seen developers get better results from a basic setup with a clear workflow than from an over-engineered stack they don't actually understand.</p>
+      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Tech Stack</div>
+      <div class="tech-grid">
+        <div class="tech-item fade-in"><span class="tech-name">React</span><span class="tech-role">Configurator UI</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">TypeScript</span><span class="tech-role">Types across store, services &amp; stage</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Vite (library mode)</span><span class="tech-role">Single-bundle build into the theme</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Zustand</span><span class="tech-role">One session store</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">TanStack Query</span><span class="tech-role">Server state, caching &amp; retry</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Tailwind CSS</span><span class="tech-role">Utilities scoped to the mount element</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Shopify Liquid</span><span class="tech-role">Section, JSON data handoff, asset delivery</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Shopify AJAX API</span><span class="tech-role">Cart and product reads</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">App Proxy</span><span class="tech-role">Same-origin path to the AI backend</span></div>
+      </div>
     </div>
   </section>
-
-  <!-- 03 The Workflow -->
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>The Workflow</div>
-      <p class="case-text fade-in">This is the core of it. Five steps, every time. It's not a rigid process. It's a rhythm that keeps AI output from drifting into disconnected code.</p>
-
-      <h2 class="fade-in">1. Explore</h2>
-      <p class="case-text fade-in">Before writing a single line, understand what exists. Use AI to explore the codebase: trace data flows, map dependencies, understand the service layer. Where do API calls live? What patterns does the project already use for form validation? What utilities exist? The goal is to build a mental model of the codebase so that anything you write fits into it, not next to it.</p>
-
-      <h2 class="fade-in">2. Plan together</h2>
-      <p class="case-text fade-in">Write the plan collaboratively. AI suggests architecture and patterns from its vast reference base. It's seen thousands of codebases, so it might catch tradeoffs you haven't considered. Maybe it suggests a state management approach you wouldn't have thought of, or flags that your planned file structure will cause circular dependencies. You evaluate, correct, rewrite. Architecture is collaborative, but you make the final call.</p>
-
-      <h2 class="fade-in">3. Verify the plan</h2>
-      <p class="case-text fade-in">Before any code gets written, confirm exactly which files get touched, created, or deleted. Walk through edge cases. What happens when the API returns an empty array? What if the user navigates away mid-submission? The plan should be so detailed that execution is mechanical. If you can't describe the implementation step by step, you're not done planning.</p>
-
-      <h2 class="fade-in">4. Execute</h2>
-      <p class="case-text fade-in">AI writes the code following the locked plan. At this point it's just a robot typing what you've already decided. The structure, the files, the patterns, all defined. AI fills in the implementation. This is where the speed comes from. Not from AI thinking for you, but from AI typing for you after you've already done the thinking.</p>
-
-      <h2 class="fade-in">5. Review and commit</h2>
-      <p class="case-text fade-in">You review every diff like it came from a teammate. AI never commits. You read it, you own it, you commit it through lazygit. If something looks off (a variable name that doesn't match the project's conventions, an import path that could be cleaner, a function that's doing too much), you fix it before it goes in. The commit is yours.</p>
-    </div>
-  </section>
-
-  <!-- 04 Real Example -->
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Real Example</div>
-      <p class="case-text fade-in">At work, I had to build a form. Not a simple contact form. A form with dozens of fields, deep conditional logic, and multiple levels of nested data. Editing flows on top of creation flows. Different validation rules depending on which combination of fields the user had filled. State management alone was a nightmare on paper.</p>
-
-      <h2 class="fade-in">The approach</h2>
-      <p class="case-text fade-in">I started by mapping out the entire form structure, every validation rule, and every error state in the plan. No code yet. Just a complete picture of what the form needed to do, what data it touched, and how the editing flow differed from creation.</p>
-      <p class="case-text fade-in">Then I followed test-driven development. Wrote the tests first, defining expected inputs and outputs for every scenario. What happens when a required nested field is missing? What happens when the user switches from creation to editing mode? The tests described the correct behavior before any implementation existed.</p>
-      <p class="case-text fade-in">AI generated the implementation following the locked plan. Tests caught bugs automatically. If AI's code didn't match expected output, it failed immediately. No guessing, no manual checking. The feedback loop was tight: AI writes code, tests verify it, fix what fails, move on.</p>
-      <p class="case-text fade-in">What would've taken weeks shipped to production in days. Not because AI wrote magical code, but because the plan was airtight and the tests caught every deviation. The TDD angle is key: tests are the safety net. You define correctness <em>before</em> AI writes anything.</p>
-    </div>
-  </section>
-
-  <!-- 05 When AI Falls Short -->
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>When AI Falls Short</div>
-      <p class="case-text fade-in">AI gets first shot at everything, including debugging. Most of the time, it does fine: trace the error, identify the cause, suggest a fix. But when it fails at debugging, and it does, that's where your skills and experience take over.</p>
-      <p class="case-text fade-in">AI guesses at bugs. It suggests fixes without understanding the root cause. It'll swap out a dependency, restructure a function, add a null check, anything to make the error go away. But you've traced enough bugs to know where to actually look. You know that the issue isn't the function throwing the error. It's the data three layers up that was shaped wrong. That intuition comes from experience, not from a language model.</p>
-      <p class="case-text fade-in">AI raises your floor. Your ceiling is still you.</p>
-    </div>
-  </section>
-
-  <!-- 06 The Line -->
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>The Line</div>
-      <p class="case-text fade-in">AI is a multiplier. It multiplies what you already know. If you don't understand architecture, AI writes you a bad one. If you don't write tests, AI ships you bugs. If you can't debug, you're stuck when AI guesses wrong. The tool amplifies the developer. It doesn't replace the skill.</p>
-      <p class="case-text fade-in">The developers who win aren't the ones using AI the most. They're the ones who were already good, and now they're fast too.</p>
-      <blockquote class="fade-in">
-        <p>"AI doesn't make you a better developer. It makes you a faster one. The gap between good and bad engineers didn't shrink. It just moves at a higher speed now."</p>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- 07 Update: May 2026 -->
-  <section class="case-section">
-    <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">07</span>Update: May 2026</div>
-      <p class="case-text fade-in">Two months in, a few things shifted. The setup got smaller, not bigger.</p>
-      <ul class="fade-in">
-        <li><strong>Context discipline beats clever prompts.</strong> The prompts I refined in February matter less than I thought. What moved the needle was scoping each task to the smallest meaningful unit before opening a session (one file, one function, one test) instead of letting Claude roam the repo.</li>
-        <li><strong>Small models for small tasks.</strong> I default to a fast model for renames, docstrings, and trivial refactors, and only escalate to a heavier model for architecture, debugging tricky bugs, or design conversations. Most of my day is the cheaper model now.</li>
-        <li><strong>The codebase is the prompt.</strong> I started writing CLAUDE.md files inside projects with conventions, patterns, and what NOT to do. The model gets calibrated faster, and I spend less time correcting drift.</li>
-      </ul>
-      <p class="case-text fade-in">The thesis hasn't changed: AI is a multiplier. Two months later, I'm just multiplying with smaller numbers and tighter context. The output is better, the friction is lower, and I read every line before it lands.</p>
-    </div>
-  </section>
-
-  <!-- Bottom nav -->
-  <div class="project-nav">
-    <div class="project-nav-inner">
-      <a href="../writing/" class="project-nav-link">
-        <span class="project-nav-label">&larr; Back</span>
-        <span class="project-nav-title">All Writing</span>
-      </a>
-    </div>
-  </div>
-
+  <div class="project-nav"><div class="project-nav-inner">
+    <a href="edtech-platform.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">EdTech Assessment Platform</span></a>
+    <a href="real-estate-platform.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">Commercial Real-Estate Platform</span></a>
+  </div></div>
 </main>
-
 <footer class="footer">
   <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. All rights reserved.</div>
   <div class="footer-social">
@@ -355,7 +263,6 @@
     <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
   </div>
 </footer>
-
 <script>
 (function(){
   'use strict';
@@ -371,6 +278,7 @@
   var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
 })();
 </script>
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
 (function(){
   var b=document.getElementById('navBurger'),n=document.getElementById('navLinks');
