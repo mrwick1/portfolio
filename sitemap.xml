@@ -1,123 +1,377 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.arjunp.pro/</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/astra-ui.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/suzuki-connect-re.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/figma-connect.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/voice-ai-platform.html</loc>
-    <lastmod>2026-07-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/edtech-platform.html</loc>
-    <lastmod>2026-07-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/librynt.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/auto-companion.html</loc>
-    <lastmod>2026-09-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/sketchflow.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/pulse-analytics.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/writing/</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/writing/daily-agenda-wallpaper.html</loc>
-    <lastmod>2026-07-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html</loc>
-    <lastmod>2026-06-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/writing/the-case-against-spas.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/writing/cra-to-nextjs-migration.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/writing/ai-workflow.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/writing/tradersconnect-rework.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/demos/tradersconnect/</loc>
-    <lastmod>2026-09-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.arjunp.pro/projects/dev-tooling.html</loc>
-    <lastmod>2026-09-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-</urlset>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>weekly</changefreq>
+      
+    
+      <priority>1.0</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/astra-ui.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/suzuki-connect-re.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/figma-connect.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/voice-ai-platform.html</loc>
+      
+    
+      <lastmod>2026-07-22</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/edtech-platform.html</loc>
+      
+    
+      <lastmod>2026-07-22</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      <loc>https://www.arjunp.pro/projects/product-configurator.html</loc>
+      <lastmod>2026-09-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
+    <url>
+      <loc>https://www.arjunp.pro/projects/real-estate-platform.html</loc>
+      <lastmod>2026-09-08</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.7</priority>
+    </url>
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/librynt.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/auto-companion.html</loc>
+      
+    
+      <lastmod>2026-09-04</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/sketchflow.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/pulse-analytics.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/writing/</loc>
+      
+    
+      <lastmod>2026-07-06</lastmod>
+      
+    
+      <changefreq>weekly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/writing/daily-agenda-wallpaper.html</loc>
+      
+    
+      <lastmod>2026-07-06</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html</loc>
+      
+    
+      <lastmod>2026-06-18</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/writing/the-case-against-spas.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/writing/cra-to-nextjs-migration.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/writing/ai-workflow.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/writing/tradersconnect-rework.html</loc>
+      
+    
+      <lastmod>2026-06-17</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.7</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/demos/tradersconnect/</loc>
+      
+    
+      <lastmod>2026-09-04</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.6</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/dev-tooling.html</loc>
+      
+    
+      <lastmod>2026-09-04</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+    
+
+  </urlset>

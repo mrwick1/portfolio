@@ -871,6 +871,78 @@
     letter-spacing: 0.02em;
   }
 
+  .project-outcome {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--fg);
+    margin-top: var(--sp-3);
+    padding-left: var(--sp-4);
+    border-left: 2px solid var(--accent);
+  }
+  .other-work {
+    margin-top: var(--sp-10);
+    padding-top: var(--sp-6);
+    border-top: 1px solid var(--border);
+  }
+  .other-work-heading {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin: 0 0 var(--sp-2);
+  }
+  .other-work-note {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--fg-tertiary);
+    max-width: 56ch;
+    margin: 0 0 var(--sp-6);
+  }
+  .skill-groups {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-8);
+  }
+  .skill-group-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-tertiary);
+    margin: 0 0 var(--sp-3);
+    padding-bottom: var(--sp-2);
+    border-bottom: 1px solid var(--border);
+  }
+  .approach-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--sp-7);
+    margin-top: var(--sp-6);
+  }
+  .approach-step-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 var(--sp-3);
+  }
+  .approach-step p {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.65;
+    color: var(--fg-secondary);
+    margin: 0;
+  }
   .project-desc {
     font-family: var(--font-body);
     font-size: 15px;
@@ -1182,6 +1254,7 @@
   <a href="#hero" class="nav-logo">Arjun.</a>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#approach" class="nav-link"><span class="nav-link-text">Approach</span></a></li>
     <li><a href="#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
     <li><a href="#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
     <li><a href="#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
@@ -1244,62 +1317,36 @@
   </section>
 
   <!-- Projects -->
+  <section class="section" id="approach">
+    <div class="section-label" aria-hidden="true">Method</div>
+    <div class="section-inner">
+      <div class="section-heading fade-in"><span class="section-heading-number">01</span>How I Run a Client Engagement</div>
+      <div class="approach-steps">
+        <div class="approach-step fade-in">
+          <h3 class="approach-step-label">Discovery</h3>
+          <p>I start in the room with the people who own the problem. I ask what breaks today, who it breaks for, and what they already tried. Then I write the requirement down and read it back, because the first version is usually wrong in a way only the client can see.</p>
+        </div>
+        <div class="approach-step fade-in">
+          <h3 class="approach-step-label">Thin slice, their stack</h3>
+          <p>The first delivery is one narrow slice running in production, not a prototype. I build it on the platform the client already operates &mdash; their Salesforce org, their Shopify theme, their LDAP directory, their Drupal site. That puts the integration risk in front of us at the start instead of at handover.</p>
+        </div>
+        <div class="approach-step fade-in">
+          <h3 class="approach-step-label">Measure, then hand over</h3>
+          <p>Then I measure the number the client cares about and tune against it: call latency, discarded speech, publish time, test coverage. The engagement ends with their team owning the code, with tests, documentation and a walkthrough, so nothing waits on me being available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="projects">
     <div class="section-label" aria-hidden="true">Selected Work</div>
     <div class="section-inner">
-      <div class="section-heading fade-in"><span class="section-heading-number">01</span>Projects</div>
+      <div class="section-heading fade-in"><span class="section-heading-number">02</span>Projects</div>
       <div class="projects-grid stagger">
 
         <!-- Commercial real-estate platform (Featured: a whole product delivered for a client, and handed over so they operate it themselves.) -->
         <!-- TODO(arjun): FDE evidence, two sentences. (a) the constraint the brokerage set, or what you cut from the original scope to ship. (b) the outcome: leads captured, time-to-publish, or organic traffic. -->
-        <div class="project-card project-card--featured fade-in">
-          <div class="project-body">
-            <div class="project-number">01</div>
-            <div class="project-title">Commercial real-estate platform</div>
-            <div class="project-subtitle">Client project &middot; listings, lead capture and deal tools for a brokerage</div>
-            <p class="project-desc">A commercial real-estate platform for a brokerage: indexable native listings with map clustering and multi-field search, OTP-verified lead capture, six gated deal calculators, and a broker-editable Sanity Studio so the team publishes without a developer. 17 routes, 41 tests. Client project: details generalized, no client data.</p>
-            <ul class="project-features">
-              <li>Indexable listings with map clustering and multi-field search</li>
-              <li>OTP-verified lead capture feeding the brokerage&rsquo;s sales process</li>
-              <li>Six deal calculators gated behind the lead wall</li>
-              <li>Broker-editable Sanity Studio, so publishing needs no developer</li>
-            </ul>
-            <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">React 19</span>
-              <span class="project-tag">TypeScript</span>
-              <span class="project-tag">Sanity</span>
-              <span class="project-tag">Mapbox</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- AI product configurator (Featured: shipped inside a live customer storefront without disturbing it.) -->
-        <!-- TODO(arjun): FDE evidence, two sentences. (a) who asked for the configurator and what they actually wanted it to fix. (b) the outcome: conversion, time on the configurator, or support load. -->
-        <div class="project-card project-card--featured fade-in">
-          <div class="project-body">
-            <div class="project-number">02</div>
-            <div class="project-title">AI product configurator</div>
-            <div class="project-subtitle">Client project &middot; configurator built inside a live Shopify store</div>
-            <p class="project-desc">A guided wizard leading into an AI chat, then a live configuration stage with custom drag-to-rotate physics and drag-to-reorder slots. Ships as a single React bundle mounted into an established Shopify OS 2.0 theme, so the store&rsquo;s existing theme kept working untouched. Client project: details generalized, no client data.</p>
-            <ul class="project-features">
-              <li>Guided wizard into an AI chat, then a live configuration stage</li>
-              <li>Custom drag-to-rotate physics and drag-to-reorder slots</li>
-              <li>One React bundle mounted into a live Shopify OS 2.0 theme</li>
-              <li>Zustand and TanStack Query for configurator state and data</li>
-            </ul>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">TypeScript</span>
-              <span class="project-tag">Vite</span>
-              <span class="project-tag">Zustand</span>
-              <span class="project-tag">TanStack Query</span>
-              <span class="project-tag">Shopify</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Voice AI Platform (Featured: multi-tenant platform, sole engineer, zero to production.) -->
         <div class="project-card project-card--featured fade-in">
           <div class="project-preview">
             <svg viewBox="0 0 800 450" role="img" aria-label="Voice AI Platform: abstract voice-pipeline waveform" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
@@ -1310,10 +1357,11 @@
             </svg>
           </div>
           <div class="project-body">
-            <div class="project-number">03</div>
+            <div class="project-number">01</div>
             <div class="project-title">Voice AI Platform</div>
             <div class="project-subtitle">Multi-tenant platform for AI-powered phone agents</div>
             <p class="project-desc">A production voice-AI platform I built end-to-end as the sole engineer: operators configure AI phone agents that place and answer real calls over SIP, driven by a real-time STT&nbsp;&rarr;&nbsp;LLM&nbsp;&rarr;&nbsp;TTS pipeline with a RAG knowledge base and per-call transcripts, dispositions, and latency metrics. Company project: details generalized, no client data.</p>
+            <p class="project-outcome">An operator configures a working phone agent themselves. No engineer joins the loop to onboard a new tenant.</p>
             <ul class="project-features">
               <li>Real-time voice pipeline tuned for human turn-taking latency</li>
               <li>Inbound &amp; outbound SIP calling per tenant</li>
@@ -1335,7 +1383,7 @@
         </div>
 
         <!-- EdTech Assessment Platform -->
-        <div class="project-card fade-in">
+        <div class="project-card project-card--featured fade-in">
           <div class="project-preview">
             <svg viewBox="0 0 800 450" role="img" aria-label="EdTech platform: abstract scan-to-AI-score pipeline" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
               <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">EDTECH PLATFORM</text>
@@ -1354,10 +1402,11 @@
             </svg>
           </div>
           <div class="project-body">
-            <div class="project-number">04</div>
+            <div class="project-number">02</div>
             <div class="project-title">EdTech Assessment Platform</div>
             <div class="project-subtitle">Web + mobile + AI-graded assessments for K-12 schools</div>
             <p class="project-desc">A full-stack EdTech platform I led as lead engineer across three coordinated apps: a React admin/supervisor web app, an Expo + React Native mobile app with on-device answer-sheet scanning, and a FastAPI microservice that grades scanned answer sheets with Claude vision (OCR, scoring, async callback), all on a shared Supabase backend. Client project: details generalized, no client data.</p>
+            <p class="project-outcome">A supervisor marks a whole class from a phone instead of by hand. A teacher keeps the final say on every score the AI assigns.</p>
             <ul class="project-features">
               <li>Three apps (web, mobile, AI service) on one shared Supabase backend</li>
               <li>On-device camera document scanning with OpenCV cropping</li>
@@ -1380,12 +1429,79 @@
 
         <!-- Employee intranet -->
         <!-- TODO(arjun): FDE evidence, two sentences. (a) who ruled out a second credential system, and how early that surfaced. (b) the outcome: adoption, or what it replaced. -->
+        <div class="project-card project-card--featured fade-in">
+          <div class="project-body">
+            <div class="project-number">03</div>
+            <div class="project-title">AI product configurator</div>
+            <div class="project-subtitle">Client project &middot; configurator built inside a live Shopify store</div>
+            <p class="project-desc">A guided wizard leading into an AI chat, then a live configuration stage with custom drag-to-rotate physics and drag-to-reorder slots. Ships as a single React bundle mounted into an established Shopify OS 2.0 theme, so the store&rsquo;s existing theme kept working untouched. Client project: details generalized, no client data.</p>
+            <p class="project-outcome">A shopper configures a product and adds it to the cart without leaving the store. The existing theme kept working, so nothing had to be re-platformed.</p>
+            <ul class="project-features">
+              <li>Guided wizard into an AI chat, then a live configuration stage</li>
+              <li>Custom drag-to-rotate physics and drag-to-reorder slots</li>
+              <li>One React bundle mounted into a live Shopify OS 2.0 theme</li>
+              <li>Zustand and TanStack Query for configurator state and data</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Vite</span>
+              <span class="project-tag">Zustand</span>
+              <span class="project-tag">TanStack Query</span>
+              <span class="project-tag">Shopify</span>
+            </div>
+            <div class="project-links">
+              <a href="./projects/product-configurator.html" class="project-link" aria-label="Case study for the AI product configurator">Case Study &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voice AI Platform (Featured: multi-tenant platform, sole engineer, zero to production.) -->
+        <div class="project-card project-card--featured fade-in">
+          <div class="project-body">
+            <div class="project-number">04</div>
+            <div class="project-title">Commercial real-estate platform</div>
+            <div class="project-subtitle">Client project &middot; listings, lead capture and deal tools for a brokerage</div>
+            <p class="project-desc">A commercial real-estate platform for a brokerage: indexable native listings with map clustering and multi-field search, OTP-verified lead capture, six gated deal calculators, and a broker-editable Sanity Studio so the team publishes without a developer. 17 routes, 41 tests. Client project: details generalized, no client data.</p>
+            <p class="project-outcome">Brokers publish and edit listings without a developer. Every lead arrives email-verified, straight into the team&rsquo;s own sales process.</p>
+            <ul class="project-features">
+              <li>Indexable listings with map clustering and multi-field search</li>
+              <li>OTP-verified lead capture feeding the brokerage&rsquo;s sales process</li>
+              <li>Six deal calculators gated behind the lead wall</li>
+              <li>Broker-editable Sanity Studio, so publishing needs no developer</li>
+            </ul>
+            <div class="project-tags">
+              <span class="project-tag">Next.js</span>
+              <span class="project-tag">React 19</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Sanity</span>
+              <span class="project-tag">Mapbox</span>
+            </div>
+            <div class="project-links">
+              <a href="./projects/real-estate-platform.html" class="project-link" aria-label="Case study for the commercial real-estate platform">Case Study &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI product configurator (Featured: shipped inside a live customer storefront without disturbing it.) -->
+        <!-- TODO(arjun): FDE evidence, two sentences. (a) who asked for the configurator and what they actually wanted it to fix. (b) the outcome: conversion, time on the configurator, or support load. -->
+
+      </div>
+
+      <div class="other-work fade-in">
+        <h3 class="other-work-heading">Other work</h3>
+        <p class="other-work-note">Client platform work, developer tools, and projects of my own. Shorter write-ups; the four above are the deep ones.</p>
+      </div>
+
+      <div class="projects-grid stagger">
+
         <div class="project-card fade-in">
           <div class="project-body">
             <div class="project-number">05</div>
             <div class="project-title">Employee intranet</div>
             <div class="project-subtitle">Client project &middot; intranet on the operator&rsquo;s existing identity stack</div>
             <p class="project-desc">An employee intranet with real-time direct and group messaging, presence and read receipts, a company news feed, events, and shared resources. Authenticates against the operator&rsquo;s existing LDAP directory, so nobody managed a second set of credentials. Client project: details generalized, no client data.</p>
+            <p class="project-outcome">Staff sign in with the credentials they already have. IT never had a second directory to administer.</p>
             <ul class="project-features">
               <li>Real-time direct and group messaging with presence and read receipts</li>
               <li>Company news feed, events and shared resources</li>
@@ -1410,6 +1526,7 @@
             <div class="project-title">Salesforce UI modernisation</div>
             <div class="project-subtitle">Client project &middot; design-token rebuild inside a client Salesforce org</div>
             <p class="project-desc">108 changes across 16 screens inside the client&rsquo;s own Salesforce org, unified behind one shared design-token module so colour, type, spacing and focus states stopped being defined per component. Built in Apex and Lightning Web Components, within the platform&rsquo;s constraints. Client project: details generalized, no client data.</p>
+            <p class="project-outcome">Colour, type, spacing and focus states now change in one module instead of across 16 screens.</p>
             <ul class="project-features">
               <li>108 changes across 16 screens</li>
               <li>One shared design-token module replacing per-component styling</li>
@@ -1433,6 +1550,7 @@
             <div class="project-title">Drupal 10 theme build</div>
             <div class="project-subtitle">Client project &middot; front end handed to a client&rsquo;s own Drupal team</div>
             <p class="project-desc">Built framework-free in HTML and Tailwind CSS v4 so the firm&rsquo;s own developers could take it straight into Drupal 10, followed by a responsive rework across the page set. Client project: details generalized, no client data.</p>
+            <p class="project-outcome">The firm&rsquo;s own Drupal team took the front end into production. They had no framework to learn or maintain.</p>
             <ul class="project-features">
               <li>Pixel-accurate templates built directly from Figma</li>
               <li>HTML and Tailwind CSS v4</li>
@@ -1684,7 +1802,7 @@
   <section class="section" id="experience">
     <div class="section-label" aria-hidden="true">Work History</div>
     <div class="section-inner">
-      <div class="section-heading fade-in"><span class="section-heading-number">02</span>Experience</div>
+      <div class="section-heading fade-in"><span class="section-heading-number">03</span>Experience</div>
       <div class="exp-table stagger">
 
         <div class="exp-row fade-in">
@@ -1736,77 +1854,107 @@
   <section class="section" id="skills">
     <div class="section-label" aria-hidden="true">Capabilities</div>
     <div class="section-inner">
-      <div class="section-heading fade-in"><span class="section-heading-number">03</span>Technical Skills</div>
-      <div class="skills-grid stagger" id="skillsGrid">
-        <div class="skill-item fade-in" data-index="01">React</div>
-        <div class="skill-item fade-in" data-index="02">Next.js</div>
-        <div class="skill-item fade-in" data-index="03">TypeScript</div>
-        <div class="skill-item fade-in" data-index="04">Redux Toolkit</div>
-        <div class="skill-item fade-in" data-index="05">TanStack Query</div>
-        <div class="skill-item fade-in" data-index="06">Zustand</div>
-        <div class="skill-item fade-in" data-index="07">Tailwind CSS</div>
-        <div class="skill-item fade-in" data-index="08">shadcn/ui</div>
-        <div class="skill-item fade-in" data-index="09">MUI</div>
-        <div class="skill-item fade-in" data-index="10">Mantine</div>
-        <div class="skill-item fade-in" data-index="11">Astro</div>
-        <div class="skill-item fade-in" data-index="12">Mapbox</div>
-        <div class="skill-item fade-in" data-index="13">React Native</div>
-        <div class="skill-item fade-in" data-index="14">Expo</div>
-        <div class="skill-item fade-in" data-index="15">EAS Build</div>
-        <div class="skill-item fade-in" data-index="16">expo-camera</div>
-        <div class="skill-item fade-in" data-index="17">Node.js</div>
-        <div class="skill-item fade-in" data-index="18">Express</div>
-        <div class="skill-item fade-in" data-index="19">Python</div>
-        <div class="skill-item fade-in" data-index="20">FastAPI</div>
-        <div class="skill-item fade-in" data-index="21">Go</div>
-        <div class="skill-item fade-in" data-index="22">PostgreSQL</div>
-        <div class="skill-item fade-in" data-index="23">Supabase</div>
-        <div class="skill-item fade-in" data-index="24">Redis</div>
-        <div class="skill-item fade-in" data-index="25">GraphQL</div>
-        <div class="skill-item fade-in" data-index="26">Prisma</div>
-        <div class="skill-item fade-in" data-index="27">Socket.IO</div>
-        <div class="skill-item fade-in" data-index="28">Firebase</div>
-        <div class="skill-item fade-in" data-index="29">LDAP</div>
-        <div class="skill-item fade-in" data-index="30">LiveKit</div>
-        <div class="skill-item fade-in" data-index="31">RAG</div>
-        <div class="skill-item fade-in" data-index="32">Qdrant</div>
-        <div class="skill-item fade-in" data-index="33">MCP</div>
-        <div class="skill-item fade-in" data-index="34">Vercel AI SDK</div>
-        <div class="skill-item fade-in" data-index="35">Deepgram</div>
-        <div class="skill-item fade-in" data-index="36">Silero VAD</div>
-        <div class="skill-item fade-in" data-index="37">Kotlin</div>
-        <div class="skill-item fade-in" data-index="38">Jetpack Compose</div>
-        <div class="skill-item fade-in" data-index="39">Android</div>
-        <div class="skill-item fade-in" data-index="40">Room</div>
-        <div class="skill-item fade-in" data-index="41">Kotlin Coroutines</div>
-        <div class="skill-item fade-in" data-index="42">DataStore</div>
-        <div class="skill-item fade-in" data-index="43">BLE</div>
-        <div class="skill-item fade-in" data-index="44">Frida</div>
-        <div class="skill-item fade-in" data-index="45">OpenCV</div>
-        <div class="skill-item fade-in" data-index="46">Salesforce</div>
-        <div class="skill-item fade-in" data-index="47">Apex</div>
-        <div class="skill-item fade-in" data-index="48">Lightning Web Components</div>
-        <div class="skill-item fade-in" data-index="49">WordPress</div>
-        <div class="skill-item fade-in" data-index="50">Drupal</div>
-        <div class="skill-item fade-in" data-index="51">Shopify Liquid</div>
-        <div class="skill-item fade-in" data-index="52">Sanity</div>
-        <div class="skill-item fade-in" data-index="53">Vitest</div>
-        <div class="skill-item fade-in" data-index="54">Jest</div>
-        <div class="skill-item fade-in" data-index="55">React Testing Library</div>
-        <div class="skill-item fade-in" data-index="56">Cypress</div>
-        <div class="skill-item fade-in" data-index="57">Playwright</div>
-        <div class="skill-item fade-in" data-index="58">Git</div>
-        <div class="skill-item fade-in" data-index="59">Docker</div>
-        <div class="skill-item fade-in" data-index="60">SQLite</div>
-        <div class="skill-item fade-in" data-index="61">Vite</div>
-        <div class="skill-item fade-in" data-index="62">Webpack</div>
-        <div class="skill-item fade-in" data-index="63">Turborepo</div>
-        <div class="skill-item fade-in" data-index="64">Rollup</div>
-        <div class="skill-item fade-in" data-index="65">Changesets</div>
-        <div class="skill-item fade-in" data-index="66">GitHub Actions</div>
-        <div class="skill-item fade-in" data-index="67">Claude Code</div>
-        <div class="skill-item fade-in" data-index="68">Cursor</div>
-        <div class="skill-item fade-in" data-index="69">GitHub Copilot</div>
+      <div class="section-heading fade-in"><span class="section-heading-number">04</span>Technical Skills</div>
+      <div class="skill-groups" id="skillsGrid">
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title">AI &amp; Voice</h3>
+        <div class="skills-grid stagger">
+          <div class="skill-item fade-in" data-index="01">Python</div>
+          <div class="skill-item fade-in" data-index="02">FastAPI</div>
+          <div class="skill-item fade-in" data-index="03">LiveKit</div>
+          <div class="skill-item fade-in" data-index="04">RAG</div>
+          <div class="skill-item fade-in" data-index="05">Qdrant</div>
+          <div class="skill-item fade-in" data-index="06">Deepgram</div>
+          <div class="skill-item fade-in" data-index="07">Silero VAD</div>
+          <div class="skill-item fade-in" data-index="08">Vercel AI SDK</div>
+          <div class="skill-item fade-in" data-index="09">MCP</div>
+          <div class="skill-item fade-in" data-index="10">OpenCV</div>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title">Backend &amp; Data</h3>
+        <div class="skills-grid stagger">
+          <div class="skill-item fade-in" data-index="11">Node.js</div>
+          <div class="skill-item fade-in" data-index="12">Express</div>
+          <div class="skill-item fade-in" data-index="13">Go</div>
+          <div class="skill-item fade-in" data-index="14">PostgreSQL</div>
+          <div class="skill-item fade-in" data-index="15">Supabase</div>
+          <div class="skill-item fade-in" data-index="16">Redis</div>
+          <div class="skill-item fade-in" data-index="17">GraphQL</div>
+          <div class="skill-item fade-in" data-index="18">Prisma</div>
+          <div class="skill-item fade-in" data-index="19">Socket.IO</div>
+          <div class="skill-item fade-in" data-index="20">Firebase</div>
+          <div class="skill-item fade-in" data-index="21">SQLite</div>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title">Client platforms &amp; integration</h3>
+        <div class="skills-grid stagger">
+          <div class="skill-item fade-in" data-index="22">Salesforce</div>
+          <div class="skill-item fade-in" data-index="23">Apex</div>
+          <div class="skill-item fade-in" data-index="24">Lightning Web Components</div>
+          <div class="skill-item fade-in" data-index="25">Shopify Liquid</div>
+          <div class="skill-item fade-in" data-index="26">Drupal</div>
+          <div class="skill-item fade-in" data-index="27">WordPress</div>
+          <div class="skill-item fade-in" data-index="28">Sanity</div>
+          <div class="skill-item fade-in" data-index="29">LDAP</div>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title">Web</h3>
+        <div class="skills-grid stagger">
+          <div class="skill-item fade-in" data-index="30">React</div>
+          <div class="skill-item fade-in" data-index="31">Next.js</div>
+          <div class="skill-item fade-in" data-index="32">TypeScript</div>
+          <div class="skill-item fade-in" data-index="33">Redux Toolkit</div>
+          <div class="skill-item fade-in" data-index="34">TanStack Query</div>
+          <div class="skill-item fade-in" data-index="35">Zustand</div>
+          <div class="skill-item fade-in" data-index="36">Tailwind CSS</div>
+          <div class="skill-item fade-in" data-index="37">shadcn/ui</div>
+          <div class="skill-item fade-in" data-index="38">MUI</div>
+          <div class="skill-item fade-in" data-index="39">Mantine</div>
+          <div class="skill-item fade-in" data-index="40">Astro</div>
+          <div class="skill-item fade-in" data-index="41">Mapbox</div>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title">Mobile &amp; devices</h3>
+        <div class="skills-grid stagger">
+          <div class="skill-item fade-in" data-index="42">React Native</div>
+          <div class="skill-item fade-in" data-index="43">Expo</div>
+          <div class="skill-item fade-in" data-index="44">EAS Build</div>
+          <div class="skill-item fade-in" data-index="45">expo-camera</div>
+          <div class="skill-item fade-in" data-index="46">Kotlin</div>
+          <div class="skill-item fade-in" data-index="47">Jetpack Compose</div>
+          <div class="skill-item fade-in" data-index="48">Android</div>
+          <div class="skill-item fade-in" data-index="49">Room</div>
+          <div class="skill-item fade-in" data-index="50">Kotlin Coroutines</div>
+          <div class="skill-item fade-in" data-index="51">DataStore</div>
+          <div class="skill-item fade-in" data-index="52">BLE</div>
+          <div class="skill-item fade-in" data-index="53">Frida</div>
+        </div>
+      </div>
+      <div class="skill-group fade-in">
+        <h3 class="skill-group-title">Testing &amp; delivery</h3>
+        <div class="skills-grid stagger">
+          <div class="skill-item fade-in" data-index="54">Vitest</div>
+          <div class="skill-item fade-in" data-index="55">Jest</div>
+          <div class="skill-item fade-in" data-index="56">React Testing Library</div>
+          <div class="skill-item fade-in" data-index="57">Cypress</div>
+          <div class="skill-item fade-in" data-index="58">Playwright</div>
+          <div class="skill-item fade-in" data-index="59">Docker</div>
+          <div class="skill-item fade-in" data-index="60">Git</div>
+          <div class="skill-item fade-in" data-index="61">GitHub Actions</div>
+          <div class="skill-item fade-in" data-index="62">Vite</div>
+          <div class="skill-item fade-in" data-index="63">Webpack</div>
+          <div class="skill-item fade-in" data-index="64">Rollup</div>
+          <div class="skill-item fade-in" data-index="65">Turborepo</div>
+          <div class="skill-item fade-in" data-index="66">Changesets</div>
+          <div class="skill-item fade-in" data-index="67">Claude Code</div>
+          <div class="skill-item fade-in" data-index="68">Cursor</div>
+          <div class="skill-item fade-in" data-index="69">GitHub Copilot</div>
+        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -1815,7 +1963,7 @@
   <section class="section" id="education">
     <div class="section-label" aria-hidden="true">Credentials</div>
     <div class="section-inner">
-      <div class="section-heading fade-in"><span class="section-heading-number">04</span>Education &amp; Certification</div>
+      <div class="section-heading fade-in"><span class="section-heading-number">05</span>Education &amp; Certification</div>
       <div class="stagger">
 
         <div class="edu-row fade-in">
@@ -1840,7 +1988,7 @@
   <section class="section" id="writing">
     <div class="section-label" aria-hidden="true">Technical Writing</div>
     <div class="section-inner">
-      <div class="section-heading fade-in"><span class="section-heading-number">05</span>Writing</div>
+      <div class="section-heading fade-in"><span class="section-heading-number">06</span>Writing</div>
       <div class="projects-grid stagger">
 
         <div class="project-card fade-in">
@@ -1909,7 +2057,7 @@
   <section class="section" id="contact">
     <div class="section-label" aria-hidden="true">Connect</div>
     <div class="section-inner">
-      <div class="section-heading fade-in"><span class="section-heading-number">06</span>Contact</div>
+      <div class="section-heading fade-in"><span class="section-heading-number">07</span>Contact</div>
       <div class="contact-grid stagger">
 
         <div class="contact-item fade-in">
