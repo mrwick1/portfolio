@@ -133,6 +133,17 @@
     .nav-links .nav-link-text { display: inline !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; clip: auto !important; overflow: visible !important; white-space: normal !important; border: 0 !important; }
     .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
   }
+  .case-figure { margin: var(--sp-6, 32px) 0; border: 1px solid var(--border); }
+  .case-figure .case-note { margin: 0; padding: 12px 16px; border-top: 1px solid var(--border); }
+  .call-timeline { list-style: none; counter-reset: step; margin: 0; padding: 0; border-left: 1px solid var(--border); }
+  .call-timeline li { position: relative; padding: 0 0 20px 28px; font-size: 15px; line-height: 1.7; color: var(--fg-secondary, var(--fg)); max-width: 720px; }
+  .call-timeline li::before { content: ""; position: absolute; left: -5px; top: 8px; width: 9px; height: 9px; background: var(--accent); }
+  .call-step { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--fg); margin-bottom: 2px; }
+  .case-table-wrap { overflow-x: auto; margin-top: var(--sp-4, 16px); }
+  .case-table { border-collapse: collapse; font-family: var(--font-mono); font-size: 13px; min-width: 560px; }
+  .case-table th, .case-table td { border: 1px solid var(--border); padding: 8px 12px; text-align: right; }
+  .case-table th:first-child, .case-table td:first-child { text-align: left; color: var(--fg-tertiary); }
+  .case-table th { color: var(--fg-tertiary); font-weight: 500; }
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -217,12 +228,121 @@
       <p class="case-text fade-in">Background and cross-service work (ingestion jobs, campaign dialling, and other async tasks) runs through a Redis-backed task queue, so the real-time call path never blocks on slow work. PostgreSQL is the durable store for tenants, agents, and call records; the dashboard is a Next.js app for the internal operators.</p>
       <p class="case-text fade-in">The operator experience is built into a Next.js dashboard (the console is 31 routes and 107 components) featuring a visual conversation-flow builder (&ldquo;journeys&rdquo;) powered by React Flow, letting operators map out complex call journeys. It also handles SIP trunk administration, inbound number routing, campaign management, call analytics charts built with Recharts, and full agent version history, so operators can safely roll back changes.</p>
       <p class="case-text fade-in">A dedicated Python test harness sits alongside the core services to validate changes before they hit production, and the backend carries 2,585 tests. It runs automated load tests, SIP trunk ramp tests, dry-run campaigns that exercise routing without placing real calls, and an automated conversation evaluation and grading harness that compares speech-to-text accuracy.</p>
-      <p class="case-text fade-in">The recurring design tension across all of it was latency. A phone conversation is unforgiving: too much delay between someone finishing a sentence and the agent replying and it stops feeling human. Much of the engineering went into streaming each stage of the pipeline and measuring per-stage latency so regressions were visible instead of anecdotal. The pipeline is tuned to a 1.3s p50 round-trip. Discarded speech went from 4.37% to 0% through voice-activity-detection and endpointing tuning, and routing speech-to-text regionally cut 235ms to 118ms.</p>
+      <p class="case-text fade-in">The recurring design tension across all of it was latency. A phone conversation is unforgiving: too much delay between someone finishing a sentence and the agent replying and it stops feeling human. Much of the engineering went into streaming each stage of the pipeline and measuring per-stage latency so regressions were visible instead of anecdotal. The measured results are in the latency section below.</p>
+      <figure class="case-figure fade-in">
+        <svg viewBox="0 0 800 420" role="img" aria-labelledby="archTitle" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:var(--surface);">
+          <title id="archTitle">Architecture: a SIP call reaches LiveKit, a voice-agent worker runs the STT, LLM and TTS loop and queries a retrieval service, and a FastAPI core API with PostgreSQL and Redis serves the Next.js dashboard.</title>
+          <g font-family="'JetBrains Mono', monospace" font-size="13" fill="var(--fg)">
+            <rect x="30" y="40" width="150" height="56" rx="6" fill="none" stroke="var(--border)"/>
+            <text x="105" y="73" text-anchor="middle">Caller / SIP trunk</text>
+            <rect x="240" y="40" width="170" height="56" rx="6" fill="none" stroke="var(--border)"/>
+            <text x="325" y="66" text-anchor="middle">LiveKit + SIP</text>
+            <text x="325" y="84" text-anchor="middle" fill="var(--fg-tertiary)" font-size="11">media broker</text>
+            <rect x="470" y="30" width="300" height="190" rx="6" fill="none" stroke="var(--accent)" stroke-width="2"/>
+            <text x="620" y="56" text-anchor="middle">Voice-agent worker</text>
+            <text x="620" y="74" text-anchor="middle" fill="var(--fg-tertiary)" font-size="11">one job per live call</text>
+            <rect x="490" y="92" width="80" height="40" rx="4" fill="none" stroke="var(--border)"/>
+            <text x="530" y="117" text-anchor="middle">STT</text>
+            <rect x="580" y="92" width="80" height="40" rx="4" fill="none" stroke="var(--border)"/>
+            <text x="620" y="117" text-anchor="middle">LLM</text>
+            <rect x="670" y="92" width="80" height="40" rx="4" fill="none" stroke="var(--border)"/>
+            <text x="710" y="117" text-anchor="middle">TTS</text>
+            <text x="620" y="160" text-anchor="middle" fill="var(--fg-tertiary)" font-size="11">VAD + endpointing, intent guards,</text>
+            <text x="620" y="176" text-anchor="middle" fill="var(--fg-tertiary)" font-size="11">flow engine, tools, barge-in</text>
+            <rect x="470" y="300" width="300" height="80" rx="6" fill="none" stroke="var(--border)"/>
+            <text x="620" y="334" text-anchor="middle">Knowledge service</text>
+            <text x="620" y="354" text-anchor="middle" fill="var(--fg-tertiary)" font-size="11">FastAPI + Qdrant (RAG)</text>
+            <rect x="240" y="190" width="170" height="80" rx="6" fill="none" stroke="var(--border)"/>
+            <text x="325" y="222" text-anchor="middle">Core API</text>
+            <text x="325" y="242" text-anchor="middle" fill="var(--fg-tertiary)" font-size="11">FastAPI + arq worker</text>
+            <rect x="240" y="310" width="80" height="60" rx="6" fill="none" stroke="var(--border)"/>
+            <text x="280" y="345" text-anchor="middle">Postgres</text>
+            <rect x="330" y="310" width="80" height="60" rx="6" fill="none" stroke="var(--border)"/>
+            <text x="370" y="345" text-anchor="middle">Redis</text>
+            <rect x="30" y="190" width="150" height="80" rx="6" fill="none" stroke="var(--border)"/>
+            <text x="105" y="222" text-anchor="middle">Operator console</text>
+            <text x="105" y="242" text-anchor="middle" fill="var(--fg-tertiary)" font-size="11">Next.js</text>
+          </g>
+          <g stroke="var(--fg-tertiary)" stroke-width="1.5" fill="none">
+            <line x1="180" y1="68" x2="240" y2="68"/>
+            <line x1="410" y1="68" x2="470" y2="68"/>
+            <line x1="620" y1="220" x2="620" y2="300"/>
+            <line x1="180" y1="230" x2="240" y2="230"/>
+            <line x1="410" y1="230" x2="470" y2="170"/>
+            <line x1="300" y1="270" x2="300" y2="310"/>
+            <line x1="360" y1="270" x2="360" y2="310"/>
+          </g>
+          <g font-family="'JetBrains Mono', monospace" font-size="10" fill="var(--fg-tertiary)">
+            <text x="210" y="60" text-anchor="middle">audio</text>
+            <text x="440" y="60" text-anchor="middle">audio</text>
+            <text x="630" y="264">retrieve</text>
+            <text x="424" y="262">config in,</text>
+            <text x="424" y="276">transcript +</text>
+            <text x="424" y="290">metrics out</text>
+          </g>
+        </svg>
+        <figcaption class="case-note">Service layout, simplified. The live call path (top row) never blocks on the task queue.</figcaption>
+      </figure>
     </div>
   </section>
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Tech Stack</div>
+      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Anatomy of a Call</div>
+      <ol class="call-timeline fade-in">
+        <li><span class="call-step">Connect</span>An inbound SIP INVITE reaches LiveKit, which opens a room and dispatches a job to the voice-agent worker. Outbound calls leave a queue, pass campaign and dial-lock checks, and dial out over the SIP trunk.</li>
+        <li><span class="call-step">Load</span>The agent joins the room, loads the tenant&rsquo;s configuration, prompts and conversation flow, and waits until the SIP leg is actually answered.</li>
+        <li><span class="call-step">Greet</span>The greeting plays first, before any caller speech, so the line is never silent on pickup.</li>
+        <li><span class="call-step">Turn loop</span>Voice-activity detection and streaming STT decide when the caller has finished. Intent guards run, the knowledge base is queried, the LLM replies and calls tools, and TTS streams the answer back. The caller can interrupt at any point.</li>
+        <li><span class="call-step">End</span>The call ends on an end-call tool, a terminal node in the flow, a hang-up, a maximum duration, or a transfer.</li>
+        <li><span class="call-step">Review</span>The worker saves the transcript and per-stage latency metrics before it leaves the room. The API then grades the call with an LLM to set its disposition and trigger follow-up actions.</li>
+      </ol>
+    </div>
+  </section>
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Latency, Measured</div>
+      <p class="case-text fade-in">One conversational turn, split by stage. These are medians over 1,057 production turns, taken from the per-stage metrics every call stores. The stages add up to 1,318&nbsp;ms against a measured 1,303&nbsp;ms round trip, so no time is unaccounted for.</p>
+      <figure class="case-figure fade-in">
+        <svg viewBox="0 0 800 230" role="img" aria-labelledby="latTitle" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:var(--surface);">
+          <title id="latTitle">Median turn latency: speech-to-text 580 ms, of which 561 ms is waiting for the caller to finish; language model first token 559 ms; text-to-speech first audio 179 ms; 1,303 ms measured round trip.</title>
+          <g font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--fg-tertiary)">
+            <text x="40" y="50">ONE TURN, p50 &#183; n = 1,057 PRODUCTION TURNS</text>
+          </g>
+          <rect x="40.0" y="70" width="280.5" height="44" fill="var(--accent)" opacity="1.0"/><rect x="320.5" y="70" width="9.5" height="44" fill="var(--accent)" opacity="0.55"/><rect x="330.0" y="70" width="279.5" height="44" fill="var(--fg)" opacity="0.55"/><rect x="609.5" y="70" width="89.5" height="44" fill="var(--fg-tertiary)" opacity="0.8"/>
+          <g stroke="var(--fg-tertiary)" stroke-width="1">
+            <line x1="40" y1="122" x2="40" y2="132"/>
+            <line x1="330.0" y1="122" x2="330.0" y2="132"/>
+            <line x1="609.5" y1="122" x2="609.5" y2="132"/>
+            <line x1="699.0" y1="122" x2="699.0" y2="132"/>
+          </g>
+          <g font-family="'JetBrains Mono', monospace" font-size="12" fill="var(--fg)">
+            <text x="40" y="152">STT 580 ms</text>
+            <text x="40" y="170" fill="var(--fg-tertiary)" font-size="11">561 ms = waiting for the caller</text>
+            <text x="338.0" y="152">LLM first token 559 ms</text>
+            <text x="617.5" y="152">TTS 179 ms</text>
+            <text x="711.0" y="97" font-size="14">1,303 ms</text>
+            <text x="711.0" y="114" fill="var(--fg-tertiary)" font-size="11">round trip</text>
+          </g>
+        </svg>
+        <figcaption class="case-note">The largest single term is our own endpointing wait, the configured silence before the agent decides the caller is done. It is a tuning decision, not vendor latency.</figcaption>
+      </figure>
+      <p class="case-text fade-in">Two other fixes were measured the same way. The first was geography: speech-to-text was resolving to a US endpoint 235&ndash;255&nbsp;ms from the servers in Mumbai. The provider&rsquo;s EU endpoint serves the same models at 118&nbsp;ms, so moving there took about 120&nbsp;ms off every turn.</p>
+      <p class="case-text fade-in">The second fix was audio quality. On a bad call the telephony mixer that feeds the caller was starving for audio, and it dropped 4.37% of the agent&rsquo;s own speech. I fixed the mixer and added a short pause at pickup, then measured four live calls:</p>
+      <div class="case-table-wrap fade-in">
+        <table class="case-table">
+          <thead><tr><th></th><th>Broken call</th><th>&ldquo;Acceptable&rdquo; call</th><th>Mixer fix</th><th>+ Pickup pause</th></tr></thead>
+          <tbody>
+            <tr><td>Buffer starvations / min</td><td>71.0</td><td>52.9</td><td>23.5</td><td>20.8</td></tr>
+            <tr><td>Stalls over 100 ms</td><td>23</td><td>3</td><td>0</td><td>0</td></tr>
+            <tr><td>Agent speech discarded</td><td>4.37%</td><td>1.22%</td><td>0.08%</td><td><strong>0.00%</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="case-section">
+    <div class="case-section-inner">
+      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>Tech Stack</div>
       <div class="tech-grid">
         <div class="tech-item fade-in"><span class="tech-name">Python 3.12</span><span class="tech-role">Backend services</span></div>
         <div class="tech-item fade-in"><span class="tech-name">FastAPI</span><span class="tech-role">Core &amp; retrieval APIs</span></div>
@@ -230,6 +350,7 @@
         <div class="tech-item fade-in"><span class="tech-name">SIP</span><span class="tech-role">Inbound/outbound telephony</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Qdrant</span><span class="tech-role">Vector database</span></div>
         <div class="tech-item fade-in"><span class="tech-name">arq on Redis</span><span class="tech-role">Task queue</span></div>
+        <div class="tech-item fade-in"><span class="tech-name">Deepgram</span><span class="tech-role">Streaming speech-to-text</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Cartesia &amp; ElevenLabs</span><span class="tech-role">Text-to-speech</span></div>
         <div class="tech-item fade-in"><span class="tech-name">PostgreSQL</span><span class="tech-role">Durable data store</span></div>
         <div class="tech-item fade-in"><span class="tech-name">Next.js + TypeScript</span><span class="tech-role">Operator dashboard</span></div>
@@ -240,7 +361,7 @@
   </section>
   
 <div class="project-nav"><div class="project-nav-inner">
-    <a href="pulse-analytics.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">Pulse Analytics</span></a>
+    <a href="dev-tooling.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">Developer Tooling</span></a>
     <a href="edtech-platform.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">EdTech Assessment Platform</span></a>
   </div></div>
 </main>
