@@ -504,7 +504,7 @@
     grid-template-columns: 48px 1fr;
     gap: 0;
     border-bottom: 1px solid var(--border-faint);
-    padding: var(--sp-6) 0;
+    padding: var(--sp-5) 0;
     transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
   }
 
@@ -782,32 +782,13 @@
 
   /* ── Projects ─────────────────────────────── */
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--sp-6);
-  }
-
-  .project-card {
-    border: 1px solid var(--border);
-    transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
-  }
-
-  .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 85, 255, 0.06);
-  }
 
 
 
 
 
-  .project-body {
-    padding: var(--sp-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--sp-4);
-  }
+
+
 
   .project-number {
     font-family: var(--font-mono);
@@ -816,12 +797,6 @@
     color: var(--accent);
   }
 
-  .writing-type { font-family: var(--font-mono); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; display: inline-block; width: fit-content; }
-  .writing-type[data-type="article"] { color: var(--accent); border: 1px solid var(--accent); }
-  .writing-type[data-type="opinion"] { color: #E05500; border: 1px solid #E05500; }
-  .writing-type[data-type="case-study"] { color: #00875A; border: 1px solid #00875A; }
-  [data-theme="dark"] .writing-type[data-type="opinion"] { color: #FF8A3D; border-color: #FF8A3D; }
-  [data-theme="dark"] .writing-type[data-type="case-study"] { color: #36B37E; border-color: #36B37E; }
 
   .project-title {
     font-family: var(--font-body);
@@ -831,13 +806,6 @@
     line-height: 1.3;
   }
 
-  .project-subtitle {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--fg-secondary);
-    letter-spacing: 0.02em;
-  }
 
   .skill-groups {
     display: flex;
@@ -877,13 +845,6 @@
     line-height: 1.65;
     color: var(--fg-secondary);
     margin: 0;
-  }
-  .project-desc {
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.65;
-    color: var(--fg-secondary);
   }
 
 
@@ -1079,9 +1040,6 @@
       align-items: flex-start;
     }
 
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
 
     .project-row { grid-template-columns: 32px 1fr; }
     .project-row .project-links { grid-column: 2; flex-direction: row; text-align: left; }
@@ -1172,7 +1130,7 @@
     .section { padding: 24px 0; }
     .section-label { position: relative; transform: none; }
     .fade-in { opacity: 1 !important; }
-    .project-card { break-inside: avoid; }
+    .project-row { break-inside: avoid; }
   }
   /* ── Mobile hamburger nav ───────────────────── */
   .nav-burger { display: none; flex-direction: column; justify-content: center; gap: 4px; width: 36px; height: 32px; padding: 0 7px; border: 1px solid var(--border); background: transparent; cursor: pointer; transition: border-color var(--duration) var(--ease); }
@@ -1457,7 +1415,7 @@
             <div class="exp-role">Senior Frontend Engineer</div>
             <div class="exp-date">Aug 2024 to Present</div>
             <div class="exp-company">Qilin Labs</div>
-            <div class="exp-desc">Sole engineer building a multi-tenant AI voice-agent platform over six months. Developed Python/FastAPI services, a LiveKit SIP voice worker, and a Next.js operator console (31 routes, 107 components). Optimized a streaming STT &rarr; LLM &rarr; TTS pipeline to 1.3s p50 round-trip, reduced regional STT routing from 235ms to 118ms, and eliminated dropped agent audio (4.37% to 0% of speech discarded) by fixing the telephony audio mixer, against 2,585 backend tests. Earlier, as frontend engineer on a Next.js education platform with 20K+ users, led the CRA &rarr; Next.js 14 migration. Improved Lighthouse 58 &rarr; 92, full page load ~10s &rarr; ~3s, JS bundle 2.4MB &rarr; 720KB (-70%). Migrated MUI to shadcn/ui across 30+ components; helped establish code review and engineering standards.</div>
+            <div class="exp-desc">Sole engineer on a multi-tenant AI voice-agent platform: Python/FastAPI services, a LiveKit SIP worker and a Next.js operator console. Cut the STT &rarr; LLM &rarr; TTS round trip to 1.3s p50 and dropped agent audio loss from 4.37% to 0%. Earlier, led a CRA &rarr; Next.js 14 migration on an education platform with 20K+ users (Lighthouse 58 &rarr; 92).</div>
           </div>
         </div>
 
@@ -1468,7 +1426,7 @@
             <div class="exp-role">Software Engineer &middot; Frontend Lead</div>
             <div class="exp-date">Mar 2023 to Sept 2024</div>
             <div class="exp-company">Hubspire Corp</div>
-            <div class="exp-desc">Refactored a 30k+ LOC legacy React codebase: cleanup, code splitting, tree shaking, CI optimization. Built React + TypeScript + GraphQL apps with Apollo cache normalization and a reusable component system adopted across 3+ projects. Mentored 3 junior engineers toward mid-level.</div>
+            <div class="exp-desc">Refactored a 30k+ LOC React codebase and built a component system used across 3+ projects. Mentored 3 junior engineers.</div>
           </div>
         </div>
 
@@ -1478,7 +1436,7 @@
             <div class="exp-role">React Developer</div>
             <div class="exp-date">Feb 2022 to Mar 2023</div>
             <div class="exp-company">Woxro</div>
-            <div class="exp-desc">Architected React frontend for banking applications with real-time payment status and Razorpay integration. Designed a centralized form-validation and error-handling system used across production fintech and retail apps.</div>
+            <div class="exp-desc">Built React frontends for banking apps with Razorpay payments and a shared form-validation system.</div>
           </div>
         </div>
 
@@ -1488,7 +1446,7 @@
             <div class="exp-role">Web Developer</div>
             <div class="exp-date">Jul 2021 to Feb 2022</div>
             <div class="exp-company">Limenzy</div>
-            <div class="exp-desc">Delivered 10+ production-ready responsive interfaces from Figma/Adobe designs; optimized legacy WordPress sites for mobile and page-load performance.</div>
+            <div class="exp-desc">Delivered 10+ responsive interfaces from Figma designs and sped up legacy WordPress sites.</div>
           </div>
         </div>
 
@@ -1650,63 +1608,38 @@
     <div class="section-label" aria-hidden="true">Technical Writing</div>
     <div class="section-inner">
       <div class="section-heading fade-in"><span class="section-heading-number">06</span>Writing</div>
-      <div class="projects-grid stagger">
-
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">01</div>
-            <div class="project-title">Building a Self-Updating Daily-Agenda Wallpaper</div>
-            <div class="project-subtitle">Jul 2026 &middot; 7 min read</div>
-            <p class="project-desc">How I turned my laptop wallpaper into a self-updating daily agenda: a designed poster rendered from HTML via headless Chrome, wired into Hyprland, with a self-cleaning quote feed.</p>
-            <div class="project-tags">
-              <span class="project-tag">Headless Chrome</span>
-              <span class="project-tag">Hyprland</span>
-              <span class="project-tag">Bash</span>
-            </div>
-            <div class="project-links">
-              <a href="./writing/daily-agenda-wallpaper.html" class="project-link" aria-label="Read article: Building a Self-Updating Daily-Agenda Wallpaper">Read Article &rarr;</a>
-            </div>
+      <ol class="project-list stagger">
+        <li class="project-row fade-in">
+          <div class="project-number">01</div>
+          <div class="project-row-main">
+            <h3 class="project-title">Building a Self-Updating Daily-Agenda Wallpaper</h3>
+            <p class="project-row-desc">Article &middot; Jul 2026 &middot; 7 min read</p>
           </div>
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="case-study">Case Study</span>
-            <div class="project-number">02</div>
-            <div class="project-title">I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard</div>
-            <div class="project-subtitle">Jun 2026 &middot; 4 min read</div>
-            <p class="project-desc">How I reverse-engineered my motorcycle's Bluetooth instrument-cluster protocol with a GATT walk, JADX, and Frida, then built REDLINE, an Android app for it.</p>
-            <div class="project-tags">
-              <span class="project-tag">Reverse Engineering</span>
-              <span class="project-tag">Android</span>
-              <span class="project-tag">Bluetooth</span>
-            </div>
-            <div class="project-links">
-              <a href="./writing/reverse-engineering-my-motorcycle-bluetooth.html" class="project-link" aria-label="Read article: I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard">Read Article &rarr;</a>
-            </div>
+          <div class="project-links">
+            <a href="./writing/daily-agenda-wallpaper.html" class="project-link" aria-label="Read article: Building a Self-Updating Daily-Agenda Wallpaper">Read &rarr;</a>
           </div>
-        </div>
-
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <span class="writing-type" data-type="article">Article</span>
-            <div class="project-number">03</div>
-            <div class="project-title">Stop trusting 'looks about right': verifying AI UI against Figma</div>
-            <div class="project-subtitle">Jun 2026 &middot; 6 min read</div>
-            <p class="project-desc">How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.</p>
-            <div class="project-tags">
-              <span class="project-tag">Figma</span>
-              <span class="project-tag">AI Agents</span>
-              <span class="project-tag">Tooling</span>
-            </div>
-            <div class="project-links">
-              <a href="./writing/verifying-ai-ui-against-figma.html" class="project-link" aria-label="Read article: Stop trusting 'looks about right': verifying AI UI against Figma">Read Article &rarr;</a>
-            </div>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">02</div>
+          <div class="project-row-main">
+            <h3 class="project-title">I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard</h3>
+            <p class="project-row-desc">Case Study &middot; Jun 2026 &middot; 4 min read</p>
           </div>
-        </div>
-
-      </div>
+          <div class="project-links">
+            <a href="./writing/reverse-engineering-my-motorcycle-bluetooth.html" class="project-link" aria-label="Read article: I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard">Read &rarr;</a>
+          </div>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">03</div>
+          <div class="project-row-main">
+            <h3 class="project-title">Stop trusting 'looks about right': verifying AI UI against Figma</h3>
+            <p class="project-row-desc">Article &middot; Jun 2026 &middot; 6 min read</p>
+          </div>
+          <div class="project-links">
+            <a href="./writing/verifying-ai-ui-against-figma.html" class="project-link" aria-label="Read article: Stop trusting 'looks about right': verifying AI UI against Figma">Read &rarr;</a>
+          </div>
+        </li>
+      </ol>
 
       <div class="fade-in" style="margin-top: var(--sp-6); padding-top: var(--sp-5); border-top: 1px solid var(--border-faint);">
         <a href="./writing/" class="project-link" aria-label="View all writing">View All Writing &rarr;</a>
