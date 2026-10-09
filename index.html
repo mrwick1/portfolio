@@ -798,41 +798,9 @@
     box-shadow: 0 8px 24px rgba(0, 85, 255, 0.06);
   }
 
-  .project-preview {
-    aspect-ratio: 16 / 10;
-    background-color: var(--surface);
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 24px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
 
-  .project-card--featured { grid-column: 1 / -1; }
-  .project-card--featured .project-preview { aspect-ratio: 21 / 9; }
 
-  .project-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top left;
-    display: block;
-  }
 
-  .project-preview::after {
-    content: attr(data-label);
-    font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--fg-tertiary);
-    text-transform: uppercase;
-  }
 
   .project-body {
     padding: var(--sp-5);
@@ -871,39 +839,6 @@
     letter-spacing: 0.02em;
   }
 
-  .project-outcome {
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--fg);
-    margin-top: var(--sp-3);
-    padding-left: var(--sp-4);
-    border-left: 2px solid var(--accent);
-  }
-  .other-work {
-    margin-top: var(--sp-10);
-    padding-top: var(--sp-6);
-    border-top: 1px solid var(--border);
-  }
-  .other-work-heading {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--fg);
-    margin: 0 0 var(--sp-2);
-  }
-  .other-work-note {
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--fg-tertiary);
-    max-width: 56ch;
-    margin: 0 0 var(--sp-6);
-  }
   .skill-groups {
     display: flex;
     flex-direction: column;
@@ -951,32 +886,59 @@
     color: var(--fg-secondary);
   }
 
-  .project-features {
+
+
+
+  .project-list {
     list-style: none;
-    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  .project-row {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: var(--sp-4);
+    align-items: start;
+    padding: var(--sp-5) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .project-row-main { display: flex; flex-direction: column; gap: var(--sp-3); }
+  .project-row .project-title { margin: 0; }
+  .project-row-desc {
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--fg-secondary);
+    margin: 0;
+  }
+  .project-row .project-links {
     flex-direction: column;
     gap: var(--sp-2);
+    padding-top: 0;
+    border-top: 0;
+    text-align: right;
   }
 
-  .project-features li {
-    font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 400;
+  .skills-more { margin-top: var(--sp-2); }
+  .skills-more summary {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--fg-secondary);
-    padding-left: var(--sp-4);
-    position: relative;
-    line-height: 1.5;
+    cursor: pointer;
+    width: fit-content;
+    padding: var(--sp-2) 0;
+    list-style: none;
   }
-
-  .project-features li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 9px;
-    width: 6px;
-    height: 1px;
-    background-color: var(--accent);
-  }
+  .skills-more summary::-webkit-details-marker { display: none; }
+  .skills-more summary::before { content: '+ '; color: var(--accent); }
+  .skills-more[open] summary::before { content: '\2212\00a0'; }
+  .skills-more summary::after { content: none; }
+  .skills-more summary:hover { color: var(--accent); }
+  .skills-more[open] summary { margin-bottom: var(--sp-6); }
 
   .project-tags {
     display: flex;
@@ -1121,6 +1083,9 @@
       grid-template-columns: 1fr;
     }
 
+    .project-row { grid-template-columns: 32px 1fr; }
+    .project-row .project-links { grid-column: 2; flex-direction: row; text-align: left; }
+
     .skills-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1208,7 +1173,6 @@
     .section-label { position: relative; transform: none; }
     .fade-in { opacity: 1 !important; }
     .project-card { break-inside: avoid; }
-    .project-preview { display: none; }
   }
   /* ── Mobile hamburger nav ───────────────────── */
   .nav-burger { display: none; flex-direction: column; justify-content: center; gap: 4px; width: 36px; height: 32px; padding: 0 7px; border: 1px solid var(--border); background: transparent; cursor: pointer; transition: border-color var(--duration) var(--ease); }
@@ -1342,103 +1306,46 @@
     <div class="section-label" aria-hidden="true">Selected Work</div>
     <div class="section-inner">
       <div class="section-heading fade-in"><span class="section-heading-number">02</span>Projects</div>
-      <div class="projects-grid stagger">
-
-        <!-- Voice AI Platform -->
-        <div class="project-card project-card--featured fade-in">
-          <div class="project-preview">
-            <svg viewBox="0 0 800 450" role="img" aria-label="Voice AI Platform: abstract voice-pipeline waveform" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
-              <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">VOICE AGENT</text>
-              <line x1="48" y1="225" x2="752" y2="225" stroke="var(--border)" stroke-width="1"/>
-              <polyline fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="48,225 74,205 100,260 126,170 152,245 178,150 204,285 230,190 256,235 282,135 308,300 334,210 360,240 386,160 412,270 438,185 464,232 490,120 516,305 542,205 568,245 594,165 620,262 646,195 672,238 698,150 724,282 752,225"/>
-              <text x="48" y="400" font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="2" fill="var(--fg-tertiary)">SPEECH &#8594; STT &#8594; LLM &#8594; TTS &#8594; SPEECH</text>
-            </svg>
-          </div>
-          <div class="project-body">
-            <div class="project-number">01</div>
-            <div class="project-title">Voice AI Platform</div>
-            <div class="project-subtitle">Multi-tenant platform for AI-powered phone agents</div>
-            <p class="project-desc">A production voice-AI platform I built end-to-end as the sole engineer: operators configure AI phone agents that place and answer real calls over SIP, driven by a real-time STT&nbsp;&rarr;&nbsp;LLM&nbsp;&rarr;&nbsp;TTS pipeline with a RAG knowledge base and per-call transcripts, dispositions, and latency metrics. Company project: details generalized, no client data.</p>
-            <p class="project-outcome">An operator configures a working phone agent themselves. No engineer joins the loop to onboard a new tenant.</p>
-            <ul class="project-features">
-              <li>Real-time voice pipeline tuned for human turn-taking latency</li>
-              <li>Inbound &amp; outbound SIP calling per tenant</li>
-              <li>RAG knowledge base for grounded, tenant-specific answers</li>
-              <li>Post-call review: transcripts, dispositions, latency metrics</li>
-            </ul>
+      <ol class="project-list stagger">
+        <li class="project-row fade-in">
+          <div class="project-number">01</div>
+          <div class="project-row-main">
+            <h3 class="project-title">Voice AI Platform</h3>
+            <p class="project-row-desc">Multi-tenant platform for AI-powered phone agents</p>
             <div class="project-tags">
               <span class="project-tag">Python</span>
               <span class="project-tag">FastAPI</span>
               <span class="project-tag">LiveKit</span>
               <span class="project-tag">Next.js</span>
               <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">Redis</span>
-            </div>
-            <div class="project-links">
-              <a href="./projects/voice-ai-platform.html" class="project-link" aria-label="Case study for the Voice AI Platform">Case Study &rarr;</a>
             </div>
           </div>
-        </div>
-
-        <!-- EdTech Assessment Platform -->
-        <div class="project-card project-card--featured fade-in">
-          <div class="project-preview">
-            <svg viewBox="0 0 800 450" role="img" aria-label="EdTech platform: abstract scan-to-AI-score pipeline" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
-              <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">EDTECH PLATFORM</text>
-              <rect x="120" y="150" width="170" height="220" rx="8" fill="none" stroke="var(--accent)" stroke-width="3"/>
-              <line x1="150" y1="192" x2="260" y2="192" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
-              <line x1="150" y1="222" x2="260" y2="222" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
-              <line x1="150" y1="252" x2="240" y2="252" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
-              <line x1="150" y1="282" x2="260" y2="282" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
-              <line x1="150" y1="312" x2="215" y2="312" stroke="var(--fg-tertiary)" stroke-width="7" stroke-linecap="round" opacity="0.4"/>
-              <line x1="320" y1="260" x2="430" y2="260" stroke="var(--accent)" stroke-width="3"/>
-              <polygon points="446,260 428,251 428,269" fill="var(--accent)"/>
-              <circle cx="580" cy="260" r="88" fill="none" stroke="var(--accent)" stroke-width="3"/>
-              <text x="580" y="252" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="46" font-weight="700" fill="var(--fg)">AI</text>
-              <text x="580" y="292" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="13" letter-spacing="2" fill="var(--fg-tertiary)">EVALUATE</text>
-              <text x="48" y="415" font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="2" fill="var(--fg-tertiary)">SCAN &#8594; OCR &#8594; AI SCORE &#8594; REVIEW</text>
-            </svg>
+          <div class="project-links">
+            <a href="./projects/voice-ai-platform.html" class="project-link" aria-label="Case study for the Voice AI Platform">Case Study &rarr;</a>
           </div>
-          <div class="project-body">
-            <div class="project-number">02</div>
-            <div class="project-title">EdTech Assessment Platform</div>
-            <div class="project-subtitle">Web + mobile + AI-graded assessments for K-12 schools</div>
-            <p class="project-desc">A full-stack EdTech platform I led as lead engineer across three coordinated apps: a React admin/supervisor web app, an Expo + React Native mobile app with on-device answer-sheet scanning, and a FastAPI microservice that grades scanned answer sheets with Claude vision (OCR, scoring, async callback), all on a shared Supabase backend. Client project: details generalized, no client data.</p>
-            <p class="project-outcome">A supervisor marks a whole class from a phone instead of by hand. A teacher keeps the final say on every score the AI assigns.</p>
-            <ul class="project-features">
-              <li>Three apps (web, mobile, AI service) on one shared Supabase backend</li>
-              <li>On-device camera document scanning with OpenCV cropping</li>
-              <li>Async AI evaluation: Claude-vision OCR + scoring via callback</li>
-              <li>Human-in-the-loop supervisor review, score override, reports</li>
-            </ul>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">02</div>
+          <div class="project-row-main">
+            <h3 class="project-title">EdTech Assessment Platform</h3>
+            <p class="project-row-desc">Web + mobile + AI-graded assessments for K-12 schools</p>
             <div class="project-tags">
               <span class="project-tag">React</span>
               <span class="project-tag">React Native</span>
               <span class="project-tag">Supabase</span>
               <span class="project-tag">FastAPI</span>
               <span class="project-tag">Claude</span>
-              <span class="project-tag">Expo</span>
-            </div>
-            <div class="project-links">
-              <a href="./projects/edtech-platform.html" class="project-link" aria-label="Case study for the EdTech Assessment Platform">Case Study &rarr;</a>
             </div>
           </div>
-        </div>
-
-        <!-- figma-connect -->
-        <div class="project-card project-card--featured fade-in">
-          <div class="project-body">
-            <div class="project-number">03</div>
-            <div class="project-title">figma-connect</div>
-            <div class="project-subtitle">Local Figma MCP server with a pixel-level verification oracle</div>
-            <p class="project-desc">A local Figma MCP server I built that gives an AI coding agent full-fidelity read access to a live Figma file, plus <code>verify_node</code>, an oracle that renders the agent's generated code in headless Chromium and pixel-diffs it against the real design, turning &ldquo;looks right&rdquo; into a pass/fail gate. ~15k LOC TypeScript across a 4-package monorepo; 35 MCP tools; fully local.</p>
-            <p class="project-outcome">An agent&rsquo;s UI either passes against the real Figma node or it fails. Nobody signs off on &ldquo;looks about right&rdquo;.</p>
-            <ul class="project-features">
-              <li>35 MCP tools: design IR, tokens, components, screenshots, coverage</li>
-              <li>verify_node: render + pixel / SSIM / a11y diff vs the live Figma node</li>
-              <li>Local SQLite + FTS5 cache with delta-sync (sub-50ms search)</li>
-              <li>Browser Figma via a plugin&harr;WebSocket bridge, no Desktop, no cloud API</li>
-            </ul>
+          <div class="project-links">
+            <a href="./projects/edtech-platform.html" class="project-link" aria-label="Case study for the EdTech Assessment Platform">Case Study &rarr;</a>
+          </div>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">03</div>
+          <div class="project-row-main">
+            <h3 class="project-title">figma-connect</h3>
+            <p class="project-row-desc">Local Figma MCP server with a pixel-level verification oracle</p>
             <div class="project-tags">
               <span class="project-tag">TypeScript</span>
               <span class="project-tag">MCP</span>
@@ -1446,91 +1353,50 @@
               <span class="project-tag">SQLite</span>
               <span class="project-tag">AI Tooling</span>
             </div>
-            <div class="project-links">
-              <a href="./projects/figma-connect.html" class="project-link" aria-label="Case study for figma-connect">Case Study &rarr;</a>
-            </div>
           </div>
-        </div>
-
-        <!-- AI product configurator -->
-        <div class="project-card project-card--featured fade-in">
-          <div class="project-body">
-            <div class="project-number">04</div>
-            <div class="project-title">AI product configurator</div>
-            <div class="project-subtitle">Client project &middot; configurator built inside a live Shopify store</div>
-            <p class="project-desc">A guided wizard leading into an AI chat, then a live configuration stage with custom drag-to-rotate physics and drag-to-reorder slots. Ships as a single React bundle mounted into an established Shopify OS 2.0 theme, so the store&rsquo;s existing theme kept working untouched. Client project: details generalized, no client data.</p>
-            <p class="project-outcome">A shopper configures a product and adds it to the cart without leaving the store. The existing theme kept working, so nothing had to be re-platformed.</p>
-            <ul class="project-features">
-              <li>Guided wizard into an AI chat, then a live configuration stage</li>
-              <li>Custom drag-to-rotate physics and drag-to-reorder slots</li>
-              <li>One React bundle mounted into a live Shopify OS 2.0 theme</li>
-              <li>Zustand and TanStack Query for configurator state and data</li>
-            </ul>
+          <div class="project-links">
+            <a href="./projects/figma-connect.html" class="project-link" aria-label="Case study for figma-connect">Case Study &rarr;</a>
+          </div>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">04</div>
+          <div class="project-row-main">
+            <h3 class="project-title">AI product configurator</h3>
+            <p class="project-row-desc">Client project &middot; configurator built inside a live Shopify store</p>
             <div class="project-tags">
               <span class="project-tag">React</span>
               <span class="project-tag">TypeScript</span>
               <span class="project-tag">Vite</span>
               <span class="project-tag">Zustand</span>
               <span class="project-tag">TanStack Query</span>
-              <span class="project-tag">Shopify</span>
-            </div>
-            <div class="project-links">
-              <a href="./projects/product-configurator.html" class="project-link" aria-label="Case study for the AI product configurator">Case Study &rarr;</a>
             </div>
           </div>
-        </div>
-
-      </div>
-
-      <div class="other-work fade-in">
-        <h3 class="other-work-heading">Other work</h3>
-        <p class="other-work-note">Client platform work, a reverse-engineering project, and my own AI tooling. Shorter write-ups; the four above are the deep ones.</p>
-      </div>
-
-      <div class="projects-grid stagger">
-
-        <!-- Suzuki Connect RE -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <div class="project-number">05</div>
-            <div class="project-title">Suzuki Connect RE</div>
-            <div class="project-subtitle">Reverse-engineered a motorcycle's Bluetooth protocol, then built the replacement app</div>
-            <p class="project-desc">Decoded the proprietary BLE protocol of my Gixxer SF 150's instrument cluster from scratch (GATT walk on the live bike, decompilation, runtime hooking), then built REDLINE, a Kotlin/Jetpack Compose Android app that pushes Google Maps navigation to the cluster with live telemetry and ride analytics. 14k LOC, 205 tests, fully on-device.</p>
-            <ul class="project-features">
-              <li>Decoded all 7 BLE frame types from live captures + decompiled source</li>
-              <li>Google Maps &rarr; cluster navigation, replacing the stock app</li>
-              <li>Live telemetry dashboard, ride analytics, GPX/CSV export</li>
-              <li>Evidence-based RE: every hypothesis verified, wrong turns logged</li>
-            </ul>
+          <div class="project-links">
+            <a href="./projects/product-configurator.html" class="project-link" aria-label="Case study for the AI product configurator">Case Study &rarr;</a>
+          </div>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">05</div>
+          <div class="project-row-main">
+            <h3 class="project-title">Suzuki Connect RE</h3>
+            <p class="project-row-desc">Reverse-engineered a motorcycle's Bluetooth protocol, then built the replacement app</p>
             <div class="project-tags">
               <span class="project-tag">Kotlin</span>
               <span class="project-tag">Jetpack Compose</span>
               <span class="project-tag">BLE</span>
               <span class="project-tag">Android</span>
               <span class="project-tag">Frida</span>
-              <span class="project-tag">Reverse Engineering</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/mrwick1/suzuki-connect-re" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub repository for Suzuki Connect RE">GitHub</a>
-              <a href="./projects/suzuki-connect-re.html" class="project-link" aria-label="Case study for Suzuki Connect RE">Case Study &rarr;</a>
             </div>
           </div>
-        </div>
-
-        <!-- Commercial real-estate platform -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <div class="project-number">06</div>
-            <div class="project-title">Commercial real-estate platform</div>
-            <div class="project-subtitle">Client project &middot; listings, lead capture and deal tools for a brokerage</div>
-            <p class="project-desc">A commercial real-estate platform for a brokerage: indexable native listings with map clustering and multi-field search, OTP-verified lead capture, six gated deal calculators, and a broker-editable Sanity Studio so the team publishes without a developer. 17 routes, 41 tests. Client project: details generalized, no client data.</p>
-            <p class="project-outcome">Brokers publish and edit listings without a developer. Every lead arrives email-verified, straight into the team&rsquo;s own sales process.</p>
-            <ul class="project-features">
-              <li>Indexable listings with map clustering and multi-field search</li>
-              <li>OTP-verified lead capture feeding the brokerage&rsquo;s sales process</li>
-              <li>Six deal calculators gated behind the lead wall</li>
-              <li>Broker-editable Sanity Studio, so publishing needs no developer</li>
-            </ul>
+          <div class="project-links">
+            <a href="./projects/suzuki-connect-re.html" class="project-link" aria-label="Case study for Suzuki Connect RE">Case Study &rarr;</a>
+          </div>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">06</div>
+          <div class="project-row-main">
+            <h3 class="project-title">Commercial real-estate platform</h3>
+            <p class="project-row-desc">Client project &middot; listings, lead capture and deal tools for a brokerage</p>
             <div class="project-tags">
               <span class="project-tag">Next.js</span>
               <span class="project-tag">React 19</span>
@@ -1538,26 +1404,16 @@
               <span class="project-tag">Sanity</span>
               <span class="project-tag">Mapbox</span>
             </div>
-            <div class="project-links">
-              <a href="./projects/real-estate-platform.html" class="project-link" aria-label="Case study for the commercial real-estate platform">Case Study &rarr;</a>
-            </div>
           </div>
-        </div>
-
-        <!-- Employee intranet -->
-        <div class="project-card fade-in">
-          <div class="project-body">
-            <div class="project-number">07</div>
-            <div class="project-title">Employee intranet</div>
-            <div class="project-subtitle">Client project &middot; intranet on the operator&rsquo;s existing identity stack</div>
-            <p class="project-desc">An employee intranet with real-time direct and group messaging, presence and read receipts, a company news feed, events, and shared resources. Authenticates against the operator&rsquo;s existing LDAP directory, so nobody managed a second set of credentials. Client project: details generalized, no client data.</p>
-            <p class="project-outcome">Staff sign in with the credentials they already have. IT never had a second directory to administer.</p>
-            <ul class="project-features">
-              <li>Real-time direct and group messaging with presence and read receipts</li>
-              <li>Company news feed, events and shared resources</li>
-              <li>LDAP authentication against the existing corporate directory</li>
-              <li>Dockerised deployment</li>
-            </ul>
+          <div class="project-links">
+            <a href="./projects/real-estate-platform.html" class="project-link" aria-label="Case study for the commercial real-estate platform">Case Study &rarr;</a>
+          </div>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">07</div>
+          <div class="project-row-main">
+            <h3 class="project-title">Employee intranet</h3>
+            <p class="project-row-desc">Client project &middot; intranet on the operator&rsquo;s existing identity stack</p>
             <div class="project-tags">
               <span class="project-tag">Next.js</span>
               <span class="project-tag">TypeScript</span>
@@ -1566,27 +1422,12 @@
               <span class="project-tag">Docker</span>
             </div>
           </div>
-        </div>
-
-        <!-- Developer Tooling -->
-        <div class="project-card fade-in">
-          <div class="project-preview">
-            <svg viewBox="0 0 800 450" role="img" aria-label="Developer Tooling" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:var(--surface);">
-              <text x="48" y="70" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="3" fill="var(--fg-tertiary)">DEV TOOLING</text>
-              <line x1="48" y1="225" x2="752" y2="225" stroke="var(--border)" stroke-width="1"/>
-            </svg>
-          </div>
-          <div class="project-body">
-            <div class="project-number">08</div>
-            <div class="project-title">Developer Tooling</div>
-            <div class="project-subtitle">Internal tools for tickets, time, attendance and AI budget</div>
-            <p class="project-desc">Three private tools I built for my own daily work: a Python command-line suite covering tickets, timesheets and attendance behind one daily snapshot; a self-hosted ticket tracker fronted by a TypeScript MCP server, so an AI agent reads and writes tickets by number; and a governor that paces spending across two AI coding budgets, routing bulk work onto free capacity. Each one started as a measurement before it became an automation.</p>
-            <ul class="project-features">
-              <li>Six commands on the PATH for tickets, timesheets and attendance</li>
-              <li>One snapshot: clocked in, hours vs target, open tickets, what is due</li>
-              <li>MCP server so an agent addresses tickets by number, not a browser</li>
-              <li>Budget governor that ranks engines by headroom and routes bulk work</li>
-            </ul>
+        </li>
+        <li class="project-row fade-in">
+          <div class="project-number">08</div>
+          <div class="project-row-main">
+            <h3 class="project-title">Developer Tooling</h3>
+            <p class="project-row-desc">Internal tools for tickets, time, attendance and AI budget</p>
             <div class="project-tags">
               <span class="project-tag">Python</span>
               <span class="project-tag">TypeScript</span>
@@ -1594,13 +1435,12 @@
               <span class="project-tag">Bash</span>
               <span class="project-tag">Automation</span>
             </div>
-            <div class="project-links">
-              <a href="./projects/dev-tooling.html" class="project-link" aria-label="Case study for Developer Tooling">Case Study &rarr;</a>
-            </div>
           </div>
-        </div>
-
-      </div>
+          <div class="project-links">
+            <a href="./projects/dev-tooling.html" class="project-link" aria-label="Case study for Developer Tooling">Case Study &rarr;</a>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -1662,105 +1502,120 @@
     <div class="section-inner">
       <div class="section-heading fade-in"><span class="section-heading-number">04</span>Technical Skills</div>
       <div class="skill-groups" id="skillsGrid">
-      <div class="skill-group fade-in">
+      <div class="skill-group">
         <h3 class="skill-group-title">AI &amp; Voice</h3>
-        <div class="skills-grid stagger">
-          <div class="skill-item fade-in" data-index="01">Python</div>
-          <div class="skill-item fade-in" data-index="02">FastAPI</div>
-          <div class="skill-item fade-in" data-index="03">LiveKit</div>
-          <div class="skill-item fade-in" data-index="04">RAG</div>
-          <div class="skill-item fade-in" data-index="05">Qdrant</div>
-          <div class="skill-item fade-in" data-index="06">Deepgram</div>
-          <div class="skill-item fade-in" data-index="07">Silero VAD</div>
-          <div class="skill-item fade-in" data-index="08">Vercel AI SDK</div>
-          <div class="skill-item fade-in" data-index="09">MCP</div>
-          <div class="skill-item fade-in" data-index="10">OpenCV</div>
+        <div class="skills-grid">
+          <div class="skill-item" data-index="01">Python</div>
+          <div class="skill-item" data-index="02">FastAPI</div>
+          <div class="skill-item" data-index="03">LiveKit</div>
+          <div class="skill-item" data-index="04">Deepgram</div>
+          <div class="skill-item" data-index="05">RAG</div>
+          <div class="skill-item" data-index="06">Qdrant</div>
+          <div class="skill-item" data-index="07">MCP</div>
         </div>
       </div>
-      <div class="skill-group fade-in">
+      <div class="skill-group">
+        <h3 class="skill-group-title">Build &amp; ship</h3>
+        <div class="skills-grid">
+          <div class="skill-item" data-index="08">TypeScript</div>
+          <div class="skill-item" data-index="09">React</div>
+          <div class="skill-item" data-index="10">Next.js</div>
+          <div class="skill-item" data-index="11">Node.js</div>
+          <div class="skill-item" data-index="12">PostgreSQL</div>
+        </div>
+      </div>
+      <details class="skills-more">
+        <summary>Show all skills</summary>
+        <div class="skill-groups">
+      <div class="skill-group">
+        <h3 class="skill-group-title">More AI &amp; Voice</h3>
+        <div class="skills-grid">
+          <div class="skill-item" data-index="13">Silero VAD</div>
+          <div class="skill-item" data-index="14">Vercel AI SDK</div>
+          <div class="skill-item" data-index="15">OpenCV</div>
+        </div>
+      </div>
+      <div class="skill-group">
         <h3 class="skill-group-title">Backend &amp; Data</h3>
-        <div class="skills-grid stagger">
-          <div class="skill-item fade-in" data-index="11">Node.js</div>
-          <div class="skill-item fade-in" data-index="12">Express</div>
-          <div class="skill-item fade-in" data-index="13">Go</div>
-          <div class="skill-item fade-in" data-index="14">PostgreSQL</div>
-          <div class="skill-item fade-in" data-index="15">Supabase</div>
-          <div class="skill-item fade-in" data-index="16">Redis</div>
-          <div class="skill-item fade-in" data-index="17">GraphQL</div>
-          <div class="skill-item fade-in" data-index="18">Prisma</div>
-          <div class="skill-item fade-in" data-index="19">Socket.IO</div>
-          <div class="skill-item fade-in" data-index="20">Firebase</div>
-          <div class="skill-item fade-in" data-index="21">SQLite</div>
+        <div class="skills-grid">
+          <div class="skill-item" data-index="16">Express</div>
+          <div class="skill-item" data-index="17">Go</div>
+          <div class="skill-item" data-index="18">Supabase</div>
+          <div class="skill-item" data-index="19">Redis</div>
+          <div class="skill-item" data-index="20">GraphQL</div>
+          <div class="skill-item" data-index="21">Prisma</div>
+          <div class="skill-item" data-index="22">Socket.IO</div>
+          <div class="skill-item" data-index="23">Firebase</div>
+          <div class="skill-item" data-index="24">SQLite</div>
         </div>
       </div>
-      <div class="skill-group fade-in">
+      <div class="skill-group">
         <h3 class="skill-group-title">Client platforms &amp; integration</h3>
-        <div class="skills-grid stagger">
-          <div class="skill-item fade-in" data-index="22">Salesforce</div>
-          <div class="skill-item fade-in" data-index="23">Apex</div>
-          <div class="skill-item fade-in" data-index="24">Lightning Web Components</div>
-          <div class="skill-item fade-in" data-index="25">Shopify Liquid</div>
-          <div class="skill-item fade-in" data-index="26">Drupal</div>
-          <div class="skill-item fade-in" data-index="27">WordPress</div>
-          <div class="skill-item fade-in" data-index="28">Sanity</div>
-          <div class="skill-item fade-in" data-index="29">LDAP</div>
+        <div class="skills-grid">
+          <div class="skill-item" data-index="25">Salesforce</div>
+          <div class="skill-item" data-index="26">Apex</div>
+          <div class="skill-item" data-index="27">Lightning Web Components</div>
+          <div class="skill-item" data-index="28">Shopify Liquid</div>
+          <div class="skill-item" data-index="29">Drupal</div>
+          <div class="skill-item" data-index="30">WordPress</div>
+          <div class="skill-item" data-index="31">Sanity</div>
+          <div class="skill-item" data-index="32">LDAP</div>
         </div>
       </div>
-      <div class="skill-group fade-in">
+      <div class="skill-group">
         <h3 class="skill-group-title">Web</h3>
-        <div class="skills-grid stagger">
-          <div class="skill-item fade-in" data-index="30">React</div>
-          <div class="skill-item fade-in" data-index="31">Next.js</div>
-          <div class="skill-item fade-in" data-index="32">TypeScript</div>
-          <div class="skill-item fade-in" data-index="33">Redux Toolkit</div>
-          <div class="skill-item fade-in" data-index="34">TanStack Query</div>
-          <div class="skill-item fade-in" data-index="35">Zustand</div>
-          <div class="skill-item fade-in" data-index="36">Tailwind CSS</div>
-          <div class="skill-item fade-in" data-index="37">shadcn/ui</div>
-          <div class="skill-item fade-in" data-index="38">MUI</div>
-          <div class="skill-item fade-in" data-index="39">Mantine</div>
-          <div class="skill-item fade-in" data-index="40">Astro</div>
-          <div class="skill-item fade-in" data-index="41">Mapbox</div>
+        <div class="skills-grid">
+          <div class="skill-item" data-index="33">Redux Toolkit</div>
+          <div class="skill-item" data-index="34">TanStack Query</div>
+          <div class="skill-item" data-index="35">Zustand</div>
+          <div class="skill-item" data-index="36">Tailwind CSS</div>
+          <div class="skill-item" data-index="37">shadcn/ui</div>
+          <div class="skill-item" data-index="38">MUI</div>
+          <div class="skill-item" data-index="39">Mantine</div>
+          <div class="skill-item" data-index="40">Astro</div>
+          <div class="skill-item" data-index="41">Mapbox</div>
         </div>
       </div>
-      <div class="skill-group fade-in">
+      <div class="skill-group">
         <h3 class="skill-group-title">Mobile &amp; devices</h3>
-        <div class="skills-grid stagger">
-          <div class="skill-item fade-in" data-index="42">React Native</div>
-          <div class="skill-item fade-in" data-index="43">Expo</div>
-          <div class="skill-item fade-in" data-index="44">EAS Build</div>
-          <div class="skill-item fade-in" data-index="45">expo-camera</div>
-          <div class="skill-item fade-in" data-index="46">Kotlin</div>
-          <div class="skill-item fade-in" data-index="47">Jetpack Compose</div>
-          <div class="skill-item fade-in" data-index="48">Android</div>
-          <div class="skill-item fade-in" data-index="49">Room</div>
-          <div class="skill-item fade-in" data-index="50">Kotlin Coroutines</div>
-          <div class="skill-item fade-in" data-index="51">DataStore</div>
-          <div class="skill-item fade-in" data-index="52">BLE</div>
-          <div class="skill-item fade-in" data-index="53">Frida</div>
+        <div class="skills-grid">
+          <div class="skill-item" data-index="42">React Native</div>
+          <div class="skill-item" data-index="43">Expo</div>
+          <div class="skill-item" data-index="44">EAS Build</div>
+          <div class="skill-item" data-index="45">expo-camera</div>
+          <div class="skill-item" data-index="46">Kotlin</div>
+          <div class="skill-item" data-index="47">Jetpack Compose</div>
+          <div class="skill-item" data-index="48">Android</div>
+          <div class="skill-item" data-index="49">Room</div>
+          <div class="skill-item" data-index="50">Kotlin Coroutines</div>
+          <div class="skill-item" data-index="51">DataStore</div>
+          <div class="skill-item" data-index="52">BLE</div>
+          <div class="skill-item" data-index="53">Frida</div>
         </div>
       </div>
-      <div class="skill-group fade-in">
+      <div class="skill-group">
         <h3 class="skill-group-title">Testing &amp; delivery</h3>
-        <div class="skills-grid stagger">
-          <div class="skill-item fade-in" data-index="54">Vitest</div>
-          <div class="skill-item fade-in" data-index="55">Jest</div>
-          <div class="skill-item fade-in" data-index="56">React Testing Library</div>
-          <div class="skill-item fade-in" data-index="57">Cypress</div>
-          <div class="skill-item fade-in" data-index="58">Playwright</div>
-          <div class="skill-item fade-in" data-index="59">Docker</div>
-          <div class="skill-item fade-in" data-index="60">Git</div>
-          <div class="skill-item fade-in" data-index="61">GitHub Actions</div>
-          <div class="skill-item fade-in" data-index="62">Vite</div>
-          <div class="skill-item fade-in" data-index="63">Webpack</div>
-          <div class="skill-item fade-in" data-index="64">Rollup</div>
-          <div class="skill-item fade-in" data-index="65">Turborepo</div>
-          <div class="skill-item fade-in" data-index="66">Changesets</div>
-          <div class="skill-item fade-in" data-index="67">Claude Code</div>
-          <div class="skill-item fade-in" data-index="68">Cursor</div>
-          <div class="skill-item fade-in" data-index="69">GitHub Copilot</div>
+        <div class="skills-grid">
+          <div class="skill-item" data-index="54">Vitest</div>
+          <div class="skill-item" data-index="55">Jest</div>
+          <div class="skill-item" data-index="56">React Testing Library</div>
+          <div class="skill-item" data-index="57">Cypress</div>
+          <div class="skill-item" data-index="58">Playwright</div>
+          <div class="skill-item" data-index="59">Docker</div>
+          <div class="skill-item" data-index="60">Git</div>
+          <div class="skill-item" data-index="61">GitHub Actions</div>
+          <div class="skill-item" data-index="62">Vite</div>
+          <div class="skill-item" data-index="63">Webpack</div>
+          <div class="skill-item" data-index="64">Rollup</div>
+          <div class="skill-item" data-index="65">Turborepo</div>
+          <div class="skill-item" data-index="66">Changesets</div>
+          <div class="skill-item" data-index="67">Claude Code</div>
+          <div class="skill-item" data-index="68">Cursor</div>
+          <div class="skill-item" data-index="69">GitHub Copilot</div>
         </div>
       </div>
+        </div>
+      </details>
       </div>
     </div>
   </section>
