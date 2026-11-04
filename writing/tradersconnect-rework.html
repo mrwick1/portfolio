@@ -43,7 +43,7 @@
     "name": "Arjun"
   },
   "datePublished": "2026-02-28",
-  "dateModified": "2026-11-04T16:50:26+00:00",
+  "dateModified": "2026-11-04T18:41:58+00:00",
   "url": "https://www.arjunp.pro/writing/tradersconnect-rework.html",
   "mainEntityOfPage": "https://www.arjunp.pro/writing/tradersconnect-rework.html"
 }
@@ -411,7 +411,7 @@
   100% { transform: scale(2.2); opacity: 0; }
 }</code></pre>
 
-      <p class="case-text fade-in">All scroll-triggered reveals and the navbar state change run on a single IntersectionObserver setup. The entire JavaScript for the page:</p>
+      <p class="case-text fade-in">Two IntersectionObserver instances handle section reveals and navbar state. The script also toggles the mobile menu and closes it when a menu link is selected:</p>
 <pre><code>// Navbar: transparent → solid on scroll
 const n=document.querySelector('.nav'),h=document.querySelector('.hero');
 new IntersectionObserver(([e])=&gt;
@@ -431,7 +431,14 @@ const hb=document.querySelector('.nav-hamburger');
 if(hb){hb.addEventListener('click',()=&gt;{
   const open=n.classList.toggle('nav-menu-open');
   hb.setAttribute('aria-expanded',open)
-});}</code></pre>
+});
+  document.querySelectorAll('.nav-dropdown a').forEach(a=&gt;
+    a.addEventListener('click',()=&gt;{
+      n.classList.remove('nav-menu-open');
+      hb.setAttribute('aria-expanded','false')
+    })
+  );
+}</code></pre>
 
       <h2 class="fade-in">Noise Texture Without Images</h2>
       <p class="case-text fade-in">An inline SVG with an <code>feTurbulence</code> filter provides the paper texture. The overlay uses 4% opacity and does not require a separate image request.</p>
