@@ -5,54 +5,61 @@
     <link>https://www.arjunp.pro/writing/</link>
     <description>Technical articles, opinion pieces, and case studies by Arjun.</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 16:55:00 +0000</lastBuildDate>
     <atom:link href="https://www.arjunp.pro/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Building a Self-Updating Daily-Agenda Wallpaper</title>
+      <title>Building a voice-AI product</title>
+      <link>https://www.arjunp.pro/writing/building-a-voice-ai-product.html</link>
+      <description>A high-level account of my role in building, testing, and delivering a voice-AI product.</description>
+      <pubDate>Wed, 04 Nov 2026 16:55:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/building-a-voice-ai-product.html</guid>
+    </item>
+    <item>
+      <title>A self-updating desktop agenda</title>
       <link>https://www.arjunp.pro/writing/daily-agenda-wallpaper.html</link>
-      <description>How I turned my laptop wallpaper into a self-updating daily agenda: a designed poster rendered from HTML via headless Chrome, wired into Hyprland, with a self-cleaning quote feed.</description>
+      <description>A desktop agenda rendered from HTML and refreshed inside my Hyprland session.</description>
       <pubDate>Mon, 06 Jul 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/daily-agenda-wallpaper.html</guid>
     </item>
     <item>
-      <title>I reverse-engineered my motorcycle's Bluetooth protocol to put Google Maps on the dashboard</title>
+      <title>Building a navigation app for my motorcycle</title>
       <link>https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html</link>
-      <description>How I reverse-engineered my motorcycle's Bluetooth instrument-cluster protocol with a GATT walk, JADX, and Frida, then built REDLINE, an Android app for it.</description>
+      <description>How I studied my motorcycle’s Bluetooth protocol and built an Android navigation app.</description>
       <pubDate>Thu, 18 Jun 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/reverse-engineering-my-motorcycle-bluetooth.html</guid>
     </item>
     <item>
-      <title>Stop trusting 'looks about right': verifying AI UI against Figma</title>
+      <title>Checking generated UI against Figma</title>
       <link>https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html</link>
-      <description>How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.</description>
+      <description>A local tool for comparing a generated interface with its Figma source.</description>
       <pubDate>Wed, 17 Jun 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html</guid>
     </item>
     <item>
-      <title>How I Use AI Without Writing Garbage Code</title>
+      <title>How I work with AI coding tools</title>
       <link>https://www.arjunp.pro/writing/ai-workflow.html</link>
-      <description>AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.</description>
+      <description>How I use coding agents while keeping control of the implementation and review.</description>
       <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/ai-workflow.html</guid>
     </item>
     <item>
-      <title>What Happens When You Drop the Framework</title>
+      <title>Rebuilding a landing page for performance</title>
       <link>https://www.arjunp.pro/writing/tradersconnect-rework.html</link>
-      <description>Performance audit and frontend rework of TradersConnect's website: taking Lighthouse from 67 to 100, GTmetrix from C to A, and fully loaded time from 3.3s to 1.0s. Pure HTML/CSS, zero frameworks.</description>
+      <description>A static landing-page rebuild, measured with Lighthouse and GTmetrix.</description>
       <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/tradersconnect-rework.html</guid>
     </item>
     <item>
-      <title>The Case Against SPAs in 2026</title>
+      <title>Why this portfolio uses plain HTML</title>
       <link>https://www.arjunp.pro/writing/the-case-against-spas.html</link>
-      <description>I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction, and why most websites shouldn't be SPAs.</description>
+      <description>Why I chose static HTML for this portfolio, and where I would use a framework.</description>
       <pubDate>Wed, 25 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/the-case-against-spas.html</guid>
     </item>
     <item>
-      <title>How I Migrated a Production App from CRA to Next.js</title>
+      <title>Migrating a production app to Next.js</title>
       <link>https://www.arjunp.pro/writing/cra-to-nextjs-migration.html</link>
-      <description>A detailed walkthrough of incrementally migrating a production React app from Create React App to Next.js 14, achieving 60% faster load times and Lighthouse scores above 90.</description>
+      <description>How I moved an education platform from CRA to Next.js while continuing to ship features.</description>
       <pubDate>Thu, 19 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/cra-to-nextjs-migration.html</guid>
     </item>

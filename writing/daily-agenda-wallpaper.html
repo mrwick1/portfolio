@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Building a Self-Updating Daily-Agenda Wallpaper | Arjun.</title>
-<meta name="description" content="How I turned my laptop wallpaper into a self-updating daily agenda: a designed poster rendered from HTML via headless Chrome, wired into Hyprland, with a self-cleaning quote feed.">
+<title>A self-updating desktop agenda | Arjun P</title>
+<meta name="description" content="A desktop agenda rendered from HTML and refreshed inside my Hyprland session.">
 <meta name="keywords" content="Linux tooling, Hyprland, headless Chrome, HTML to image, Bash, CSS">
 <meta name="author" content="Arjun">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.arjunp.pro/writing/daily-agenda-wallpaper.html">
-<meta property="og:title" content="Building a Self-Updating Daily-Agenda Wallpaper">
-<meta property="og:description" content="A designed daily-agenda poster rendered from HTML via headless Chrome, wired into Hyprland, with a self-cleaning quote feed.">
+<meta property="og:title" content="A self-updating desktop agenda">
+<meta property="og:description" content="A desktop agenda rendered from HTML and refreshed inside my Hyprland session.">
 <meta property="og:image" content="https://www.arjunp.pro/assets/images/daily-agenda-wallpaper.webp">
 <meta property="og:site_name" content="Arjun">
 <meta property="article:author" content="Arjun">
@@ -22,8 +22,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Building a Self-Updating Daily-Agenda Wallpaper">
-<meta name="twitter:description" content="A designed daily-agenda poster rendered from HTML via headless Chrome, wired into Hyprland, with a self-cleaning quote feed.">
+<meta name="twitter:title" content="A self-updating desktop agenda">
+<meta name="twitter:description" content="A desktop agenda rendered from HTML and refreshed inside my Hyprland session.">
 <meta name="twitter:image" content="https://www.arjunp.pro/assets/images/daily-agenda-wallpaper.webp">
 <meta name="twitter:creator" content="@03arjunkr">
 
@@ -32,8 +32,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Building a Self-Updating Daily-Agenda Wallpaper",
-  "description": "How I turned my laptop wallpaper into a self-updating daily agenda: a designed poster rendered from HTML via headless Chrome, wired into Hyprland, with a self-cleaning quote feed.",
+  "headline": "A self-updating desktop agenda",
+  "description": "A desktop agenda rendered from HTML and refreshed inside my Hyprland session.",
   "image": "https://www.arjunp.pro/assets/images/daily-agenda-wallpaper.webp",
   "author": {
     "@type": "Person",
@@ -45,16 +45,17 @@
     "name": "Arjun"
   },
   "datePublished": "2026-07-06",
+  "dateModified": "2026-11-04T16:50:26+00:00",
   "url": "https://www.arjunp.pro/writing/daily-agenda-wallpaper.html",
   "mainEntityOfPage": "https://www.arjunp.pro/writing/daily-agenda-wallpaper.html"
 }
 </script>
 
-<link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2'); }
-  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/geist.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/geist-mono.woff2') format('woff2'); }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --white: #FFFFFF; --black: #111111; --accent: #0055FF;
@@ -180,27 +181,13 @@
     .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
   }
 </style>
+<link rel="stylesheet" href="../assets/letter.css">
+<meta property="article:modified_time" content="2026-11-04T16:50:26+00:00">
 </head>
-<body>
-<div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
-
-<nav class="nav" role="navigation" aria-label="Primary navigation">
-  <a href="../index.html" class="nav-logo">Arjun.</a>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
-    <li><a href="../index.html#approach" class="nav-link"><span class="nav-link-text">Approach</span></a></li>
-
-    <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
-    <li><a href="../index.html#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
-    <li><a href="../index.html#education" class="nav-link"><span class="nav-link-text">Education</span></a></li>
-    <li><a href="./" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
-    <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
-    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
-  </ul>
-</nav>
-
-<main class="page">
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
 
   <!-- Hero -->
   <section class="case-hero">
@@ -210,17 +197,11 @@
         <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
         <span>Daily-Agenda Wallpaper</span>
       </div>
-      <h1 class="case-title">Building a Self-Updating Daily-Agenda Wallpaper</h1>
-      <p class="case-subtitle">My laptop wallpaper is now a poster of today's tasks. It regenerates itself, and it started as a one-line idea that spiralled into a fun little rendering pipeline.</p>
+      <p class="article-date">6 July 2026 · 4 min read</p><h1 class="case-title">A self-updating desktop agenda</h1>
+      <p class="case-subtitle">A desktop agenda rendered from HTML and refreshed inside my Hyprland session.</p>
       <div class="case-meta">
-        <div class="case-meta-item">
-          <span class="case-meta-label">Published</span>
-          <span class="case-meta-value">July 6, 2026</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Reading Time</span>
-          <span class="case-meta-value">7 min read</span>
-        </div>
+
+
         <div class="case-meta-item">
           <span class="case-meta-label">Tags</span>
           <div class="case-meta-tags">
@@ -237,9 +218,9 @@
   <!-- 01 The Itch -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The Itch</div>
-      <p class="case-text fade-in">I run a dual-monitor setup on Arch with Hyprland. The external screen cycles through a wallpaper collection every few minutes, which is nice for the eyes and useless for getting things done. What I actually wanted was for the <em>laptop</em> panel, the one always in front of me, to show today's agenda. Not a widget I'd have to summon, not a browser tab I'd forget: the wallpaper itself, updating on its own each morning.</p>
-      <p class="case-text fade-in">The naive version is a text file dumped onto a solid background with an image tool. I've done that before and it always looks like a text file dumped onto a background. If it was going to live behind everything I do all day, I wanted it to actually look designed: typographic hierarchy, a real calendar, art. So I set a higher bar and worked backwards from it.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">I</span>The goal</h2>
+      <p class="case-text fade-in">I wanted my laptop screen to show the day’s tasks without opening another application. My external monitor could keep rotating wallpapers while the laptop displayed an agenda.</p>
+      <p class="case-text fade-in">The agenda needed a clear task list, calendar, and space for artwork. I used the browser’s layout engine to arrange those elements before rendering an image.</p>
       <figure class="case-figure fade-in">
         <img src="../assets/images/daily-agenda-wallpaper.webp" alt="The rendered daily-agenda wallpaper: a large date and day of week, a numbered task list, a rotating quote, three tinted art panels, and a full month calendar with today highlighted, all in an electric-blue poster layout.">
         <figcaption>The generated poster: today's date, a numbered task list, a rotating quote, and a month calendar, regenerated at login and every 10 minutes.</figcaption>
@@ -250,67 +231,67 @@
   <!-- 02 Why a poster, not text -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>A Poster, Not a Text Dump</div>
-      <p class="case-text fade-in">The aesthetic I wanted was the paneled, bold-numeral look of a game's in-app calendar: heavy display type, a hard grid, an accent colour doing a lot of work. The moment you want <em>that</em>, drawing text box-by-box with an image library becomes a nightmare of manual coordinates. But I already know a layout engine that does grid, flexbox, web fonts, and clip-paths for free: the browser.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">II</span>Rendering the poster</h2>
+      <p class="case-text fade-in">The design uses a grid, large numerals, and an accent colour. HTML and CSS let me work with those elements directly instead of placing each item through an image library.</p>
       <p class="case-text fade-in">So the poster is <strong>just a web page</strong>. A Bash script builds an HTML document (inline CSS, plus a tiny inline script that draws the month grid and highlights today), and then headless Chrome screenshots it into a 1920&times;1080 PNG.</p>
 <pre><code>google-chrome-stable --headless=new --hide-scrollbars \
   --window-size=1920,1080 --force-device-scale-factor=1 \
   --virtual-time-budget=4000 \
   --screenshot=poster.png "file://poster.html"</code></pre>
-      <p class="case-text fade-in">Two flags earned their place the hard way. <code>--force-device-scale-factor=1</code> pins the output to exactly 1920&times;1080 regardless of the machine's display scaling. And <code>--virtual-time-budget=4000</code> tells Chrome to let the page settle. Without it, a cold render fires the screenshot before the art images have loaded and you get a half-blank poster. Both bugs I hit before I trusted the pipeline.</p>
+      <p class="case-text fade-in">I used <code>--force-device-scale-factor=1</code> to control capture scaling and <code>--virtual-time-budget=4000</code> to give the page time to load. Earlier captures sometimes ran before the artwork appeared.</p>
     </div>
   </section>
 
   <!-- 03 Wiring into the desktop -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Wiring It Into the Desktop</div>
-      <p class="case-text fade-in">Rendering a PNG is half the job; the other half is getting it onto the screen and keeping it there. The wallpaper daemon happily sets any image on a given output. The catch: my existing cycler was already rotating wallpapers on <em>both</em> monitors, so it would cheerfully overwrite my freshly-rendered agenda within minutes.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">III</span>Wiring It Into the Desktop</h2>
+      <p class="case-text fade-in">The wallpaper also needed to stay on the intended screen. My existing cycler rotated both monitors and would replace the agenda after the next interval.</p>
       <p class="case-text fade-in">The fix was to teach the cycler to skip one output, a <code>SKIP_MONITORS</code> setting for the laptop panel, so the agenda owns that screen while the external monitor keeps its rotation. Then a single line in the Hyprland config renders at login and refreshes on a timer:</p>
 <pre><code>exec-once = bash -c 'while :; do task-wallpaper; sleep 600; done'</code></pre>
-      <p class="case-text fade-in">I deliberately did <em>not</em> reach for a systemd user timer here, even though it's the "correct" tool for periodic jobs. A timer wouldn't inherit the Wayland session environment my setup exposes, so it couldn't talk to the compositor. A plain loop inside the Hyprland session already has everything it needs. Every 10 minutes it re-reads the task file, re-rolls the art, and refreshes the quote, which also means edits to my task list show up on their own without me lifting a finger.</p>
+      <p class="case-text fade-in">I used a loop launched by Hyprland so the refresh command ran inside the desktop session. Every 10 minutes, it rereads the task file and refreshes the artwork and quote. This also picks up task edits during the day.</p>
     </div>
   </section>
 
   <!-- 04 The bug -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>The Bug That Ate an Evening</div>
-      <p class="case-text fade-in">The layout is a CSS grid: a content row on top, a fixed-height calendar bar pinned to the bottom. It rendered perfectly. Then one run picked a very tall art image, and suddenly the calendar bar was gone, shoved right off the bottom of the screen. Same code, different image, different result. Those are the annoying ones.</p>
-      <p class="case-text fade-in">The culprit is a CSS quirk that bites everyone eventually: a grid (or flex) item defaults to <code>min-height: auto</code>, which means it refuses to shrink below the intrinsic size of its content. A large image blew the top row past its allotted track height and pushed the bottom row out of the viewport. The fix is one property:</p>
+      <h2 class="case-section-heading"><span class="case-section-number">IV</span>A grid sizing bug</h2>
+      <p class="case-text fade-in">The layout has a content row above a fixed-height calendar bar. A tall image exposed a sizing problem: the content row grew and pushed the calendar below the viewport.</p>
+      <p class="case-text fade-in">The content item’s automatic minimum height prevented it from shrinking into the available grid track. The fix was to allow it to shrink:</p>
 <pre><code>.content-row { min-height: 0; }  /* let the track win, not the image */</code></pre>
-      <p class="case-text fade-in">With <code>min-height: 0</code>, the row respects its grid track and the image is clipped to fit instead of expanding the layout. It's a two-word fix that only makes sense once you know the rule, which is exactly why it cost an evening the first time.</p>
+      <p class="case-text fade-in">With <code>min-height: 0</code>, the content fits within its grid track. The image clips inside that space instead of pushing the calendar out of view.</p>
     </div>
   </section>
 
   <!-- 05 The quote system -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>A Self-Cleaning Quote Feed</div>
-      <p class="case-text fade-in">I wanted a rotating quote too: a mix of developer wisdom and stoic philosophy. This turned into the most interesting engineering in the whole thing, because "fetch a quote from an API" is never as clean as it sounds.</p>
-      <p class="case-text fade-in">Each run flips a coin. Developer quotes come from a local file I curated. Stoic quotes are fetched live from a public API, and that's where reality intruded. The API returns a lot of junk: truncated tweets, fragments starting mid-sentence, quotes "attributed" to <code>@handles</code> instead of actual people. Piping that straight onto my wallpaper looked terrible.</p>
-      <p class="case-text fade-in">So every fetched quote goes through a quality gate before it's allowed anywhere near the screen. It has to have an author separator, be a sane length, start with a capital letter, and contain no <code>@</code> handle:</p>
+      <h2 class="case-section-heading"><span class="case-section-number">V</span>Validating quote data</h2>
+      <p class="case-text fade-in">The rotating quote introduced another requirement: external text needed validation and a local fallback.</p>
+      <p class="case-text fade-in">Developer quotes come from a local file. Stoic quotes come from a public API, which sometimes returns fragments, truncated text, or social handles as author names.</p>
+      <p class="case-text fade-in">The script checks each fetched quote for an author separator, length, an initial capital letter, and the absence of an <code>@</code> handle:</p>
 <pre><code>QTEXT="${QLINE%%|*}"
 if [[ -n "$QLINE" &amp;&amp; "$QLINE" != *"null"* &amp;&amp; "$QLINE" == *"|"* \
       &amp;&amp; "$QLINE" != *"@"* &amp;&amp; ${#QLINE} -le 160 \
       &amp;&amp; ${#QTEXT} -ge 25 &amp;&amp; "$QTEXT" =~ ^[A-Z] ]]; then
   # clean enough -&gt; use it, and append to the local cache
 fi</code></pre>
-      <p class="case-text fade-in">Anything that passes gets appended to a local cache, so the pool of good quotes <em>grows every day the machine is online</em>. And if the fetch fails, returns garbage, or I'm offline entirely, it falls back to the accumulated cache first, then to a bundled file. The wallpaper never shows a broken quote and never depends on the network being up.</p>
+      <p class="case-text fade-in">Accepted quotes enter a local cache. If the request fails or the result fails validation, the script uses the cache, then a bundled quote file.</p>
 
       <h2 class="fade-in">Readable in the background</h2>
-      <p class="case-text fade-in">The last snag was visual. I wanted the quote to sit quietly behind the task list, but on a busy day the tasks overlap it and turned into mush. My first attempt, just fading the quote down, made it unreadable. The fix that worked was the opposite: keep the quote a legible mid-grey, and give the task text a paper-coloured halo (a layered <code>text-shadow</code>) so wherever a task sits on top of the quote, it punches a clean hole through it. Tasks always win; the quote fills the gaps.</p>
+      <p class="case-text fade-in">Tasks could overlap the quote on busy days. I kept the quote grey and added a paper-coloured <code>text-shadow</code> around task text. This made the task list readable where the two overlapped.</p>
     </div>
   </section>
 
   <!-- 06 Reflection -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>What It Actually Is</div>
-      <p class="case-text fade-in">This is a small personal tool, and I want to be honest about that. It's welded to Arch and Hyprland; it talks to a specific Wayland wallpaper daemon; it will not run on your Mac. I'm not pretending it's a product.</p>
-      <p class="case-text fade-in">But the ideas inside it travel well, and that's why I wrote it up. Rendering a design to an image by driving a real browser instead of fighting an image library is a genuinely useful trick: it's the same idea behind social-card generators and PDF exporters. And treating a flaky external feed as untrusted input (gate it, cache the good stuff, always have a local fallback) is a pattern I reach for constantly in production frontend work, just dressed down here in twenty lines of Bash.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">VI</span>What It Actually Is</h2>
+      <p class="case-text fade-in">This tool is specific to my Arch and Hyprland setup. It depends on the wallpaper daemon and desktop session I use.</p>
+      <p class="case-text fade-in">The reusable parts are the rendering and fallback patterns. A browser can turn an HTML layout into an image. An external feed can be validated, cached, and backed by local content.</p>
       <blockquote class="fade-in">
-        <p>The best tools are the ones you build for an audience of one. The bar is honest, the feedback is instant, and you actually use the thing every single day.</p>
+        <p>A small tool for my own desktop gave me a way to test both patterns in daily use.</p>
       </blockquote>
       <p class="case-text fade-in">The full source (script, quote pools, and setup notes) is on GitHub: <a href="https://github.com/mrwick1/daily-agenda-wallpaper" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none;">github.com/mrwick1/daily-agenda-wallpaper</a>.</p>
     </div>
@@ -328,41 +309,12 @@ fi</code></pre>
 
 </main>
 
-<footer class="footer">
-  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. All rights reserved.</div>
-  <div class="footer-social">
-    <a href="https://github.com/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-    <a href="https://linkedin.com/in/arjunp-software-engineer" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-    <a href="https://twitter.com/03arjunkr" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
-  </div>
-</footer>
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>VOICE · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
 
-<script>
-(function(){
-  'use strict';
-  var fadeEls=document.querySelectorAll('.fade-in');
-  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}
-  var html=document.documentElement,toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
-  var sunPath='<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-  var moonPath='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-  function setTheme(t){html.setAttribute('data-theme',t);icon.innerHTML=t==='dark'?moonPath:sunPath;try{localStorage.setItem('swiss-theme',t);}catch(e){}}
-  var saved=null;try{saved=localStorage.getItem('swiss-theme');}catch(e){}
-  if(saved){setTheme(saved);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){setTheme('dark');}
-  if(toggle){toggle.addEventListener('click',function(){setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');});}
-  var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
-})();
-</script>
+
 <script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-(function(){
-  var b=document.getElementById('navBurger'),n=document.getElementById('navLinks');
-  if(!b||!n)return;
-  function setOpen(o){n.classList.toggle('is-open',o);b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  b.addEventListener('click',function(){setOpen(!n.classList.contains('is-open'));});
-  n.addEventListener('click',function(e){if(e.target.closest('.nav-link, .nav-logo'))setOpen(false);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
-})();
-</script>
+
+<script src="../assets/letter.js" defer></script>
 </body>
 </html>

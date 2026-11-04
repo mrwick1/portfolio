@@ -1,0 +1,8 @@
+Redaction Regular and Italic: https://github.com/jeremymickel/Redaction
+License: redaction-OFL.txt
+
+Geist and Geist Mono: https://github.com/vercel/geist-font
+License: geist-OFL.txt
+
+Mrs Saint Delafield: https://github.com/google/fonts/tree/main/ofl/mrssaintdelafield
+License: mrs-saint-delafield-OFL.txt
