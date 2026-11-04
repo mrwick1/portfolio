@@ -8,7 +8,7 @@
       <loc>https://www.arjunp.pro/</loc>
       
     
-      <lastmod>2026-06-17</lastmod>
+      <lastmod>2026-11-04</lastmod>
       
     
       <changefreq>weekly</changefreq>
@@ -184,7 +184,7 @@
       <loc>https://www.arjunp.pro/writing/</loc>
       
     
-      <lastmod>2026-07-06</lastmod>
+      <lastmod>2026-11-04</lastmod>
       
     
       <changefreq>weekly</changefreq>
@@ -360,4 +360,6 @@
 
     <url><loc>https://www.arjunp.pro/projects/</loc></url>
     <url><loc>https://www.arjunp.pro/writing/building-a-voice-ai-product.html</loc><lastmod>2026-11-04</lastmod></url>
+    <url><loc>https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html</loc><lastmod>2026-11-04</lastmod></url>
+    <url><loc>https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html</loc><lastmod>2026-11-04</lastmod></url>
 </urlset>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharing HTML with expiring links | Arjun P</title>
+<meta name="description" content="A small service for opening a single HTML page on another device, with expiry and browser sandboxing.">
+<meta name="author" content="Arjun P">
+<link rel="canonical" href="https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sharing HTML with expiring links">
+<meta property="og:description" content="A small service for opening a single HTML page on another device, with expiry and browser sandboxing.">
+<meta property="og:url" content="https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta property="article:published_time" content="2026-10-11T00:00:00+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sharing HTML with expiring links">
+<meta name="twitter:description" content="A small service for opening a single HTML page on another device, with expiry and browser sandboxing.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Sharing HTML with expiring links", "description": "A small service for opening a single HTML page on another device, with expiry and browser sandboxing.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-10-11T00:00:00+00:00", "dateModified": "2026-11-04T17:44:34+00:00", "url": "https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html", "isBasedOn": "https://mrwick.dev/notes/share-one-html-page-at-a-link-that-expires/"}</script>
+</head>
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
+<section class="case-hero"><p class="article-date">11 October 2026 · 2 min read</p><h1 class="case-title">Sharing HTML with expiring links</h1><p class="case-subtitle">A small service for sharing a chart or mockup without creating a deployment.</p></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">I</span>One file, another device</h2>
+<p class="case-text">My coding agents often produce a chart or mockup as one HTML file. I want to open it on my phone or another computer without setting up a deployment for each draft.</p>
+<p class="case-text">I built <code>share</code> for that workflow. An authenticated upload returns a public URL and an expiry time. The default lifetime is 24 hours; the supported range is one minute to seven days. An authenticated delete request can remove a page earlier.</p>
+<p class="case-text">The service accepts files up to 5 MB. It is for temporary, self-contained pages rather than a full application hosting workflow.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">II</span>Expiry without a database</h2>
+<p class="case-text">Each upload becomes a file named with a random identifier. I use the file’s modification time to store its expiry, setting it with Python’s <code>os.utime</code>.</p>
+<p class="case-text">Every page request checks that timestamp. An expired page stops being served even if the cleanup task has not run yet. A background thread removes expired files every ten minutes.</p>
+<p class="case-text">This keeps the storage model small. It also gives modification time a special meaning: any tool that changes it can change the page’s lifetime.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">III</span>Treat the page as untrusted</h2>
+<p class="case-text">An uploaded page may contain scripts, so I do not give it the hosting site’s normal browser origin. The response includes a Content-Security-Policy sandbox without <code>allow-same-origin</code>.</p>
+<p class="case-text">That makes the document’s origin opaque. Its scripts cannot use <code>document.cookie</code> or <code>localStorage</code>; interactive pages keep their state in memory instead. The browser behavior is described in <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/sandbox">the CSP sandbox reference</a>.</p>
+<p class="case-text">The service permits scripts, forms, popups, and downloads. The sandbox does not make uploaded content trustworthy or stop all network activity. I use it to limit browser privileges, not to make confidential content safe to publish.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">IV</span>A small scope</h2>
+<p class="case-text">The server uses Python’s standard library for HTTP handling, files, random identifiers, and token comparison. It does not need a database.</p>
+<p class="case-text">Anyone who has the URL can read a page until it expires or I delete it. The response asks search engines not to index the page and suppresses referrer information, but those headers do not provide access control.</p>
+<p class="case-text">I still want a way to list live pages. For now, the service solves one task: move a disposable HTML draft from a local file to a link I can open elsewhere.</p>
+</div></section>
+<section class="case-section"><p class="case-text">Adapted from <a href="https://mrwick.dev/notes/share-one-html-page-at-a-link-that-expires/">my original notebook entry</a>, published on 11 October 2026.</p></section>
+<nav class="case-section article-back" aria-label="Article navigation"><a href="./" class="all-writing">← All writing</a></nav>
+</main>
+
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>VOICE · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
+
+
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script src="../assets/letter.js" defer></script>
+</body>
+</html>

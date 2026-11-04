@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giving coding agents their own screen | Arjun P</title>
+<meta name="description" content="How I extended hyprcage with text-based interaction, device emulation, and recording.">
+<meta name="author" content="Arjun P">
+<link rel="canonical" href="https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Giving coding agents their own screen">
+<meta property="og:description" content="How I extended hyprcage with text-based interaction, device emulation, and recording.">
+<meta property="og:url" content="https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta property="article:published_time" content="2026-10-11T00:00:00+00:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Giving coding agents their own screen">
+<meta name="twitter:description" content="How I extended hyprcage with text-based interaction, device emulation, and recording.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Giving coding agents their own screen", "description": "How I extended hyprcage with text-based interaction, device emulation, and recording.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-10-11T00:00:00+00:00", "dateModified": "2026-11-04T17:44:34+00:00", "url": "https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html", "isBasedOn": "https://mrwick.dev/notes/hyprcage-a-screen-for-agents/"}</script>
+</head>
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
+<section class="case-hero"><p class="article-date">11 October 2026 · 2 min read</p><h1 class="case-title">Giving coding agents their own screen</h1><p class="case-subtitle">Extending hyprcage so an agent can test an interface without interrupting my desktop.</p></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">I</span>The interruption</h2>
+<p class="case-text">When a coding agent opens a browser on my desktop, it can cover my work, move the cursor, or take focus. I wanted it to test interfaces while I continued using the machine.</p>
+<p class="case-text">I use <a href="https://github.com/hexadecimil/hyprcage">hyprcage</a> for this. The original project gives an agent a separate, in-memory screen through the Cage compositor. I maintain <a href="https://github.com/mrwick1/hyprcage">a fork</a> with additions for interaction, emulation, and recording.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">II</span>Read before taking a screenshot</h2>
+<p class="case-text">A screenshot is useful for checking appearance, but many actions only need a control’s name, role, and location. I added a text snapshot that lists those details with references an agent can act on.</p>
+<p class="case-text">The tool tries the browser’s DevTools protocol, then the desktop accessibility interface, AT-SPI, then OCR. The available source depends on the application and its setup. An action tool clicks, types, or scrolls against a reference; a find tool waits for an element.</p>
+<p class="case-text">Text does not replace visual review. When it cannot explain the layout, the agent still needs a screenshot.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">III</span>Test and show the result</h2>
+<p class="case-text">I added device emulation for viewport size, pixel ratio, touch, user agent, network conditions, CPU slowdown, and color scheme. These controls help exercise responsive behavior. They do not replace testing on a physical phone.</p>
+<p class="case-text">I also extended recording with a browser-viewport crop, an option to cut idle time, and pointer movement with click rings. The aim is a short demonstration that makes the interaction easy to follow.</p>
+<p class="case-text">A mirror window lets me watch the agent’s screen. It does not accept input, so watching does not interfere with the agent’s work.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">IV</span>Boundaries and limits</h2>
+<p class="case-text">The fork also provides tools for the real desktop, including accessibility-based actions and window control. Those tools refuse actions while the session is locked.</p>
+<p class="case-text">A separate screen prevents desktop interruptions; it is not a claim that launched applications are isolated from the host filesystem or network.</p>
+<p class="case-text">Each screen still consumes memory, so I cap concurrent screens. Accessibility coverage also varies: I recorded a case where Thunar stopped appearing on the accessibility bus after its Create Folder dialog opened.</p>
+<p class="case-text">The useful change is practical: interface testing can happen beside my work, and I can inspect the result when I need to.</p>
+</div></section>
+<section class="case-section"><p class="case-text">Adapted from <a href="https://mrwick.dev/notes/hyprcage-a-screen-for-agents/">my original notebook entry</a>, published on 11 October 2026.</p></section>
+<nav class="case-section article-back" aria-label="Article navigation"><a href="./" class="all-writing">← All writing</a></nav>
+</main>
+
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>VOICE · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
+
+
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script src="../assets/letter.js" defer></script>
+</body>
+</html>
