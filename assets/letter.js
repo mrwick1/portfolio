@@ -7,7 +7,6 @@
   try { savedTheme = localStorage.getItem('swiss-theme'); } catch (e) {}
   function setTheme(theme) {
     root.dataset.theme = theme;
-    themeButton.setAttribute('aria-pressed', String(theme === 'dark'));
     themeButton.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
   }
   setTheme(savedTheme === 'dark' || savedTheme === 'light' ? savedTheme : systemTheme.matches ? 'dark' : 'light');
