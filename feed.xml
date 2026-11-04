@@ -5,7 +5,7 @@
     <link>https://www.arjunp.pro/writing/</link>
     <description>Technical articles, opinion pieces, and case studies by Arjun.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2026 16:55:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 17:44:34 +0000</lastBuildDate>
     <atom:link href="https://www.arjunp.pro/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Building a voice-AI product</title>
@@ -13,6 +13,20 @@
       <description>A high-level account of my role in building, testing, and delivering a voice-AI product.</description>
       <pubDate>Wed, 04 Nov 2026 16:55:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/building-a-voice-ai-product.html</guid>
+    </item>
+    <item>
+      <title>Giving coding agents their own screen</title>
+      <link>https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html</link>
+      <description>How I extended hyprcage with text-based interaction, device emulation, and recording.</description>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html</guid>
+    </item>
+    <item>
+      <title>Sharing HTML with expiring links</title>
+      <link>https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html</link>
+      <description>A small service for opening a single HTML page on another device, with expiry and browser sandboxing.</description>
+      <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html</guid>
     </item>
     <item>
       <title>A self-updating desktop agenda</title>
