@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How I Use AI Without Writing Garbage Code | Arjun.</title>
-<meta name="description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
+<title>How I work with AI coding tools | Arjun P</title>
+<meta name="description" content="How I use coding agents while keeping control of the implementation and review.">
 <meta name="keywords" content="AI, workflow, engineering, Claude Code, code quality, developer tools, AI-assisted development">
 <meta name="author" content="Arjun">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.arjunp.pro/writing/ai-workflow.html">
-<meta property="og:title" content="How I Use AI Without Writing Garbage Code">
-<meta property="og:description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
+<meta property="og:title" content="How I work with AI coding tools">
+<meta property="og:description" content="How I use coding agents while keeping control of the implementation and review.">
 <meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
 <meta property="og:site_name" content="Arjun">
 <meta property="article:author" content="Arjun">
@@ -22,8 +22,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How I Use AI Without Writing Garbage Code">
-<meta name="twitter:description" content="AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.">
+<meta name="twitter:title" content="How I work with AI coding tools">
+<meta name="twitter:description" content="How I use coding agents while keeping control of the implementation and review.">
 <meta name="twitter:creator" content="@03arjunkr">
 
 <!-- Structured Data -->
@@ -31,8 +31,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "How I Use AI Without Writing Garbage Code",
-  "description": "AI is a multiplier, not a replacement. It multiplies what you already know. Here's my workflow for getting speed from AI without sacrificing code quality.",
+  "headline": "How I work with AI coding tools",
+  "description": "How I use coding agents while keeping control of the implementation and review.",
   "author": {
     "@type": "Person",
     "name": "Arjun",
@@ -43,16 +43,17 @@
     "name": "Arjun"
   },
   "datePublished": "2026-02-28",
+  "dateModified": "2026-11-04T16:50:26+00:00",
   "url": "https://www.arjunp.pro/writing/ai-workflow.html",
   "mainEntityOfPage": "https://www.arjunp.pro/writing/ai-workflow.html"
 }
 </script>
 
-<link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2'); }
-  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/geist.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/geist-mono.woff2') format('woff2'); }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --white: #FFFFFF; --black: #111111; --accent: #0055FF;
@@ -180,27 +181,13 @@
     .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
   }
 </style>
+<link rel="stylesheet" href="../assets/letter.css">
+<meta property="article:modified_time" content="2026-11-04T16:50:26+00:00">
 </head>
-<body>
-<div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
-
-<nav class="nav" role="navigation" aria-label="Primary navigation">
-  <a href="../index.html" class="nav-logo">Arjun.</a>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
-    <li><a href="../index.html#approach" class="nav-link"><span class="nav-link-text">Approach</span></a></li>
-
-    <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
-    <li><a href="../index.html#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
-    <li><a href="../index.html#education" class="nav-link"><span class="nav-link-text">Education</span></a></li>
-    <li><a href="./" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
-    <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
-    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
-  </ul>
-</nav>
-
-<main class="page">
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
 
   <!-- Hero -->
   <section class="case-hero">
@@ -210,21 +197,15 @@
         <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
         <span>AI Workflow</span>
       </div>
-      <h1 class="case-title">How I Use AI Without Writing Garbage Code</h1>
-      <p class="case-subtitle">AI is a multiplier, not a replacement. It multiplies what you already know.</p>
+      <p class="article-date">28 February 2026 · 4 min read</p><h1 class="case-title">How I work with AI coding tools</h1>
+      <p class="case-subtitle">How I use coding agents while keeping control of the implementation and review.</p>
       <div class="case-meta">
-        <div class="case-meta-item">
-          <span class="case-meta-label">Published</span>
-          <span class="case-meta-value">Feb 28, 2026</span>
-        </div>
+
         <div class="case-meta-item">
           <span class="case-meta-label">Last Updated</span>
           <span class="case-meta-value">May 4, 2026</span>
         </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Reading Time</span>
-          <span class="case-meta-value">7 min read</span>
-        </div>
+
         <div class="case-meta-item">
           <span class="case-meta-label">Tags</span>
           <div class="case-meta-tags">
@@ -240,82 +221,82 @@
   <!-- 01 The Problem -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The Problem</div>
-      <p class="case-text fade-in">You're reviewing a pull request. The code works. Tests pass, feature does what it's supposed to. But something's off. Utility functions recreated from scratch when they already exist in the codebase. API calls bypassing the existing service layer. Patterns that don't match the rest of the project. It's not bad code. It's <em>disconnected</em> code. The code doesn't know about the codebase it lives in. That's the tell.</p>
-      <p class="case-text fade-in">There are two camps right now. Developers who paste AI output without reading it, shipping codebases that feel stitched together from a dozen different authors. And developers who refuse to use AI at all in 2026, which is just leaving speed on the table. Both camps are wrong.</p>
-      <p class="case-text fade-in">There's a middle ground. Use AI aggressively, but own every line. This is how I do it.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">I</span>Context</h2>
+      <p class="case-text fade-in">Generated code can pass its tests and still fit poorly into a project. It may duplicate an existing utility, bypass a service layer, or introduce a different pattern for the same task.</p>
+      <p class="case-text fade-in">I use coding agents to explore, plan, and implement changes. I still need to understand how each change fits into the application.</p>
+      <p class="case-text fade-in">The workflow below keeps that context in the task and leaves review with me.</p>
     </div>
   </section>
 
   <!-- 02 My Setup -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>My Setup</div>
+      <h2 class="case-section-heading"><span class="case-section-number">II</span>My Setup</h2>
       <p class="case-text fade-in">The stack is deliberately simple:</p>
       <ul class="fade-in">
-        <li><strong>Claude Code CLI</strong>: the main tool, does the heavy lifting. Lives in the terminal, has full context of the project.</li>
-        <li><strong>Neovim</strong>: for when I want direct control. Surgical edits, quick reads, navigating code at my own pace.</li>
-        <li><strong>Lazygit</strong>: git workflow. Every commit goes through me.</li>
+        <li><strong>Claude Code CLI:</strong> exploring the relevant files, planning changes, and implementing tasks in the terminal.</li>
+        <li><strong>Neovim:</strong> reading code and making direct edits.</li>
+        <li><strong>Lazygit:</strong> inspecting changes and managing commits.</li>
       </ul>
-      <p class="case-text fade-in">That's it. No 10-tool AI stack. No fancy IDE plugin chains. No prompt engineering templates saved in Notion. The tool matters less than how you use it. I've seen developers get better results from a basic setup with a clear workflow than from an over-engineered stack they don't actually understand.</p>
+      <p class="case-text fade-in">This setup keeps editing, code review, and Git close together. A clear task and a well-understood codebase matter more to me than the number of tools.</p>
     </div>
   </section>
 
   <!-- 03 The Workflow -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>The Workflow</div>
-      <p class="case-text fade-in">This is the core of it. Five steps, every time. It's not a rigid process. It's a rhythm that keeps AI output from drifting into disconnected code.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">III</span>The Workflow</h2>
+      <p class="case-text fade-in">I use five steps to keep implementation aligned with the project.</p>
 
       <h2 class="fade-in">1. Explore</h2>
-      <p class="case-text fade-in">Before writing a single line, understand what exists. Use AI to explore the codebase: trace data flows, map dependencies, understand the service layer. Where do API calls live? What patterns does the project already use for form validation? What utilities exist? The goal is to build a mental model of the codebase so that anything you write fits into it, not next to it.</p>
+      <p class="case-text fade-in">First, I trace the relevant data flow and read the existing implementation. I look for service boundaries, validation rules, and reusable utilities before asking for a change.</p>
 
       <h2 class="fade-in">2. Plan together</h2>
-      <p class="case-text fade-in">Write the plan collaboratively. AI suggests architecture and patterns from its vast reference base. It's seen thousands of codebases, so it might catch tradeoffs you haven't considered. Maybe it suggests a state management approach you wouldn't have thought of, or flags that your planned file structure will cause circular dependencies. You evaluate, correct, rewrite. Architecture is collaborative, but you make the final call.</p>
+      <p class="case-text fade-in">I use the agent to compare implementation options and identify tradeoffs. I check its suggestions against the codebase and decide which approach to use.</p>
 
       <h2 class="fade-in">3. Verify the plan</h2>
-      <p class="case-text fade-in">Before any code gets written, confirm exactly which files get touched, created, or deleted. Walk through edge cases. What happens when the API returns an empty array? What if the user navigates away mid-submission? The plan should be so detailed that execution is mechanical. If you can't describe the implementation step by step, you're not done planning.</p>
+      <p class="case-text fade-in">Before implementation, I identify the files that need to change and the behavior to verify. I work through empty results, failed requests, and interrupted user actions. If a part remains unclear, I investigate it first.</p>
 
       <h2 class="fade-in">4. Execute</h2>
-      <p class="case-text fade-in">AI writes the code following the locked plan. At this point it's just a robot typing what you've already decided. The structure, the files, the patterns, all defined. AI fills in the implementation. This is where the speed comes from. Not from AI thinking for you, but from AI typing for you after you've already done the thinking.</p>
+      <p class="case-text fade-in">The agent implements the agreed change. I keep the task small enough to inspect the result and revisit the plan when new information changes the approach.</p>
 
       <h2 class="fade-in">5. Review and commit</h2>
-      <p class="case-text fade-in">You review every diff like it came from a teammate. AI never commits. You read it, you own it, you commit it through lazygit. If something looks off (a variable name that doesn't match the project's conventions, an import path that could be cleaner, a function that's doing too much), you fix it before it goes in. The commit is yours.</p>
+      <p class="case-text fade-in">I read the diff, run the relevant checks, and resolve anything that does not fit the project. I review the change before it enters Git history.</p>
     </div>
   </section>
 
   <!-- 04 Real Example -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Real Example</div>
-      <p class="case-text fade-in">At work, I had to build a form. Not a simple contact form. A form with dozens of fields, deep conditional logic, and multiple levels of nested data. Editing flows on top of creation flows. Different validation rules depending on which combination of fields the user had filled. State management alone was a nightmare on paper.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">IV</span>A form implementation</h2>
+      <p class="case-text fade-in">One task involved a form with many fields, nested data, conditional validation, and separate creation and editing flows.</p>
 
       <h2 class="fade-in">The approach</h2>
-      <p class="case-text fade-in">I started by mapping out the entire form structure, every validation rule, and every error state in the plan. No code yet. Just a complete picture of what the form needed to do, what data it touched, and how the editing flow differed from creation.</p>
-      <p class="case-text fade-in">Then I followed test-driven development. Wrote the tests first, defining expected inputs and outputs for every scenario. What happens when a required nested field is missing? What happens when the user switches from creation to editing mode? The tests described the correct behavior before any implementation existed.</p>
-      <p class="case-text fade-in">AI generated the implementation following the locked plan. Tests caught bugs automatically. If AI's code didn't match expected output, it failed immediately. No guessing, no manual checking. The feedback loop was tight: AI writes code, tests verify it, fix what fails, move on.</p>
-      <p class="case-text fade-in">What would've taken weeks shipped to production in days. Not because AI wrote magical code, but because the plan was airtight and the tests caught every deviation. The TDD angle is key: tests are the safety net. You define correctness <em>before</em> AI writes anything.</p>
+      <p class="case-text fade-in">I mapped the form structure, validation rules, and error states before implementation. This made the differences between creating and editing a record explicit.</p>
+      <p class="case-text fade-in">I wrote tests for the important scenarios first, including missing nested fields and switching between creation and editing. These checks defined the expected behavior.</p>
+      <p class="case-text fade-in">The agent then implemented the form against those checks. Failed tests gave us specific behavior to investigate. I still reviewed the implementation and checked the user flow.</p>
+      <p class="case-text fade-in">The work reinforced the value of explicit requirements and focused tests. They made errors easier to locate and gave the review a clear starting point.</p>
     </div>
   </section>
 
   <!-- 05 When AI Falls Short -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>When AI Falls Short</div>
-      <p class="case-text fade-in">AI gets first shot at everything, including debugging. Most of the time, it does fine: trace the error, identify the cause, suggest a fix. But when it fails at debugging, and it does, that's where your skills and experience take over.</p>
-      <p class="case-text fade-in">AI guesses at bugs. It suggests fixes without understanding the root cause. It'll swap out a dependency, restructure a function, add a null check, anything to make the error go away. But you've traced enough bugs to know where to actually look. You know that the issue isn't the function throwing the error. It's the data three layers up that was shaped wrong. That intuition comes from experience, not from a language model.</p>
-      <p class="case-text fade-in">AI raises your floor. Your ceiling is still you.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">V</span>When AI Falls Short</h2>
+      <p class="case-text fade-in">I also use agents to investigate failures. Their suggestions are useful starting points, but I check the evidence before applying a fix.</p>
+      <p class="case-text fade-in">A suggested null check may hide a problem introduced earlier in the data flow. I trace where the invalid value came from and reproduce the failure before deciding what to change.</p>
+      <p class="case-text fade-in">Debugging still requires a verified explanation of the failure.</p>
     </div>
   </section>
 
   <!-- 06 The Line -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>The Line</div>
-      <p class="case-text fade-in">AI is a multiplier. It multiplies what you already know. If you don't understand architecture, AI writes you a bad one. If you don't write tests, AI ships you bugs. If you can't debug, you're stuck when AI guesses wrong. The tool amplifies the developer. It doesn't replace the skill.</p>
-      <p class="case-text fade-in">The developers who win aren't the ones using AI the most. They're the ones who were already good, and now they're fast too.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">VI</span>Responsibility</h2>
+      <p class="case-text fade-in">Coding agents can help with implementation, but I remain responsible for the design, tests, and result.</p>
+      <p class="case-text fade-in">I judge the workflow by the changes I can explain and maintain after the session ends.</p>
       <blockquote class="fade-in">
-        <p>"AI doesn't make you a better developer. It makes you a faster one. The gap between good and bad engineers didn't shrink. It just moves at a higher speed now."</p>
+        <p>The useful question is whether I understand and can verify the code I am shipping.</p>
       </blockquote>
     </div>
   </section>
@@ -323,14 +304,14 @@
   <!-- 07 Update: May 2026 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">07</span>Update: May 2026</div>
-      <p class="case-text fade-in">Two months in, a few things shifted. The setup got smaller, not bigger.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">VII</span>Update: May 2026</h2>
+      <p class="case-text fade-in">By May, I had made the workflow more focused.</p>
       <ul class="fade-in">
-        <li><strong>Context discipline beats clever prompts.</strong> The prompts I refined in February matter less than I thought. What moved the needle was scoping each task to the smallest meaningful unit before opening a session (one file, one function, one test) instead of letting Claude roam the repo.</li>
-        <li><strong>Small models for small tasks.</strong> I default to a fast model for renames, docstrings, and trivial refactors, and only escalate to a heavier model for architecture, debugging tricky bugs, or design conversations. Most of my day is the cheaper model now.</li>
-        <li><strong>The codebase is the prompt.</strong> I started writing CLAUDE.md files inside projects with conventions, patterns, and what NOT to do. The model gets calibrated faster, and I spend less time correcting drift.</li>
+        <li><strong>Keep tasks focused.</strong> I scope each task to a specific behavior and give the agent the context it needs. This makes the output easier to review.</li>
+        <li><strong>Match the model to the task.</strong> I use a fast model for small edits and a more capable model when the investigation needs it.</li>
+        <li><strong>Document project conventions.</strong> I use <code>CLAUDE.md</code> files to record existing patterns and constraints. This reduces repeated corrections.</li>
       </ul>
-      <p class="case-text fade-in">The thesis hasn't changed: AI is a multiplier. Two months later, I'm just multiplying with smaller numbers and tighter context. The output is better, the friction is lower, and I read every line before it lands.</p>
+      <p class="case-text fade-in">Smaller tasks and clearer project instructions reduced the time I spent correcting output. I continued to review each change before it entered the codebase.</p>
     </div>
   </section>
 
@@ -346,40 +327,11 @@
 
 </main>
 
-<footer class="footer">
-  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. All rights reserved.</div>
-  <div class="footer-social">
-    <a href="https://github.com/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-    <a href="https://linkedin.com/in/arjunp-software-engineer" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-    <a href="https://twitter.com/03arjunkr" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
-  </div>
-</footer>
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>VOICE · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
 
-<script>
-(function(){
-  'use strict';
-  var fadeEls=document.querySelectorAll('.fade-in');
-  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}
-  var html=document.documentElement,toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
-  var sunPath='<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-  var moonPath='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-  function setTheme(t){html.setAttribute('data-theme',t);icon.innerHTML=t==='dark'?moonPath:sunPath;try{localStorage.setItem('swiss-theme',t);}catch(e){}}
-  var saved=null;try{saved=localStorage.getItem('swiss-theme');}catch(e){}
-  if(saved){setTheme(saved);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){setTheme('dark');}
-  if(toggle){toggle.addEventListener('click',function(){setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');});}
-  var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
-})();
-</script>
-<script>
-(function(){
-  var b=document.getElementById('navBurger'),n=document.getElementById('navLinks');
-  if(!b||!n)return;
-  function setOpen(o){n.classList.toggle('is-open',o);b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  b.addEventListener('click',function(){setOpen(!n.classList.contains('is-open'));});
-  n.addEventListener('click',function(e){if(e.target.closest('.nav-link, .nav-logo'))setOpen(false);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
-})();
-</script>
+
+
+<script src="../assets/letter.js" defer></script>
 </body>
 </html>

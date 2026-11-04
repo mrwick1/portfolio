@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Case Against SPAs in 2026 | Arjun.</title>
-<meta name="description" content="I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction, and why most websites shouldn't be SPAs.">
+<title>Why this portfolio uses plain HTML | Arjun P</title>
+<meta name="description" content="Why I chose static HTML for this portfolio, and where I would use a framework.">
 <meta name="keywords" content="SPA, single page application, static HTML, web performance, frontend architecture, React, Next.js">
 <meta name="author" content="Arjun">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.arjunp.pro/writing/the-case-against-spas.html">
-<meta property="og:title" content="The Case Against SPAs in 2026">
-<meta property="og:description" content="I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction.">
+<meta property="og:title" content="Why this portfolio uses plain HTML">
+<meta property="og:description" content="Why I chose static HTML for this portfolio, and where I would use a framework.">
 <meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
 <meta property="og:site_name" content="Arjun">
 <meta property="article:author" content="Arjun">
@@ -22,8 +22,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Case Against SPAs in 2026">
-<meta name="twitter:description" content="I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction.">
+<meta name="twitter:title" content="Why this portfolio uses plain HTML">
+<meta name="twitter:description" content="Why I chose static HTML for this portfolio, and where I would use a framework.">
 <meta name="twitter:creator" content="@03arjunkr">
 
 <!-- Structured Data -->
@@ -31,8 +31,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "The Case Against SPAs in 2026",
-  "description": "I build single-page applications for a living. My own portfolio is plain HTML. Here's why that's not a contradiction, and why most websites shouldn't be SPAs.",
+  "headline": "Why this portfolio uses plain HTML",
+  "description": "Why I chose static HTML for this portfolio, and where I would use a framework.",
   "author": {
     "@type": "Person",
     "name": "Arjun",
@@ -43,16 +43,17 @@
     "name": "Arjun"
   },
   "datePublished": "2026-02-25",
+  "dateModified": "2026-11-04T16:50:26+00:00",
   "url": "https://www.arjunp.pro/writing/the-case-against-spas.html",
   "mainEntityOfPage": "https://www.arjunp.pro/writing/the-case-against-spas.html"
 }
 </script>
 
-<link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2'); }
-  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/geist.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/geist-mono.woff2') format('woff2'); }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --white: #FFFFFF; --black: #111111; --accent: #0055FF;
@@ -180,27 +181,13 @@
     .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
   }
 </style>
+<link rel="stylesheet" href="../assets/letter.css">
+<meta property="article:modified_time" content="2026-11-04T16:50:26+00:00">
 </head>
-<body>
-<div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
-
-<nav class="nav" role="navigation" aria-label="Primary navigation">
-  <a href="../index.html" class="nav-logo">Arjun.</a>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
-    <li><a href="../index.html#approach" class="nav-link"><span class="nav-link-text">Approach</span></a></li>
-
-    <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
-    <li><a href="../index.html#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
-    <li><a href="../index.html#education" class="nav-link"><span class="nav-link-text">Education</span></a></li>
-    <li><a href="./" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
-    <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
-    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
-  </ul>
-</nav>
-
-<main class="page">
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
 
   <!-- Hero -->
   <section class="case-hero">
@@ -210,17 +197,11 @@
         <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
         <span>The Case Against SPAs</span>
       </div>
-      <h1 class="case-title">The Case Against SPAs in 2026</h1>
-      <p class="case-subtitle">I build single-page applications for a living. My own portfolio is plain HTML. That's not a contradiction.</p>
+      <p class="article-date">25 February 2026 · 4 min read</p><h1 class="case-title">Why this portfolio uses plain HTML</h1>
+      <p class="case-subtitle">Why I chose static HTML for this portfolio, and where I would use a framework.</p>
       <div class="case-meta">
-        <div class="case-meta-item">
-          <span class="case-meta-label">Published</span>
-          <span class="case-meta-value">Feb 25, 2026</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Reading Time</span>
-          <span class="case-meta-value">8 min read</span>
-        </div>
+
+
         <div class="case-meta-item">
           <span class="case-meta-label">Tags</span>
           <div class="case-meta-tags">
@@ -236,40 +217,40 @@
   <!-- 01 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The Setup</div>
-      <p class="case-text fade-in">I write React for a living. I've shipped server components, debugged hydration mismatches at 2 AM, and spent more time inside <code>node_modules</code> than I'd like to admit. React pays my rent. I genuinely enjoy working with it.</p>
-      <p class="case-text fade-in">So when I sat down to build this portfolio - the thing you're reading right now - I did what felt natural. I opened a terminal and typed <code>&lt;!DOCTYPE html&gt;</code>.</p>
-      <p class="case-text fade-in">No <code>create-next-app</code>. No <code>package.json</code>. The whole site is hand-written HTML and CSS, with maybe 40 lines of JavaScript for the theme toggle and some scroll animations. I edit a file, push to Vercel, and it's live. That's the entire pipeline.</p>
-      <p class="case-text fade-in">People find this funny. A frontend engineer's portfolio with no frontend framework. But after years of building SPAs, I think the funnier thing is how rarely we ask whether we actually need one.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">I</span>The Setup</h2>
+      <p class="case-text fade-in">I build applications with React and value its component model. This portfolio has a different job: present my work, experience, and writing.</p>
+      <p class="case-text fade-in">I started the portfolio as static HTML because its main content did not need a client-side application runtime.</p>
+      <p class="case-text fade-in">The site serves HTML files, stylesheets, fonts, images, and a small script. It has no application build step or JavaScript framework dependency.</p>
+      <p class="case-text fade-in">That choice suits this site’s content and maintenance needs.</p>
     </div>
   </section>
 
   <!-- 02 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>How We Got Here</div>
-      <p class="case-text fade-in">At some point in the last decade, SPAs stopped being a technical choice and became the default. Junior devs spin up Next.js for a three-page portfolio. Agencies scaffold React apps for marketing sites. I've seen Gatsby projects for restaurant menus. A landing page that should be 4 KB of HTML ships as a 300 KB JavaScript bundle with a loading spinner.</p>
-      <p class="case-text fade-in">Nobody decided this. It just happened. Bootcamps teach React. Tutorials start with <code>npx create-react-app</code>. Job postings list frameworks as requirements. So when someone needs to build anything for the web, they reach for what they know. And what they know is React.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">II</span>How We Got Here</h2>
+      <p class="case-text fade-in">A familiar framework is a reasonable starting point, but I find it useful to review the requirements before adding it to a small content site.</p>
+      <p class="case-text fade-in">For a portfolio, the important questions are how readers reach the content, how easily I can update it, and what the browser must load to show it.</p>
 
       <h2 class="fade-in">The cost nobody talks about</h2>
-      <p class="case-text fade-in">Every SPA has a startup cost. Before the browser can show a single pixel of your content, it needs to download your JavaScript, parse it, compile it, and run it. On a MacBook Pro with gigabit Wi-Fi, you don't notice. On a mid-range phone on spotty mobile data - which describes most of the world's internet users - it's seconds of staring at a blank screen. For text and images.</p>
-      <p class="case-text fade-in">HTML doesn't work that way. The browser renders it as it arrives. There's no parsing step, no compilation, no hydration. The content <em>is</em> the payload.</p>
+      <p class="case-text fade-in">In a client-rendered application, initial content may depend on downloading and running JavaScript. That cost matters when the device or connection is slow. Server-rendered applications can make different tradeoffs.</p>
+      <p class="case-text fade-in">With static HTML, the browser can parse the document and render its content as it arrives. This portfolio does not need a framework hydration step.</p>
 
       <h2 class="fade-in">The upgrade treadmill</h2>
-      <p class="case-text fade-in">Run <code>npx create-next-app</code> right now and you get 300+ MB of <code>node_modules</code> before writing a single line of your own code. That's fine - until six months later when half those packages have security advisories and the framework has a new major version with breaking changes you didn't ask for.</p>
-      <p class="case-text fade-in">I've watched teams burn entire sprints on Next.js 13-to-14 upgrades that gave their users nothing. The framework quietly becomes a second product you maintain alongside the one you're actually building. My portfolio has zero dependencies. It'll render the same in a browser today as it will in 2031. HTML doesn't ship breaking changes.</p>
+      <p class="case-text fade-in">A framework also adds dependencies and tooling to maintain. That work can be justified by the application’s needs, but I did not need it for this portfolio.</p>
+      <p class="case-text fade-in">Keeping the site static reduces the tools I need to update. It does not remove the need to check links, accessibility, security, and browser behavior.</p>
 
       <h2 class="fade-in">Problems you didn't have before</h2>
-      <p class="case-text fade-in">SPAs create entire categories of problems that plain websites don't have. Client-side routing means managing browser history and the back button. State management means context, reducers, or a store. Code splitting means loading states for every route. SSR means hydration mismatches that only reproduce in production and make you question your career choices.</p>
-      <p class="case-text fade-in">I deal with all of this at work. It's worth it there. But when the thing you're building is a portfolio or a blog - content that doesn't change between requests - you've imported all that complexity to serve static text.</p>
+      <p class="case-text fade-in">Interactive applications need decisions about navigation, state, data loading, and rendering. A mostly static content site can often avoid some of that application code.</p>
+      <p class="case-text fade-in">For this portfolio, I chose to keep those responsibilities small.</p>
     </div>
   </section>
 
   <!-- 03 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>This Site</div>
-      <p class="case-text fade-in">I'm not making an abstract argument. You're looking at the result. Right-click, view source - it's all there. No bundled output, no minified blob. Just HTML I wrote by hand.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">III</span>This Site</h2>
+      <p class="case-text fade-in">The page content is present in the HTML source. A visitor does not need the theme or drawing controls to run before reading an article.</p>
 
       <div class="metrics-grid fade-in">
         <div class="metric-card">
@@ -281,15 +262,15 @@
           <div class="metric-label">Build steps</div>
         </div>
         <div class="metric-card">
-          <div class="metric-value">~50KB</div>
-          <div class="metric-label">Total code size</div>
+          <div class="metric-value">Shared</div>
+          <div class="metric-label">Styles &amp; controls</div>
         </div>
       </div>
 
-      <p class="case-text fade-in">The browser starts painting the moment the HTML arrives. No spinner, no white flash, no layout shift while React hydrates. The CSS sits in a <code>&lt;style&gt;</code> tag in the head - one fewer network request. Fonts are self-hosted with <code>preload</code> hints. Off-screen sections use <code>content-visibility: auto</code> so the browser doesn't bother rendering what you can't see yet. The only JavaScript is a small IIFE at the bottom: theme toggle, fade-in animations, that's it.</p>
-      <p class="case-text fade-in">These aren't exotic techniques. You'd use the same tricks in a Next.js app. The difference is I didn't need a build pipeline, plugin system, or configuration file to get them. I just wrote the CSS.</p>
-      <p class="case-text fade-in">SEO works because there's nothing to work around. Every page is real HTML with real content in the source. Crawlers see what users see. No SSR layer pretending to be a static page.</p>
-      <p class="case-text fade-in">And here's the deployment config. The whole thing:</p>
+      <p class="case-text fade-in">The current design uses a shared stylesheet at <code>/assets/letter.css</code> and a shared script at <code>/assets/letter.js</code>. Fonts are self-hosted. The script handles theme preferences, drawing guides, the date, and navigation to collapsed sections.</p>
+      <p class="case-text fade-in">I can change these files directly without a framework compiler or bundler.</p>
+      <p class="case-text fade-in">Each page has its own title, metadata, and content in the document. Search visibility still depends on the quality and configuration of that content.</p>
+      <p class="case-text fade-in">The deployment configuration specifies an empty build command and the repository root as the output directory. It also includes redirects and asset-cache headers. The core settings are:</p>
 <pre><code>{
   "buildCommand": "",
   "outputDirectory": ".",
@@ -298,39 +279,39 @@
     "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
   }]
 }</code></pre>
-      <p class="case-text fade-in">Empty build command. Output directory is the repo root. Vercel serves the files with a one-year cache on assets. No CI to fail, no build cache to invalidate, no production-only bugs from aggressive tree shaking. There's nothing to go wrong because there's nothing to build.</p>
-      <p class="case-text fade-in">The durability angle is one I didn't fully appreciate until recently. A React app I built in 2019 would need real work to run today - CRA is deprecated, React Router has gone through two major rewrites, half the deps would have advisories. An HTML file from 2019 renders identically in a 2026 browser. I've built on the only layer of the web stack that doesn't break.</p>
+      <p class="case-text fade-in">Vercel serves the files directly. The asset headers specify a one-year immutable cache, so changed assets need versioned URLs or another cache-invalidation strategy.</p>
+      <p class="case-text fade-in">Using standard browser formats keeps the site independent of a framework upgrade cycle. I still need to test it when I change the content or design.</p>
     </div>
   </section>
 
   <!-- 04 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>What I Gave Up</div>
-      <p class="case-text fade-in">The nav, footer, theme toggle script, and the entire CSS design system are copy-pasted across every HTML file. When I updated the footer links last week, I updated them in 10 files. There's no component, no partial, no include. Just find-and-replace and some discipline.</p>
-      <p class="case-text fade-in">For 10 pages, this is fine. Annoying sometimes, but fine. For 50 pages it'd be painful. For 200, it'd be stupid. Scale matters when you pick your tools.</p>
-      <p class="case-text fade-in">There's also no contact form, no comments, no search. Nothing dynamic. Adding a new article means copying an HTML template and manually filling it in. No CMS, no markdown pipeline. If that sounds tedious - it is, a little. But it also means I understand every line of code on this site, which is more than I can say for most React projects I've worked on.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">IV</span>What I Gave Up</h2>
+      <p class="case-text fade-in">The stylesheet and control script are shared, but the page shell is repeated in individual HTML files. A change to the header or footer can therefore require edits across several pages.</p>
+      <p class="case-text fade-in">The repeated shell is manageable at the current size. Templates or a static-site generator could reduce that editing work as the collection grows.</p>
+      <p class="case-text fade-in">There is no CMS, comment system, or site search. I add articles as HTML files. That keeps publishing direct, but leaves more editorial and consistency checks to me.</p>
     </div>
   </section>
 
   <!-- 05 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>When You Actually Need a Framework</div>
-      <p class="case-text fade-in">At work, I build a SaaS platform with real-time collaboration, complex form flows, drag-and-drop interfaces, and 200+ shared components across multiple teams. React is absolutely the right tool for that. The reactive rendering model, the component composition, the ecosystem - it earns its complexity every day.</p>
-      <p class="case-text fade-in">If your app has state that changes frequently based on user interaction. If users expect instant navigation and optimistic updates. If twenty developers need to build consistent UIs from a shared component library. If your content comes from APIs and changes hourly. Those are real SPA problems with real SPA solutions.</p>
-      <p class="case-text fade-in">The mistake isn't using React for a SaaS dashboard. It's using React for a portfolio. It's reaching for the same tool regardless of the problem because it's the tool you know.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">V</span>When You Actually Need a Framework</h2>
+      <p class="case-text fade-in">For products with complex forms, collaborative features, or many shared interface components, I use application frameworks. Their abstractions can support work that this portfolio does not need.</p>
+      <p class="case-text fade-in">State shared across views, frequent data updates, and optimistic interactions are reasons to consider a framework. Team conventions and existing infrastructure also affect the choice.</p>
+      <p class="case-text fade-in">I want the choice to follow the product requirements and maintenance constraints.</p>
     </div>
   </section>
 
   <!-- 06 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>One Question</div>
-      <p class="case-text fade-in">Next time you start a project, before you <code>npm init</code>, ask yourself: does this thing have state?</p>
-      <p class="case-text fade-in">Not "might it have state eventually." Not "would it be nice to have smooth page transitions." Does the core experience require managing data that changes in response to user actions across multiple views? If you're building a dashboard or an editor or a chat app - yes, obviously. Use a framework. That's what they're for.</p>
-      <p class="case-text fade-in">If you're building a portfolio, a blog, a landing page, a docs site - you need HTML. Maybe some CSS. Maybe a little JavaScript. The browser already knows how to render these things fast. You don't need to ship 300 KB of runtime to help it.</p>
-      <p class="case-text fade-in">We've gotten so deep into the framework era that choosing HTML feels like a statement. It shouldn't. It should just be the obvious choice for the 90% of websites that are, at their core, documents. We already have a technology for rendering documents on the web. We've had it since 1993. It still works.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">VI</span>One Question</h2>
+      <p class="case-text fade-in">Before starting a project, I ask what the browser needs to do beyond displaying the content.</p>
+      <p class="case-text fade-in">An editor or dashboard may need substantial application state. A blog may mainly need a reliable publishing workflow. Those requirements call for different approaches.</p>
+      <p class="case-text fade-in">Static HTML, a static-site generator, server rendering, and a client application are all options. I compare them against the content, interactions, and team that will maintain the site.</p>
+      <p class="case-text fade-in">For this portfolio, a small static site remains a useful fit.</p>
     </div>
   </section>
 
@@ -346,41 +327,12 @@
 
 </main>
 
-<footer class="footer">
-  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. All rights reserved.</div>
-  <div class="footer-social">
-    <a href="https://github.com/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-    <a href="https://linkedin.com/in/arjunp-software-engineer" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-    <a href="https://twitter.com/03arjunkr" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
-  </div>
-</footer>
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>VOICE · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
 
-<script>
-(function(){
-  'use strict';
-  var fadeEls=document.querySelectorAll('.fade-in');
-  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}
-  var html=document.documentElement,toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
-  var sunPath='<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-  var moonPath='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-  function setTheme(t){html.setAttribute('data-theme',t);icon.innerHTML=t==='dark'?moonPath:sunPath;try{localStorage.setItem('swiss-theme',t);}catch(e){}}
-  var saved=null;try{saved=localStorage.getItem('swiss-theme');}catch(e){}
-  if(saved){setTheme(saved);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){setTheme('dark');}
-  if(toggle){toggle.addEventListener('click',function(){setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');});}
-  var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
-})();
-</script>
+
 <script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-(function(){
-  var b=document.getElementById('navBurger'),n=document.getElementById('navLinks');
-  if(!b||!n)return;
-  function setOpen(o){n.classList.toggle('is-open',o);b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  b.addEventListener('click',function(){setOpen(!n.classList.contains('is-open'));});
-  n.addEventListener('click',function(e){if(e.target.closest('.nav-link, .nav-logo'))setOpen(false);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
-})();
-</script>
+
+<script src="../assets/letter.js" defer></script>
 </body>
 </html>

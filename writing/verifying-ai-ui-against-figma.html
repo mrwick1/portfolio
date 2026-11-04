@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stop trusting 'looks about right': verifying AI UI against Figma | Arjun.</title>
-<meta name="description" content="How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.">
+<title>Checking generated UI against Figma | Arjun P</title>
+<meta name="description" content="A local tool for comparing a generated interface with its Figma source.">
 <meta name="keywords" content="Figma, AI agents, UI verification, pixel diff, design to code, Playwright, MCP, verify_node, figma-connect">
 <meta name="author" content="Arjun">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html">
-<meta property="og:title" content="Stop trusting 'looks about right': verifying AI UI against Figma">
-<meta property="og:description" content="How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.">
+<meta property="og:title" content="Checking generated UI against Figma">
+<meta property="og:description" content="A local tool for comparing a generated interface with its Figma source.">
 <meta property="og:image" content="https://www.arjunp.pro/assets/images/og/figma-connect.webp">
 <meta property="og:site_name" content="Arjun">
 <meta property="article:author" content="Arjun">
@@ -22,8 +22,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Stop trusting 'looks about right': verifying AI UI against Figma">
-<meta name="twitter:description" content="How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.">
+<meta name="twitter:title" content="Checking generated UI against Figma">
+<meta name="twitter:description" content="A local tool for comparing a generated interface with its Figma source.">
 <meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og/figma-connect.webp">
 <meta name="twitter:creator" content="@03arjunkr">
 
@@ -32,8 +32,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Stop trusting 'looks about right': verifying AI UI against Figma",
-  "description": "How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.",
+  "headline": "Checking generated UI against Figma",
+  "description": "A local tool for comparing a generated interface with its Figma source.",
   "author": {
     "@type": "Person",
     "name": "Arjun P",
@@ -44,6 +44,7 @@
     "name": "Arjun"
   },
   "datePublished": "2026-06-17",
+  "dateModified": "2026-11-04T16:50:26+00:00",
   "url": "https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html",
   "image": "https://www.arjunp.pro/assets/images/og/figma-connect.webp",
   "mainEntityOfPage": "https://www.arjunp.pro/writing/verifying-ai-ui-against-figma.html"
@@ -61,11 +62,11 @@
 }
 </script>
 
-<link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2'); }
-  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/geist.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/geist-mono.woff2') format('woff2'); }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --white: #FFFFFF; --black: #111111; --accent: #0055FF;
@@ -193,27 +194,13 @@
     .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
   }
 </style>
+<link rel="stylesheet" href="../assets/letter.css">
+<meta property="article:modified_time" content="2026-11-04T16:50:26+00:00">
 </head>
-<body>
-<div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
-
-<nav class="nav" role="navigation" aria-label="Primary navigation">
-  <a href="../index.html" class="nav-logo">Arjun.</a>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
-    <li><a href="../index.html#approach" class="nav-link"><span class="nav-link-text">Approach</span></a></li>
-
-    <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
-    <li><a href="../index.html#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
-    <li><a href="../index.html#education" class="nav-link"><span class="nav-link-text">Education</span></a></li>
-    <li><a href="./" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
-    <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
-    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
-  </ul>
-</nav>
-
-<main class="page">
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
 
   <!-- Hero -->
   <section class="case-hero">
@@ -223,17 +210,11 @@
         <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
         <span>Verifying AI UI Against Figma</span>
       </div>
-      <h1 class="case-title">Stop trusting &lsquo;looks about right&rsquo;: verifying AI UI against Figma</h1>
-      <p class="case-subtitle">How I built figma-connect and verify_node: a local tool that renders an AI agent's generated code and pixel-diffs it against the live Figma design.</p>
+      <p class="article-date">17 June 2026 · 3 min read</p><h1 class="case-title">Checking generated UI against Figma</h1>
+      <p class="case-subtitle">A local tool for comparing a generated interface with its Figma source.</p>
       <div class="case-meta">
-        <div class="case-meta-item">
-          <span class="case-meta-label">Published</span>
-          <span class="case-meta-value">June 17, 2026</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Reading Time</span>
-          <span class="case-meta-value">6 min read</span>
-        </div>
+
+
         <div class="case-meta-item">
           <span class="case-meta-label">Tags</span>
           <div class="case-meta-tags">
@@ -249,62 +230,62 @@
   <!-- 01 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>The 10% That Hides</div>
-      <p class="case-text fade-in">I do a lot of UI work, and like a lot of people lately I've been letting an AI agent take the first pass. Point it at a Figma file, let it write the components, come back to something that's 90% there. On a good day that's a huge time save.</p>
-      <p class="case-text fade-in">The problem is the other 10%, and where it hides.</p>
-      <p class="case-text fade-in">It's never an obvious break. It's the padding that's 12px instead of 16. A font weight that's 500 where the design says 600. A border radius that's a couple pixels off. A gradient that starts at the wrong stop. Each one tiny, but together they're the difference between "looks like the design" and "looks like someone who sort of saw the design once." And the only way I was catching any of it was opening the Figma frame and the browser side by side and squinting back and forth like it's a spot-the-difference puzzle.</p>
-      <p class="case-text fade-in">That got old fast. What bugged me most was that the agent had no idea it was wrong. It would read the design, write the code, and confidently tell me it matched. It couldn't check its own work. Every Figma tool I tried could feed it data about a node, but none of them could answer the actual question: does the thing you just built look like the thing the designer drew?</p>
-      <p class="case-text fade-in">So I stopped squinting and built the missing piece. It's a local tool called figma-connect, and the part I care about is one function: <code>verify_node</code>.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">I</span>Small differences</h2>
+      <p class="case-text fade-in">I use coding agents for an initial implementation of interfaces. The result often resembles the design while missing details that matter during review.</p>
+      <p class="case-text fade-in">Those differences can be hard to find by eye.</p>
+      <p class="case-text fade-in">Padding, font weight, corner radius, and gradient stops can each differ slightly. I was checking them by opening the design and browser side by side.</p>
+      <p class="case-text fade-in">The agent could read design properties and produce code, but it lacked a reliable check of the rendered result.</p>
+      <p class="case-text fade-in">I built figma-connect to provide that feedback. Its verification function is <code>verify_node</code>.</p>
     </div>
   </section>
 
   <!-- 02 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>The Actual Idea</div>
-      <p class="case-text fade-in"><code>verify_node</code> takes the code the agent wrote, renders it in a real browser, and compares it pixel for pixel against the live Figma node. Pass or fail, with the diff image attached. That's it. The agent finally has a mirror.</p>
-      <p class="case-text fade-in">There's a read side too (it can pull geometry, auto-layout, fills, type, tokens, components, the usual), but honestly the read part is table stakes. Plenty of tools do that. The verify part is the bit I hadn't seen anywhere, and it's the bit that changed how the agent behaves.</p>
-      <p class="case-text fade-in">The whole thing runs on my laptop. Browser Figma works, so there's no desktop app, no cloud API, and no design files leaving my machine.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">II</span>The verification step</h2>
+      <p class="case-text fade-in"><code>verify_node</code> renders the candidate code in a browser and compares it with the matching Figma node. It returns a result with a difference image.</p>
+      <p class="case-text fade-in">The tool also reads geometry, auto-layout, fills, typography, tokens, and components. Verification adds a check on what the implementation actually renders.</p>
+      <p class="case-text fade-in">The tool runs locally and supports Figma in the browser. Its plugin and local bridge provide design access without using the Figma cloud REST API.</p>
     </div>
   </section>
 
   <!-- 03 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>How the Check Actually Works</div>
-      <p class="case-text fade-in">Give it a node id and the candidate code. It mounts the code in headless Chromium with Playwright, exports the matching node from Figma, and diffs them. I run three different comparisons at once, because I tried each one alone first and each one lied to me in its own way.</p>
-      <p class="case-text fade-in">Raw pixel diffing catches the most: the 4px shift, the wrong radius, the moved gradient. But it's hysterical about a one-pixel global offset, screaming that everything's broken when the whole thing just nudged sideways. So I layered SSIM on top, which scores structural similarity and tracks closer to what a human would actually call "close." And then a text and accessibility pass with axe-core, because more than once I had a render that was pixel-perfect and had quietly dropped a label or lowercased a heading. Looking right and being right are not the same thing, and I learned that the annoying way.</p>
-      <p class="case-text fade-in">The output is a labeled EXPECTED / ACTUAL / DIFF image. I did that on purpose. A bare similarity score is something an agent will happily rationalize ("0.94, close enough!"). A picture of exactly what's wrong is not.</p>
-      <p class="case-text fade-in">The real win is that "looks about right" stopped being good enough. The agent now has a gate it has to pass before it can call something done.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">III</span>How the Check Actually Works</h2>
+      <p class="case-text fade-in">The check takes a node ID and candidate code. It renders the code in Chromium through Playwright, exports the Figma node, and runs several comparisons.</p>
+      <p class="case-text fade-in">Pixel differences catch shifts, shapes, and colours, but even a small global offset can affect many pixels. I also use SSIM for structural similarity and text and accessibility checks with axe-core.</p>
+      <p class="case-text fade-in">The output labels the expected image, actual image, and difference. This gives the reviewer a visible explanation alongside the score.</p>
+      <p class="case-text fade-in">The agent can use that result to revise the implementation before requesting review.</p>
     </div>
   </section>
 
   <!-- 04 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>The Stuff That Actually Ate My Week</div>
-      <p class="case-text fade-in">The render-and-diff idea took an afternoon. Making it trustworthy took way longer, because a verifier that fails for dumb reasons is worse than no verifier at all. The first time it cried wolf, I stopped trusting it, and that defeats the whole point.</p>
-      <p class="case-text fade-in">The first thing that got me was fonts. I kept getting failures on text that looked identical, and I burned an embarrassing amount of time before I realized I was screenshotting before the web fonts had loaded. The render was comparing a fallback font against the design's real font and flagging the difference. Gating the capture on <code>document.fonts.ready</code> killed that entire class of false failures.</p>
-      <p class="case-text fade-in">Then there was the wait strategy. I was waiting on networkidle before capturing, which is fine until you hit a page with a long-poll or a streaming connection, and then it just never idles. The verification would hang forever. I ripped out the blanket wait and replaced it with explicit readiness signals.</p>
-      <p class="case-text fade-in">The one I'm still not fully done with is fidelity versus budget. The summary of a node that I hand to the agent can't carry every property at full precision, or it blows the context window. So I had to make calls about what to keep exact and what to approximate, and then be honest about it. The digest now carries explicit flags for gradients, shadows, strokes, opacity, and masks, so the agent knows when a value is the real thing and when it's a best guess.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">IV</span>Reliable captures</h2>
+      <p class="case-text fade-in">The main challenge was making captures consistent enough to trust. A failure caused by capture timing should not be mistaken for an implementation defect.</p>
+      <p class="case-text fade-in">Some early failures came from capturing the page before web fonts loaded. Waiting for <code>document.fonts.ready</code> removed that source of mismatch.</p>
+      <p class="case-text fade-in">Waiting for <code>networkidle</code> also caused problems on pages with persistent connections. I replaced the blanket wait with explicit readiness checks.</p>
+      <p class="case-text fade-in">The node summary has a limited size, so it cannot include every property at full precision. Fidelity flags identify how gradients, shadows, strokes, opacity, and masks are represented.</p>
     </div>
   </section>
 
   <!-- 05 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Under the Hood, Briefly</div>
-      <p class="case-text fade-in">Small pnpm monorepo. A Figma plugin lives in the file (it's the only thing that can actually read the document). A local bridge daemon indexes the file into SQLite with full-text search, updates itself as the design changes, and exposes everything over MCP. A separate harness does the rendering and diffing. The agent talks to the daemon through a little stdio shim so the file stays indexed between sessions. Around 15k lines of TypeScript, 35 tools, all read-only except the verify step, bound to localhost only.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">V</span>Implementation</h2>
+      <p class="case-text fade-in">A Figma plugin reads the document. A local bridge indexes its data in SQLite and exposes it through MCP. A separate harness renders and compares the candidate code. A stdio adapter connects the agent to the bridge. The project has about 15k lines of TypeScript and 35 tools; the bridge binds to localhost.</p>
     </div>
   </section>
 
   <!-- 06 -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>What It Still Can't Do</div>
-      <p class="case-text fade-in">Being honest about the edges, because I hate posts that pretend their thing is finished.</p>
-      <p class="case-text fade-in">The search is lexical, not semantic, so it matches words that literally appear in a layer's name or text. A vibes-based query won't find a generically named group. The digest is budgeted, hence the fidelity flags. And it only reads, it never writes back to Figma, on purpose.</p>
-      <p class="case-text fade-in">If you've ever watched an AI spit out UI that's subtly, confidently wrong and had no way to catch it except your own eyes, this was my attempt at giving it the feedback loop it was missing.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">VI</span>What It Still Can't Do</h2>
+      <p class="case-text fade-in">The tool has limits that affect how I use its results.</p>
+      <p class="case-text fade-in">Search matches layer names and text rather than semantic meaning. The node summary is budgeted, with fidelity flags for its limits. The tool does not write changes back to Figma.</p>
+      <p class="case-text fade-in">The goal is a useful review loop: render the implementation, inspect the differences, and revise it against the design.</p>
       <p class="case-text fade-in">Full writeup with screenshots and the architecture: <a href="https://www.arjunp.pro/projects/figma-connect.html">https://www.arjunp.pro/projects/figma-connect.html</a></p>
     </div>
   </section>
@@ -321,41 +302,12 @@
 
 </main>
 
-<footer class="footer">
-  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. All rights reserved.</div>
-  <div class="footer-social">
-    <a href="https://github.com/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-    <a href="https://linkedin.com/in/arjunp-software-engineer" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-    <a href="https://twitter.com/03arjunkr" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
-  </div>
-</footer>
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>VOICE · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
 
-<script>
-(function(){
-  'use strict';
-  var fadeEls=document.querySelectorAll('.fade-in');
-  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}
-  var html=document.documentElement,toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
-  var sunPath='<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-  var moonPath='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-  function setTheme(t){html.setAttribute('data-theme',t);icon.innerHTML=t==='dark'?moonPath:sunPath;try{localStorage.setItem('swiss-theme',t);}catch(e){}}
-  var saved=null;try{saved=localStorage.getItem('swiss-theme');}catch(e){}
-  if(saved){setTheme(saved);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){setTheme('dark');}
-  if(toggle){toggle.addEventListener('click',function(){setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');});}
-  var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
-})();
-</script>
+
 <script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script>
-(function(){
-  var b=document.getElementById('navBurger'),n=document.getElementById('navLinks');
-  if(!b||!n)return;
-  function setOpen(o){n.classList.toggle('is-open',o);b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  b.addEventListener('click',function(){setOpen(!n.classList.contains('is-open'));});
-  n.addEventListener('click',function(e){if(e.target.closest('.nav-link, .nav-logo'))setOpen(false);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
-})();
-</script>
+
+<script src="../assets/letter.js" defer></script>
 </body>
 </html>

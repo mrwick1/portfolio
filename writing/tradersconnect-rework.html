@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>What Happens When You Drop the Framework | Arjun.</title>
-<meta name="description" content="Performance audit and frontend rework of TradersConnect's website: taking Lighthouse from 67 to 100, GTmetrix from C to A, and fully loaded time from 3.3s to 1.0s. Pure HTML/CSS, zero frameworks.">
+<title>Rebuilding a landing page for performance | Arjun P</title>
+<meta name="description" content="A static landing-page rebuild, measured with Lighthouse and GTmetrix.">
 <meta name="keywords" content="Performance Optimization, Core Web Vitals, Frontend Rework, TradersConnect, Lighthouse, GTmetrix">
 <meta name="author" content="Arjun">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -13,8 +13,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.arjunp.pro/writing/tradersconnect-rework.html">
-<meta property="og:title" content="What Happens When You Drop the Framework">
-<meta property="og:description" content="Performance audit and frontend rework of TradersConnect: Lighthouse 67 to 100, GTmetrix C to A, zero JavaScript frameworks.">
+<meta property="og:title" content="Rebuilding a landing page for performance">
+<meta property="og:description" content="A static landing-page rebuild, measured with Lighthouse and GTmetrix.">
 <meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
 <meta property="og:site_name" content="Arjun">
 <meta property="article:author" content="Arjun">
@@ -22,8 +22,8 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="What Happens When You Drop the Framework">
-<meta name="twitter:description" content="Performance audit and frontend rework of TradersConnect: Lighthouse 67 to 100, zero frameworks.">
+<meta name="twitter:title" content="Rebuilding a landing page for performance">
+<meta name="twitter:description" content="A static landing-page rebuild, measured with Lighthouse and GTmetrix.">
 <meta name="twitter:creator" content="@03arjunkr">
 
 <!-- Structured Data -->
@@ -31,8 +31,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "What Happens When You Drop the Framework",
-  "description": "Performance audit and frontend rework of TradersConnect's website: improving Core Web Vitals, bundle size, and load times.",
+  "headline": "Rebuilding a landing page for performance",
+  "description": "A static landing-page rebuild, measured with Lighthouse and GTmetrix.",
   "author": {
     "@type": "Person",
     "name": "Arjun",
@@ -43,16 +43,17 @@
     "name": "Arjun"
   },
   "datePublished": "2026-02-28",
+  "dateModified": "2026-11-04T16:50:26+00:00",
   "url": "https://www.arjunp.pro/writing/tradersconnect-rework.html",
   "mainEntityOfPage": "https://www.arjunp.pro/writing/tradersconnect-rework.html"
 }
 </script>
 
-<link rel="preload" href="../assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="../assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/space-grotesk-latin.woff2') format('woff2'); }
-  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/jetbrains-mono-latin.woff2') format('woff2'); }
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/geist.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/geist-mono.woff2') format('woff2'); }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
     --white: #FFFFFF; --black: #111111; --accent: #0055FF;
@@ -217,27 +218,13 @@
     .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
   }
 </style>
+<link rel="stylesheet" href="../assets/letter.css">
+<meta property="article:modified_time" content="2026-11-04T16:50:26+00:00">
 </head>
-<body>
-<div class="grid-bg" aria-hidden="true"><div class="grid-bg-inner"><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div><div class="grid-bg-col"></div></div></div>
-
-<nav class="nav" role="navigation" aria-label="Primary navigation">
-  <a href="../index.html" class="nav-logo">Arjun.</a>
-  <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#experience" class="nav-link"><span class="nav-link-text">Experience</span></a></li>
-    <li><a href="../index.html#approach" class="nav-link"><span class="nav-link-text">Approach</span></a></li>
-
-    <li><a href="../index.html#projects" class="nav-link"><span class="nav-link-text">Projects</span></a></li>
-    <li><a href="../index.html#skills" class="nav-link"><span class="nav-link-text">Skills</span></a></li>
-    <li><a href="../index.html#education" class="nav-link"><span class="nav-link-text">Education</span></a></li>
-    <li><a href="./" class="nav-link"><span class="nav-link-text">Writing</span></a></li>
-    <li><a href="../index.html#contact" class="nav-link"><span class="nav-link-text">Contact</span></a></li>
-    <li><button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle"><svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button></li>
-  </ul>
-</nav>
-
-<main class="page">
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
 
   <!-- Hero -->
   <section class="case-hero">
@@ -247,17 +234,11 @@
         <a href="../writing/">Writing</a><span class="breadcrumb-sep">/</span>
         <span>TradersConnect Rework</span>
       </div>
-      <h1 class="case-title">What Happens When You Drop the Framework</h1>
-      <p class="case-subtitle">Mobile Lighthouse 67 to 95, desktop 60 to 100. GTmetrix C to A. 3.3s to 1.0s fully loaded. Zero frameworks.</p>
+      <p class="article-date">28 February 2026 · 6 min read</p><h1 class="case-title">Rebuilding a landing page for performance</h1>
+      <p class="case-subtitle">A static landing-page rebuild, measured with Lighthouse and GTmetrix.</p>
       <div class="case-meta">
-        <div class="case-meta-item">
-          <span class="case-meta-label">Published</span>
-          <span class="case-meta-value">Feb 28, 2026</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Reading Time</span>
-          <span class="case-meta-value">7 min read</span>
-        </div>
+
+
         <div class="case-meta-item">
           <span class="case-meta-label">Type</span>
           <span class="case-meta-value">Case Study</span>
@@ -290,20 +271,20 @@
   <!-- 01 Why TradersConnect -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">01</span>Why TradersConnect</div>
-      <p class="case-text fade-in">I wanted a real-world test for a simple thesis: most landing pages don't need JavaScript frameworks. They need HTML, CSS, and fast servers. TradersConnect was a good candidate: a legitimate product with a landing page that's measurably underperforming. Failing Core Web Vitals, 3.9s LCP in the field, 322ms INP from real Chrome users.</p>
-      <p class="case-text fade-in">The goal wasn't to critique their team. It was to take the same content and rebuild it from scratch with performance as the only constraint, then measure the difference.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">I</span>Why TradersConnect</h2>
+      <p class="case-text fade-in">I used TradersConnect’s landing page for an independent performance exercise. At the time of the audit, the field report showed a 3.9s LCP and 322ms INP. I wanted to test a smaller static implementation.</p>
+      <p class="case-text fade-in">I rebuilt the page around its content and measured the result. The exercise did not include the product’s application or backend.</p>
     </div>
   </section>
 
   <!-- 02 Audit -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">02</span>Audit</div>
-      <p class="case-text fade-in">I ran the original tradersconnect.com through Lighthouse, PageSpeed Insights (with CrUX data), and GTmetrix. The numbers were consistent across all three - the site is significantly underperforming.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">II</span>Audit</h2>
+      <p class="case-text fade-in">I recorded Lighthouse, PageSpeed Insights, CrUX, and GTmetrix results for the original page. The screenshots below document those measurements at the time of the audit.</p>
 
       <h2 class="fade-in">Lighthouse</h2>
-      <p class="case-text fade-in">Lighthouse scores on the original site. Mobile performance is hit hardest - a 20.4s LCP means most users are staring at a blank or partially loaded page for an unacceptable amount of time.</p>
+      <p class="case-text fade-in">The original mobile Lighthouse run recorded a 20.4s LCP. This is a lab result from that test, rather than a timing measured for every visitor.</p>
       <div class="screenshot-comparison fade-in">
         <div class="screenshot-item">
           <div class="screenshot-label">Mobile</div>
@@ -330,7 +311,7 @@
       </div>
 
       <h2 class="fade-in">Core Web Vitals (CrUX)</h2>
-      <p class="case-text fade-in">The Chrome User Experience Report tells the real story - data from actual users in the field, not synthetic tests. TradersConnect's Core Web Vitals assessment: <strong>Failed</strong>.</p>
+      <p class="case-text fade-in">The CrUX report provided a separate view of real-user experience. The captured report did not pass the Core Web Vitals assessment.</p>
       <div class="screenshot-comparison fade-in" style="grid-template-columns: 1fr;">
         <div class="screenshot-item">
           <div class="screenshot-label">Real User Data</div>
@@ -377,11 +358,11 @@
 
       <h2 class="fade-in">Key Issues Found</h2>
       <ul class="fade-in">
-        <li>20.4s LCP on mobile: the largest contentful paint takes over 20 seconds</li>
-        <li>150–310ms Total Blocking Time across tools: the main thread is blocked during load</li>
-        <li>1.4s TTFB from real user data: slow server response before the browser even starts</li>
-        <li>322ms INP in CrUX: interactions are noticeably sluggish</li>
-        <li>Core Web Vitals assessment: Failed, this directly impacts Search ranking</li>
+        <li><strong>Mobile lab LCP:</strong> the captured Lighthouse run recorded 20.4s.</li>
+        <li><strong>Lab blocking time:</strong> recorded Total Blocking Time ranged from 150–310ms across the tools.</li>
+        <li><strong>Field server response:</strong> the CrUX report showed a 1.4s TTFB.</li>
+        <li><strong>Field interaction latency:</strong> the CrUX report showed a 322ms INP.</li>
+        <li><strong>Field assessment:</strong> the captured CrUX report did not pass Core Web Vitals.</li>
       </ul>
     </div>
   </section>
@@ -389,25 +370,25 @@
   <!-- 03 Approach -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">03</span>Approach</div>
-      <p class="case-text fade-in">With the audit done, the rules were straightforward: same content, no frameworks, no build tools, no images. Ship the smallest possible page that still looks like a real landing page, not a stripped-down demo.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">III</span>Approach</h2>
+      <p class="case-text fade-in">I kept the rebuild static and used typography and CSS for its visual structure. This reduced the amount of code and imagery needed to present the page.</p>
 
       <h2 class="fade-in">Performance Strategy</h2>
       <ul class="fade-in">
-        <li><strong>Zero frameworks</strong> - Pure HTML/CSS. No React, no Next.js, no Tailwind. The entire page is a single self-contained HTML file</li>
-        <li><strong>Inline everything</strong> - All CSS is in the document head. No external stylesheet requests. No render-blocking resources beyond the HTML itself</li>
-        <li><strong>Self-hosted fonts</strong> - Space Grotesk loaded from local woff2. Google Fonts used only for two display weights (DM Serif Display italic, Space Mono) with <code>display=swap</code></li>
-        <li><strong>No images</strong> - All visual interest comes from typography, layout, and CSS micro-animations. Zero image requests</li>
-        <li><strong>Minimal JS</strong> - 6 lines total: IntersectionObserver for navbar scroll state, section reveal animations, and mobile menu toggle</li>
-        <li><strong>SVG noise texture</strong> - Single inline SVG with feTurbulence filter at 4% opacity for paper texture. Under 200 bytes</li>
+        <li><strong>Static implementation:</strong> HTML and CSS provide the page without a JavaScript framework.</li>
+        <li><strong>Inline page styles:</strong> the page’s layout CSS is in the document head. Google Fonts still adds an external stylesheet request.</li>
+        <li><strong>Font loading:</strong> Space Grotesk is self-hosted. DM Serif Display and Space Mono load through Google Fonts with <code>display=swap</code>.</li>
+        <li><strong>No photographic assets:</strong> typography, layout, and CSS effects provide the visual structure.</li>
+        <li><strong>Small control script:</strong> IntersectionObserver handles navigation state and section reveals. The script also controls the mobile menu.</li>
+        <li><strong>Texture:</strong> an inline SVG filter adds paper grain without a separate image request.</li>
       </ul>
 
       <h2 class="fade-in">Design Decisions</h2>
-      <p class="case-text fade-in">The visual design is different from the original. This isn't a pixel-for-pixel recreation. The point was performance, not redesign. But a landing page still needs to look like a landing page, so I went with a typographic approach that generates all visual interest from fonts, layout, and CSS animations instead of images.</p>
+      <p class="case-text fade-in">The rebuild uses a different visual design. This means the results compare two implementations and designs; they do not isolate the framework as the only variable.</p>
       <ul class="fade-in">
-        <li>Three typefaces with distinct roles: Space Grotesk for headings, DM Serif Display italic for hero drama, Space Mono for data and metrics</li>
-        <li>All visual interest from CSS: micro-animations, typographic scale contrast, and layout density replace images entirely</li>
-        <li>Dark terminal-style previews for product sections, borrowing from the trading tools the product actually sells</li>
+        <li>Space Grotesk provides headings, DM Serif Display provides italic display text, and Space Mono provides data labels.</li>
+        <li>Layout, typography, and CSS effects supply visual variation.</li>
+        <li>Terminal-style product previews reference the trading tools described on the original page.</li>
       </ul>
     </div>
   </section>
@@ -415,13 +396,13 @@
   <!-- 04 Implementation -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">04</span>Implementation</div>
+      <h2 class="case-section-heading"><span class="case-section-number">IV</span>Implementation</h2>
 
       <h2 class="fade-in">Single File Architecture</h2>
       <p class="case-text fade-in">The entire page lives in one HTML file. No build step, no bundler, no node_modules. CSS custom properties handle theming, <code>clamp()</code> handles responsive typography, and CSS Grid handles layout at every breakpoint. The total file size is 43KB.</p>
 
       <h2 class="fade-in">CSS Animations Instead of JS Libraries</h2>
-      <p class="case-text fade-in">The feature cards each have a CSS-only micro-animation that would typically require GSAP or a similar library. A card shuffler cycles through stacked cards using offset <code>@keyframes</code> with rotation and translate transforms. A typewriter cursor blinks with a simple opacity toggle. A scheduler dot pings outward with a scaling ring animation.</p>
+      <p class="case-text fade-in">The feature cards use CSS animations for stacked cards, a blinking cursor, and a moving scheduler indicator. These effects do not require an animation library.</p>
 <pre><code>/* Card shuffler: pure CSS, no JS */
 @keyframes shuffle1 {
   0%, 70% { transform: translateX(-50%) rotate(-2deg) translateY(0); }
@@ -459,7 +440,7 @@ if(hb){hb.addEventListener('click',()=&gt;{
 });}</code></pre>
 
       <h2 class="fade-in">Noise Texture Without Images</h2>
-      <p class="case-text fade-in">The paper texture that eliminates the flat digital look is a single inline SVG with an <code>feTurbulence</code> filter. It sits as a fixed overlay at 4% opacity. Under 200 bytes, no image request, and it tiles infinitely.</p>
+      <p class="case-text fade-in">An inline SVG with an <code>feTurbulence</code> filter provides the paper texture. The overlay uses 4% opacity and does not require a separate image request.</p>
 <pre><code>&lt;svg class="noise" aria-hidden="true"&gt;
   &lt;filter id="n"&gt;
     &lt;feTurbulence type="fractalNoise" baseFrequency="0.65"
@@ -484,8 +465,8 @@ if(hb){hb.addEventListener('click',()=&gt;{
   <!-- 05 Results -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">05</span>Results</div>
-      <p class="case-text fade-in">Same content, same information hierarchy, same number of sections. Here's what changed when the framework came off.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">V</span>Results</h2>
+      <p class="case-text fade-in">The following runs compare the original page with the static rebuild. Both the implementation and visual design changed.</p>
 
       <h2 class="fade-in">Lighthouse - Before vs After</h2>
       <div class="screenshot-comparison fade-in">
@@ -576,7 +557,7 @@ if(hb){hb.addEventListener('click',()=&gt;{
       </div>
 
       <blockquote class="fade-in">
-        <p>A landing page scored 100 on Lighthouse desktop, 95 on mobile, and Grade A on GTmetrix - with zero JavaScript frameworks, zero images, and a 43KB page weight. The original needed 3.3 seconds. This needed 1.</p>
+        <p>The recorded rebuild scored 100 on desktop Lighthouse, 95 on mobile, and Grade A on GTmetrix. GTmetrix reported a fully loaded time of 1.0s, compared with 3.3s for the original. These measurements describe the tested pages and conditions.</p>
       </blockquote>
     </div>
   </section>
@@ -584,8 +565,8 @@ if(hb){hb.addEventListener('click',()=&gt;{
   <!-- 06 Live Demo -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">06</span>Live Demo</div>
-      <p class="case-text fade-in">Compare the original site with the reworked version. Run Lighthouse on both to see the difference yourself.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">VI</span>Live Demo</h2>
+      <p class="case-text fade-in">The links below open the original site and my static demo. Fresh test results may differ from the recorded runs.</p>
       <div class="demo-links fade-in">
         <a href="https://tradersconnect.com" target="_blank" rel="noopener noreferrer" class="case-btn">Original Site &rarr;</a>
         <a href="https://www.arjunp.pro/demos/tradersconnect/" target="_blank" rel="noopener noreferrer" class="case-btn case-btn--primary">Reworked Version &rarr;</a>
@@ -596,24 +577,24 @@ if(hb){hb.addEventListener('click',()=&gt;{
   <!-- 07 Limitations & Next Steps -->
   <section class="case-section">
     <div class="case-section-inner">
-      <div class="case-section-heading fade-in"><span class="case-section-number">07</span>Limitations &amp; Next Steps</div>
-      <p class="case-text fade-in">This is a static landing page rebuild, not a full application. There are real constraints to what I could optimize without access to their infrastructure.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">VII</span>Limitations &amp; Next Steps</h2>
+      <p class="case-text fade-in">The rebuild covers the landing page only. Without access to the original infrastructure or application, I could not test a full product migration or measure production impact.</p>
 
       <h2 class="fade-in">What I Couldn't Do</h2>
       <ul class="fade-in">
-        <li>No server access - couldn't implement CDN edge caching, HTTP/2 push, or Brotli compression at the server level</li>
-        <li>No real user analytics - optimizations are based on synthetic testing (Lighthouse, GTmetrix), not RUM data</li>
-        <li>No backend integration - the rework is static content only. The original has authentication, dashboards, and API connections</li>
-        <li>Font loading is limited - Google Fonts adds external requests that I'd eliminate entirely with full self-hosting</li>
+        <li><strong>No infrastructure access:</strong> I could not change the original site’s caching, compression, or server configuration.</li>
+        <li><strong>No production measurements for the rebuild:</strong> its results come from lab tests rather than real-user monitoring.</li>
+        <li><strong>No product integration:</strong> the demo does not include authentication, dashboards, or backend behavior.</li>
+        <li><strong>External font requests:</strong> two typefaces still depend on Google Fonts.</li>
       </ul>
 
       <h2 class="fade-in">What I'd Do With Full Access</h2>
       <ul class="fade-in">
-        <li>Set up edge caching with Cloudflare or Vercel for sub-100ms TTFB globally</li>
-        <li>Self-host all fonts - eliminate the two Google Fonts requests and preload from local woff2</li>
-        <li>Implement a service worker for instant repeat visits and offline capability</li>
-        <li>Add Real User Monitoring to track Core Web Vitals in production and catch regressions</li>
-        <li>Apply the same performance-first approach to the authenticated dashboard pages</li>
+        <li>Measure server response and review caching before choosing an infrastructure change.</li>
+        <li>Self-host the remaining fonts and compare the effect on loading.</li>
+        <li>Evaluate repeat-visit caching if the product’s requirements justify it.</li>
+        <li>Add real-user monitoring to track the deployed experience.</li>
+        <li>Audit the authenticated product separately before proposing similar changes.</li>
       </ul>
     </div>
   </section>
@@ -630,40 +611,11 @@ if(hb){hb.addEventListener('click',()=&gt;{
 
 </main>
 
-<footer class="footer">
-  <div class="footer-text">&copy; <span id="footerYear"></span> Arjun. All rights reserved.</div>
-  <div class="footer-social">
-    <a href="https://github.com/mrwick1" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></a>
-    <a href="https://linkedin.com/in/arjunp-software-engineer" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-    <a href="https://twitter.com/03arjunkr" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="mailto:03arjunkr@gmail.com" class="footer-social-link" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg></a>
-  </div>
-</footer>
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>VOICE · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
 
-<script>
-(function(){
-  'use strict';
-  var fadeEls=document.querySelectorAll('.fade-in');
-  if('IntersectionObserver' in window){var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});fadeEls.forEach(function(el){observer.observe(el);});}else{fadeEls.forEach(function(el){el.classList.add('is-visible');});}
-  var html=document.documentElement,toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
-  var sunPath='<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-  var moonPath='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-  function setTheme(t){html.setAttribute('data-theme',t);icon.innerHTML=t==='dark'?moonPath:sunPath;try{localStorage.setItem('swiss-theme',t);}catch(e){}}
-  var saved=null;try{saved=localStorage.getItem('swiss-theme');}catch(e){}
-  if(saved){setTheme(saved);}else if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches){setTheme('dark');}
-  if(toggle){toggle.addEventListener('click',function(){setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');});}
-  var fy=document.getElementById('footerYear');if(fy){fy.textContent=new Date().getFullYear();}
-})();
-</script>
-<script>
-(function(){
-  var b=document.getElementById('navBurger'),n=document.getElementById('navLinks');
-  if(!b||!n)return;
-  function setOpen(o){n.classList.toggle('is-open',o);b.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  b.addEventListener('click',function(){setOpen(!n.classList.contains('is-open'));});
-  n.addEventListener('click',function(e){if(e.target.closest('.nav-link, .nav-logo'))setOpen(false);});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setOpen(false);});
-})();
-</script>
+
+
+<script src="../assets/letter.js" defer></script>
 </body>
 </html>
