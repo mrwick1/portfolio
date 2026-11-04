@@ -217,3 +217,9 @@ html { scroll-behavior:auto; }
 
 .work-note { margin:12px 0 0; color:var(--muted); font-size:12px; line-height:20px; }
 .work-note a { white-space:nowrap; color:var(--fg); text-decoration:underline; text-decoration-color:var(--accent); }
+
+.article-back .all-writing { margin-top:0; }
+@media(max-width:1023px) {
+ .contact-nav { gap:8px; }
+ .contact-nav a { min-width:44px; min-height:44px; }
+}
