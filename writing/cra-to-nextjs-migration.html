@@ -43,7 +43,7 @@
     "name": "Arjun"
   },
   "datePublished": "2026-02-19",
-  "dateModified": "2026-11-04T16:50:26+00:00",
+  "dateModified": "2026-11-04T18:41:58+00:00",
   "url": "https://www.arjunp.pro/writing/cra-to-nextjs-migration.html",
   "mainEntityOfPage": "https://www.arjunp.pro/writing/cra-to-nextjs-migration.html"
 }
@@ -245,7 +245,7 @@
       <p class="case-text fade-in">The application remained in active development, so we moved routes incrementally. Next.js pages ran alongside the CRA application while the team continued to ship features.</p>
 
       <h2 class="fade-in">Phase 1: Parallel Setup</h2>
-      <p class="case-text fade-in">We added a Next.js 14 application in <code>/next</code> and moved reusable components, hooks, and utilities into <code>/packages/shared</code>. Both applications could import that package during the transition.</p>
+      <p class="case-text fade-in">We added a Next.js 14 application in <code>apps/next-app/</code> and moved reusable components, hooks, and utilities into <code>packages/shared/</code>. Both applications could import that package during the transition.</p>
 <pre><code>project/
   packages/
     shared/          # Components, hooks, utils
@@ -262,7 +262,7 @@
       <p class="case-text fade-in">We migrated routes in order of impact: public-facing pages first (marketing, docs, reports), then high-traffic dashboard pages, then everything else. For each route, the process was:</p>
       <ul class="fade-in">
         <li>Create the Next.js route and choose how it should load data. Use <code>generateStaticParams</code> where known dynamic route parameters can be generated ahead of time.</li>
-        <li>Move the route's components from <code>legacy-cra/</code> to <code>packages/shared/</code> if they weren't already shared</li>
+        <li>Move the route's components from <code>apps/legacy-cra/</code> to <code>packages/shared/</code> if they weren't already shared</li>
         <li>Add the <code>"use client"</code> directive to components that needed browser APIs or React state</li>
         <li>Update the proxy config to route the URL to Next.js</li>
         <li>Verify in staging, then ship</li>
@@ -302,7 +302,7 @@ async function DashboardPage() {
       <div class="metrics-grid fade-in">
         <div class="metric-card">
           <div class="metric-value">60%</div>
-          <div class="metric-label">Faster page loads</div>
+          <div class="metric-label">Lower First Contentful Paint</div>
         </div>
         <div class="metric-card">
           <div class="metric-value">70%</div>
