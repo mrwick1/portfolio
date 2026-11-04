@@ -146,12 +146,6 @@
   .metric-label { font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--fg-secondary); }
 
   /* Bottom nav */
-  .project-nav { display: flex; justify-content: center; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
-  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: center; }
-  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); align-items: center; }
-  .project-nav-link:hover { transform: translateY(-2px); }
-  .project-nav-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
-  .project-nav-title { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); }
 
   /* Footer */
   .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
@@ -165,7 +159,7 @@
   @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
   @media (max-width: 768px) {
     :root { --grid-margin: 24px; --sidebar-width: 0px; }
-    .case-hero, .case-section, .project-nav, .footer { padding-left: var(--grid-margin); }
+    .case-hero, .case-section,
     .case-meta { flex-direction: column; gap: var(--sp-4); }
     .metrics-grid { grid-template-columns: 1fr; }
     .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
@@ -194,7 +188,7 @@
     .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
   }
 </style>
-<link rel="stylesheet" href="../assets/letter.css">
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
 <meta property="article:modified_time" content="2026-11-04T16:50:26+00:00">
 </head>
 <body class="inner-page article-page">
@@ -291,14 +285,7 @@
   </section>
 
   <!-- Bottom nav -->
-  <div class="project-nav">
-    <div class="project-nav-inner">
-      <a href="../writing/" class="project-nav-link">
-        <span class="project-nav-label">&larr; Back</span>
-        <span class="project-nav-title">All Writing</span>
-      </a>
-    </div>
-  </div>
+  <nav class="case-section article-back" aria-label="Article navigation"><a href="../writing/" class="all-writing">← All writing</a></nav>
 
 </main>
 
