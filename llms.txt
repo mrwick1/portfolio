@@ -1,0 +1,28 @@
+# Arjun P
+
+> Arjun P is an AI engineer at Qilin Labs in India. He builds AI agents, the developer tools they run on, and AI products. He is open to AI engineering roles and selected client projects.
+
+## Projects
+
+- [bare](https://www.arjunp.pro/projects/bare.html): A web browser written from scratch in Rust, with hand-written TLS, HTTP/2, HTML, CSS, layout and JavaScript, and an MCP server that agents use to test sites.
+- [deck](https://www.arjunp.pro/projects/deck.html): A self-hosted AI agent that does web work in its own virtual computer with the bare browser.
+- [hyprcage](https://www.arjunp.pro/projects/hyprcage.html): A virtual screen for AI agents on Hyprland. Agents read the screen as text before they take a screenshot.
+- [reviewer](https://www.arjunp.pro/projects/reviewer.html): A local AI code reviewer in Rust, measured against CodeRabbit on 52 pull requests built from real bug fixes.
+- [figma-connect](https://www.arjunp.pro/projects/figma-connect.html): A local Figma MCP server that renders generated code and compares it with the design.
+- [git-guard](https://www.arjunp.pro/projects/git-guard.html): Git hooks that hold coding agents and people to the same commit rules.
+- [share](https://www.arjunp.pro/projects/share.html): A small service that publishes one HTML page at a link that expires.
+- [EdTech Assessment Platform](https://www.arjunp.pro/projects/edtech-platform.html): Web and mobile assessments for schools, graded with Claude vision.
+- [AI Product Configurator](https://www.arjunp.pro/projects/product-configurator.html): A product configurator with an AI assistant inside a live Shopify theme.
+- [Suzuki Connect RE](https://www.arjunp.pro/projects/suzuki-connect-re.html): Reverse engineering of a motorcycle Bluetooth protocol and an Android navigation app.
+
+## Writing
+
+- [All writing](https://www.arjunp.pro/writing/): Articles on coding agents, AI products and web engineering.
+- [Lab notebook](https://mrwick.dev): Notes on a homelab and agent tooling.
+
+## Contact
+
+- Email: 03arjunkr@gmail.com
+- GitHub: https://github.com/mrwick1
+- LinkedIn: https://linkedin.com/in/arjunp-software-engineer
+- Résumé: https://www.arjunp.pro/assets/arjun-p-resume.pdf

@@ -1,7 +1,7 @@
 {
-  "name": "Arjun - Senior Frontend Engineer Portfolio",
-  "short_name": "Arjun",
-  "description": "Personal Portfolio Website",
+  "name": "Arjun P, AI Engineer",
+  "short_name": "Arjun P",
+  "description": "Portfolio of Arjun P: AI agents, developer tools and AI products.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
@@ -13,4 +13,4 @@
       "type": "image/svg+xml"
     }
   ]
-} 
+}
