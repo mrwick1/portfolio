@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>deck: A Self-Hosted AI Agent With Its Own Computer | Arjun P</title>
-<meta name="description" content="A self-hosted AI agent. You chat in a web app, and it does web work in its own virtual computer with the bare browser, then sends results to the chat.">
+<title>deck: A Control Plane for My AI Agents | Arjun P</title>
+<meta name="description" content="Deck is how I run many AI agents. I create one bot per job, such as LinkedIn or Instagram marketing, and each bot works in a computer of its own.">
 <link rel="canonical" href="https://www.arjunp.pro/projects/deck.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.arjunp.pro/projects/deck.html">
-<meta property="og:title" content="deck: A Self-Hosted AI Agent With Its Own Computer | Arjun P">
-<meta property="og:description" content="A self-hosted AI agent. You chat in a web app, and it does web work in its own virtual computer with the bare browser, then sends results to the chat.">
+<meta property="og:title" content="deck: A Control Plane for My AI Agents | Arjun P">
+<meta property="og:description" content="Deck is how I run many AI agents. I create one bot per job, such as LinkedIn or Instagram marketing, and each bot works in a computer of its own.">
 <meta property="og:image" content="https://www.arjunp.pro/assets/images/og/deck.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Arjun P">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="deck: A Self-Hosted AI Agent With Its Own Computer | Arjun P">
-<meta name="twitter:description" content="A self-hosted AI agent. You chat in a web app, and it does web work in its own virtual computer with the bare browser, then sends results to the chat.">
+<meta name="twitter:title" content="deck: A Control Plane for My AI Agents | Arjun P">
+<meta name="twitter:description" content="Deck is how I run many AI agents. I create one bot per job, such as LinkedIn or Instagram marketing, and each bot works in a computer of its own.">
 <meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og/deck.webp">
 <meta name="twitter:creator" content="@03arjunkr">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -156,7 +156,7 @@
   }
 </style>
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arjunp.pro/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arjunp.pro/projects/"}, {"@type": "ListItem", "position": 3, "name": "deck", "item": "https://www.arjunp.pro/projects/deck.html"}]}, {"@type": "SoftwareSourceCode", "name": "deck", "headline": "deck: A Self-Hosted AI Agent With Its Own Computer | Arjun P", "description": "A self-hosted AI agent. You chat in a web app, and it does web work in its own virtual computer with the bare browser, then sends results to the chat.", "url": "https://www.arjunp.pro/projects/deck.html", "image": "https://www.arjunp.pro/assets/images/og/deck.webp", "programmingLanguage": "Rust", "codeRepository": "https://github.com/mrwick1/deck", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arjunp.pro/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arjunp.pro/projects/"}, {"@type": "ListItem", "position": 3, "name": "deck", "item": "https://www.arjunp.pro/projects/deck.html"}]}, {"@type": "SoftwareSourceCode", "name": "deck", "headline": "deck: A Control Plane for My AI Agents | Arjun P", "description": "Deck is how I run many AI agents. I create one bot per job, such as LinkedIn or Instagram marketing, and each bot works in a computer of its own.", "url": "https://www.arjunp.pro/projects/deck.html", "image": "https://www.arjunp.pro/assets/images/og/deck.webp", "programmingLanguage": "Rust", "codeRepository": "https://github.com/mrwick1/deck", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}}]}
 </script>
 <link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
 </head>
@@ -168,41 +168,47 @@
     <div class="case-hero-inner fade-in">
       <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="./">Projects</a><span class="breadcrumb-sep">/</span><span>deck</span></div>
       <h1 class="case-title">deck</h1>
-      <p class="case-subtitle">A self-hosted AI agent that works in a computer of its own.</p>
-      <div class="case-meta"><div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Solo: design &amp; build</span></div><div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">AI agent, self-hosted</span></div><div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Rust · Axum · SQLite · React · QEMU/KVM</span></div><div class="case-meta-item"><span class="case-meta-label">Started</span><span class="case-meta-value">November 2026</span></div></div>
+      <p class="case-subtitle">The control plane for my AI agents: one place to create, run and supervise them.</p>
+      <div class="case-meta"><div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Solo: design &amp; build</span></div><div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">AI agent control plane, self-hosted</span></div><div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Rust · Axum · SQLite · React · QEMU/KVM</span></div><div class="case-meta-item"><span class="case-meta-label">Started</span><span class="case-meta-value">November 2026</span></div></div>
       <div class="case-buttons"><a href="https://github.com/mrwick1/deck" class="case-btn case-btn--primary" target="_blank" rel="noopener">Source on GitHub ↗</a><a href="#architecture" class="case-btn">Architecture</a></div>
     </div>
   </section>
 
   <section class="case-section">
     <div class="case-section-inner">
-      <h2 class="case-section-heading"><span class="case-section-number">I</span>What it does</h2>
-      <p class="case-text fade-in"><code>deck</code> is a personal AI agent that I host myself. I talk to it in a web app on my laptop or phone. I ask for web work: read a page, fill a form, log in, collect data, or check something every day.</p>
-      <p class="case-text fade-in">Each bot owns a persistent desktop computer. It works in the <a href="bare.html">bare</a> browser, shows its progress while it works, and sends text, files and screenshots back into the chat. I own the model choice, the data and the code.</p>
+      <h2 class="case-section-heading"><span class="case-section-number">I</span>What it is</h2>
+      <p class="case-text fade-in">I want many AI agents working for me at once, each on one job: LinkedIn marketing, Instagram marketing, email, job hunting. Deck is how I interact with all of them. It is a control plane that I host myself, not a single chatbot.</p>
+      <p class="case-text fade-in">I create a bot by describing its job in a chat. Deck prepares the setup for my review: instructions, accounts, permissions, approval rules, schedules, the model and a spending budget. Each bot then gets its own computer, accounts, files and memory, so one bot never sees another bot's logins.</p>
+      <p class="case-text fade-in">When I open Deck, the home screen shows what every bot is doing. One inbox collects approvals, sign-in requests, failures and results from all bots. Opening a bot shows its chat, and its screen when I want to watch.</p>
     </div>
   </section>
 
   <section class="case-section" id="architecture">
     <div class="case-section-inner">
       <h2 class="case-section-heading"><span class="case-section-number">II</span>How it fits together</h2>
-      <p class="case-text fade-in">One Rust service holds the agent loop, the chat store and the browser tools. Any OpenAI-compatible model endpoint can drive it. Each bot's computer is a virtual machine with a small executor inside.</p>
-      <div class="arch fade-in" role="img" aria-label="Data flow: web app to the deck service, the service to the model and to bare, and to a per-bot virtual machine">
-        <div class="arch-box"><div class="arch-box-title">Web app</div><div class="arch-box-sub">React · assistant-ui · laptop or phone</div></div>
+      <p class="case-text fade-in">One Rust service runs the agent loop for every bot, outside the bots' computers. Any OpenAI-compatible model endpoint can drive it. Each bot's computer is a virtual machine that sleeps when idle and wakes when work arrives.</p>
+      <div class="arch fade-in" role="img" aria-label="Deck control plane: the owner talks to Deck, and Deck runs many bots, each with its own computer">
+        <div class="arch-box"><div class="arch-box-title">Me, in the Deck web app</div><div class="arch-box-sub">laptop or phone · overview of every bot · one inbox</div></div>
         <div class="arch-arrow"><span class="arch-arrow-label">HTTPS + server-sent events</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
-        <div class="arch-box arch-box--accent"><div class="arch-box-title">deck service: one Rust process</div><div class="arch-box-sub">agent loop · task queue · SQLite store for chats, runs, events and files</div></div>
-        <div class="arch-arrow"><span class="arch-arrow-label">model calls · browser tools over MCP</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
-        <div class="arch-box"><div class="arch-box-title">Model endpoint and bare</div><div class="arch-box-sub">OpenAI-compatible /chat/completions · bare-mcp drives the browser</div></div>
-        <div class="arch-arrow"><span class="arch-arrow-label">commands · artifacts · screen capture</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
-        <div class="arch-box arch-box--accent"><div class="arch-box-title">Bot computer: QEMU/KVM virtual machine</div><div class="arch-box-sub">guest executor runs browser, shell and file work · saved when idle, restored for the next task</div></div>
+        <div class="arch-box arch-box--accent"><div class="arch-box-title">Deck control plane: one Rust service</div><div class="arch-box-sub">bot registry · task queues · permissions and approvals · budgets · the agent loop for each bot · SQLite</div></div>
+        <div class="arch-arrow"><span class="arch-arrow-label">one computer per bot</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+          <div class="arch-box"><div class="arch-box-title">LinkedIn bot</div><div class="arch-box-sub">planned · own VM, accounts and memory</div></div>
+          <div class="arch-box"><div class="arch-box-title">Instagram bot</div><div class="arch-box-sub">planned · own VM, accounts and memory</div></div>
+          <div class="arch-box"><div class="arch-box-title">Email bot</div><div class="arch-box-sub">planned · own VM, accounts and memory</div></div>
+          <div class="arch-box"><div class="arch-box-title">Any new job</div><div class="arch-box-sub">described in a chat, approved by me</div></div>
         </div>
+        <div class="arch-arrow"><span class="arch-arrow-label">inside each computer</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
+        <div class="arch-box arch-box--accent"><div class="arch-box-title">QEMU/KVM virtual machine with an Arch Linux desktop</div><div class="arch-box-sub">guest executor · bare browser · shell · files · saved when idle, restored when work arrives</div></div>
+      </div>
     </div>
   </section>
 
   <section class="case-section">
     <div class="case-section-inner">
-      <h2 class="case-section-heading"><span class="case-section-number">III</span>Design rules</h2>
-      <p class="case-text fade-in">These rules come from the design. Some are not built yet. The next section says which.</p>
-      <div class="features-grid"><div class="feature-card fade-in"><div class="feature-card-title">Text first</div><div class="feature-card-desc">The agent reads pages as text and takes a screenshot only when it must. Screenshots that I ask for always reach the chat.</div></div><div class="feature-card fade-in"><div class="feature-card-title">Permissions and approval</div><div class="feature-card-desc">Each bot has its own permissions. A payment or a sent message waits for my approval.</div></div><div class="feature-card fade-in"><div class="feature-card-title">A spending budget</div><div class="feature-card-desc">A bot pauses when it reaches its budget and resumes only after I approve. Automatic spending accounting is not built yet.</div></div><div class="feature-card fade-in"><div class="feature-card-title">Honest results</div><div class="feature-card-desc">It reports what it did and what failed. It never claims a result that it did not check. When <code>bare</code> fails on a site, it files a <code>bare</code> issue and tells me.</div></div></div>
+      <h2 class="case-section-heading"><span class="case-section-number">III</span>How I stay in control</h2>
+      <div class="features-grid" style="margin-bottom: var(--sp-6);"><div class="feature-card fade-in"><div class="feature-card-title">Permissions for each bot</div><div class="feature-card-desc">Permissions describe actions, such as reading messages, posting or sending. A bot can ask for a missing permission, and I approve one action or grant it with limits.</div></div><div class="feature-card fade-in"><div class="feature-card-title">Approvals in one inbox</div><div class="feature-card-desc">A post, a payment or a sent message can wait for my approval. Requests stay in the inbox until I resolve them.</div></div><div class="feature-card fade-in"><div class="feature-card-title">Queues and controls</div><div class="feature-card-desc">Each bot keeps a task queue: working, waiting for me, queued and completed. I can stop a task, steer it or change its priority.</div></div><div class="feature-card fade-in"><div class="feature-card-title">Pause and sleep</div><div class="feature-card-desc">Pause stops new work for a bot. Sleep saves its computer to disk and frees CPU and memory. A budget pauses a bot until I approve more spending.</div></div></div>
+      <p class="case-text fade-in">Each bot reads pages as text first, in the <a href="bare.html">bare</a> browser, and takes a screenshot only when it must. It reports what it did and what failed, and never claims a result that it did not check.</p>
     </div>
   </section>
 
@@ -210,8 +216,8 @@
     <div class="case-section-inner">
       <h2 class="case-section-heading"><span class="case-section-number">IV</span>Where it stands</h2>
       <p class="case-text fade-in">On 12 November 2026, the one-bot runtime passed its three stages: a full desktop with <code>bare</code> and saved state, a guest executor with durable commands and cancellation, and server integration with a queue, controls, idle save and wake. A strict run in a real virtual machine completed browser, shell and file work, saved the idle computer and restored it for the next task.</p>
-      <p class="case-text fade-in">In one measured run, a working bot used about 531 MiB of VM memory, and the shared server used about 21 MiB. These are single observations, not capacity numbers.</p>
-      <p class="case-text fade-in"><strong>Still open:</strong> load tests with several bots, automatic spending accounting, real accounts and service events, and memory integration. The design covers them, but they are not shipped.</p>
+      <p class="case-text fade-in">In one measured run, a working bot used about 531 MiB of VM memory, and the shared server used about 21 MiB. I keep one bot lean first, so that many bots stay cheap to run. These are single observations, not capacity numbers.</p>
+      <p class="case-text fade-in"><strong>Still open:</strong> creating bots through a chat, real account integrations such as LinkedIn and Instagram, automatic spending accounting, memory, and load tests with many bots. The design covers them, but they are not shipped.</p>
     </div>
   </section>
 
