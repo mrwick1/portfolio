@@ -5,7 +5,7 @@
 ## Projects
 
 - [bare](https://www.arjunp.pro/projects/bare.html): A web browser written from scratch in Rust, with hand-written TLS, HTTP/2, HTML, CSS, layout and JavaScript, and an MCP server that agents use to test sites.
-- [deck](https://www.arjunp.pro/projects/deck.html): A self-hosted control plane for many AI agents. Each bot has one job, such as LinkedIn or Instagram marketing, and its own virtual computer.
+- [deck](https://www.arjunp.pro/projects/deck.html): An open-source, self-hosted alternative to Grok Bot. The owner chats with several AI bots, such as an email bot or a job-hunting bot, and each bot works in its own virtual computer.
 - [hyprcage](https://www.arjunp.pro/projects/hyprcage.html): A virtual screen for AI agents on Hyprland. Agents read the screen as text before they take a screenshot.
 - [reviewer](https://www.arjunp.pro/projects/reviewer.html): A local AI code reviewer in Rust, measured against CodeRabbit on 52 pull requests built from real bug fixes.
 - [figma-connect](https://www.arjunp.pro/projects/figma-connect.html): A local Figma MCP server that renders generated code and compares it with the design.
