@@ -5,8 +5,29 @@
     <link>https://www.arjunp.pro/writing/</link>
     <description>Technical articles, opinion pieces, and case studies by Arjun.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2026 17:44:34 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.arjunp.pro/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>How accurate is CodeRabbit? A test on 52 real bug fixes</title>
+      <link>https://www.arjunp.pro/writing/coderabbit-benchmark.html</link>
+      <description>CodeRabbit on 52 pull requests built from real bug fixes: recall, precision and false alarms, next to a local AI reviewer.</description>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/coderabbit-benchmark.html</guid>
+    </item>
+    <item>
+      <title>Playwright MCP vs Chrome DevTools MCP vs bare</title>
+      <link>https://www.arjunp.pro/writing/browsers-for-ai-agents.html</link>
+      <description>Three MCP browsers for coding agents, compared: Playwright MCP, Chrome DevTools MCP and bare-mcp.</description>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/browsers-for-ai-agents.html</guid>
+    </item>
+    <item>
+      <title>Self-hosted, open-source alternatives to Grok Bot</title>
+      <link>https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html</link>
+      <description>Agent Zero, cua, deck, OpenHands Agent Canvas and Bytebot, compared with xAI&apos;s Grok Bot.</description>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html</guid>
+    </item>
     <item>
       <title>Building a voice-AI product</title>
       <link>https://www.arjunp.pro/writing/building-a-voice-ai-product.html</link>
