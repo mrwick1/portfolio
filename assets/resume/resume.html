@@ -331,7 +331,7 @@
 
   <header class="header">
     <h1 class="name">Arjun P<span class="accent">.</span></h1>
-    <p class="title">AI Engineer · Voice agents and full-stack AI products, from first call to production</p>
+    <p class="title">AI Engineer · AI agents, developer tools and AI products</p>
     <p class="contact">
       <a href="mailto:03arjunkr@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>03arjunkr@gmail.com</a>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Calicut, India</span>
@@ -344,7 +344,7 @@
 
   <section class="section">
     <h2 class="section-title">Summary</h2>
-    <p class="summary">AI engineer with <em>5 years</em> of experience across web, mobile, and AI products. At <em>Qilin Labs</em>, I built a voice-AI product and worked on school assessment software. I also led a production education platform’s migration to Next.js. My client work spans e-commerce, real estate, financial services, and enterprise software.</p>
+    <p class="summary">AI engineer with <em>5 years</em> of experience, the last two on production AI. At <em>Qilin Labs</em>, I built a multi-tenant <em>AI voice-agent platform</em> as the sole engineer: a streaming STT → LLM → TTS pipeline at <em>1.3s p50</em>, RAG, FastAPI services and evals. On my own, I build AI agents and their tools in Rust: a web browser written from scratch that agents drive over MCP, an open-source bot platform, and an LLM code reviewer measured against CodeRabbit.</p>
   </section>
 
   <section class="section">
@@ -352,30 +352,31 @@
     <div class="entry">
       <div class="entry-head">
         <div class="entry-role">Senior Frontend Engineer</div>
-        <div class="entry-date">Aug 2024 → Present</div>
+        <div class="entry-date">Aug 2024 – Present</div>
       </div>
       <div class="entry-company">Qilin Labs · Remote</div>
       <ul class="entry-list">
-        <li>Built a <strong>voice-AI product</strong> and owned implementation from product requirements through delivery.</li>
-        <li>Owned testing and reliability work for conversational features. Project-specific implementation details are kept private.</li>
-        <li>Led the CRA → Next.js 14 migration of a <strong>20K-user</strong> education platform: <strong>Lighthouse 58 → 92</strong>, page load <strong>~10s → ~3s</strong>, JS bundle <strong>2.4MB → 720KB</strong>; moved the UI from MUI to shadcn/ui across <strong>30+ components</strong>.</li>
+        <li>Built a multi-tenant <strong>AI voice-agent platform</strong> as the sole engineer: LiveKit SIP telephony, streaming STT → LLM → TTS, RAG on Qdrant, FastAPI services and a Next.js 14 ops console (<strong>31 routes, 107 components</strong>).</li>
+        <li>Cut round-trip latency to <strong>1.3s p50</strong> and STT latency from <strong>235 to 118ms</strong> with regional routing. Fixed the telephony audio mixer, so dropped agent audio fell from <strong>4.37% to 0%</strong>.</li>
+        <li>Built call monitoring, agent configuration and quality evals, covered by <strong>2,585 backend tests</strong>.</li>
+        <li>Led the CRA → Next.js 14 migration of a <strong>20K-user</strong> education platform: <strong>Lighthouse 58 → 92</strong>, page load <strong>~10s → ~3s</strong>, JS bundle <strong>2.4MB → 720KB</strong>.</li>
       </ul>
     </div>
     <div class="entry">
       <div class="entry-head">
         <div class="entry-role">Software Engineer · Frontend Lead</div>
-        <div class="entry-date">Mar 2023 → Sep 2024</div>
+        <div class="entry-date">Mar 2023 – Sep 2024</div>
       </div>
       <div class="entry-company">Hubspire Corp · Remote</div>
       <ul class="entry-list">
-        <li>Refactored a <strong>30k+ LOC</strong> legacy React codebase: dependency cleanup, code splitting, tree shaking, CI optimization.</li>
-        <li>Built React + TypeScript + GraphQL apps with Apollo; designed a component system adopted across <strong>3+ projects</strong>; mentored 3 junior engineers to mid-level.</li>
+        <li>Refactored a <strong>30k+ LOC</strong> legacy React codebase: dependency cleanup, code splitting, tree shaking and CI optimization.</li>
+        <li>Designed a React component system adopted across <strong>3+ projects</strong>, built TypeScript and GraphQL (Apollo) apps, and mentored 3 junior engineers to mid-level.</li>
       </ul>
     </div>
     <div class="entry">
       <div class="entry-head">
         <div class="entry-role">React Developer</div>
-        <div class="entry-date">Feb 2022 → Mar 2023</div>
+        <div class="entry-date">Feb 2022 – Mar 2023</div>
       </div>
       <div class="entry-company">Woxro Technology Solutions · Thrissur, Kerala</div>
       <ul class="entry-list">
@@ -385,44 +386,49 @@
     <div class="entry">
       <div class="entry-head">
         <div class="entry-role">Web Developer</div>
-        <div class="entry-date">Jul 2021 → Feb 2022</div>
+        <div class="entry-date">Jul 2021 – Feb 2022</div>
       </div>
       <div class="entry-company">Limenzy Technologies · Calicut, Kerala</div>
       <ul class="entry-list">
-        <li>Delivered <strong>10+</strong> responsive interfaces from Figma/Adobe designs.</li>
+        <li>Delivered <strong>10+</strong> responsive interfaces from Figma and Adobe designs.</li>
       </ul>
     </div>
   </section>
   <section class="section">
-    <h2 class="section-title">Selected Projects</h2>
+    <h2 class="section-title">Projects</h2>
     <div class="project">
-      <div class="project-name">EdTech assessment platform <span class="project-tagline">— AI grading · client project</span></div>
-      <p class="project-desc">React, React Native (Expo), FastAPI, Supabase, Claude vision · Lead engineer across <strong>three apps</strong> on one backend: a React supervisor app, an Expo app with on-device answer-sheet scanning, and a FastAPI service that OCRs and grades sheets with Claude vision, with teacher review and score override.</p>
+      <div class="project-name"><a href="https://www.arjunp.pro/projects/bare.html">bare ↗</a> <span class="project-tagline">— A web browser written from scratch in Rust, for AI agents</span></div>
+      <p class="project-desc">Rust, MCP · Hand-written TLS, HTTP/2, HTML, CSS, layout and a JavaScript interpreter in <strong>16 crates</strong>. An MCP server lets AI agents test sites and read pages as text before a screenshot. <strong>1,390+ commits</strong>; passed <strong>48 journeys</strong> on public sites.</p>
     </div>
     <div class="project">
-      <div class="project-name">AI product configurator <span class="project-tagline">— jewelry e-commerce · client project</span></div>
-      <p class="project-desc">React, TypeScript, Zustand, TanStack Query · Guided wizard → AI chat → live configuration stage with drag-to-rotate physics; ships as one bundle mounted into a live <strong>Shopify OS 2.0</strong> theme.</p>
+      <div class="project-name"><a href="https://www.arjunp.pro/projects/reviewer.html">reviewer ↗</a> <span class="project-tagline">— AI code review measured against CodeRabbit</span></div>
+      <p class="project-desc">Rust, LLM evaluation · Scored on <strong>52 pull requests</strong> built from real bug fixes in 16 open-source projects: F1 <strong>0.29 vs 0.31</strong> for CodeRabbit, with <strong>0.63 vs 1.18</strong> false alarms per clean PR, at about $0.09 per review.</p>
+    </div>
+    <div class="project">
+      <div class="project-name"><a href="https://www.arjunp.pro/projects/deck.html">deck ↗</a> <span class="project-tagline">— An open-source, self-hosted Grok Bot</span></div>
+      <p class="project-desc">Rust, Axum, React, QEMU/KVM · Chat with AI bots that each work in a persistent VM desktop with their own accounts, permissions and budget. The one-bot runtime passed a strict end-to-end run in a real VM.</p>
+    </div>
+    <div class="project">
+      <div class="project-name">EdTech assessment platform <span class="project-tagline">— AI grading · client project</span></div>
+      <p class="project-desc">React, Expo, FastAPI, Supabase, Claude vision · Lead engineer across <strong>three apps</strong> on one backend. Teachers scan answer sheets on a phone, Claude vision grades them, and a teacher reviews or overrides every score.</p>
     </div>
     <div class="project">
       <div class="project-name"><a href="https://www.arjunp.pro/projects/figma-connect.html">figma-connect ↗</a> <span class="project-tagline">— Local Figma MCP server for AI agents</span></div>
       <p class="project-desc">TypeScript, Playwright, SQLite/FTS5 · <strong>35 MCP tools</strong> for design reads, plus verify_node: pixel-diffs an agent's generated code against the live Figma node.</p>
     </div>
-    <div class="project">
-      <div class="project-name"><a href="https://www.arjunp.pro/projects/suzuki-connect-re.html">REDLINE ↗</a> <span class="project-tagline">— Android app from a reverse-engineered BLE protocol</span></div>
-      <p class="project-desc">Kotlin, Jetpack Compose · Decoded my motorcycle's Bluetooth cluster protocol, then built a <strong>14k-LOC</strong> app (205 tests) for navigation and live telemetry.</p>
-    </div>
   </section>
   <section class="section">
     <h2 class="section-title">Skills</h2>
-    <p class="skills-line"><strong>AI &amp; Voice:</strong> Voice interfaces, conversational AI, speech processing, RAG, vision-based evaluation, MCP</p>
-    <p class="skills-line"><strong>Languages:</strong> Python, TypeScript, Go, Rust, Kotlin</p>
-    <p class="skills-line"><strong>Backend &amp; Data:</strong> FastAPI, Node.js, PostgreSQL, Redis, Supabase, Prisma, GraphQL (Apollo), Socket.IO, Docker</p>
-    <p class="skills-line"><strong>Frontend &amp; Mobile:</strong> React, Next.js, TanStack Query, Zustand, Tailwind CSS, shadcn/ui, React Native, Expo, Jetpack Compose</p>
-    <p class="skills-line"><strong>Testing &amp; Tooling:</strong> Vitest, Jest, Playwright, Cypress, GitHub Actions, Turborepo</p>
+    <p class="skills-line"><strong>AI &amp; Agents:</strong> AI agents, MCP, LLM evaluation, RAG (Qdrant), Claude API (vision), Vercel AI SDK</p>
+    <p class="skills-line"><strong>Voice AI:</strong> LiveKit (SIP/WebRTC), Deepgram, Silero VAD, streaming STT → LLM → TTS</p>
+    <p class="skills-line"><strong>Languages:</strong> Rust, Python, TypeScript, Go, Kotlin</p>
+    <p class="skills-line"><strong>Backend &amp; Infra:</strong> FastAPI, Axum, Node.js, PostgreSQL, SQLite, Redis, Supabase, Docker, QEMU/KVM</p>
+    <p class="skills-line"><strong>Frontend &amp; Mobile:</strong> React, Next.js, TanStack Query, Tailwind CSS, shadcn/ui, React Native, Expo</p>
+    <p class="skills-line"><strong>Testing &amp; Tooling:</strong> Vitest, Jest, Playwright, Cypress, GitHub Actions</p>
   </section>
   <section class="section">
     <h2 class="section-title">Education</h2>
-    <p class="skills-line"><strong>B.E. Mechanical Engineering</strong> · Dhanalakshmi Srinivasan Engineering College (Anna University) · 2017 → 2021</p>
+    <p class="skills-line"><strong>B.E. Mechanical Engineering</strong> · Dhanalakshmi Srinivasan Engineering College (Anna University) · 2017 – 2021</p>
     <p class="skills-line">Also: author of <a href="https://www.npmjs.com/package/@astra-ui-lib/core">@astra-ui-lib/core</a>, a React component library published on npm.</p>
   </section>
 </div>
