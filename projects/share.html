@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>share: Expiring Links for HTML Pages | Arjun P</title>
+<meta name="description" content="A 135-line Python service that publishes one HTML file at a public link that expires. Each page runs in a browser sandbox, away from the site&#x27;s cookies.">
+<link rel="canonical" href="https://www.arjunp.pro/projects/share.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.arjunp.pro/projects/share.html">
+<meta property="og:title" content="share: Expiring Links for HTML Pages | Arjun P">
+<meta property="og:description" content="A 135-line Python service that publishes one HTML file at a public link that expires. Each page runs in a browser sandbox, away from the site&#x27;s cookies.">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og/share.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Arjun P">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="share: Expiring Links for HTML Pages | Arjun P">
+<meta name="twitter:description" content="A 135-line Python service that publishes one HTML file at a public link that expires. Each page runs in a browser sandbox, away from the site&#x27;s cookies.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og/share.webp">
+<meta name="twitter:creator" content="@03arjunkr">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/geist-mono.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: 'Space Grotesk'; font-style: normal; font-weight: 300 700; font-display: swap; src: url('../assets/fonts/geist.woff2') format('woff2'); }
+  @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: swap; src: url('../assets/fonts/geist-mono.woff2') format('woff2'); }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --white: #FFFFFF; --black: #111111; --accent: #0055FF;
+    --grey-100: #F5F5F5; --grey-200: #E8E8E8; --grey-300: #D0D0D0; --grey-400: #999999; --grey-500: #666666;
+    --bg: var(--white); --fg: var(--black); --fg-secondary: #595959; --fg-tertiary: #6E6E6E;
+    --border: var(--grey-200); --border-faint: var(--grey-100); --grid-line: rgba(0,0,0,0.04); --surface: var(--grey-100);
+    --font-body: 'Space Grotesk', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px; --sp-7: 40px; --sp-8: 48px;
+    --sp-9: 64px; --sp-10: 80px; --sp-11: 96px; --sp-12: 120px;
+    --grid-margin: 64px; --sidebar-width: 56px; --ease: linear; --duration: 0.3s;
+  }
+  [data-theme="dark"] {
+    --bg: #0A0A0A; --fg: #E8E8E8; --fg-secondary: #9A9A9A; --fg-tertiary: #808080;
+    --border: #222222; --border-faint: #161616; --grid-line: rgba(255,255,255,0.03); --surface: #141414;
+  }
+  html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-body); font-weight: 400; line-height: 1.6; color: var(--fg); background-color: var(--bg); transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease); overflow-x: hidden; }
+  ::selection { background-color: var(--accent); color: var(--white); }
+  .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+  .grid-bg-inner { position: absolute; top: 0; left: var(--grid-margin); right: var(--grid-margin); height: 100%; display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+  .grid-bg-col { border-left: 1px solid var(--grid-line); border-right: 1px solid var(--grid-line); }
+  .grid-bg::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 200%; background-image: repeating-linear-gradient(0deg, transparent, transparent 79px, var(--grid-line) 79px, var(--grid-line) 80px); }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: var(--sp-5) var(--grid-margin); display: flex; align-items: center; justify-content: space-between; background-color: var(--bg); border-bottom: 1px solid var(--border); transition: background-color var(--duration) var(--ease); }
+  .nav-logo { font-family: var(--font-body); font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg); text-decoration: none; }
+  .nav-links { display: flex; align-items: center; gap: var(--sp-6); list-style: none; }
+  .nav-link { font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-secondary); text-decoration: none; position: relative; transition: color var(--duration) var(--ease), transform var(--duration) var(--ease); }
+  .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background-color: var(--accent); transition: width var(--duration) var(--ease); }
+  .nav-link:hover { color: var(--fg); transform: translateY(-2px); }
+  .nav-link:hover::after { width: 100%; }
+  .theme-toggle { width: 32px; height: 32px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--fg); transition: border-color var(--duration) var(--ease), color var(--duration) var(--ease), transform var(--duration) var(--ease); }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .theme-icon { display: none; }
+  [data-theme="light"] .theme-icon--sun { display: block; }
+  [data-theme="dark"] .theme-icon--moon { display: block; }
+  .page { position: relative; z-index: 1; min-height: 100vh; }
+  .case-hero { padding: calc(120px + 72px) var(--grid-margin) var(--sp-10); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); }
+  .case-hero-inner { max-width: 1200px; margin: 0 auto; }
+  .breadcrumb { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin-bottom: var(--sp-6); display: flex; align-items: center; gap: var(--sp-2); }
+  .breadcrumb a { color: var(--fg-secondary); text-decoration: none; transition: color var(--duration) var(--ease); }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb-sep { color: var(--fg-tertiary); }
+  .case-title { font-family: var(--font-body); font-size: clamp(36px, 5vw, 51px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--fg); margin-bottom: var(--sp-3); }
+  .case-subtitle { font-family: var(--font-mono); font-size: 15px; color: var(--fg-secondary); letter-spacing: 0.02em; margin-bottom: var(--sp-7); }
+  .case-meta { display: flex; gap: var(--sp-8); padding: var(--sp-5) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: var(--sp-6); flex-wrap: wrap; }
+  .case-meta-item { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .case-meta-label { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .case-meta-value { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
+  .case-buttons { display: flex; gap: var(--sp-4); margin-top: var(--sp-5); }
+  .case-btn { display: inline-flex; align-items: center; gap: var(--sp-2); font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; padding: var(--sp-3) var(--sp-5); border: 1px solid var(--border); color: var(--fg); transition: all var(--duration) var(--ease); }
+  .case-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .case-btn--primary { background-color: var(--accent); border-color: var(--accent); color: var(--white); }
+  .case-btn--primary:hover { opacity: 0.85; color: var(--white); }
+  .case-section { padding: var(--sp-10) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .case-section-inner { max-width: 1200px; margin: 0 auto; }
+  .case-section-heading { font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: var(--sp-7); padding-bottom: var(--sp-4); border-bottom: 1px solid var(--border); }
+  .case-section-number { color: var(--accent); margin-right: var(--sp-3); font-family: var(--font-mono); font-weight: 500; }
+  .case-text { font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.75; color: var(--fg-secondary); max-width: 800px; margin-bottom: var(--sp-5); }
+  .case-text:last-child { margin-bottom: 0; }
+  .case-text strong { color: var(--fg); font-weight: 600; }
+  .case-text code { font-family: var(--font-mono); font-size: 14px; background-color: var(--surface); padding: 1px 5px; border-radius: 2px; color: var(--fg); }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-5); }
+  .feature-card { padding: var(--sp-5); border: 1px solid var(--border-faint); transition: transform var(--duration) var(--ease); }
+  .feature-card:hover { transform: translateY(-2px); }
+  .feature-card-title { font-family: var(--font-body); font-size: 16px; font-weight: 600; color: var(--fg); margin-bottom: var(--sp-2); }
+  .feature-card-desc { font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.65; color: var(--fg-secondary); }
+  .code-block { font-family: var(--font-mono); font-size: 13.5px; line-height: 1.7; background-color: var(--surface); border: 1px solid var(--border-faint); padding: var(--sp-5); margin-bottom: var(--sp-5); overflow-x: auto; max-width: 800px; color: var(--fg); white-space: pre; }
+  .code-cap { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin: calc(-1 * var(--sp-3)) 0 var(--sp-5); }
+  .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0; }
+  .tech-item { display: flex; flex-direction: column; gap: var(--sp-1); padding: var(--sp-4) 0; border-bottom: 1px solid var(--border-faint); }
+  .tech-name { font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--fg); }
+  .tech-role { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); }
+  .stat-row { display: flex; gap: var(--sp-8); flex-wrap: wrap; margin-bottom: var(--sp-7); }
+  .stat { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .stat-num { font-family: var(--font-body); font-size: 36px; font-weight: 700; letter-spacing: -0.02em; color: var(--fg); line-height: 1; }
+  .stat-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-tertiary); }
+  /* Architecture flow diagram */
+  .arch { max-width: 820px; display: flex; flex-direction: column; gap: 0; margin-bottom: var(--sp-6); }
+  .arch-box { border: 1px solid var(--border); background: var(--surface); padding: var(--sp-4) var(--sp-5); }
+  .arch-box-title { font-family: var(--font-body); font-size: 15px; font-weight: 600; color: var(--fg); }
+  .arch-box-sub { font-family: var(--font-mono); font-size: 12px; color: var(--fg-tertiary); margin-top: 2px; }
+  .arch-arrow { display: flex; flex-direction: column; align-items: center; padding: var(--sp-2) 0; color: var(--fg-tertiary); }
+  .arch-arrow-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; color: var(--accent); margin-bottom: 2px; }
+  .arch-arrow svg { display: block; }
+  .arch-box--accent { border-left: 2px solid var(--accent); }
+  .project-nav { display: flex; justify-content: space-between; padding: var(--sp-8) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); }
+  .project-nav-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; }
+  .project-nav-link { display: flex; flex-direction: column; gap: var(--sp-1); text-decoration: none; transition: transform var(--duration) var(--ease); }
+  .project-nav-link:hover { transform: translateY(-2px); }
+  .project-nav-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-tertiary); }
+  .project-nav-title { font-family: var(--font-body); font-size: 18px; font-weight: 600; color: var(--fg); }
+  .project-nav-link--next { text-align: right; }
+  .footer { padding: var(--sp-6) var(--grid-margin); padding-left: calc(var(--grid-margin) + var(--sidebar-width)); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .footer-text { font-family: var(--font-mono); font-size: 11px; color: var(--fg-tertiary); }
+  .footer-social { display: flex; align-items: center; gap: var(--sp-4); }
+  .footer-social-link { color: var(--fg-tertiary); transition: color var(--duration) var(--ease), transform var(--duration) var(--ease); display: flex; align-items: center; }
+  .footer-social-link:hover { color: var(--accent); transform: translateY(-2px); }
+  .fade-in { opacity: 0; transition: opacity var(--duration) var(--ease); }
+  .fade-in.is-visible { opacity: 1; }
+  @media (max-width: 1024px) { :root { --grid-margin: 48px; --sidebar-width: 60px; } }
+  @media (max-width: 768px) {
+    :root { --grid-margin: 24px; --sidebar-width: 0px; }
+    .case-hero, .case-section, .project-nav, .footer { padding-left: var(--grid-margin); }
+    .case-meta { flex-direction: column; gap: var(--sp-4); }
+    .features-grid { grid-template-columns: 1fr; }
+    .nav { padding: var(--sp-4) var(--grid-margin); } .nav-links { gap: var(--sp-4); } .nav-link { font-size: 11px; }
+    .grid-bg-inner { left: var(--grid-margin); right: var(--grid-margin); grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .footer { flex-direction: column; gap: var(--sp-2); align-items: flex-start; }
+  }
+  @media (max-width: 540px) { .nav-links .nav-link-text { display: none; } }
+  @media (max-width: 480px) { :root { --grid-margin: 16px; } .case-title { font-size: 32px; } .case-buttons { flex-direction: column; } .project-nav-title { font-size: 16px; } }
+  @media print { .nav, .grid-bg, .theme-toggle { display: none; } .case-section { padding: 24px 0; } .fade-in { opacity: 1 !important; } }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); } ::-webkit-scrollbar-thumb:hover { background: var(--fg-tertiary); }
+  /* ── Mobile hamburger nav ───────────────────── */
+  .nav-burger { display: none; flex-direction: column; justify-content: center; gap: 4px; width: 36px; height: 32px; padding: 0 7px; border: 1px solid var(--border); background: transparent; cursor: pointer; transition: border-color var(--duration) var(--ease); }
+  .nav-burger span { display: block; width: 100%; height: 1.5px; background: var(--fg); transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease); }
+  .nav-burger:hover { border-color: var(--accent); }
+  .nav-burger.is-open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+  .nav-burger.is-open span:nth-child(2) { opacity: 0; }
+  .nav-burger.is-open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+  @media (max-width: 768px) {
+    .nav-burger { display: flex; }
+    .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--bg); border-bottom: 1px solid var(--border); box-shadow: 0 16px 28px rgba(0,0,0,0.10); padding: var(--sp-2) var(--grid-margin) var(--sp-4); display: none; }
+    .nav-links.is-open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links .nav-link { display: block; padding: var(--sp-4) 0; font-size: 14px; border-bottom: 1px solid var(--border-faint); }
+    .nav-links .nav-link::after { display: none; }
+    .nav-links .nav-link-text { display: inline !important; position: static !important; width: auto !important; height: auto !important; margin: 0 !important; padding: 0 !important; clip: auto !important; overflow: visible !important; white-space: normal !important; border: 0 !important; }
+    .nav-links li:last-child { padding-top: var(--sp-4); border-bottom: 0; }
+  }
+</style>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arjunp.pro/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arjunp.pro/projects/"}, {"@type": "ListItem", "position": 3, "name": "share", "item": "https://www.arjunp.pro/projects/share.html"}]}, {"@type": "SoftwareSourceCode", "name": "share", "headline": "share: Expiring Links for HTML Pages | Arjun P", "description": "A 135-line Python service that publishes one HTML file at a public link that expires. Each page runs in a browser sandbox, away from the site's cookies.", "url": "https://www.arjunp.pro/projects/share.html", "image": "https://www.arjunp.pro/assets/images/og/share.webp", "programmingLanguage": "Python", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}}]}
+</script>
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
+</head>
+<body class="inner-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
+  <section class="case-hero">
+    <div class="case-hero-inner fade-in">
+      <div class="breadcrumb"><a href="../index.html">Home</a><span class="breadcrumb-sep">/</span><a href="./">Projects</a><span class="breadcrumb-sep">/</span><span>share</span></div>
+      <h1 class="case-title">share</h1>
+      <p class="case-subtitle">Publish one HTML file at a link that expires.</p>
+      <div class="case-meta"><div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Solo: design &amp; build</span></div><div class="case-meta-item"><span class="case-meta-label">Type</span><span class="case-meta-value">Self-hosted service</span></div><div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Python standard library · Docker · Caddy</span></div><div class="case-meta-item"><span class="case-meta-label">Source</span><span class="case-meta-value">Private</span></div></div>
+      <div class="case-buttons"><a href="#architecture" class="case-btn case-btn--primary">Architecture</a><a href="../writing/sharing-html-with-expiring-links.html" class="case-btn">The article</a></div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-section-inner">
+      <h2 class="case-section-heading"><span class="case-section-number">I</span>Why I built it</h2>
+      <p class="case-text fade-in">My coding agents often produce a chart or a mockup as one HTML file. I want to open it on my phone or another computer without a deployment for each draft.</p>
+      <p class="case-text fade-in">An authenticated upload returns a public link and an expiry time. The default lifetime is 24 hours, and the range is one minute to seven days. An authenticated delete removes a page early.</p>
+      <div class="stat-row fade-in" style="margin-top: var(--sp-8);"><div class="stat"><span class="stat-num">135</span><span class="stat-label">lines of Python</span></div><div class="stat"><span class="stat-num">0</span><span class="stat-label">dependencies</span></div><div class="stat"><span class="stat-num">5 MB</span><span class="stat-label">largest page</span></div><div class="stat"><span class="stat-num">7 days</span><span class="stat-label">longest lifetime</span></div></div>
+    </div>
+  </section>
+
+  <section class="case-section" id="architecture">
+    <div class="case-section-inner">
+      <h2 class="case-section-heading"><span class="case-section-number">II</span>How it fits together</h2>
+      <div class="arch fade-in" role="img" aria-label="Architecture: agent upload, Caddy, the share container, files on disk, and a sandboxed response">
+        <div class="arch-box"><div class="arch-box-title">Agent or script</div><div class="arch-box-sub">POST with a bearer token</div></div>
+        <div class="arch-arrow"><span class="arch-arrow-label">HTTPS</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
+        <div class="arch-box"><div class="arch-box-title">Caddy on my VPS</div><div class="arch-box-sub">TLS · reaches the container by name</div></div>
+        <div class="arch-arrow"><span class="arch-arrow-label">private Docker network</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
+        <div class="arch-box arch-box--accent"><div class="arch-box-title">share container</div><div class="arch-box-sub">Python standard library · read-only file system · non-root user</div></div>
+        <div class="arch-arrow"><span class="arch-arrow-label">random id · modification time = expiry</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
+        <div class="arch-box"><div class="arch-box-title">Files on disk</div><div class="arch-box-sub">one file per page · no database</div></div>
+        <div class="arch-arrow"><span class="arch-arrow-label">each GET checks the expiry</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
+        <div class="arch-box arch-box--accent"><div class="arch-box-title">Sandboxed response</div><div class="arch-box-sub">CSP sandbox without allow-same-origin · noindex · no referrer</div></div>
+        </div>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-section-inner">
+      <h2 class="case-section-heading"><span class="case-section-number">III</span>Expiry without a database</h2>
+      <p class="case-text fade-in">Each upload becomes a file with a random name. The server stores the expiry in the file's modification time with <code>os.utime</code>.</p>
+      <p class="case-text fade-in">Every request checks that time, so an expired page stops at once, even before cleanup runs. A background thread deletes expired files every ten minutes.</p>
+    </div>
+  </section>
+
+  <section class="case-section">
+    <div class="case-section-inner">
+      <h2 class="case-section-heading"><span class="case-section-number">IV</span>Treat the page as untrusted</h2>
+      <p class="case-text fade-in">An uploaded page can contain scripts, so it does not get the site's normal origin. The response sends a Content-Security-Policy sandbox without <code>allow-same-origin</code>. The origin becomes opaque, and the page's scripts cannot read cookies or local storage. A page that an agent wrote cannot read my login.</p>
+      <p class="case-text fade-in"><strong>Limits.</strong> Anyone with the link can read the page until it expires. The sandbox limits browser privileges. It does not make confidential content safe to publish.</p>
+    </div>
+  </section>
+
+  <div class="project-nav"><div class="project-nav-inner">
+    <a href="git-guard.html" class="project-nav-link"><span class="project-nav-label">&larr; Previous</span><span class="project-nav-title">git-guard</span></a>
+    <a href="edtech-platform.html" class="project-nav-link project-nav-link--next"><span class="project-nav-label">Next &rarr;</span><span class="project-nav-title">EdTech Assessment Platform</span></a>
+  </div></div>
+</main>
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>AGENTS · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
+
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script src="../assets/letter.js" defer></script>
+</body>
+</html>

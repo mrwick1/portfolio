@@ -8,31 +8,13 @@
       <loc>https://www.arjunp.pro/</loc>
       
     
-      <lastmod>2026-11-04</lastmod>
+      <lastmod>2026-11-12</lastmod>
       
     
       <changefreq>weekly</changefreq>
       
     
       <priority>1.0</priority>
-      
-  
-    </url>
-    
-  
-    <url>
-      
-    
-      <loc>https://www.arjunp.pro/projects/astra-ui.html</loc>
-      
-    
-      <lastmod>2026-06-17</lastmod>
-      
-    
-      <changefreq>monthly</changefreq>
-      
-    
-      <priority>0.8</priority>
       
   
     </url>
@@ -99,82 +81,6 @@
       <lastmod>2026-09-08</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>
-    </url>
-    <url>
-      <loc>https://www.arjunp.pro/projects/real-estate-platform.html</loc>
-      <lastmod>2026-09-08</lastmod>
-      <changefreq>monthly</changefreq>
-      <priority>0.7</priority>
-    </url>
-    <url>
-      
-    
-      <loc>https://www.arjunp.pro/projects/librynt.html</loc>
-      
-    
-      <lastmod>2026-06-17</lastmod>
-      
-    
-      <changefreq>monthly</changefreq>
-      
-    
-      <priority>0.7</priority>
-      
-  
-    </url>
-    
-  
-    <url>
-      
-    
-      <loc>https://www.arjunp.pro/projects/auto-companion.html</loc>
-      
-    
-      <lastmod>2026-09-04</lastmod>
-      
-    
-      <changefreq>monthly</changefreq>
-      
-    
-      <priority>0.7</priority>
-      
-  
-    </url>
-    
-  
-    <url>
-      
-    
-      <loc>https://www.arjunp.pro/projects/sketchflow.html</loc>
-      
-    
-      <lastmod>2026-06-17</lastmod>
-      
-    
-      <changefreq>monthly</changefreq>
-      
-    
-      <priority>0.7</priority>
-      
-  
-    </url>
-    
-  
-    <url>
-      
-    
-      <loc>https://www.arjunp.pro/projects/pulse-analytics.html</loc>
-      
-    
-      <lastmod>2026-06-17</lastmod>
-      
-    
-      <changefreq>monthly</changefreq>
-      
-    
-      <priority>0.7</priority>
-      
-  
     </url>
     
   
@@ -321,6 +227,125 @@
   
     </url>
     
+
+    <url><loc>https://www.arjunp.pro/projects/</loc></url>
+    <url><loc>https://www.arjunp.pro/writing/building-a-voice-ai-product.html</loc><lastmod>2026-11-04</lastmod></url>
+    <url><loc>https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html</loc><lastmod>2026-11-04</lastmod></url>
+    <url><loc>https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html</loc><lastmod>2026-11-04</lastmod></url>
+
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/bare.html</loc>
+      
+    
+      <lastmod>2026-11-12</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/deck.html</loc>
+      
+    
+      <lastmod>2026-11-12</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/reviewer.html</loc>
+      
+    
+      <lastmod>2026-11-12</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/git-guard.html</loc>
+      
+    
+      <lastmod>2026-11-12</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+
+
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/hyprcage.html</loc>
+      
+    
+      <lastmod>2026-11-12</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+
+    
+  
+    <url>
+      
+    
+      <loc>https://www.arjunp.pro/projects/share.html</loc>
+      
+    
+      <lastmod>2026-11-12</lastmod>
+      
+    
+      <changefreq>monthly</changefreq>
+      
+    
+      <priority>0.8</priority>
+      
+  
+    </url>
+
+    
   
     <url>
       
@@ -338,28 +363,4 @@
       
   
     </url>
-    
-  
-    <url>
-      
-    
-      <loc>https://www.arjunp.pro/projects/dev-tooling.html</loc>
-      
-    
-      <lastmod>2026-09-04</lastmod>
-      
-    
-      <changefreq>monthly</changefreq>
-      
-    
-      <priority>0.8</priority>
-      
-  
-    </url>
-    
-
-    <url><loc>https://www.arjunp.pro/projects/</loc></url>
-    <url><loc>https://www.arjunp.pro/writing/building-a-voice-ai-product.html</loc><lastmod>2026-11-04</lastmod></url>
-    <url><loc>https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html</loc><lastmod>2026-11-04</lastmod></url>
-    <url><loc>https://www.arjunp.pro/writing/sharing-html-with-expiring-links.html</loc><lastmod>2026-11-04</lastmod></url>
 </urlset>
