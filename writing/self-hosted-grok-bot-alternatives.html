@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Hosted, Open-Source Alternatives to Grok Bot (2026) | Arjun P</title>
+<meta name="description" content="Open-source AI agents that work on their own computer and run on your hardware: Agent Zero, cua, deck, OpenHands Agent Canvas and Bytebot, compared with xAI&#x27;s Grok Bot.">
+<meta name="author" content="Arjun P">
+<link rel="canonical" href="https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Self-hosted, open-source alternatives to Grok Bot">
+<meta property="og:description" content="Open-source AI agents that work on their own computer and run on your hardware: Agent Zero, cua, deck, OpenHands Agent Canvas and Bytebot, compared with xAI&#x27;s Grok Bot.">
+<meta property="og:url" content="https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Self-hosted, open-source alternatives to Grok Bot">
+<meta name="twitter:description" content="Open-source AI agents that work on their own computer and run on your hardware: Agent Zero, cua, deck, OpenHands Agent Canvas and Bytebot, compared with xAI&#x27;s Grok Bot.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Self-hosted, open-source alternatives to Grok Bot", "description": "Open-source AI agents that work on their own computer and run on your hardware: Agent Zero, cua, deck, OpenHands Agent Canvas and Bytebot, compared with xAI's Grok Bot.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-11-12T00:00:00+00:00", "dateModified": "2026-11-12T00:00:00+00:00", "url": "https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is there a self-hosted version of Grok Bot?", "acceptedAnswer": {"@type": "Answer", "text": "xAI's launch post does not mention one: Grok Bot runs on a computer in xAI's cloud. Open-source alternatives that you can host include Agent Zero, cua, deck and OpenHands Agent Canvas."}}, {"@type": "Question", "name": "What is the best open-source alternative to Grok Bot?", "acceptedAnswer": {"@type": "Answer", "text": "For a general agent with its own Linux desktop, Agent Zero is the most direct match today. For several separate bots that each have their own virtual machine and need owner approval, deck is designed for that, but it is early. For coding only, use OpenHands Agent Canvas."}}, {"@type": "Question", "name": "Can I run an AI agent with its own computer on my own server?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Agent Zero runs a Linux desktop in Docker, cua runs macOS, Linux and Windows virtual machines, and deck runs one QEMU/KVM virtual machine per bot. You supply the model, either a cloud API or a local model."}}, {"@type": "Question", "name": "Is Bytebot still maintained?", "acceptedAnswer": {"@type": "Answer", "text": "No. The bytebot-ai/bytebot repository was archived on 7 March 2026 and is read-only."}}]}</script>
+</head>
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
+<section class="case-hero"><p class="article-date">12 November 2026 · 5 min read</p><h1 class="case-title">Self-hosted, open-source alternatives to Grok Bot</h1><p class="case-subtitle">AI agents with a computer of their own that you can run on your own hardware, as of November 2026.</p></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">I</span>What Grok Bot is</h2>
+<p class="case-text">xAI launched <a href="https://x.ai/news/introducing-grok-bot">Grok Bot</a> as a beta on 11 August 2026. It is a team of always-on AI agents. The bots share a computer in xAI's cloud, log in to your tools, work across apps and websites, and ask you only when they need approval.</p>
+<p class="case-text">It comes with SuperGrok and some Cursor plans, and bot usage is metered on top. The launch post does not mention self-hosting or your own model. If you want the agents, their computer and their data on your own hardware, you need another tool.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">II</span>The short answer</h2>
+<p class="case-text">For a general agent with a full Linux desktop, start with <strong>Agent Zero</strong>. For agents that operate macOS, Linux or Windows virtual machines, look at <strong>cua</strong>. For coding agents only, use <strong>OpenHands Agent Canvas</strong>. <strong>deck</strong> is my own project: several bots, each with its own virtual machine, and one owner who approves their actions. <strong>Bytebot</strong> was a good option, but its repository was archived on 7 March 2026.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">III</span>Compared</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col"></th><th scope="col">The agent's computer</th><th scope="col">Models</th><th scope="col">License</th><th scope="col">Best for</th></tr></thead><tbody><tr><th scope="row">Grok Bot (xAI)</th><td>A shared cloud computer that xAI hosts</td><td>Grok</td><td>Proprietary</td><td>Hosted, no setup</td></tr><tr><th scope="row">Agent Zero</th><td>Linux with an XFCE desktop in Docker</td><td>Cloud providers, ChatGPT sign-in or local models</td><td>MIT</td><td>A general agent you can run today</td></tr><tr><th scope="row">cua</th><td>macOS, Linux or Windows VMs and sandboxes</td><td>Any; has its own small models too</td><td>MIT core; Spaces is FSL-1.1-MIT</td><td>Computer-use agents on your own Macs or cloud</td></tr><tr><th scope="row">deck</th><td>One QEMU/KVM VM per bot, with an Arch Linux desktop</td><td>Any OpenAI-compatible endpoint</td><td>MIT or Apache-2.0</td><td>Several separate bots with owner approval</td></tr><tr><th scope="row">OpenHands Agent Canvas</th><td>Optional Docker container per conversation</td><td>Its own agent, or Claude Code, Codex, Gemini and others</td><td>MIT</td><td>Coding agents and automations</td></tr><tr><th scope="row">Bytebot</th><td>Ubuntu 22.04 with XFCE in containers</td><td>Claude, GPT, Gemini; others through LiteLLM</td><td>Apache-2.0</td><td>Archived on 7 March 2026</td></tr></tbody></table></div>
+<p class="code-cap">From each project's README and xAI's launch post, checked on 12 November 2026.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">IV</span>Agent Zero</h2>
+<p class="case-text"><a href="https://github.com/agent0ai/agent-zero">Agent Zero</a> is an open-source agent with its own Linux workspace. It runs in Docker and serves a web UI. Its desktop runs real apps, and you can take over with your own mouse and keyboard. It can hand parts of a task to other agents. It works with cloud providers, a ChatGPT sign-in or a local model server.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">V</span>cua</h2>
+<p class="case-text"><a href="https://github.com/trycua/cua">cua</a> is a toolkit for computer-use agents. Lume makes macOS and Linux VMs on Apple silicon, and its sandboxes also cover Linux containers and Windows images. You can host the desktops on your own Mac, another computer or your own cloud account. Most of the code is MIT. The Spaces app is source-available under FSL-1.1-MIT and becomes MIT two years after each release.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VI</span>deck</h2>
+<p class="case-text"><a href="../projects/deck.html">deck</a> is my own project, so read this part as the author's view. I chat with several bots, such as an email bot and a job-hunting bot. Each bot has its own virtual machine, accounts, files, memory and permissions, so one bot never sees another bot's logins. A post, a payment or a sent message can wait for my approval.</p>
+<p class="case-text">One Rust service runs every bot's agent loop, and any OpenAI-compatible model can drive it. Each VM sleeps when idle and wakes when work arrives. On 12 November 2026, the one-bot runtime passed its tests in a real VM. Bot creation through chat, account integrations and load tests with many bots are not shipped yet. The source is on <a href="https://github.com/mrwick1/deck">GitHub</a>.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VII</span>OpenHands Agent Canvas and Bytebot</h2>
+<p class="case-text"><a href="https://github.com/OpenHands/OpenHands">OpenHands</a> now presents itself as Agent Canvas, a self-hosted control center for coding agents. It can give each conversation its own Docker container. It is the right pick for code, not for general web or desktop work.</p>
+<p class="case-text"><a href="https://github.com/bytebot-ai/bytebot">Bytebot</a> ran an Ubuntu desktop for an agent and supported many model providers. Its owner archived the repository on 7 March 2026, so it gets no fixes. Use it only as a reference.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VIII</span>Questions</h2>
+<h3 class="case-text"><strong>Is there a self-hosted version of Grok Bot?</strong></h3>
+<p class="case-text">xAI&#x27;s launch post does not mention one: Grok Bot runs on a computer in xAI&#x27;s cloud. Open-source alternatives that you can host include Agent Zero, cua, deck and OpenHands Agent Canvas.</p>
+<h3 class="case-text"><strong>What is the best open-source alternative to Grok Bot?</strong></h3>
+<p class="case-text">For a general agent with its own Linux desktop, Agent Zero is the most direct match today. For several separate bots that each have their own virtual machine and need owner approval, deck is designed for that, but it is early. For coding only, use OpenHands Agent Canvas.</p>
+<h3 class="case-text"><strong>Can I run an AI agent with its own computer on my own server?</strong></h3>
+<p class="case-text">Yes. Agent Zero runs a Linux desktop in Docker, cua runs macOS, Linux and Windows virtual machines, and deck runs one QEMU/KVM virtual machine per bot. You supply the model, either a cloud API or a local model.</p>
+<h3 class="case-text"><strong>Is Bytebot still maintained?</strong></h3>
+<p class="case-text">No. The bytebot-ai/bytebot repository was archived on 7 March 2026 and is read-only.</p>
+</div></section>
+<nav class="case-section article-back" aria-label="Article navigation"><a href="./" class="all-writing">← All writing</a></nav>
+</main>
+
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>AGENTS · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
+
+
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script src="../assets/letter.js" defer></script>
+</body>
+</html>

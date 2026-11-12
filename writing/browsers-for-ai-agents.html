@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playwright MCP vs Chrome DevTools MCP vs bare: Browsers for AI Agents | Arjun P</title>
+<meta name="description" content="A comparison of three MCP browsers for coding agents: Playwright MCP for general web testing, Chrome DevTools MCP for debugging Chrome, and bare-mcp, a browser engine written from scratch in Rust.">
+<meta name="author" content="Arjun P">
+<link rel="canonical" href="https://www.arjunp.pro/writing/browsers-for-ai-agents.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Playwright MCP vs Chrome DevTools MCP vs bare: which browser should an AI agent use?">
+<meta property="og:description" content="A comparison of three MCP browsers for coding agents: Playwright MCP for general web testing, Chrome DevTools MCP for debugging Chrome, and bare-mcp, a browser engine written from scratch in Rust.">
+<meta property="og:url" content="https://www.arjunp.pro/writing/browsers-for-ai-agents.html">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Playwright MCP vs Chrome DevTools MCP vs bare: which browser should an AI agent use?">
+<meta name="twitter:description" content="A comparison of three MCP browsers for coding agents: Playwright MCP for general web testing, Chrome DevTools MCP for debugging Chrome, and bare-mcp, a browser engine written from scratch in Rust.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Playwright MCP vs Chrome DevTools MCP vs bare: which browser should an AI agent use?", "description": "A comparison of three MCP browsers for coding agents: Playwright MCP for general web testing, Chrome DevTools MCP for debugging Chrome, and bare-mcp, a browser engine written from scratch in Rust.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-11-12T00:00:00+00:00", "dateModified": "2026-11-12T00:00:00+00:00", "url": "https://www.arjunp.pro/writing/browsers-for-ai-agents.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/browsers-for-ai-agents.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the best MCP browser for AI agents?", "acceptedAnswer": {"@type": "Answer", "text": "For general web testing, Playwright MCP is the common choice: it reads accessibility snapshots, supports Chrome, Firefox, WebKit and Edge, and needs no vision model. For debugging performance, network or console errors in Chrome, use Chrome DevTools MCP."}}, {"@type": "Question", "name": "What is the difference between Playwright MCP and Chrome DevTools MCP?", "acceptedAnswer": {"@type": "Answer", "text": "Playwright MCP automates pages across several engines through accessibility snapshots. Chrome DevTools MCP controls and inspects a live Chrome, with performance traces, network requests and source-mapped console messages."}}, {"@type": "Question", "name": "Does Playwright MCP need screenshots?", "acceptedAnswer": {"@type": "Answer", "text": "No. It works from structured accessibility snapshots. Screenshot and coordinate tools exist, and the coordinate tools are opt-in with --caps=vision."}}, {"@type": "Question", "name": "What is bare-mcp?", "acceptedAnswer": {"@type": "Answer", "text": "bare-mcp is an MCP server for bare, a web browser written from scratch in Rust by Arjun P. Agents use it to run end-to-end journeys, headless or in a window. It is a learning project and is not safe for everyday browsing."}}]}</script>
+</head>
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
+<section class="case-hero"><p class="article-date">12 November 2026 · 4 min read</p><h1 class="case-title">Playwright MCP vs Chrome DevTools MCP vs bare: which browser should an AI agent use?</h1><p class="case-subtitle">Three MCP servers that let a coding agent open, read and test web pages.</p></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">I</span>The short answer</h2>
+<p class="case-text">For most agent web testing, use <a href="https://github.com/microsoft/playwright-mcp">Playwright MCP</a>. It reads pages as accessibility snapshots, so the model does not need screenshots. It drives Chrome, Firefox, WebKit and Edge.</p>
+<p class="case-text">Use <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">Chrome DevTools MCP</a> when the agent must debug a page in Chrome. It records performance traces and reads network requests and console messages with source-mapped stack traces.</p>
+<p class="case-text"><a href="../projects/bare.html">bare-mcp</a> is my own option. It drives bare, a browser engine I write from scratch in Rust. It is a learning project. Use it only when you want journeys as step files and an engine you can read end to end.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">II</span>Side by side</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col"></th><th scope="col">Playwright MCP</th><th scope="col">Chrome DevTools MCP</th><th scope="col">bare-mcp</th></tr></thead><tbody><tr><th scope="row">Engine</th><td>Playwright: Chromium, Firefox, WebKit</td><td>Chrome and Chrome for Testing, through Puppeteer</td><td>bare, written from scratch in Rust</td></tr><tr><th scope="row">How the agent reads a page</th><td>Accessibility snapshots; vision tools are opt-in with <code>--caps=vision</code></td><td>DevTools data and screenshots</td><td>Text and snapshot first; screenshots on request</td></tr><tr><th scope="row">Debugging tools</th><td>Console and network by default; storage, tracing and video as opt-in capabilities</td><td>Performance traces, network, console with source maps</td><td>Console, network, storage, diagnose</td></tr><tr><th scope="row">Window</th><td>Headed by default; <code>--headless</code></td><td>Live Chrome</td><td>Headless, or a window on Linux (Wayland)</td></tr><tr><th scope="row">Maintained by</th><td>Microsoft</td><td>The Chrome DevTools team</td><td>Arjun P; a learning project, not for everyday browsing</td></tr><tr><th scope="row">License</th><td>Apache-2.0</td><td>Apache-2.0</td><td>MIT or Apache-2.0</td></tr><tr><th scope="row">Start</th><td><code>npx @playwright/mcp@latest</code></td><td><code>npx -y chrome-devtools-mcp@latest</code></td><td><code>cargo run -p bare-mcp</code></td></tr></tbody></table></div>
+<p class="code-cap">From each project's README, checked on 12 November 2026.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">III</span>Playwright MCP</h2>
+<p class="case-text">Microsoft's server uses Playwright's accessibility tree, not pixels. A text model can click and type by element reference. Coordinate tools are available when you turn on vision.</p>
+<p class="case-text">It needs Node.js 18 or newer. Its README states that it is not a security boundary, so run it only where the agent may act.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">IV</span>Chrome DevTools MCP</h2>
+<p class="case-text">The Chrome DevTools team ships this server for coding agents that must inspect a live Chrome. Its strength is diagnosis: a trace with performance insights, the network log and console errors with source-mapped stacks.</p>
+<p class="case-text">Two defaults matter. Usage statistics are on, and <code>--no-usage-statistics</code> turns them off. Trace URLs can go to the Chrome UX Report API for field data, and <code>--no-performance-crux</code> turns that off.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">V</span>bare-mcp</h2>
+<p class="case-text">bare has its own networking, TLS, HTML and CSS parsers, layout, paint and a JavaScript interpreter. bare-mcp exposes journeys to an agent: open, find, act, read, snapshot, screenshot, console, network and storage, plus <code>run_steps</code> for a whole step file.</p>
+<p class="case-text">Input goes through the same path as a person, so a passing journey means the page works in the window. On 10 November 2026, bare passed 48 journeys on public sites. Layout and JavaScript are still in progress, and many sites fail. When a site fails, the agent files an issue on <a href="https://github.com/mrwick1/bare">mrwick1/bare</a>.</p>
+<p class="case-text">I built bare, so treat this section as the author's view.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VI</span>Questions</h2>
+<h3 class="case-text"><strong>What is the best MCP browser for AI agents?</strong></h3>
+<p class="case-text">For general web testing, Playwright MCP is the common choice: it reads accessibility snapshots, supports Chrome, Firefox, WebKit and Edge, and needs no vision model. For debugging performance, network or console errors in Chrome, use Chrome DevTools MCP.</p>
+<h3 class="case-text"><strong>What is the difference between Playwright MCP and Chrome DevTools MCP?</strong></h3>
+<p class="case-text">Playwright MCP automates pages across several engines through accessibility snapshots. Chrome DevTools MCP controls and inspects a live Chrome, with performance traces, network requests and source-mapped console messages.</p>
+<h3 class="case-text"><strong>Does Playwright MCP need screenshots?</strong></h3>
+<p class="case-text">No. It works from structured accessibility snapshots. Screenshot and coordinate tools exist, and the coordinate tools are opt-in with --caps=vision.</p>
+<h3 class="case-text"><strong>What is bare-mcp?</strong></h3>
+<p class="case-text">bare-mcp is an MCP server for bare, a web browser written from scratch in Rust by Arjun P. Agents use it to run end-to-end journeys, headless or in a window. It is a learning project and is not safe for everyday browsing.</p>
+</div></section>
+<nav class="case-section article-back" aria-label="Article navigation"><a href="./" class="all-writing">← All writing</a></nav>
+</main>
+
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>AGENTS · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
+
+
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script src="../assets/letter.js" defer></script>
+</body>
+</html>

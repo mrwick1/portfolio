@@ -17,11 +17,15 @@
 
 ## Writing
 
+- [How accurate is CodeRabbit? A test on 52 real bug fixes](https://www.arjunp.pro/writing/coderabbit-benchmark.html): CodeRabbit on 52 pull requests built from real bug fixes: recall, precision and false alarms, next to a local AI reviewer.
+- [Playwright MCP vs Chrome DevTools MCP vs bare](https://www.arjunp.pro/writing/browsers-for-ai-agents.html): Three MCP browsers for coding agents, compared: Playwright MCP, Chrome DevTools MCP and bare-mcp.
+- [Self-hosted, open-source alternatives to Grok Bot](https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html): Agent Zero, cua, deck, OpenHands Agent Canvas and Bytebot, compared with xAI's Grok Bot.
 - [All writing](https://www.arjunp.pro/writing/): Articles on coding agents, AI products and web engineering.
 - [Lab notebook](https://mrwick.dev): Notes on a homelab and agent tooling.
 
 ## Contact
 
+- [Hire an AI agent engineer](https://www.arjunp.pro/hire.html): What I build, how I work, availability and contact.
 - Email: 03arjunkr@gmail.com
 - GitHub: https://github.com/mrwick1
 - LinkedIn: https://linkedin.com/in/arjunp-software-engineer
