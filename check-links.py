@@ -58,7 +58,7 @@ def check():
             parser.feed(f.read())
             file_dir = os.path.dirname(filepath)
             for link in parser.links:
-                if link.startswith(("http://", "https://", "mailto:", "//")) or link.startswith("#"):
+                if link.startswith(("http://", "https://", "mailto:", "tel:", "//")) or link.startswith("#"):
                     continue
                 
                 # strip fragment if present
