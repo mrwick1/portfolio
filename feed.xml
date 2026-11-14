@@ -5,8 +5,29 @@
     <link>https://www.arjunp.pro/writing/</link>
     <description>Technical articles, opinion pieces, and case studies by Arjun.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.arjunp.pro/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>CodeRabbit alternatives in 2026</title>
+      <link>https://www.arjunp.pro/writing/coderabbit-alternatives.html</link>
+      <description>Greptile, Cursor Bugbot, Copilot code review, Qodo, PR-Agent and a local reviewer, compared.</description>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/coderabbit-alternatives.html</guid>
+    </item>
+    <item>
+      <title>Agent Zero vs deck</title>
+      <link>https://www.arjunp.pro/writing/agent-zero-vs-deck.html</link>
+      <description>Two self-hosted AI agents with their own computer, compared.</description>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/agent-zero-vs-deck.html</guid>
+    </item>
+    <item>
+      <title>The best MCP servers for coding agents</title>
+      <link>https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html</link>
+      <description>GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and hyprcage.</description>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html</guid>
+    </item>
     <item>
       <title>How accurate is CodeRabbit? A test on 52 real bug fixes</title>
       <link>https://www.arjunp.pro/writing/coderabbit-benchmark.html</link>

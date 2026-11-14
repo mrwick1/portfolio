@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeRabbit Alternatives in 2026: AI Code Review Tools Compared | Arjun P</title>
+<meta name="description" content="Greptile, Cursor Bugbot, GitHub Copilot code review, Qodo, the open-source PR-Agent and a local reviewer, compared on platforms, self-hosting, pricing model and measured accuracy.">
+<meta name="author" content="Arjun P">
+<link rel="canonical" href="https://www.arjunp.pro/writing/coderabbit-alternatives.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodeRabbit alternatives in 2026: AI code review tools compared">
+<meta property="og:description" content="Greptile, Cursor Bugbot, GitHub Copilot code review, Qodo, the open-source PR-Agent and a local reviewer, compared on platforms, self-hosting, pricing model and measured accuracy.">
+<meta property="og:url" content="https://www.arjunp.pro/writing/coderabbit-alternatives.html">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CodeRabbit alternatives in 2026: AI code review tools compared">
+<meta name="twitter:description" content="Greptile, Cursor Bugbot, GitHub Copilot code review, Qodo, the open-source PR-Agent and a local reviewer, compared on platforms, self-hosting, pricing model and measured accuracy.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CodeRabbit alternatives in 2026: AI code review tools compared", "description": "Greptile, Cursor Bugbot, GitHub Copilot code review, Qodo, the open-source PR-Agent and a local reviewer, compared on platforms, self-hosting, pricing model and measured accuracy.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-11-14T00:00:00+00:00", "dateModified": "2026-11-14T00:00:00+00:00", "url": "https://www.arjunp.pro/writing/coderabbit-alternatives.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/coderabbit-alternatives.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the best alternative to CodeRabbit?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on the constraint. PR-Agent is the open-source option with your own model. Greptile reviews with whole-repository context and can be self-hosted. Copilot code review is included in paid GitHub Copilot plans. Cursor Bugbot fits teams that use Cursor. Qodo covers GitHub, GitLab, Bitbucket and Azure DevOps with on-premises deployment."}}, {"@type": "Question", "name": "Is there a free, open-source alternative to CodeRabbit?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. PR-Agent is MIT-licensed and community-owned. You run it yourself and pay only your model provider. It supports GitHub, GitLab, Bitbucket, Azure DevOps and Gitea."}}, {"@type": "Question", "name": "Can I self-host an AI code reviewer?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Greptile offers Docker Compose, Kubernetes and air-gapped deployment. Qodo offers on-premises deployment. PR-Agent is open source and runs anywhere you can run Docker or a CLI."}}, {"@type": "Question", "name": "How accurate are AI code reviewers?", "acceptedAnswer": {"@type": "Answer", "text": "In one test on 52 pull requests built from real bug fixes, CodeRabbit found 48% of the known bugs and raised 1.18 false alarms per clean pull request. A local reviewer found 37% with 0.63 false alarms. No tool found most bugs on its own."}}]}</script>
+</head>
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
+<section class="case-hero"><p class="article-date">14 November 2026 · 5 min read</p><h1 class="case-title">CodeRabbit alternatives in 2026: AI code review tools compared</h1><p class="case-subtitle">Six AI pull-request reviewers, with what each one is good for.</p></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">I</span>The short answer</h2>
+<p class="case-text">If you want open source and your own model, use <strong>PR-Agent</strong>. If you want reviews with whole-repository context and a self-hosted option, look at <strong>Greptile</strong>. If your team already pays for GitHub Copilot, try <strong>Copilot code review</strong> first. If your team uses Cursor, <strong>Bugbot</strong> fits in. <strong>Qodo</strong> covers the four main Git platforms with an on-premises option.</p>
+<p class="case-text">Whichever you pick, test it on your own bugs. In <a href="coderabbit-benchmark.html">my test on 52 real bug fixes</a>, CodeRabbit found 48% of the known bugs and raised 1.18 false alarms per clean PR.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">II</span>Compared</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col"></th><th scope="col">Git platforms</th><th scope="col">Self-hosted</th><th scope="col">Pricing model</th><th scope="col">Stands out for</th></tr></thead><tbody><tr><th scope="row">CodeRabbit</th><td>GitHub, GitLab, Azure DevOps, Bitbucket</td><td>Not stated in its docs overview</td><td>Subscription</td><td>Wide platform reach</td></tr><tr><th scope="row">Greptile</th><td>GitHub, GitLab, Bitbucket, Gitea; Perforce on-premises</td><td>Yes: Docker Compose, Helm, air-gapped</td><td>See greptile.com</td><td>A graph of the whole repository</td></tr><tr><th scope="row">Cursor Bugbot</th><td>GitHub, GitLab, Bitbucket, Azure DevOps</td><td>No; self-hosted Git servers work</td><td>Usage-based since May 2026</td><td>Rules in <code>.cursor/BUGBOT.md</code></td></tr><tr><th scope="row">Copilot code review</th><td>GitHub; Azure DevOps in preview</td><td>No</td><td>AI credits; about $1.50 per review on the default setting</td><td>Already in Copilot paid plans</td></tr><tr><th scope="row">Qodo</th><td>GitHub, GitLab, Bitbucket, Azure DevOps</td><td>Single-tenant, multi-tenant or on-premises</td><td>Free trial; free for open source</td><td>On-premises with GitHub, GitLab, Bitbucket and Azure DevOps</td></tr><tr><th scope="row">PR-Agent</th><td>GitHub, GitLab, Bitbucket, Azure DevOps, Gitea</td><td>Yes, open source (MIT)</td><td>Free; you pay your model provider</td><td>Any model, including local ones</td></tr><tr><th scope="row">reviewer (mine)</th><td>GitHub</td><td>Runs on your machine</td><td>Model cost, about $0.09 per review</td><td>Half CodeRabbit's false alarms in my test</td></tr></tbody></table></div>
+<p class="code-cap">From each vendor's docs or README, checked on 14 November 2026.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">III</span>Greptile</h2>
+<p class="case-text"><a href="https://www.greptile.com/docs">Greptile</a> builds a graph of your repository, so a review can see how a change affects code outside the diff. It posts comments with suggested fixes and learns from your thumbs-up and thumbs-down reactions. It runs as a cloud service, or self-hosted with Docker Compose, Kubernetes or in an air-gapped network.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">IV</span>Cursor Bugbot</h2>
+<p class="case-text"><a href="https://cursor.com/docs/bugbot">Bugbot</a> reviews a PR when it changes, or when someone comments <code>bugbot run</code>. Team rules live in <code>.cursor/BUGBOT.md</code>, and Cursor's other project rules do not apply to it. Billing has been usage-based since May 2026.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">V</span>GitHub Copilot code review</h2>
+<p class="case-text"><a href="https://docs.github.com/en/copilot/concepts/agents/code-review">Copilot code review</a> comes with Copilot Pro, Pro+, Max, Business and Enterprise, but not Copilot Free. It works on GitHub.com, in the main IDEs and on Azure DevOps in preview. GitHub estimates an average of $1.50 in AI credits per review on the default setting. You cannot choose the model, and GitHub says it does not catch every problem.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VI</span>Qodo and PR-Agent</h2>
+<p class="case-text"><a href="https://www.qodo.ai/products/qodo-merge/">Qodo</a> sells a multi-agent review product for GitHub, GitLab, Bitbucket and Azure DevOps, with single-tenant, multi-tenant and on-premises deployment. It is free for open-source projects.</p>
+<p class="case-text"><a href="https://github.com/qodo-ai/pr-agent">PR-Agent</a> started at Qodo and is now community-owned under MIT. It is not the Qodo free tier. It runs from the CLI, GitHub Actions, Docker or a webhook, and it works with OpenAI, Claude, Gemini, DeepSeek, Mistral and, through LiteLLM, local models such as Ollama.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VII</span>A local reviewer</h2>
+<p class="case-text"><a href="../projects/reviewer.html">reviewer</a> is my own tool, so read this part as the author's view. It runs from the terminal on my machine and posts inline GitHub comments. On the same 52 PRs, it found fewer bugs than CodeRabbit (recall 0.37 against 0.48), with about half the false alarms (0.63 against 1.18 per clean PR). Its source is private. The <a href="https://github.com/mrwick1/reviewer-bench">benchmark PRs</a> are public, so you can test any tool on this list the same way.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VIII</span>Questions</h2>
+<h3 class="case-text"><strong>What is the best alternative to CodeRabbit?</strong></h3>
+<p class="case-text">It depends on the constraint. PR-Agent is the open-source option with your own model. Greptile reviews with whole-repository context and can be self-hosted. Copilot code review is included in paid GitHub Copilot plans. Cursor Bugbot fits teams that use Cursor. Qodo covers GitHub, GitLab, Bitbucket and Azure DevOps with on-premises deployment.</p>
+<h3 class="case-text"><strong>Is there a free, open-source alternative to CodeRabbit?</strong></h3>
+<p class="case-text">Yes. PR-Agent is MIT-licensed and community-owned. You run it yourself and pay only your model provider. It supports GitHub, GitLab, Bitbucket, Azure DevOps and Gitea.</p>
+<h3 class="case-text"><strong>Can I self-host an AI code reviewer?</strong></h3>
+<p class="case-text">Yes. Greptile offers Docker Compose, Kubernetes and air-gapped deployment. Qodo offers on-premises deployment. PR-Agent is open source and runs anywhere you can run Docker or a CLI.</p>
+<h3 class="case-text"><strong>How accurate are AI code reviewers?</strong></h3>
+<p class="case-text">In one test on 52 pull requests built from real bug fixes, CodeRabbit found 48% of the known bugs and raised 1.18 false alarms per clean pull request. A local reviewer found 37% with 0.63 false alarms. No tool found most bugs on its own.</p>
+</div></section>
+<nav class="case-section article-back" aria-label="Article navigation"><a href="./" class="all-writing">← All writing</a></nav>
+</main>
+
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>AGENTS · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
+
+
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script src="../assets/letter.js" defer></script>
+</body>
+</html>

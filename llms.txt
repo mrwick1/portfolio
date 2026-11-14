@@ -17,6 +17,9 @@
 
 ## Writing
 
+- [CodeRabbit alternatives in 2026](https://www.arjunp.pro/writing/coderabbit-alternatives.html): Greptile, Cursor Bugbot, Copilot code review, Qodo, PR-Agent and a local reviewer, compared.
+- [Agent Zero vs deck](https://www.arjunp.pro/writing/agent-zero-vs-deck.html): Two self-hosted AI agents with their own computer, compared.
+- [The best MCP servers for coding agents](https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html): GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and hyprcage.
 - [How accurate is CodeRabbit? A test on 52 real bug fixes](https://www.arjunp.pro/writing/coderabbit-benchmark.html): CodeRabbit on 52 pull requests built from real bug fixes: recall, precision and false alarms, next to a local AI reviewer.
 - [Playwright MCP vs Chrome DevTools MCP vs bare](https://www.arjunp.pro/writing/browsers-for-ai-agents.html): Three MCP browsers for coding agents, compared: Playwright MCP, Chrome DevTools MCP and bare-mcp.
 - [Self-hosted, open-source alternatives to Grok Bot](https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html): Agent Zero, cua, deck, OpenHands Agent Canvas and Bytebot, compared with xAI's Grok Bot.
