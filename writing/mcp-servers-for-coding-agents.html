@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best MCP Servers for Coding Agents (2026) | Arjun P</title>
+<meta name="description" content="Five MCP servers that make coding agents more useful: GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and hyprcage, with what each does and how to add it.">
+<meta name="author" content="Arjun P">
+<link rel="canonical" href="https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The best MCP servers for coding agents in 2026">
+<meta property="og:description" content="Five MCP servers that make coding agents more useful: GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and hyprcage, with what each does and how to add it.">
+<meta property="og:url" content="https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The best MCP servers for coding agents in 2026">
+<meta name="twitter:description" content="Five MCP servers that make coding agents more useful: GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and hyprcage, with what each does and how to add it.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The best MCP servers for coding agents in 2026", "description": "Five MCP servers that make coding agents more useful: GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and hyprcage, with what each does and how to add it.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-11-14T00:00:00+00:00", "dateModified": "2026-11-14T00:00:00+00:00", "url": "https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Which MCP servers should I add to Claude Code?", "acceptedAnswer": {"@type": "Answer", "text": "A good starting set is the GitHub MCP server for repositories, issues and pull requests, Context7 for current library documentation, and Playwright MCP for testing web pages. Add Chrome DevTools MCP for performance and network debugging."}}, {"@type": "Question", "name": "What does Context7 do?", "acceptedAnswer": {"@type": "Answer", "text": "Context7 fetches current, version-specific library documentation and code examples into a coding agent's context, which reduces outdated or invented API calls. Its MCP tools are resolve-library-id and query-docs."}}, {"@type": "Question", "name": "Does GitHub have an official MCP server?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. github/github-mcp-server is MIT-licensed. GitHub hosts a remote version at https://api.githubcopilot.com/mcp/, and a local version runs as the Docker image ghcr.io/github/github-mcp-server."}}, {"@type": "Question", "name": "How do I stop too many MCP tools from filling the context?", "acceptedAnswer": {"@type": "Answer", "text": "Enable only the toolsets you need. The GitHub MCP server, for example, accepts --toolsets to choose groups and --read-only to remove write tools."}}]}</script>
+</head>
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
+<section class="case-hero"><p class="article-date">14 November 2026 · 4 min read</p><h1 class="case-title">The best MCP servers for coding agents in 2026</h1><p class="case-subtitle">Five servers I would add to Claude Code, Codex or Cursor, and what each one fixes.</p></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">I</span>The short answer</h2>
+<p class="case-text">Start with three: the <strong>GitHub MCP server</strong> for issues and pull requests, <strong>Context7</strong> for current library docs, and <strong>Playwright MCP</strong> to test the web pages the agent builds. Add <strong>Chrome DevTools MCP</strong> when you debug performance or network problems. Add <strong>hyprcage</strong> on a Hyprland desktop when agents must run graphical apps without taking over your screen.</p>
+<p class="case-text">Every server adds tools to the agent's context. Turn on only the toolsets you use.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">II</span>Compared</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col"></th><th scope="col">What it fixes</th><th scope="col">Runs</th><th scope="col">License</th><th scope="col">Add it</th></tr></thead><tbody><tr><th scope="row">GitHub MCP server</th><td>The agent can read repos and manage issues, PRs and Actions</td><td>Remote (hosted by GitHub) or local</td><td>MIT</td><td>Remote URL <code>https://api.githubcopilot.com/mcp/</code></td></tr><tr><th scope="row">Context7</th><td>Outdated or invented APIs: it fetches current, version-specific docs</td><td>Remote or local</td><td>MIT (server); backend is private</td><td><code>npx ctx7 setup</code></td></tr><tr><th scope="row">Playwright MCP</th><td>The agent can open and test pages through accessibility snapshots</td><td>Local</td><td>Apache-2.0</td><td><code>npx @playwright/mcp@latest</code></td></tr><tr><th scope="row">Chrome DevTools MCP</th><td>Performance traces, network and console debugging in Chrome</td><td>Local</td><td>Apache-2.0</td><td><code>npx -y chrome-devtools-mcp@latest</code></td></tr><tr><th scope="row">hyprcage (mine)</th><td>Graphical apps run on a separate screen, not on your desktop</td><td>Local, Hyprland on Linux</td><td>MIT</td><td><a href="https://github.com/mrwick1/hyprcage">mrwick1/hyprcage</a></td></tr></tbody></table></div>
+<p class="code-cap">From each project's README, checked on 14 November 2026.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">III</span>GitHub MCP server</h2>
+<p class="case-text">GitHub's <a href="https://github.com/github/github-mcp-server">official server</a> lets an agent read code and manage issues, pull requests and workflows. The remote server needs no install and signs in with OAuth or a personal access token. The local server runs as a Docker image. The default toolsets are context, repos, issues, pull_requests and users. <code>--read-only</code> removes the write tools, which is a good default for a new agent.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">IV</span>Context7</h2>
+<p class="case-text"><a href="https://github.com/upstash/context7">Context7</a> from Upstash feeds current library documentation into the agent's context. Add "use context7" to a prompt, or name a version such as Next.js 16 to get the matching docs. It has two tools: <code>resolve-library-id</code> and <code>query-docs</code>. A free API key gives higher rate limits. The docs are community-contributed, so check what the agent copies.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">V</span>Playwright MCP and Chrome DevTools MCP</h2>
+<p class="case-text"><a href="https://github.com/microsoft/playwright-mcp">Playwright MCP</a> lets the agent click and type by element reference from an accessibility snapshot, so it needs no vision model. It drives Chrome, Firefox, WebKit and Edge. <a href="https://github.com/ChromeDevTools/chrome-devtools-mcp">Chrome DevTools MCP</a> controls a live Chrome and adds performance traces, network requests and source-mapped console errors. Its usage statistics are on by default.</p>
+<p class="case-text">I compare both with my own from-scratch browser in <a href="browsers-for-ai-agents.html">Playwright MCP vs Chrome DevTools MCP vs bare</a>.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VI</span>hyprcage</h2>
+<p class="case-text"><a href="../projects/hyprcage.html">hyprcage</a> gives each agent its own in-memory screen on a Hyprland desktop, so a browser or app under test never takes your focus or cursor. I maintain the fork and wrote most of its current code, so read this as the author's view. The agent reads the screen as text first, and each action returns a verdict such as CONFIRMED or NO_OP. It works only on Linux with Hyprland, and it does not isolate apps from the file system or network.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VII</span>Questions</h2>
+<h3 class="case-text"><strong>Which MCP servers should I add to Claude Code?</strong></h3>
+<p class="case-text">A good starting set is the GitHub MCP server for repositories, issues and pull requests, Context7 for current library documentation, and Playwright MCP for testing web pages. Add Chrome DevTools MCP for performance and network debugging.</p>
+<h3 class="case-text"><strong>What does Context7 do?</strong></h3>
+<p class="case-text">Context7 fetches current, version-specific library documentation and code examples into a coding agent&#x27;s context, which reduces outdated or invented API calls. Its MCP tools are resolve-library-id and query-docs.</p>
+<h3 class="case-text"><strong>Does GitHub have an official MCP server?</strong></h3>
+<p class="case-text">Yes. github/github-mcp-server is MIT-licensed. GitHub hosts a remote version at https://api.githubcopilot.com/mcp/, and a local version runs as the Docker image ghcr.io/github/github-mcp-server.</p>
+<h3 class="case-text"><strong>How do I stop too many MCP tools from filling the context?</strong></h3>
+<p class="case-text">Enable only the toolsets you need. The GitHub MCP server, for example, accepts --toolsets to choose groups and --read-only to remove write tools.</p>
+</div></section>
+<nav class="case-section article-back" aria-label="Article navigation"><a href="./" class="all-writing">← All writing</a></nav>
+</main>
+
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>AGENTS · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
+
+
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script src="../assets/letter.js" defer></script>
+</body>
+</html>

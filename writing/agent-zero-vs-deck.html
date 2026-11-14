@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Zero vs deck: Self-Hosted AI Agents With Their Own Computer | Arjun P</title>
+<meta name="description" content="Agent Zero and deck both give an AI agent its own computer on your hardware. Agent Zero is a general agent you can run today. deck runs several separate bots, each in its own virtual machine, with owner approval.">
+<meta name="author" content="Arjun P">
+<link rel="canonical" href="https://www.arjunp.pro/writing/agent-zero-vs-deck.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Agent Zero vs deck: two self-hosted agents with a computer of their own">
+<meta property="og:description" content="Agent Zero and deck both give an AI agent its own computer on your hardware. Agent Zero is a general agent you can run today. deck runs several separate bots, each in its own virtual machine, with owner approval.">
+<meta property="og:url" content="https://www.arjunp.pro/writing/agent-zero-vs-deck.html">
+<meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent Zero vs deck: two self-hosted agents with a computer of their own">
+<meta name="twitter:description" content="Agent Zero and deck both give an AI agent its own computer on your hardware. Agent Zero is a general agent you can run today. deck runs several separate bots, each in its own virtual machine, with owner approval.">
+<meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Agent Zero vs deck: two self-hosted agents with a computer of their own", "description": "Agent Zero and deck both give an AI agent its own computer on your hardware. Agent Zero is a general agent you can run today. deck runs several separate bots, each in its own virtual machine, with owner approval.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-11-14T00:00:00+00:00", "dateModified": "2026-11-14T00:00:00+00:00", "url": "https://www.arjunp.pro/writing/agent-zero-vs-deck.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/agent-zero-vs-deck.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between Agent Zero and deck?", "acceptedAnswer": {"@type": "Answer", "text": "Agent Zero is a general open-source agent with one Linux workspace in Docker and support for cloud or local models. deck runs several separate bots, each in its own QEMU/KVM virtual machine, with owner approval and a budget per bot. Agent Zero is more complete today; deck is early."}}, {"@type": "Question", "name": "Can Agent Zero run local models?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Its setup offers a cloud provider, an AI account such as a ChatGPT sign-in, or a local model server."}}, {"@type": "Question", "name": "Is deck open source?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. deck is dual-licensed under MIT and Apache-2.0, and the source is at github.com/mrwick1/deck."}}, {"@type": "Question", "name": "Which self-hosted agent keeps bots isolated from each other?", "acceptedAnswer": {"@type": "Answer", "text": "deck gives each bot its own virtual machine, accounts, files, memory and permissions, so one bot cannot see another bot's logins."}}]}</script>
+</head>
+<body class="inner-page article-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
+<main class="page" id="main">
+<section class="case-hero"><p class="article-date">14 November 2026 · 4 min read</p><h1 class="case-title">Agent Zero vs deck: two self-hosted agents with a computer of their own</h1><p class="case-subtitle">Two open-source alternatives to Grok Bot, and which one to pick.</p></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">I</span>The short answer</h2>
+<p class="case-text">Pick <strong>Agent Zero</strong> if you want a general agent with a Linux desktop that you can run today. It runs in Docker, works with cloud or local models and can hand parts of a task to other agents.</p>
+<p class="case-text">Pick <strong>deck</strong> if you want several bots that must stay apart, such as an email bot and a job-hunting bot, each with its own virtual machine, logins and permissions, and with your approval before a post, payment or message goes out. deck is early. I build it, so read this page as the author's comparison.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">II</span>Compared</h2>
+<div class="table-wrap"><table><thead><tr><th scope="col"></th><th scope="col">Agent Zero</th><th scope="col">deck</th></tr></thead><tbody><tr><th scope="row">The agent's computer</th><td>A Linux workspace with an XFCE desktop, in Docker</td><td>One QEMU/KVM virtual machine per bot, with an Arch Linux desktop</td></tr><tr><th scope="row">Several agents</th><td>Delegates parts of a task to other agents; supports A2A</td><td>Several bots, each with its own accounts, files, memory and permissions</td></tr><tr><th scope="row">Models</th><td>Cloud providers, a ChatGPT sign-in or a local model server</td><td>Any OpenAI-compatible endpoint</td></tr><tr><th scope="row">Browser</th><td>A browser in the workspace</td><td>bare, a browser engine written from scratch in Rust, with no fallback</td></tr><tr><th scope="row">Owner control</th><td>You can take over the desktop with your own mouse and keyboard</td><td>Approval rules and a spending budget per bot; one inbox for approvals and failures</td></tr><tr><th scope="row">Idle cost</th><td>Not stated in the README</td><td>A bot's VM is saved to disk when idle and restored when work arrives</td></tr><tr><th scope="row">Interface</th><td>Web UI, by default on port 5080</td><td>Web app on laptop or phone, a chat with each bot</td></tr><tr><th scope="row">License</th><td>MIT</td><td>MIT or Apache-2.0</td></tr><tr><th scope="row">Status</th><td>Ready to install</td><td>One-bot runtime passed its tests on 12 November 2026; many features not shipped</td></tr></tbody></table></div>
+<p class="code-cap">From the Agent Zero README and the deck project page, checked on 14 November 2026.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">III</span>Agent Zero</h2>
+<p class="case-text"><a href="https://github.com/agent0ai/agent-zero">Agent Zero</a> describes itself as an open-source AI agent with its own Linux workspace. It uses a terminal, a browser and desktop apps such as LibreOffice for research, coding and documents. You install it with its launcher, an install script or <code>docker run agent0ai/agent-zero</code>. Its README says to keep it inside Docker or another isolated environment.</p>
+<p class="case-text">It is the more complete tool today. Plugins add model providers and features.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">IV</span>deck</h2>
+<p class="case-text"><a href="../projects/deck.html">deck</a> is built around separation. One Rust service runs the agent loop for every bot, outside the bots' computers. Each bot gets its own virtual machine, so one bot never sees another bot's logins. A post, a payment or a sent message can wait for my approval, and each bot has a spending budget.</p>
+<p class="case-text">On 12 November 2026, the one-bot runtime passed its tests in a real VM: browser, shell and file work, an idle save and a restore for the next task. In one run, a working bot used about 531 MiB of VM memory. Bot creation through chat, real account integrations, automatic spending accounting, memory and load tests with many bots are not shipped. The source is on <a href="https://github.com/mrwick1/deck">GitHub</a>.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">V</span>Which to choose</h2>
+<p class="case-text">For one capable agent now, choose Agent Zero. For several long-lived bots with separate accounts and strict approval, deck is designed for that case, but expect gaps until the features above ship. For other options, including cua and OpenHands, see <a href="self-hosted-grok-bot-alternatives.html">self-hosted alternatives to Grok Bot</a>.</p>
+</div></section>
+<section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VI</span>Questions</h2>
+<h3 class="case-text"><strong>What is the difference between Agent Zero and deck?</strong></h3>
+<p class="case-text">Agent Zero is a general open-source agent with one Linux workspace in Docker and support for cloud or local models. deck runs several separate bots, each in its own QEMU/KVM virtual machine, with owner approval and a budget per bot. Agent Zero is more complete today; deck is early.</p>
+<h3 class="case-text"><strong>Can Agent Zero run local models?</strong></h3>
+<p class="case-text">Yes. Its setup offers a cloud provider, an AI account such as a ChatGPT sign-in, or a local model server.</p>
+<h3 class="case-text"><strong>Is deck open source?</strong></h3>
+<p class="case-text">Yes. deck is dual-licensed under MIT and Apache-2.0, and the source is at github.com/mrwick1/deck.</p>
+<h3 class="case-text"><strong>Which self-hosted agent keeps bots isolated from each other?</strong></h3>
+<p class="case-text">deck gives each bot its own virtual machine, accounts, files, memory and permissions, so one bot cannot see another bot&#x27;s logins.</p>
+</div></section>
+<nav class="case-section article-back" aria-label="Article navigation"><a href="./" class="all-writing">← All writing</a></nav>
+</main>
+
+<div class="signature"><small>Signed</small><span>Arjun</span></div><aside class="drawing-note" aria-label="Layout notes">FIG. 01 — THE LETTER<br>528 PX / READING MEASURE<br><br>AGENTS · SOFTWARE · SYSTEMS<br>Designed to be read.<br>Built to be explored.</aside><footer class="footer"><span>© <span id="footerYear">2026</span> Arjun P</span><div class="controls"><button id="drawingToggle" type="button" aria-label="Show drawing guides" aria-pressed="false">⌗</button><button id="themeToggle" type="button" aria-label="Switch to dark theme"><span class="theme-dot" aria-hidden="true"></span></button></div></footer>
+</div>
+
+
+<script data-goatcounter="https://arjunp.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script src="../assets/letter.js" defer></script>
+</body>
+</html>
