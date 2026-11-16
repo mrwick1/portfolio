@@ -2,6 +2,8 @@
   "buildCommand": "",
   "outputDirectory": ".",
   "redirects": [
+    { "source": "/projects/hyprcage.html", "destination": "/projects/offstage.html", "statusCode": 301 },
+    { "source": "/projects/hyprcage", "destination": "/projects/offstage.html", "statusCode": 301 },
     { "source": "/writing/tradersconnect-rework/", "destination": "/demos/tradersconnect/", "statusCode": 301 },
     { "source": "/writing/tradersconnect-rework", "destination": "/demos/tradersconnect/", "statusCode": 301 },
     { "source": "/writing/article-template.html", "destination": "/404.html", "statusCode": 404 },
