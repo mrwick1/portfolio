@@ -6,7 +6,8 @@
 
 - [bare](https://www.arjunp.pro/projects/bare.html): A web browser written from scratch in Rust, with hand-written TLS, HTTP/2, HTML, CSS, layout and JavaScript, and an MCP server that agents use to test sites.
 - [deck](https://www.arjunp.pro/projects/deck.html): An open-source, self-hosted alternative to Grok Bot. The owner chats with several AI bots, such as an email bot or a job-hunting bot, and each bot works in its own virtual computer.
-- [hyprcage](https://www.arjunp.pro/projects/hyprcage.html): A virtual screen for AI agents on Hyprland. Agents read the screen as text before they take a screenshot.
+- [offstage](https://www.arjunp.pro/projects/offstage.html): A virtual screen for AI agents on Linux and Windows. Agents read the screen as text before they take a screenshot.
+- [tinycode](https://www.arjunp.pro/projects/tinycode.html): A small coding agent in Rust for small local models. It uses three tools and accepts a finished task only when the last test command passes.
 - [reviewer](https://www.arjunp.pro/projects/reviewer.html): A local AI code reviewer in Rust, measured against CodeRabbit on 52 pull requests built from real bug fixes.
 - [figma-connect](https://www.arjunp.pro/projects/figma-connect.html): A local Figma MCP server that renders generated code and compares it with the design.
 - [git-guard](https://www.arjunp.pro/projects/git-guard.html): Git hooks that hold coding agents and people to the same commit rules.
@@ -19,7 +20,7 @@
 
 - [CodeRabbit alternatives in 2026](https://www.arjunp.pro/writing/coderabbit-alternatives.html): Greptile, Cursor Bugbot, Copilot code review, Qodo, PR-Agent and a local reviewer, compared.
 - [Agent Zero vs deck](https://www.arjunp.pro/writing/agent-zero-vs-deck.html): Two self-hosted AI agents with their own computer, compared.
-- [The best MCP servers for coding agents](https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html): GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and hyprcage.
+- [The best MCP servers for coding agents](https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html): GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and offstage.
 - [How accurate is CodeRabbit? A test on 52 real bug fixes](https://www.arjunp.pro/writing/coderabbit-benchmark.html): CodeRabbit on 52 pull requests built from real bug fixes: recall, precision and false alarms, next to a local AI reviewer.
 - [Playwright MCP vs Chrome DevTools MCP vs bare](https://www.arjunp.pro/writing/browsers-for-ai-agents.html): Three MCP browsers for coding agents, compared: Playwright MCP, Chrome DevTools MCP and bare-mcp.
 - [Self-hosted, open-source alternatives to Grok Bot](https://www.arjunp.pro/writing/self-hosted-grok-bot-alternatives.html): Agent Zero, cua, deck, OpenHands Agent Canvas and Bytebot, compared with xAI's Grok Bot.

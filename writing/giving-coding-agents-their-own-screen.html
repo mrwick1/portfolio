@@ -4,32 +4,32 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giving coding agents their own screen | Arjun P</title>
-<meta name="description" content="How I extended hyprcage so coding agents can test interfaces on a virtual screen: text snapshots, device emulation and recording, without touching my desktop.">
+<meta name="description" content="How I extended offstage so coding agents can test interfaces on a virtual screen: text snapshots, device emulation and recording, without touching my desktop.">
 <meta name="author" content="Arjun P">
 <link rel="canonical" href="https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Giving coding agents their own screen">
-<meta property="og:description" content="How I extended hyprcage so coding agents can test interfaces on a virtual screen: text snapshots, device emulation and recording, without touching my desktop.">
+<meta property="og:description" content="How I extended offstage so coding agents can test interfaces on a virtual screen: text snapshots, device emulation and recording, without touching my desktop.">
 <meta property="og:url" content="https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html">
 <meta property="og:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
 <meta property="article:published_time" content="2026-10-11T00:00:00+00:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Giving coding agents their own screen">
-<meta name="twitter:description" content="How I extended hyprcage so coding agents can test interfaces on a virtual screen: text snapshots, device emulation and recording, without touching my desktop.">
+<meta name="twitter:description" content="How I extended offstage so coding agents can test interfaces on a virtual screen: text snapshots, device emulation and recording, without touching my desktop.">
 <meta name="twitter:image" content="https://www.arjunp.pro/assets/images/og-image.webp">
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../assets/letter.css?v=review-polish-1">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Giving coding agents their own screen", "description": "How I extended hyprcage so coding agents can test interfaces on a virtual screen: text snapshots, device emulation and recording, without touching my desktop.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-10-11T00:00:00+00:00", "dateModified": "2026-11-04T17:44:34+00:00", "url": "https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html", "isBasedOn": "https://mrwick.dev/notes/hyprcage-a-screen-for-agents/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Giving coding agents their own screen", "description": "How I extended offstage so coding agents can test interfaces on a virtual screen: text snapshots, device emulation and recording, without touching my desktop.", "author": {"@type": "Person", "name": "Arjun P", "url": "https://www.arjunp.pro/"}, "datePublished": "2026-10-11T00:00:00+00:00", "dateModified": "2026-11-04T17:44:34+00:00", "url": "https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html", "mainEntityOfPage": "https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html", "isBasedOn": "https://mrwick.dev/notes/hyprcage-a-screen-for-agents/"}</script>
 </head>
 <body class="inner-page article-page">
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="letter"><header class="letter-head"><a class="monogram" href="../index.html" aria-label="Arjun, home">A</a><a class="index-link" href="../index.html">← Index</a><div class="dateline">From India,<time id="letterDate">November 2026</time><span class="local-time" id="localTime"></span></div></header>
 <main class="page" id="main">
-<section class="case-hero"><p class="article-date">11 October 2026 · 2 min read</p><h1 class="case-title">Giving coding agents their own screen</h1><p class="case-subtitle">Extending hyprcage so an agent can test an interface without interrupting my desktop.</p></section>
+<section class="case-hero"><p class="article-date">11 October 2026 · 2 min read</p><h1 class="case-title">Giving coding agents their own screen</h1><p class="case-subtitle">Extending offstage so an agent can test an interface without interrupting my desktop.</p></section>
 <section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">I</span>The interruption</h2>
 <p class="case-text">When a coding agent opens a browser on my desktop, it can cover my work, move the cursor, or take focus. I wanted it to test interfaces while I continued using the machine.</p>
-<p class="case-text">I use <a href="https://github.com/hexadecimil/hyprcage">hyprcage</a> for this. The original project gives an agent a separate, in-memory screen through the Cage compositor. I maintain <a href="https://github.com/mrwick1/hyprcage">a fork</a> with additions for interaction, emulation, and recording.</p>
+<p class="case-text">I use <a href="https://github.com/mrwick1/offstage">offstage</a> for this. It began as a fork of <a href="https://github.com/hexadecimil/hyprcage">an open-source project</a> that gives an agent a separate, in-memory screen through the Cage compositor. I maintain it, with additions for interaction, emulation, and recording.</p>
 </div></section>
 <section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">II</span>Read before taking a screenshot</h2>
 <p class="case-text">A screenshot is useful for checking appearance, but many actions only need a control’s name, role, and location. I added a text snapshot that lists those details with references an agent can act on.</p>

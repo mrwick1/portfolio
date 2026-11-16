@@ -24,7 +24,7 @@
     <item>
       <title>The best MCP servers for coding agents</title>
       <link>https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html</link>
-      <description>GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and hyprcage.</description>
+      <description>GitHub MCP server, Context7, Playwright MCP, Chrome DevTools MCP and offstage.</description>
       <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/mcp-servers-for-coding-agents.html</guid>
     </item>
@@ -59,7 +59,7 @@
     <item>
       <title>Giving coding agents their own screen</title>
       <link>https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html</link>
-      <description>How I extended hyprcage with text-based interaction, device emulation, and recording.</description>
+      <description>How I extended offstage with text-based interaction, device emulation, and recording.</description>
       <pubDate>Sun, 11 Oct 2026 00:00:00 +0000</pubDate>
       <guid>https://www.arjunp.pro/writing/giving-coding-agents-their-own-screen.html</guid>
     </item>
