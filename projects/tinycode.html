@@ -195,7 +195,7 @@
       <h2 class="case-section-heading"><span class="case-section-number">III</span>Measured against opencode</h2>
       <p class="case-text fade-in">The repository has 18 coding tasks. Each task has a repo, a task text and a check script. Some checks add hidden tests after the agent finishes. I ran tinycode and opencode on the same tasks with the same model.</p>
       <div class="table-wrap fade-in"><table><thead><tr><th scope="col">Tasks</th><th scope="col">tinycode</th><th scope="col">opencode 1.19.5</th></tr></thead><tbody><tr><th scope="row">01–10: small fixes and features</th><td>10/10</td><td>10/10</td></tr><tr><th scope="row">11–18: traps, hidden tests, a large file, speed, a refactor</th><td>7/8</td><td>6/8</td></tr></tbody></table></div>
-      <p class="code-cap">LFM3-1.7B (Q6_K) on llama-server, RTX 3060 6 GB, one run each.</p>
+      <p class="case-text fade-in" style="margin-top: var(--sp-5);"><strong>Setup.</strong> LFM3-1.7B (Q6_K) on llama-server, RTX 3060 6 GB, one run per task and agent.</p>
       <p class="case-text fade-in"><strong>Limits.</strong> One run per task and one model, so a one-task difference is not a result. Both agents fail task 16, a parser with strict edge cases. Run times vary up to ten times between runs, so compare pass counts first. tinycode runs shell commands without asking, so run it only in a folder you can restore, such as a git checkout.</p>
     </div>
   </section>
