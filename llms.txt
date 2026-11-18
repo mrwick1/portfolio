@@ -5,6 +5,7 @@
 ## Projects
 
 - [bare](https://www.arjunp.pro/projects/bare.html): A web browser written from scratch in Rust, with hand-written TLS, HTTP/2, HTML, CSS, layout and JavaScript, and an MCP server that agents use to test sites.
+- [bare vs Chrome baseline](https://www.arjunp.pro/projects/bare-baseline.html): One end-to-end test on a staging web app in Chrome and in bare: 5x less memory, 1.3x less CPU time, 17% more JavaScript instructions.
 - [deck](https://www.arjunp.pro/projects/deck.html): An open-source, self-hosted alternative to Grok Bot. The owner chats with several AI bots, such as an email bot or a job-hunting bot, and each bot works in its own virtual computer.
 - [offstage](https://www.arjunp.pro/projects/offstage.html): A virtual screen for AI agents on Linux and Windows. Agents read the screen as text before they take a screenshot.
 - [tinycode](https://www.arjunp.pro/projects/tinycode.html): A small coding agent in Rust for small local models. It uses three tools and accepts a finished task only when the last test command passes.
