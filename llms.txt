@@ -12,6 +12,7 @@
 - [reviewer](https://www.arjunp.pro/projects/reviewer.html): A local AI code reviewer in Rust, measured against CodeRabbit on 52 pull requests built from real bug fixes.
 - [figma-connect](https://www.arjunp.pro/projects/figma-connect.html): A local Figma MCP server that renders generated code and compares it with the design.
 - [git-guard](https://www.arjunp.pro/projects/git-guard.html): Git hooks that hold coding agents and people to the same commit rules.
+- [t](https://www.arjunp.pro/projects/t.html): A Rust CLI that runs only the tests that cover a change, so coding agents stop running whole suites on every edit.
 - [share](https://www.arjunp.pro/projects/share.html): A small service that publishes one HTML page at a link that expires.
 - [EdTech Assessment Platform](https://www.arjunp.pro/projects/edtech-platform.html): Web and mobile assessments for schools, graded with Claude vision.
 - [AI Product Configurator](https://www.arjunp.pro/projects/product-configurator.html): A product configurator with an AI assistant inside a live Shopify theme.
