@@ -46,7 +46,7 @@
 <p class="case-text">I compare both with my own from-scratch browser in <a href="browsers-for-ai-agents.html">Playwright MCP vs Chrome DevTools MCP vs bare</a>.</p>
 </div></section>
 <section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VI</span>offstage</h2>
-<p class="case-text"><a href="../projects/offstage.html">offstage</a> gives each agent its own screen, so a browser or app under test never takes your focus or cursor. I maintain the fork and wrote most of its current code, so read this as the author's view. The agent reads the screen as text first, and each action returns a verdict such as CONFIRMED or NO_OP. It works on Linux, where a screen is an in-memory compositor, and on Windows in a smaller form, where a screen is one headless Chrome. It does not isolate apps from the file system or network.</p>
+<p class="case-text"><a href="../projects/offstage.html">offstage</a> gives each agent its own screen, so a browser or app under test never takes your focus or cursor. I maintain the fork and wrote most of its current code, so read this as the author's view. The agent reads the screen as text first, and each action returns a verdict such as CONFIRMED or NO_OP. It works on Linux, where a screen is an in-memory compositor, and on Windows in a smaller form, where the agent drives a headless Bare browser. It does not isolate apps from the file system or network.</p>
 </div></section>
 <section class="case-section"><div class="case-section-inner"><h2 class="case-section-heading"><span class="case-section-number">VII</span>Questions</h2>
 <h3 class="case-text"><strong>Which MCP servers should I add to Claude Code?</strong></h3>
