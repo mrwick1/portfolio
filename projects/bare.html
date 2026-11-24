@@ -177,9 +177,9 @@
   <section class="case-section">
     <div class="case-section-inner">
       <h2 class="case-section-heading"><span class="case-section-number">I</span>Why I built it</h2>
-      <p class="case-text fade-in">I wanted to know how a browser works, part by part. Reading about it was not enough, so I write each part myself: networking, TLS, parsing, layout, paint and JavaScript.</p>
-      <p class="case-text fade-in">I also wanted a browser that my coding agents can drive and that I fully understand. When a page fails, I can follow the failure into my own code instead of a black box.</p>
-      <div class="stat-row fade-in" style="margin-top: var(--sp-8);"><div class="stat"><span class="stat-num">1,390+</span><span class="stat-label">commits since 28 Oct</span></div><div class="stat"><span class="stat-num">16</span><span class="stat-label">Rust crates</span></div><div class="stat"><span class="stat-num">48</span><span class="stat-label">public-site journeys pass</span></div><div class="stat"><span class="stat-num">0</span><span class="stat-label">TLS libraries</span></div></div>
+      <p class="case-text fade-in">I wanted a browser that is fast and light, and that I own end to end. So every core part is my own code: networking, TLS, parsing, layout, paint and the JavaScript engine.</p>
+      <p class="case-text fade-in">I also wanted a browser that my coding agents can drive. When a page fails, I can follow the failure into my own code instead of a black box.</p>
+      <div class="stat-row fade-in" style="margin-top: var(--sp-8);"><div class="stat"><span class="stat-num">3,400+</span><span class="stat-label">commits since 28 Oct</span></div><div class="stat"><span class="stat-num">20</span><span class="stat-label">Rust crates</span></div><div class="stat"><span class="stat-num">48</span><span class="stat-label">public-site journeys pass</span></div><div class="stat"><span class="stat-num">0</span><span class="stat-label">TLS libraries</span></div></div>
     </div>
   </section>
 
@@ -187,22 +187,22 @@
     <div class="case-section-inner">
       <h2 class="case-section-heading"><span class="case-section-number">II</span>What is inside</h2>
       <p class="case-text fade-in">The core parts are written by hand. Each part lives in its own crate with its own tests and benchmarks. A page goes through them in this order:</p>
-      <div class="arch fade-in" role="img" aria-label="Pipeline: URL to network and TLS, to HTML, to CSS and JavaScript, to layout, to paint and the window, driven by bare-drive and bare-mcp">
+      <div class="arch fade-in" role="img" aria-label="Pipeline: URL to network and TLS, to HTML, to CSS and the Vex JavaScript engine, to layout, to paint and the window, driven by bare-drive and bare-mcp">
         <div class="arch-box"><div class="arch-box-title">url</div><div class="arch-box-sub">parse · IDNA</div></div>
         <div class="arch-arrow"><span class="arch-arrow-label">DNS · TCP · TLS</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
         <div class="arch-box arch-box--accent"><div class="arch-box-title">net + tls</div><div class="arch-box-sub">HTTP/1.1 and HTTP/2 · TLS 1.3 and 1.2 with the cryptography by hand</div></div>
         <div class="arch-arrow"><span class="arch-arrow-label">bytes</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
         <div class="arch-box"><div class="arch-box-title">html</div><div class="arch-box-sub">encoding · tokenizer · tree builder · DOM</div></div>
         <div class="arch-arrow"><span class="arch-arrow-label">DOM + style sheets + scripts</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
-        <div class="arch-box arch-box--accent"><div class="arch-box-title">css + js</div><div class="arch-box-sub">selectors and cascade · the interpreter changes the DOM</div></div>
+        <div class="arch-box arch-box--accent"><div class="arch-box-title">css + vex</div><div class="arch-box-sub">selectors and cascade · Vex runs the scripts that change the DOM</div></div>
         <div class="arch-arrow"><span class="arch-arrow-label">styled tree</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
-        <div class="arch-box"><div class="arch-box-title">layout</div><div class="arch-box-sub">box tree · block and inline · text</div></div>
+        <div class="arch-box"><div class="arch-box-title">layout</div><div class="arch-box-sub">box tree · block, inline, flex, grid and table · text</div></div>
         <div class="arch-arrow"><span class="arch-arrow-label">boxes</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
-        <div class="arch-box arch-box--accent"><div class="arch-box-title">paint + window</div><div class="arch-box-sub">display list · PNG, JPEG and WebP · Wayland window and input</div></div>
+        <div class="arch-box arch-box--accent"><div class="arch-box-title">paint + window</div><div class="arch-box-sub">display list · PNG, JPEG, WebP and GIF · Wayland window and input</div></div>
         <div class="arch-arrow"><span class="arch-arrow-label">the same input path as a person</span><svg width="16" height="22" viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="8" y1="0" x2="8" y2="18"/><path d="M3 13l5 5 5-5"/></svg></div>
         <div class="arch-box"><div class="arch-box-title">bare-drive and bare-mcp</div><div class="arch-box-sub">journeys from a step file, or from an agent over MCP</div></div>
         </div>
-      <div class="features-grid" style="margin-bottom: var(--sp-6);"><div class="feature-card fade-in"><div class="feature-card-title">Network and TLS</div><div class="feature-card-desc">DNS, TCP, HTTP/1.1 and HTTP/2. TLS 1.3 and 1.2, including the cryptography, with no TLS library.</div></div><div class="feature-card fade-in"><div class="feature-card-title">HTML and CSS</div><div class="feature-card-desc">An HTML tokenizer and tree builder. A CSS tokenizer, parser, selector matcher and style cascade.</div></div><div class="feature-card fade-in"><div class="feature-card-title">Layout and paint</div><div class="feature-card-desc">A box tree with block and inline layout. PNG, JPEG and WebP decoders. A display list painted into a Wayland window with pointer and keyboard input.</div></div><div class="feature-card fade-in"><div class="feature-card-title">JavaScript</div><div class="feature-card-desc">A parser, a heap and a tree-walking interpreter, with no JIT. Timers and fetch run, so pages that depend on scripts can load.</div></div></div>
+      <div class="features-grid" style="margin-bottom: var(--sp-6);"><div class="feature-card fade-in"><div class="feature-card-title">Network and TLS</div><div class="feature-card-desc">DNS, TCP, HTTP/1.1 and HTTP/2. TLS 1.3 and 1.2, including the cryptography, with no TLS library.</div></div><div class="feature-card fade-in"><div class="feature-card-title">HTML and CSS</div><div class="feature-card-desc">An HTML tokenizer and tree builder. A CSS tokenizer, parser, selector matcher and style cascade.</div></div><div class="feature-card fade-in"><div class="feature-card-title">Layout and paint</div><div class="feature-card-desc">A box tree with block, inline, flex, grid and table layout. PNG, JPEG, WebP and GIF decoders. A display list painted into a Wayland window with pointer and keyboard input.</div></div><div class="feature-card fade-in"><div class="feature-card-title">Vex, the JavaScript engine</div><div class="feature-card-desc">A bytecode interpreter with shapes and inline caches, a garbage collector, promises, generators, async functions, modules, regular expressions and Intl. It passes 29,217 test262 tests.</div></div></div>
     </div>
   </section>
 
@@ -219,8 +219,8 @@
     <div class="case-section-inner">
       <h2 class="case-section-heading"><span class="case-section-number">IV</span>How I work on it</h2>
       <p class="case-text fade-in">Each topic follows the same loop: implement, run large load tests, then reduce CPU time and memory. The next topic starts only after the current one passes its checks. For a bug, a failing regression test comes first.</p>
-      <p class="case-text fade-in">Since 5 November 2026, <code>bare</code> also uses tested open-source parts where they fit, such as ICU4X for international text. Each part must pass our own load tests before it goes in.</p>
-      <p class="case-text fade-in"><strong>Limits.</strong> <code>bare</code> is a learning project and is not safe for everyday browsing. Only Linux has a window today, and layout and JavaScript are still in progress.</p>
+      <p class="case-text fade-in">Every change is measured on the whole browser: CPU instructions, peak memory and time to ready, on real public sites recorded for exact replay.</p>
+      <p class="case-text fade-in"><strong>Limits.</strong> <code>bare</code> is not hardened like a mainstream browser, and its TLS code has had no outside audit. Do not use it for everyday browsing. Only Linux has a window today.</p>
     </div>
   </section>
 
@@ -229,7 +229,7 @@
       <h2 class="case-section-heading"><span class="case-section-number">V</span>Progress baseline</h2>
       <p class="case-text fade-in">On 18 November 2026, I ran one real end-to-end test in Chrome and in <code>bare</code>: log in to a staging web app, create a client and an agent, then delete both. All 20 runs passed.</p>
       <div class="stat-row fade-in"><div class="stat"><span class="stat-num">5.1x</span><span class="stat-label">less memory than Chrome</span></div><div class="stat"><span class="stat-num">1.3x</span><span class="stat-label">less CPU time</span></div><div class="stat"><span class="stat-num">1.25x</span><span class="stat-label">faster journey</span></div></div>
-      <p class="case-text fade-in">Chrome's V8 still runs 17% fewer instructions on this script-heavy app. That gap is the target for the next JavaScript engine work. <a href="bare-baseline.html">See the full baseline, with charts and method.</a></p>
+      <p class="case-text fade-in"><a href="bare-baseline.html">See the full baseline, with charts and method.</a></p>
     </div>
   </section>
 
